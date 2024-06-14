@@ -1,0 +1,1867 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:44.0001347Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>IMTECH</HeaderAuthor>
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>1.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input">
+    <Member Name="I_CheckPipes" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Check if pipes are OK</MultiLanguageText></Comment></Member>
+    <Member Name="I_TopCoatColour" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">Top Coat Colour</MultiLanguageText><MultiLanguageText Lang="en-GB">Top Coat Colour</MultiLanguageText><MultiLanguageText Lang="sv-SE">Top Coat Colour</MultiLanguageText><MultiLanguageText Lang="nl-BE">Top Coat Colour</MultiLanguageText></Comment></Member>
+    <Member Name="I_Spare1ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Spare colour Code</MultiLanguageText></Comment></Member>
+    <Member Name="I_Spare2ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Spare colour Code</MultiLanguageText></Comment></Member>
+    <Member Name="I_Spare3ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Spare colour Code</MultiLanguageText></Comment></Member>
+    <Member Name="I_Spare4ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Spare colour Code</MultiLanguageText></Comment></Member>
+    <Member Name="I_Spare5ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Spare colour Code</MultiLanguageText></Comment></Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="O_Ibc1OK" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">IBC top coat 1</MultiLanguageText></Comment></Member>
+    <Member Name="O_Obc11Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">OBC1 top coat 1</MultiLanguageText></Comment></Member>
+    <Member Name="O_Obc12Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">OBC2 top coat 1</MultiLanguageText></Comment></Member>
+    <Member Name="O_TC1Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Top coat 1 Ok</MultiLanguageText></Comment></Member>
+    <Member Name="O_TC1Nok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Top coat 1 Nok</MultiLanguageText></Comment></Member>
+    <Member Name="O_Ibc2OK" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">IBC top coat 2</MultiLanguageText></Comment></Member>
+    <Member Name="O_Obc21Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">OBC1 top coat 2</MultiLanguageText></Comment></Member>
+    <Member Name="O_Obc22Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">OBC2 top coat 2</MultiLanguageText></Comment></Member>
+    <Member Name="O_TC2Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Top coat 2 Ok</MultiLanguageText></Comment></Member>
+    <Member Name="O_TC2Nok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Top coat 2 Nok</MultiLanguageText></Comment></Member>
+  </Section>
+  <Section Name="InOut">
+    <Member Name="IO_Pipe" Datatype="Array[1..50] of &quot;TCPipe&quot;" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">Pipe data</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="PipeStart" Datatype="Int" />
+          <Member Name="AutoModeSel" Datatype="Bool" />
+          <Member Name="StepModeSel" Datatype="Bool" />
+          <Member Name="HomeRunModeSel" Datatype="Bool" />
+          <Member Name="ManualModeSel" Datatype="Bool" />
+          <Member Name="AutoMode" Datatype="Bool" />
+          <Member Name="StepMode" Datatype="Bool" />
+          <Member Name="HomeRunMode" Datatype="Bool" />
+          <Member Name="ManualMode" Datatype="Bool" />
+          <Member Name="BypassActive" Datatype="Bool" />
+          <Member Name="EmptyStnActive" Datatype="Bool" />
+          <Member Name="Simulate" Datatype="Bool" />
+          <Member Name="MaintActive" Datatype="Bool" />
+          <Member Name="CycleStpActive" Datatype="Bool" />
+          <Member Name="ProdStpActive" Datatype="Bool" />
+          <Member Name="_1_6" Datatype="Bool" />
+          <Member Name="_1_7" Datatype="Bool" />
+          <Member Name="AlarmA" Datatype="Bool" />
+          <Member Name="AlarmB" Datatype="Bool" />
+          <Member Name="AlarmC" Datatype="Bool" />
+          <Member Name="AlarmD" Datatype="Bool" />
+          <Member Name="_2_4" Datatype="Bool" />
+          <Member Name="_2_5" Datatype="Bool" />
+          <Member Name="_2_6" Datatype="Bool" />
+          <Member Name="_2_7" Datatype="Bool" />
+          <Member Name="b_3" Datatype="Byte" />
+          <Member Name="mOK" Datatype="Bool" />
+          <Member Name="InUse" Datatype="Bool" />
+          <Member Name="Circulation" Datatype="Bool" />
+          <Member Name="Lowlevel" Datatype="Bool" />
+          <Member Name="EmptyTranspCont" Datatype="Bool" />
+          <Member Name="_4_5" Datatype="Bool" />
+          <Member Name="ValveOpenToIBC1" Datatype="Bool" />
+          <Member Name="ValveOpenToOBC11" Datatype="Bool" />
+          <Member Name="ValveOpenToOBC12" Datatype="Bool" />
+          <Member Name="ValveOpenToIBC2" Datatype="Bool" />
+          <Member Name="ValveOpenToOBC21" Datatype="Bool" />
+          <Member Name="ValveOpenToOBC22" Datatype="Bool" />
+          <Member Name="ValveOpenToICC1" Datatype="Bool" />
+          <Member Name="ValveOpenToOCC1" Datatype="Bool" />
+          <Member Name="ValveOpenToICC2" Datatype="Bool" />
+          <Member Name="ValveOpenToOCC2" Datatype="Bool" />
+          <Member Name="Temperature" Datatype="Int" />
+          <Member Name="Viscosity" Datatype="Int" />
+          <Member Name="Pressure" Datatype="Int" />
+          <Member Name="Density" Datatype="Int" />
+          <Member Name="ColorCodeAscii1" Datatype="Char" />
+          <Member Name="ColorCodeAscii2" Datatype="Char" />
+          <Member Name="ColorCodeAscii3" Datatype="Char" />
+          <Member Name="ColorCodeAscii4" Datatype="Char" />
+          <Member Name="PaintSupplyer" Datatype="Int" />
+          <Member Name="BatchDate" Datatype="Int" />
+          <Member Name="BatchTime" Datatype="Int" />
+          <Member Name="TranspContDate" Datatype="Int" />
+          <Member Name="TranspContTime" Datatype="Int" />
+          <Member Name="ProdTankVolume" Datatype="Int" />
+          <Member Name="MaxStandStill" Datatype="Int" />
+          <Member Name="ColorNameChar1" Datatype="Char" />
+          <Member Name="ColorNameChar2" Datatype="Char" />
+          <Member Name="ColorNameChar3" Datatype="Char" />
+          <Member Name="ColorNameChar4" Datatype="Char" />
+          <Member Name="ColorNameChar5" Datatype="Char" />
+          <Member Name="ColorNameChar6" Datatype="Char" />
+          <Member Name="ColorNameChar7" Datatype="Char" />
+          <Member Name="ColorNameChar8" Datatype="Char" />
+          <Member Name="ColorNameChar9" Datatype="Char" />
+          <Member Name="ColorNameChar10" Datatype="Char" />
+          <Member Name="PaintSupplyerChar1" Datatype="Char" />
+          <Member Name="PaintSupplyerChar2" Datatype="Char" />
+          <Member Name="PaintSupplyerChar3" Datatype="Char" />
+          <Member Name="PaintSupplyerChar4" Datatype="Char" />
+          <Member Name="PaintSupplyerChar5" Datatype="Char" />
+          <Member Name="PaintSupplyerChar6" Datatype="Char" />
+          <Member Name="PaintSupplyerChar7" Datatype="Char" />
+          <Member Name="PaintSupplyerChar8" Datatype="Char" />
+          <Member Name="PaintSupplyerChar9" Datatype="Char" />
+          <Member Name="PaintSupplyerChar10" Datatype="Char" />
+          <Member Name="TranspContVolume" Datatype="Int" />
+          <Member Name="SupplyOKTC1" Datatype="Bool" />
+          <Member Name="SupplyInUseTC1" Datatype="Bool" />
+          <Member Name="SupplyCirculationTC1" Datatype="Bool" />
+          <Member Name="Spare56_3" Datatype="Bool" />
+          <Member Name="SupplyOKTC2" Datatype="Bool" />
+          <Member Name="SupplyInUseTC2" Datatype="Bool" />
+          <Member Name="SupplyCirculationTC2" Datatype="Bool" />
+          <Member Name="Spare56_7" Datatype="Bool" />
+          <Member Name="CollectOKTC1" Datatype="Bool" />
+          <Member Name="Spare57_1" Datatype="Bool" />
+          <Member Name="Spare57_2" Datatype="Bool" />
+          <Member Name="Spare57_3" Datatype="Bool" />
+          <Member Name="CollectOKTC2" Datatype="Bool" />
+          <Member Name="Spare57_5" Datatype="Bool" />
+          <Member Name="Spare57_6" Datatype="Bool" />
+          <Member Name="Spare57_7" Datatype="Bool" />
+          <Member Name="TranspContAgitator" Datatype="Bool" />
+          <Member Name="ProdTankAgitator" Datatype="Bool" />
+          <Member Name="Spare58_2" Datatype="Bool" />
+          <Member Name="Spare58_3" Datatype="Bool" />
+          <Member Name="Spare58_4" Datatype="Bool" />
+          <Member Name="Spare58_5" Datatype="Bool" />
+          <Member Name="Spare58_6" Datatype="Bool" />
+          <Member Name="Spare58_7" Datatype="Bool" />
+          <Member Name="SpareByte59" Datatype="Byte" />
+          <Member Name="ColorCode" Datatype="Int" />
+          <Member Name="PipeEnd" Datatype="Int" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO_ValveData" Datatype="Array[1..50] of &quot;TCValve&quot;" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">Pipe valve data</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="IBC1" Datatype="Byte" />
+          <Member Name="OBC11" Datatype="Byte" />
+          <Member Name="OBC12" Datatype="Byte" />
+          <Member Name="IBC2" Datatype="Byte" />
+          <Member Name="OBC21" Datatype="Byte" />
+          <Member Name="OBC22" Datatype="Byte" />
+          <Member Name="ICC1" Datatype="Byte" />
+          <Member Name="OCC1" Datatype="Byte" />
+          <Member Name="ICC2" Datatype="Byte" />
+          <Member Name="OCC2" Datatype="Byte" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO_RecipeData" Datatype="Array[1..35] of &quot;TCRecipe&quot;" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">Recipe data</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="RecipeLineStart" Datatype="Int" />
+          <Member Name="TagColorCode" Datatype="Int" />
+          <Member Name="ColorType" Datatype="Int" />
+          <Member Name="IBCColorCode" Datatype="Int" />
+          <Member Name="OBC1ColorCode" Datatype="Int" />
+          <Member Name="OBC2ColorCode" Datatype="Int" />
+          <Member Name="spare byte 12" Datatype="Byte" />
+          <Member Name="spare byte 13" Datatype="Byte" />
+          <Member Name="spare byte 14" Datatype="Byte" />
+          <Member Name="spare byte 15" Datatype="Byte" />
+          <Member Name="spare byte 16" Datatype="Byte" />
+          <Member Name="spare byte 17" Datatype="Byte" />
+          <Member Name="spare byte 18" Datatype="Byte" />
+          <Member Name="spare byte 19" Datatype="Byte" />
+          <Member Name="spare byte 20" Datatype="Byte" />
+          <Member Name="spare byte 21" Datatype="Byte" />
+          <Member Name="spare byte 22" Datatype="Byte" />
+          <Member Name="spare byte 23" Datatype="Byte" />
+          <Member Name="spare byte 24" Datatype="Byte" />
+          <Member Name="spare byte 25" Datatype="Byte" />
+          <Member Name="spare byte 26" Datatype="Byte" />
+          <Member Name="spare byte 27" Datatype="Byte" />
+          <Member Name="spare byte 28" Datatype="Byte" />
+          <Member Name="spare byte 29" Datatype="Byte" />
+          <Member Name="RecipeLineEnd" Datatype="Int" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO_RecipeDataCalculate" Datatype="Array[1..35] of &quot;TCRecipe&quot;" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">Recipe data calculate</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="RecipeLineStart" Datatype="Int" />
+          <Member Name="TagColorCode" Datatype="Int" />
+          <Member Name="ColorType" Datatype="Int" />
+          <Member Name="IBCColorCode" Datatype="Int" />
+          <Member Name="OBC1ColorCode" Datatype="Int" />
+          <Member Name="OBC2ColorCode" Datatype="Int" />
+          <Member Name="spare byte 12" Datatype="Byte" />
+          <Member Name="spare byte 13" Datatype="Byte" />
+          <Member Name="spare byte 14" Datatype="Byte" />
+          <Member Name="spare byte 15" Datatype="Byte" />
+          <Member Name="spare byte 16" Datatype="Byte" />
+          <Member Name="spare byte 17" Datatype="Byte" />
+          <Member Name="spare byte 18" Datatype="Byte" />
+          <Member Name="spare byte 19" Datatype="Byte" />
+          <Member Name="spare byte 20" Datatype="Byte" />
+          <Member Name="spare byte 21" Datatype="Byte" />
+          <Member Name="spare byte 22" Datatype="Byte" />
+          <Member Name="spare byte 23" Datatype="Byte" />
+          <Member Name="spare byte 24" Datatype="Byte" />
+          <Member Name="spare byte 25" Datatype="Byte" />
+          <Member Name="spare byte 26" Datatype="Byte" />
+          <Member Name="spare byte 27" Datatype="Byte" />
+          <Member Name="spare byte 28" Datatype="Byte" />
+          <Member Name="spare byte 29" Datatype="Byte" />
+          <Member Name="RecipeLineEnd" Datatype="Int" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+  <Section Name="Static">
+    <Member Name="Ibc1OK" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">IBC top coat 1</MultiLanguageText></Comment></Member>
+    <Member Name="Obc11Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">OBC1 top coat 1</MultiLanguageText></Comment></Member>
+    <Member Name="Obc12Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">OBC2 top coat 1</MultiLanguageText></Comment></Member>
+    <Member Name="Ibc2OK" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">IBC top coat 2</MultiLanguageText></Comment></Member>
+    <Member Name="Obc21Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">OBC1 top coat 2</MultiLanguageText></Comment></Member>
+    <Member Name="Obc22Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">OBC2 top coat 2</MultiLanguageText></Comment></Member>
+    <Member Name="Index" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="IndexRecipe" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="IndexIbcColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="IndexObc1ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="IndexObc2ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="IbcColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="Obc1ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="Obc2ColorCode" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="ColorCodeNOK" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Colour Code NOK</MultiLanguageText></Comment></Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>LGBCheckPipes</Name>
+      <Number>6669</Number>
+      <ProgrammingLanguage>SCL</ProgrammingLanguage>
+      <SetENOAutomatically>False</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v2">
+  <LineComment Inserted="false" NoClosingBracket="false" UId="21">
+    <Text UId="22">************************************</Text>
+  </LineComment>
+  <NewLine Num="1" UId="23" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="24">
+    <Text UId="25">*                                  *</Text>
+  </LineComment>
+  <NewLine Num="1" UId="26" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="27">
+    <Text UId="28">*             LOGIC FB             *</Text>
+  </LineComment>
+  <NewLine Num="1" UId="29" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="30">
+    <Text UId="31">*                                  *</Text>
+  </LineComment>
+  <NewLine Num="1" UId="32" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="33">
+    <Text UId="34">************************************</Text>
+  </LineComment>
+  <NewLine Num="2" UId="35" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="36">
+    <Text UId="37"> CLEAR bits</Text>
+  </LineComment>
+  <NewLine Num="1" UId="38" />
+  <Access Scope="LocalVariable" UId="39">
+    <Symbol UId="40">
+      <Component Name="Ibc1OK" UId="41" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="42" />
+  <Token Text=":=" UId="43" />
+  <Blank Num="1" UId="44" />
+  <Access Scope="LiteralConstant" UId="45">
+    <Constant UId="46">
+      <ConstantValue UId="48">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="49" />
+  <NewLine Num="1" UId="50" />
+  <Access Scope="LocalVariable" UId="51">
+    <Symbol UId="52">
+      <Component Name="Obc11Ok" UId="53" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="54" />
+  <Token Text=":=" UId="55" />
+  <Blank Num="1" UId="56" />
+  <Access Scope="LiteralConstant" UId="57">
+    <Constant UId="58">
+      <ConstantValue UId="60">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="61" />
+  <NewLine Num="1" UId="62" />
+  <Access Scope="LocalVariable" UId="63">
+    <Symbol UId="64">
+      <Component Name="Obc12Ok" UId="65" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="66" />
+  <Token Text=":=" UId="67" />
+  <Blank Num="1" UId="68" />
+  <Access Scope="LiteralConstant" UId="69">
+    <Constant UId="70">
+      <ConstantValue UId="72">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="73" />
+  <NewLine Num="1" UId="74" />
+  <Access Scope="LocalVariable" UId="75">
+    <Symbol UId="76">
+      <Component Name="Ibc2OK" UId="77" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="78" />
+  <Token Text=":=" UId="79" />
+  <Blank Num="1" UId="80" />
+  <Access Scope="LiteralConstant" UId="81">
+    <Constant UId="82">
+      <ConstantValue UId="84">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="85" />
+  <NewLine Num="1" UId="86" />
+  <Access Scope="LocalVariable" UId="87">
+    <Symbol UId="88">
+      <Component Name="Obc21Ok" UId="89" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="90" />
+  <Token Text=":=" UId="91" />
+  <Blank Num="1" UId="92" />
+  <Access Scope="LiteralConstant" UId="93">
+    <Constant UId="94">
+      <ConstantValue UId="96">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="97" />
+  <NewLine Num="1" UId="98" />
+  <Access Scope="LocalVariable" UId="99">
+    <Symbol UId="100">
+      <Component Name="Obc22Ok" UId="101" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="102" />
+  <Token Text=":=" UId="103" />
+  <Blank Num="1" UId="104" />
+  <Access Scope="LiteralConstant" UId="105">
+    <Constant UId="106">
+      <ConstantValue UId="108">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="109" />
+  <NewLine Num="1" UId="110" />
+  <Access Scope="LocalVariable" UId="111">
+    <Symbol UId="112">
+      <Component Name="ColorCodeNOK" UId="113" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="114" />
+  <Token Text=":=" UId="115" />
+  <Blank Num="1" UId="116" />
+  <Access Scope="LiteralConstant" UId="117">
+    <Constant UId="118">
+      <ConstantValue UId="120">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="121" />
+  <NewLine Num="2" UId="122" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="123">
+    <Text UId="124">Color code Not OK or Not existing</Text>
+  </LineComment>
+  <NewLine Num="1" UId="125" />
+  <Token Text="IF" UId="126" />
+  <Blank Num="1" UId="127" />
+  <Access Scope="LocalVariable" UId="128">
+    <Symbol UId="129">
+      <Component Name="I_TopCoatColour" UId="130" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="131" />
+  <Token Text="=" UId="132" />
+  <Blank Num="1" UId="133" />
+  <Access Scope="LocalVariable" UId="134">
+    <Symbol UId="135">
+      <Component Name="I_Spare1ColorCode" UId="136" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="137" />
+  <Token Text="OR" UId="138" />
+  <NewLine Num="1" UId="139" />
+  <Blank Num="4" UId="140" />
+  <Access Scope="LocalVariable" UId="141">
+    <Symbol UId="142">
+      <Component Name="I_TopCoatColour" UId="143" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="144" />
+  <Token Text="=" UId="145" />
+  <Blank Num="1" UId="146" />
+  <Access Scope="LocalVariable" UId="147">
+    <Symbol UId="148">
+      <Component Name="I_Spare2ColorCode" UId="149" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="150" />
+  <Token Text="OR" UId="151" />
+  <NewLine Num="1" UId="152" />
+  <Blank Num="4" UId="153" />
+  <Access Scope="LocalVariable" UId="154">
+    <Symbol UId="155">
+      <Component Name="I_TopCoatColour" UId="156" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="157" />
+  <Token Text="=" UId="158" />
+  <Blank Num="1" UId="159" />
+  <Access Scope="LocalVariable" UId="160">
+    <Symbol UId="161">
+      <Component Name="I_Spare3ColorCode" UId="162" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="163" />
+  <Token Text="OR" UId="164" />
+  <NewLine Num="1" UId="165" />
+  <Blank Num="4" UId="166" />
+  <Access Scope="LocalVariable" UId="167">
+    <Symbol UId="168">
+      <Component Name="I_TopCoatColour" UId="169" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="170" />
+  <Token Text="=" UId="171" />
+  <Blank Num="1" UId="172" />
+  <Access Scope="LocalVariable" UId="173">
+    <Symbol UId="174">
+      <Component Name="I_Spare4ColorCode" UId="175" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="176" />
+  <Token Text="OR" UId="177" />
+  <NewLine Num="1" UId="178" />
+  <Blank Num="4" UId="179" />
+  <Access Scope="LocalVariable" UId="180">
+    <Symbol UId="181">
+      <Component Name="I_TopCoatColour" UId="182" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="183" />
+  <Token Text="=" UId="184" />
+  <Blank Num="1" UId="185" />
+  <Access Scope="LocalVariable" UId="186">
+    <Symbol UId="187">
+      <Component Name="I_Spare5ColorCode" UId="188" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="189" />
+  <Token Text="THEN" UId="190" />
+  <NewLine Num="1" UId="191" />
+  <Blank Num="4" UId="192" />
+  <Access Scope="LocalVariable" UId="193">
+    <Symbol UId="194">
+      <Component Name="ColorCodeNOK" UId="195" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="196" />
+  <Token Text=":=" UId="197" />
+  <Blank Num="1" UId="198" />
+  <Access Scope="LiteralConstant" UId="199">
+    <Constant UId="200">
+      <ConstantValue UId="202">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="203" />
+  <NewLine Num="1" UId="204" />
+  <Token Text="END_IF" UId="205" />
+  <Token Text=";" UId="206" />
+  <NewLine Num="2" UId="207" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="208">
+    <Text UId="209">Check pipe data</Text>
+  </LineComment>
+  <NewLine Num="1" UId="210" />
+  <Token Text="IF" UId="211" />
+  <Blank Num="1" UId="212" />
+  <Access Scope="LocalVariable" UId="213">
+    <Symbol UId="214">
+      <Component Name="I_CheckPipes" UId="215" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="216" />
+  <Token Text="THEN" UId="217" />
+  <NewLine Num="1" UId="218" />
+  <Blank Num="4" UId="219" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="220">
+    <Text UId="221">Find recipe</Text>
+  </LineComment>
+  <NewLine Num="1" UId="222" />
+  <Blank Num="4" UId="223" />
+  <Token Text="FOR" UId="224" />
+  <Blank Num="1" UId="225" />
+  <Access Scope="LocalVariable" UId="226">
+    <Symbol UId="227">
+      <Component Name="IndexRecipe" UId="228" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="229" />
+  <Token Text=":=" UId="230" />
+  <Blank Num="1" UId="231" />
+  <Access Scope="LiteralConstant" UId="232">
+    <Constant UId="233">
+      <ConstantValue UId="235">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="236" />
+  <Token Text="TO" UId="237" />
+  <Blank Num="1" UId="238" />
+  <Access Scope="LiteralConstant" UId="239">
+    <Constant UId="240">
+      <ConstantValue UId="242">35</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="243" />
+  <Token Text="DO" UId="244" />
+  <NewLine Num="1" UId="245" />
+  <Blank Num="8" UId="246" />
+  <Token Text="IF" UId="247" />
+  <Blank Num="1" UId="248" />
+  <Access Scope="LocalVariable" UId="249">
+    <Symbol UId="250">
+      <Component Name="I_TopCoatColour" UId="251" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="252" />
+  <Token Text="=" UId="253" />
+  <Blank Num="1" UId="254" />
+  <Access Scope="LocalVariable" UId="255">
+    <Symbol UId="256">
+      <Component Name="IO_RecipeData" UId="257">
+        <Token Text="[" UId="258" />
+        <Access Scope="LocalVariable" UId="259">
+          <Symbol UId="260">
+            <Component Name="IndexRecipe" UId="261" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="262" />
+      </Component>
+      <Token Text="." UId="263" />
+      <Component Name="TagColorCode" UId="264" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="265" />
+  <Token Text="THEN" UId="266" />
+  <NewLine Num="1" UId="267" />
+  <Blank Num="12" UId="268" />
+  <Access Scope="LocalVariable" UId="269">
+    <Symbol UId="270">
+      <Component Name="IbcColorCode" UId="271" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="272" />
+  <Token Text=":=" UId="273" />
+  <Blank Num="1" UId="274" />
+  <Access Scope="LocalVariable" UId="275">
+    <Symbol UId="276">
+      <Component Name="IO_RecipeData" UId="277">
+        <Token Text="[" UId="278" />
+        <Access Scope="LocalVariable" UId="279">
+          <Symbol UId="280">
+            <Component Name="IndexRecipe" UId="281" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="282" />
+      </Component>
+      <Token Text="." UId="283" />
+      <Component Name="IBCColorCode" UId="284" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="285" />
+  <NewLine Num="1" UId="286" />
+  <Blank Num="12" UId="287" />
+  <Access Scope="LocalVariable" UId="288">
+    <Symbol UId="289">
+      <Component Name="Obc1ColorCode" UId="290" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="291" />
+  <Token Text=":=" UId="292" />
+  <Blank Num="1" UId="293" />
+  <Access Scope="LocalVariable" UId="294">
+    <Symbol UId="295">
+      <Component Name="IO_RecipeData" UId="296">
+        <Token Text="[" UId="297" />
+        <Access Scope="LocalVariable" UId="298">
+          <Symbol UId="299">
+            <Component Name="IndexRecipe" UId="300" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="301" />
+      </Component>
+      <Token Text="." UId="302" />
+      <Component Name="OBC1ColorCode" UId="303" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="304" />
+  <NewLine Num="1" UId="305" />
+  <Blank Num="12" UId="306" />
+  <Access Scope="LocalVariable" UId="307">
+    <Symbol UId="308">
+      <Component Name="Obc2ColorCode" UId="309" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="310" />
+  <Token Text=":=" UId="311" />
+  <Blank Num="1" UId="312" />
+  <Access Scope="LocalVariable" UId="313">
+    <Symbol UId="314">
+      <Component Name="IO_RecipeData" UId="315">
+        <Token Text="[" UId="316" />
+        <Access Scope="LocalVariable" UId="317">
+          <Symbol UId="318">
+            <Component Name="IndexRecipe" UId="319" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="320" />
+      </Component>
+      <Token Text="." UId="321" />
+      <Component Name="OBC2ColorCode" UId="322" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="323" />
+  <NewLine Num="1" UId="324" />
+  <Blank Num="12" UId="325" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="326">
+    <Text UId="327">Check IBC for TC1 and TC2</Text>
+  </LineComment>
+  <NewLine Num="1" UId="328" />
+  <Blank Num="12" UId="329" />
+  <Token Text="FOR" UId="330" />
+  <Blank Num="1" UId="331" />
+  <Access Scope="LocalVariable" UId="332">
+    <Symbol UId="333">
+      <Component Name="IndexIbcColorCode" UId="334" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="335" />
+  <Token Text=":=" UId="336" />
+  <Blank Num="1" UId="337" />
+  <Access Scope="LiteralConstant" UId="338">
+    <Constant UId="339">
+      <ConstantValue UId="341">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="342" />
+  <Token Text="TO" UId="343" />
+  <Blank Num="1" UId="344" />
+  <Access Scope="LiteralConstant" UId="345">
+    <Constant UId="346">
+      <ConstantValue UId="348">50</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="349" />
+  <Token Text="DO" UId="350" />
+  <NewLine Num="1" UId="351" />
+  <Blank Num="16" UId="352" />
+  <Token Text="IF" UId="353" />
+  <Blank Num="1" UId="354" />
+  <Access Scope="LocalVariable" UId="355">
+    <Symbol UId="356">
+      <Component Name="IbcColorCode" UId="357" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="358" />
+  <Token Text="=" UId="359" />
+  <Blank Num="1" UId="360" />
+  <Access Scope="LocalVariable" UId="361">
+    <Symbol UId="362">
+      <Component Name="IO_Pipe" UId="363">
+        <Token Text="[" UId="364" />
+        <Access Scope="LocalVariable" UId="365">
+          <Symbol UId="366">
+            <Component Name="IndexIbcColorCode" UId="367" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="368" />
+      </Component>
+      <Token Text="." UId="369" />
+      <Component Name="ColorCode" UId="370" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="371" />
+  <Token Text="THEN" UId="372" />
+  <NewLine Num="1" UId="373" />
+  <Blank Num="20" UId="374" />
+  <Access Scope="LocalVariable" UId="375">
+    <Symbol UId="376">
+      <Component Name="Ibc1OK" UId="377" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="378" />
+  <Token Text=":=" UId="379" />
+  <Blank Num="1" UId="380" />
+  <Access Scope="LocalVariable" UId="381">
+    <Symbol UId="382">
+      <Component Name="IO_ValveData" UId="383">
+        <Token Text="[" UId="384" />
+        <Access Scope="LocalVariable" UId="385">
+          <Symbol UId="386">
+            <Component Name="IndexIbcColorCode" UId="387" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="388" />
+      </Component>
+      <Token Text="." UId="389" />
+      <Component Name="IBC1" UId="390" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="391" />
+  <Token Text="=" UId="392" />
+  <Blank Num="1" UId="393" />
+  <Access Scope="LiteralConstant" UId="394">
+    <Constant UId="395">
+      <ConstantValue UId="397">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="398" />
+  <Token Text="OR" UId="399" />
+  <Blank Num="1" UId="400" />
+  <Access Scope="LocalVariable" UId="401">
+    <Symbol UId="402">
+      <Component Name="IO_ValveData" UId="403">
+        <Token Text="[" UId="404" />
+        <Access Scope="LocalVariable" UId="405">
+          <Symbol UId="406">
+            <Component Name="IndexIbcColorCode" UId="407" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="408" />
+      </Component>
+      <Token Text="." UId="409" />
+      <Component Name="IBC1" UId="410" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="411" />
+  <Token Text="=" UId="412" />
+  <Blank Num="1" UId="413" />
+  <Access Scope="LiteralConstant" UId="414">
+    <Constant UId="415">
+      <ConstantValue UId="417">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="418" />
+  <NewLine Num="1" UId="419" />
+  <Blank Num="20" UId="420" />
+  <Access Scope="LocalVariable" UId="421">
+    <Symbol UId="422">
+      <Component Name="Ibc2OK" UId="423" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="424" />
+  <Token Text=":=" UId="425" />
+  <Blank Num="1" UId="426" />
+  <Access Scope="LocalVariable" UId="427">
+    <Symbol UId="428">
+      <Component Name="IO_ValveData" UId="429">
+        <Token Text="[" UId="430" />
+        <Access Scope="LocalVariable" UId="431">
+          <Symbol UId="432">
+            <Component Name="IndexIbcColorCode" UId="433" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="434" />
+      </Component>
+      <Token Text="." UId="435" />
+      <Component Name="IBC2" UId="436" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="437" />
+  <Token Text="=" UId="438" />
+  <Blank Num="1" UId="439" />
+  <Access Scope="LiteralConstant" UId="440">
+    <Constant UId="441">
+      <ConstantValue UId="443">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="444" />
+  <Token Text="OR" UId="445" />
+  <Blank Num="1" UId="446" />
+  <Access Scope="LocalVariable" UId="447">
+    <Symbol UId="448">
+      <Component Name="IO_ValveData" UId="449">
+        <Token Text="[" UId="450" />
+        <Access Scope="LocalVariable" UId="451">
+          <Symbol UId="452">
+            <Component Name="IndexIbcColorCode" UId="453" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="454" />
+      </Component>
+      <Token Text="." UId="455" />
+      <Component Name="IBC2" UId="456" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="457" />
+  <Token Text="=" UId="458" />
+  <Blank Num="1" UId="459" />
+  <Access Scope="LiteralConstant" UId="460">
+    <Constant UId="461">
+      <ConstantValue UId="463">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="464" />
+  <NewLine Num="1" UId="465" />
+  <Blank Num="20" UId="466" />
+  <Token Text="EXIT" UId="467" />
+  <Token Text=";" UId="468" />
+  <NewLine Num="1" UId="469" />
+  <Blank Num="16" UId="470" />
+  <Token Text="END_IF" UId="471" />
+  <Token Text=";" UId="472" />
+  <NewLine Num="1" UId="473" />
+  <Blank Num="12" UId="474" />
+  <Token Text="END_FOR" UId="475" />
+  <Token Text=";" UId="476" />
+  <NewLine Num="1" UId="477" />
+  <Blank Num="12" UId="478" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="479">
+    <Text UId="480">Check OBC1 for TC1 and TC2</Text>
+  </LineComment>
+  <NewLine Num="1" UId="481" />
+  <Blank Num="12" UId="482" />
+  <Token Text="FOR" UId="483" />
+  <Blank Num="1" UId="484" />
+  <Access Scope="LocalVariable" UId="485">
+    <Symbol UId="486">
+      <Component Name="IndexObc1ColorCode" UId="487" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="488" />
+  <Token Text=":=" UId="489" />
+  <Blank Num="1" UId="490" />
+  <Access Scope="LiteralConstant" UId="491">
+    <Constant UId="492">
+      <ConstantValue UId="494">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="495" />
+  <Token Text="TO" UId="496" />
+  <Blank Num="1" UId="497" />
+  <Access Scope="LiteralConstant" UId="498">
+    <Constant UId="499">
+      <ConstantValue UId="501">50</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="502" />
+  <Token Text="DO" UId="503" />
+  <NewLine Num="1" UId="504" />
+  <Blank Num="16" UId="505" />
+  <Token Text="IF" UId="506" />
+  <Blank Num="1" UId="507" />
+  <Access Scope="LocalVariable" UId="508">
+    <Symbol UId="509">
+      <Component Name="Obc1ColorCode" UId="510" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="511" />
+  <Token Text="=" UId="512" />
+  <Blank Num="1" UId="513" />
+  <Access Scope="LocalVariable" UId="514">
+    <Symbol UId="515">
+      <Component Name="IO_Pipe" UId="516">
+        <Token Text="[" UId="517" />
+        <Access Scope="LocalVariable" UId="518">
+          <Symbol UId="519">
+            <Component Name="IndexObc1ColorCode" UId="520" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="521" />
+      </Component>
+      <Token Text="." UId="522" />
+      <Component Name="ColorCode" UId="523" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="524" />
+  <Token Text="THEN" UId="525" />
+  <NewLine Num="1" UId="526" />
+  <Blank Num="20" UId="527" />
+  <Access Scope="LocalVariable" UId="528">
+    <Symbol UId="529">
+      <Component Name="Obc11Ok" UId="530" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="531" />
+  <Token Text=":=" UId="532" />
+  <Blank Num="1" UId="533" />
+  <Access Scope="LocalVariable" UId="534">
+    <Symbol UId="535">
+      <Component Name="IO_ValveData" UId="536">
+        <Token Text="[" UId="537" />
+        <Access Scope="LocalVariable" UId="538">
+          <Symbol UId="539">
+            <Component Name="IndexObc1ColorCode" UId="540" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="541" />
+      </Component>
+      <Token Text="." UId="542" />
+      <Component Name="OBC11" UId="543" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="544" />
+  <Token Text="=" UId="545" />
+  <Blank Num="1" UId="546" />
+  <Access Scope="LiteralConstant" UId="547">
+    <Constant UId="548">
+      <ConstantValue UId="550">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="551" />
+  <Token Text="OR" UId="552" />
+  <Blank Num="1" UId="553" />
+  <Access Scope="LocalVariable" UId="554">
+    <Symbol UId="555">
+      <Component Name="IO_ValveData" UId="556">
+        <Token Text="[" UId="557" />
+        <Access Scope="LocalVariable" UId="558">
+          <Symbol UId="559">
+            <Component Name="IndexObc1ColorCode" UId="560" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="561" />
+      </Component>
+      <Token Text="." UId="562" />
+      <Component Name="OBC11" UId="563" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="564" />
+  <Token Text="=" UId="565" />
+  <Blank Num="1" UId="566" />
+  <Access Scope="LiteralConstant" UId="567">
+    <Constant UId="568">
+      <ConstantValue UId="570">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="571" />
+  <NewLine Num="1" UId="572" />
+  <Blank Num="20" UId="573" />
+  <Access Scope="LocalVariable" UId="574">
+    <Symbol UId="575">
+      <Component Name="Obc21Ok" UId="576" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="577" />
+  <Token Text=":=" UId="578" />
+  <Blank Num="1" UId="579" />
+  <Access Scope="LocalVariable" UId="580">
+    <Symbol UId="581">
+      <Component Name="IO_ValveData" UId="582">
+        <Token Text="[" UId="583" />
+        <Access Scope="LocalVariable" UId="584">
+          <Symbol UId="585">
+            <Component Name="IndexObc1ColorCode" UId="586" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="587" />
+      </Component>
+      <Token Text="." UId="588" />
+      <Component Name="OBC21" UId="589" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="590" />
+  <Token Text="=" UId="591" />
+  <Blank Num="1" UId="592" />
+  <Access Scope="LiteralConstant" UId="593">
+    <Constant UId="594">
+      <ConstantValue UId="596">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="597" />
+  <Token Text="OR" UId="598" />
+  <Blank Num="1" UId="599" />
+  <Access Scope="LocalVariable" UId="600">
+    <Symbol UId="601">
+      <Component Name="IO_ValveData" UId="602">
+        <Token Text="[" UId="603" />
+        <Access Scope="LocalVariable" UId="604">
+          <Symbol UId="605">
+            <Component Name="IndexObc1ColorCode" UId="606" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="607" />
+      </Component>
+      <Token Text="." UId="608" />
+      <Component Name="OBC21" UId="609" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="610" />
+  <Token Text="=" UId="611" />
+  <Blank Num="1" UId="612" />
+  <Access Scope="LiteralConstant" UId="613">
+    <Constant UId="614">
+      <ConstantValue UId="616">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="617" />
+  <NewLine Num="1" UId="618" />
+  <Blank Num="20" UId="619" />
+  <Token Text="EXIT" UId="620" />
+  <Token Text=";" UId="621" />
+  <NewLine Num="1" UId="622" />
+  <Blank Num="16" UId="623" />
+  <Token Text="END_IF" UId="624" />
+  <Token Text=";" UId="625" />
+  <NewLine Num="1" UId="626" />
+  <Blank Num="12" UId="627" />
+  <Token Text="END_FOR" UId="628" />
+  <Token Text=";" UId="629" />
+  <NewLine Num="1" UId="630" />
+  <Blank Num="12" UId="631" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="632">
+    <Text UId="633">Check OBC2 for TC1 and TC2</Text>
+  </LineComment>
+  <NewLine Num="1" UId="634" />
+  <Blank Num="12" UId="635" />
+  <Token Text="IF" UId="636" />
+  <Blank Num="1" UId="637" />
+  <Access Scope="LocalVariable" UId="638">
+    <Symbol UId="639">
+      <Component Name="IO_RecipeDataCalculate" UId="640">
+        <Token Text="[" UId="641" />
+        <Access Scope="LocalVariable" UId="642">
+          <Symbol UId="643">
+            <Component Name="IndexRecipe" UId="644" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="645" />
+      </Component>
+      <Token Text="." UId="646" />
+      <Component Name="ColorType" UId="647" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="648" />
+  <Token Text="=" UId="649" />
+  <Blank Num="1" UId="650" />
+  <Access Scope="LiteralConstant" UId="651">
+    <Constant UId="652">
+      <ConstantValue UId="654">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="655" />
+  <Token Text="THEN" UId="656" />
+  <Blank Num="1" UId="657" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="658">
+    <Text UId="659">Don't check OBC2 when colortype is 1</Text>
+  </LineComment>
+  <NewLine Num="1" UId="660" />
+  <Blank Num="16" UId="661" />
+  <Access Scope="LocalVariable" UId="662">
+    <Symbol UId="663">
+      <Component Name="Obc12Ok" UId="664" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="665" />
+  <Token Text=":=" UId="666" />
+  <Blank Num="1" UId="667" />
+  <Access Scope="LiteralConstant" UId="668">
+    <Constant UId="669">
+      <ConstantValue UId="671">True</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="672" />
+  <NewLine Num="1" UId="673" />
+  <Blank Num="16" UId="674" />
+  <Access Scope="LocalVariable" UId="675">
+    <Symbol UId="676">
+      <Component Name="Obc22Ok" UId="677" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="678" />
+  <Token Text=":=" UId="679" />
+  <Blank Num="1" UId="680" />
+  <Access Scope="LiteralConstant" UId="681">
+    <Constant UId="682">
+      <ConstantValue UId="684">True</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="685" />
+  <NewLine Num="1" UId="686" />
+  <Blank Num="12" UId="687" />
+  <Token Text="ELSE" UId="688" />
+  <NewLine Num="1" UId="689" />
+  <Blank Num="16" UId="690" />
+  <Token Text="FOR" UId="691" />
+  <Blank Num="1" UId="692" />
+  <Access Scope="LocalVariable" UId="693">
+    <Symbol UId="694">
+      <Component Name="IndexObc2ColorCode" UId="695" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="696" />
+  <Token Text=":=" UId="697" />
+  <Blank Num="1" UId="698" />
+  <Access Scope="LiteralConstant" UId="699">
+    <Constant UId="700">
+      <ConstantValue UId="702">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="703" />
+  <Token Text="TO" UId="704" />
+  <Blank Num="1" UId="705" />
+  <Access Scope="LiteralConstant" UId="706">
+    <Constant UId="707">
+      <ConstantValue UId="709">50</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="710" />
+  <Token Text="DO" UId="711" />
+  <NewLine Num="1" UId="712" />
+  <Blank Num="20" UId="713" />
+  <Token Text="IF" UId="714" />
+  <Blank Num="1" UId="715" />
+  <Access Scope="LocalVariable" UId="716">
+    <Symbol UId="717">
+      <Component Name="Obc2ColorCode" UId="718" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="719" />
+  <Token Text="=" UId="720" />
+  <Blank Num="1" UId="721" />
+  <Access Scope="LocalVariable" UId="722">
+    <Symbol UId="723">
+      <Component Name="IO_Pipe" UId="724">
+        <Token Text="[" UId="725" />
+        <Access Scope="LocalVariable" UId="726">
+          <Symbol UId="727">
+            <Component Name="IndexObc2ColorCode" UId="728" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="729" />
+      </Component>
+      <Token Text="." UId="730" />
+      <Component Name="ColorCode" UId="731" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="732" />
+  <Token Text="THEN" UId="733" />
+  <NewLine Num="1" UId="734" />
+  <Blank Num="24" UId="735" />
+  <Access Scope="LocalVariable" UId="736">
+    <Symbol UId="737">
+      <Component Name="Obc12Ok" UId="738" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="739" />
+  <Token Text=":=" UId="740" />
+  <Blank Num="1" UId="741" />
+  <Access Scope="LocalVariable" UId="742">
+    <Symbol UId="743">
+      <Component Name="IO_ValveData" UId="744">
+        <Token Text="[" UId="745" />
+        <Access Scope="LocalVariable" UId="746">
+          <Symbol UId="747">
+            <Component Name="IndexObc2ColorCode" UId="748" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="749" />
+      </Component>
+      <Token Text="." UId="750" />
+      <Component Name="OBC12" UId="751" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="752" />
+  <Token Text="=" UId="753" />
+  <Blank Num="1" UId="754" />
+  <Access Scope="LiteralConstant" UId="755">
+    <Constant UId="756">
+      <ConstantValue UId="758">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="759" />
+  <Token Text="OR" UId="760" />
+  <Blank Num="1" UId="761" />
+  <Access Scope="LocalVariable" UId="762">
+    <Symbol UId="763">
+      <Component Name="IO_ValveData" UId="764">
+        <Token Text="[" UId="765" />
+        <Access Scope="LocalVariable" UId="766">
+          <Symbol UId="767">
+            <Component Name="IndexObc2ColorCode" UId="768" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="769" />
+      </Component>
+      <Token Text="." UId="770" />
+      <Component Name="OBC12" UId="771" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="772" />
+  <Token Text="=" UId="773" />
+  <Blank Num="1" UId="774" />
+  <Access Scope="LiteralConstant" UId="775">
+    <Constant UId="776">
+      <ConstantValue UId="778">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="779" />
+  <NewLine Num="1" UId="780" />
+  <Blank Num="24" UId="781" />
+  <Access Scope="LocalVariable" UId="782">
+    <Symbol UId="783">
+      <Component Name="Obc22Ok" UId="784" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="785" />
+  <Token Text=":=" UId="786" />
+  <Blank Num="1" UId="787" />
+  <Access Scope="LocalVariable" UId="788">
+    <Symbol UId="789">
+      <Component Name="IO_ValveData" UId="790">
+        <Token Text="[" UId="791" />
+        <Access Scope="LocalVariable" UId="792">
+          <Symbol UId="793">
+            <Component Name="IndexObc2ColorCode" UId="794" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="795" />
+      </Component>
+      <Token Text="." UId="796" />
+      <Component Name="OBC22" UId="797" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="798" />
+  <Token Text="=" UId="799" />
+  <Blank Num="1" UId="800" />
+  <Access Scope="LiteralConstant" UId="801">
+    <Constant UId="802">
+      <ConstantValue UId="804">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="805" />
+  <Token Text="OR" UId="806" />
+  <Blank Num="1" UId="807" />
+  <Access Scope="LocalVariable" UId="808">
+    <Symbol UId="809">
+      <Component Name="IO_ValveData" UId="810">
+        <Token Text="[" UId="811" />
+        <Access Scope="LocalVariable" UId="812">
+          <Symbol UId="813">
+            <Component Name="IndexObc2ColorCode" UId="814" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="815" />
+      </Component>
+      <Token Text="." UId="816" />
+      <Component Name="OBC22" UId="817" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="818" />
+  <Token Text="=" UId="819" />
+  <Blank Num="1" UId="820" />
+  <Access Scope="LiteralConstant" UId="821">
+    <Constant UId="822">
+      <ConstantValue UId="824">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="825" />
+  <NewLine Num="1" UId="826" />
+  <Blank Num="24" UId="827" />
+  <Token Text="EXIT" UId="828" />
+  <Token Text=";" UId="829" />
+  <NewLine Num="1" UId="830" />
+  <Blank Num="20" UId="831" />
+  <Token Text="END_IF" UId="832" />
+  <Token Text=";" UId="833" />
+  <NewLine Num="1" UId="834" />
+  <Blank Num="16" UId="835" />
+  <Token Text="END_FOR" UId="836" />
+  <Token Text=";" UId="837" />
+  <NewLine Num="1" UId="838" />
+  <Blank Num="12" UId="839" />
+  <Token Text="END_IF" UId="840" />
+  <Token Text=";" UId="841" />
+  <NewLine Num="1" UId="842" />
+  <Blank Num="12" UId="843" />
+  <Token Text="EXIT" UId="844" />
+  <Token Text=";" UId="845" />
+  <NewLine Num="1" UId="846" />
+  <Blank Num="8" UId="847" />
+  <Token Text="END_IF" UId="848" />
+  <Token Text=";" UId="849" />
+  <NewLine Num="1" UId="850" />
+  <Blank Num="4" UId="851" />
+  <Token Text="END_FOR" UId="852" />
+  <Token Text=";" UId="853" />
+  <NewLine Num="1" UId="854" />
+  <Token Text="END_IF" UId="855" />
+  <Token Text=";" UId="856" />
+  <NewLine Num="2" UId="857" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="858">
+    <Text UId="859"> OUTPUT</Text>
+  </LineComment>
+  <NewLine Num="1" UId="860" />
+  <Access Scope="LocalVariable" UId="861">
+    <Symbol UId="862">
+      <Component Name="O_Ibc1OK" UId="863" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="864" />
+  <Token Text=":=" UId="865" />
+  <Blank Num="1" UId="866" />
+  <Access Scope="LocalVariable" UId="867">
+    <Symbol UId="868">
+      <Component Name="Ibc1OK" UId="869" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="870" />
+  <Token Text="OR" UId="871" />
+  <Blank Num="1" UId="872" />
+  <Access Scope="LocalVariable" UId="873">
+    <Symbol UId="874">
+      <Component Name="ColorCodeNOK" UId="875" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="876" />
+  <NewLine Num="1" UId="877" />
+  <Access Scope="LocalVariable" UId="878">
+    <Symbol UId="879">
+      <Component Name="O_Obc11Ok" UId="880" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="881" />
+  <Token Text=":=" UId="882" />
+  <Blank Num="1" UId="883" />
+  <Access Scope="LocalVariable" UId="884">
+    <Symbol UId="885">
+      <Component Name="Obc11Ok" UId="886" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="887" />
+  <Token Text="OR" UId="888" />
+  <Blank Num="1" UId="889" />
+  <Access Scope="LocalVariable" UId="890">
+    <Symbol UId="891">
+      <Component Name="ColorCodeNOK" UId="892" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="893" />
+  <NewLine Num="1" UId="894" />
+  <Access Scope="LocalVariable" UId="895">
+    <Symbol UId="896">
+      <Component Name="O_Obc12Ok" UId="897" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="898" />
+  <Token Text=":=" UId="899" />
+  <Blank Num="1" UId="900" />
+  <Access Scope="LocalVariable" UId="901">
+    <Symbol UId="902">
+      <Component Name="Obc12Ok" UId="903" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="904" />
+  <Token Text="OR" UId="905" />
+  <Blank Num="1" UId="906" />
+  <Access Scope="LocalVariable" UId="907">
+    <Symbol UId="908">
+      <Component Name="ColorCodeNOK" UId="909" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="910" />
+  <NewLine Num="1" UId="911" />
+  <Access Scope="LocalVariable" UId="912">
+    <Symbol UId="913">
+      <Component Name="O_TC1Ok" UId="914" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="915" />
+  <Token Text=":=" UId="916" />
+  <Blank Num="1" UId="917" />
+  <Token Text="(" UId="918" />
+  <Access Scope="LocalVariable" UId="919">
+    <Symbol UId="920">
+      <Component Name="Ibc1OK" UId="921" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="922" />
+  <Token Text="AND" UId="923" />
+  <Blank Num="1" UId="924" />
+  <Access Scope="LocalVariable" UId="925">
+    <Symbol UId="926">
+      <Component Name="Obc11Ok" UId="927" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="928" />
+  <Token Text="AND" UId="929" />
+  <Blank Num="1" UId="930" />
+  <Access Scope="LocalVariable" UId="931">
+    <Symbol UId="932">
+      <Component Name="Obc12Ok" UId="933" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="934" />
+  <Blank Num="1" UId="935" />
+  <Token Text="OR" UId="936" />
+  <Blank Num="1" UId="937" />
+  <Access Scope="LocalVariable" UId="938">
+    <Symbol UId="939">
+      <Component Name="ColorCodeNOK" UId="940" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="941" />
+  <NewLine Num="1" UId="942" />
+  <Access Scope="LocalVariable" UId="943">
+    <Symbol UId="944">
+      <Component Name="O_TC1Nok" UId="945" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="946" />
+  <Token Text=":=" UId="947" />
+  <Blank Num="1" UId="948" />
+  <Token Text="NOT" UId="949" />
+  <Blank Num="1" UId="950" />
+  <Token Text="(" UId="951" />
+  <Token Text="(" UId="952" />
+  <Access Scope="LocalVariable" UId="953">
+    <Symbol UId="954">
+      <Component Name="Ibc1OK" UId="955" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="956" />
+  <Token Text="AND" UId="957" />
+  <Blank Num="1" UId="958" />
+  <Access Scope="LocalVariable" UId="959">
+    <Symbol UId="960">
+      <Component Name="Obc11Ok" UId="961" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="962" />
+  <Token Text="AND" UId="963" />
+  <Blank Num="1" UId="964" />
+  <Access Scope="LocalVariable" UId="965">
+    <Symbol UId="966">
+      <Component Name="Obc12Ok" UId="967" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="968" />
+  <Blank Num="1" UId="969" />
+  <Token Text="OR" UId="970" />
+  <Blank Num="1" UId="971" />
+  <Access Scope="LocalVariable" UId="972">
+    <Symbol UId="973">
+      <Component Name="ColorCodeNOK" UId="974" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="975" />
+  <Blank Num="1" UId="976" />
+  <Token Text="AND" UId="977" />
+  <Blank Num="1" UId="978" />
+  <Access Scope="LocalVariable" UId="979">
+    <Symbol UId="980">
+      <Component Name="I_CheckPipes" UId="981" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="982" />
+  <NewLine Num="2" UId="983" />
+  <Access Scope="LocalVariable" UId="984">
+    <Symbol UId="985">
+      <Component Name="O_Ibc2OK" UId="986" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="987" />
+  <Token Text=":=" UId="988" />
+  <Blank Num="1" UId="989" />
+  <Access Scope="LocalVariable" UId="990">
+    <Symbol UId="991">
+      <Component Name="Ibc2OK" UId="992" />
+    </Symbol>
+  </Access>
+  <Blank Num="2" UId="993" />
+  <Token Text="OR" UId="994" />
+  <Blank Num="1" UId="995" />
+  <Access Scope="LocalVariable" UId="996">
+    <Symbol UId="997">
+      <Component Name="ColorCodeNOK" UId="998" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="999" />
+  <NewLine Num="1" UId="1000" />
+  <Access Scope="LocalVariable" UId="1001">
+    <Symbol UId="1002">
+      <Component Name="O_Obc21Ok" UId="1003" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1004" />
+  <Token Text=":=" UId="1005" />
+  <Blank Num="1" UId="1006" />
+  <Access Scope="LocalVariable" UId="1007">
+    <Symbol UId="1008">
+      <Component Name="Obc21Ok" UId="1009" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1010" />
+  <Token Text="OR" UId="1011" />
+  <Blank Num="1" UId="1012" />
+  <Access Scope="LocalVariable" UId="1013">
+    <Symbol UId="1014">
+      <Component Name="ColorCodeNOK" UId="1015" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1016" />
+  <NewLine Num="1" UId="1017" />
+  <Access Scope="LocalVariable" UId="1018">
+    <Symbol UId="1019">
+      <Component Name="O_Obc22Ok" UId="1020" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1021" />
+  <Token Text=":=" UId="1022" />
+  <Blank Num="1" UId="1023" />
+  <Access Scope="LocalVariable" UId="1024">
+    <Symbol UId="1025">
+      <Component Name="Obc22Ok" UId="1026" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1027" />
+  <Token Text="OR" UId="1028" />
+  <Blank Num="1" UId="1029" />
+  <Access Scope="LocalVariable" UId="1030">
+    <Symbol UId="1031">
+      <Component Name="ColorCodeNOK" UId="1032" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1033" />
+  <NewLine Num="1" UId="1034" />
+  <Access Scope="LocalVariable" UId="1035">
+    <Symbol UId="1036">
+      <Component Name="O_TC2Ok" UId="1037" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1038" />
+  <Token Text=":=" UId="1039" />
+  <Blank Num="1" UId="1040" />
+  <Token Text="(" UId="1041" />
+  <Access Scope="LocalVariable" UId="1042">
+    <Symbol UId="1043">
+      <Component Name="Ibc2OK" UId="1044" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1045" />
+  <Token Text="AND" UId="1046" />
+  <Blank Num="1" UId="1047" />
+  <Access Scope="LocalVariable" UId="1048">
+    <Symbol UId="1049">
+      <Component Name="Obc21Ok" UId="1050" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1051" />
+  <Token Text="AND" UId="1052" />
+  <Blank Num="1" UId="1053" />
+  <Access Scope="LocalVariable" UId="1054">
+    <Symbol UId="1055">
+      <Component Name="Obc22Ok" UId="1056" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="1057" />
+  <Blank Num="1" UId="1058" />
+  <Token Text="OR" UId="1059" />
+  <Blank Num="1" UId="1060" />
+  <Access Scope="LocalVariable" UId="1061">
+    <Symbol UId="1062">
+      <Component Name="ColorCodeNOK" UId="1063" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1064" />
+  <NewLine Num="1" UId="1065" />
+  <Access Scope="LocalVariable" UId="1066">
+    <Symbol UId="1067">
+      <Component Name="O_TC2Nok" UId="1068" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1069" />
+  <Token Text=":=" UId="1070" />
+  <Blank Num="1" UId="1071" />
+  <Token Text="NOT" UId="1072" />
+  <Blank Num="1" UId="1073" />
+  <Token Text="(" UId="1074" />
+  <Token Text="(" UId="1075" />
+  <Access Scope="LocalVariable" UId="1076">
+    <Symbol UId="1077">
+      <Component Name="Ibc2OK" UId="1078" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1079" />
+  <Token Text="AND" UId="1080" />
+  <Blank Num="1" UId="1081" />
+  <Access Scope="LocalVariable" UId="1082">
+    <Symbol UId="1083">
+      <Component Name="Obc21Ok" UId="1084" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1085" />
+  <Token Text="AND" UId="1086" />
+  <Blank Num="1" UId="1087" />
+  <Access Scope="LocalVariable" UId="1088">
+    <Symbol UId="1089">
+      <Component Name="Obc22Ok" UId="1090" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="1091" />
+  <Blank Num="1" UId="1092" />
+  <Token Text="OR" UId="1093" />
+  <Blank Num="1" UId="1094" />
+  <Access Scope="LocalVariable" UId="1095">
+    <Symbol UId="1096">
+      <Component Name="ColorCodeNOK" UId="1097" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="1098" />
+  <Blank Num="1" UId="1099" />
+  <Token Text="AND" UId="1100" />
+  <Blank Num="1" UId="1101" />
+  <Access Scope="LocalVariable" UId="1102">
+    <Symbol UId="1103">
+      <Component Name="I_CheckPipes" UId="1104" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1105" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="19" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1A" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>LBodyTypeSimSub</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

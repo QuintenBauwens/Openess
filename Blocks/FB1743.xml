@@ -1,0 +1,3546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:36.1997139Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>CSTAAL</HeaderAuthor>
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>2.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input">
+    <Member Name="id_hdword" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> highdword of the 64Bit number</MultiLanguageText></Comment><StartValue>DWORD#16#0000_0000</StartValue></Member>
+    <Member Name="id_ldword" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> lowdword of the 64Bit number</MultiLanguageText></Comment><StartValue>DWORD#16#0000_0000</StartValue></Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="FINE" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> counter value fine</MultiLanguageText></Comment><StartValue>0</StartValue></Member>
+    <Member Name="RAW" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> counter value raw</MultiLanguageText></Comment><StartValue>0</StartValue></Member>
+    <Member Name="ERROR" Datatype="Word" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> error word of the function block</MultiLanguageText></Comment><StartValue>WORD#16#0000</StartValue></Member>
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="sCounterval" Datatype="Struct" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> 64Bit structure</MultiLanguageText></Comment><Member Name="hdword" Datatype="DWord"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> highdword of the 64Bit number</MultiLanguageText></Comment><StartValue>DWORD#16#0000_0000</StartValue></Member><Member Name="ldword" Datatype="DWord"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> lowdword of the 64Bit number</MultiLanguageText></Comment><StartValue>DWORD#16#0000_0000</StartValue></Member></Member>
+    <Member Name="vwords" Datatype="Struct"><AttributeList><StringAttribute Name="At" SystemDefined="true">sCounterval</StringAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">AT sCounterval   : STRUCT</MultiLanguageText></Comment><Member Name="HDHW" Datatype="Word"><AttributeList><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> highword of the highdword of the 64Bit number</MultiLanguageText></Comment></Member><Member Name="HDLW" Datatype="Word"><AttributeList><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> lowword of the highdword of the 64Bit number</MultiLanguageText></Comment></Member><Member Name="LDHW" Datatype="Word"><AttributeList><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> highword of the lowdword of the 64Bit number</MultiLanguageText></Comment></Member><Member Name="LDLW" Datatype="Word"><AttributeList><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> lowword of the lowdword of the 64Bit number</MultiLanguageText></Comment></Member></Member>
+    <Member Name="sVZ" Datatype="Word" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> algebraic sign of the 64Bit number</MultiLanguageText></Comment><StartValue>WORD#16#0000</StartValue></Member>
+    <Member Name="sCH" Datatype="Word" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> exponent of the 64Bit number</MultiLanguageText></Comment><StartValue>WORD#16#0000</StartValue></Member>
+    <Member Name="sExp" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> exponent of the 64Bit number</MultiLanguageText></Comment><StartValue>0</StartValue></Member>
+    <Member Name="sResDiv" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> result of division</MultiLanguageText></Comment><StartValue>DWORD#16#0000_0000</StartValue></Member>
+    <Member Name="sDivision" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> dword for division of 1.000.000.000</MultiLanguageText></Comment><StartValue>DWORD#16#0000_0000</StartValue></Member>
+    <Member Name="sFINE" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> static counter falue fine</MultiLanguageText></Comment><StartValue>0</StartValue></Member>
+    <Member Name="sRAW" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> static counter value raw</MultiLanguageText></Comment><StartValue>0</StartValue></Member>
+    <Member Name="sERROR" Datatype="Word" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> static error word</MultiLanguageText></Comment><StartValue>WORD#16#0000</StartValue></Member>
+    <Member Name="i" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB"> loop counter</MultiLanguageText></Comment><StartValue>0</StartValue></Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant">
+    <Member Name="cBIAS" Datatype="Word" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB"> 03FFh --&gt; 1023dez ... bias of the 64Bit number</MultiLanguageText>
+      </Comment>
+      <StartValue>WORD#16#03FF</StartValue>
+    </Member>
+    <Member Name="cVZmask" Datatype="Word" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB"> mask to seperate the algebraic sign</MultiLanguageText>
+      </Comment>
+      <StartValue>WORD#16#8000</StartValue>
+    </Member>
+    <Member Name="cCHmask" Datatype="Word" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB"> mask to seperate the exponent field</MultiLanguageText>
+      </Comment>
+      <StartValue>WORD#16#7FF0</StartValue>
+    </Member>
+    <Member Name="cMTmask" Datatype="DWord" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB"> mask to seperate the mantissa</MultiLanguageText>
+      </Comment>
+      <StartValue>DWORD#16#000F_FFFF</StartValue>
+    </Member>
+    <Member Name="cMask" Datatype="DWord" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB"> general mask</MultiLanguageText>
+      </Comment>
+      <StartValue>DWORD#16#0000_0001</StartValue>
+    </Member>
+    <Member Name="cNrGIGA" Datatype="DInt" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB"> 1.000.000.000(dez)</MultiLanguageText>
+      </Comment>
+      <StartValue>1_000_000_000</StartValue>
+    </Member>
+    <Member Name="cNrKILO" Datatype="Int" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB"> 1.000(dez)</MultiLanguageText>
+      </Comment>
+      <StartValue>1000</StartValue>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>LProcPAC-Conversion</Name>
+      <Number>1743</Number>
+      <ProgrammingLanguage>SCL</ProgrammingLanguage>
+      <SetENOAutomatically>False</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v2">
+  <Blank Num="28" UId="21" />
+  <NewLine Num="1" UId="22" />
+  <Blank Num="28" UId="23" />
+  <NewLine Num="1" UId="24" />
+  <Blank Num="28" UId="25" />
+  <NewLine Num="1" UId="26" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="27">
+    <Text UId="28">**********************************************************************************************
+********************************************  CODE  *******************************************
+**********************************************************************************************</Text>
+  </LineComment>
+  <NewLine Num="2" UId="29" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="30">
+    <Text UId="31"> initialization of internal variables</Text>
+  </LineComment>
+  <NewLine Num="1" UId="32" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="33">
+    <Text UId="34"> allocation of the two dwords of the energy counter value</Text>
+  </LineComment>
+  <NewLine Num="1" UId="35" />
+  <Access Scope="LocalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="sCounterval" UId="38" />
+      <Token Text="." UId="39" />
+      <Component Name="hdword" UId="40" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="41" />
+  <Token Text=":=" UId="42" />
+  <Blank Num="1" UId="43" />
+  <Access Scope="LocalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="id_hdword" UId="46" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="47" />
+  <NewLine Num="1" UId="48" />
+  <Access Scope="LocalVariable" UId="49">
+    <Symbol UId="50">
+      <Component Name="sCounterval" UId="51" />
+      <Token Text="." UId="52" />
+      <Component Name="ldword" UId="53" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="54" />
+  <Token Text=":=" UId="55" />
+  <Blank Num="1" UId="56" />
+  <Access Scope="LocalVariable" UId="57">
+    <Symbol UId="58">
+      <Component Name="id_ldword" UId="59" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="60" />
+  <NewLine Num="1" UId="61" />
+  <Access Scope="LocalVariable" UId="62">
+    <Symbol UId="63">
+      <Component Name="sResDiv" UId="64" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="65" />
+  <Token Text=":=" UId="66" />
+  <Blank Num="1" UId="67" />
+  <Access Scope="TypedConstant" UId="68">
+    <Constant UId="69">
+      <ConstantValue UId="70">dw#16#000000000</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="71" />
+  <NewLine Num="2" UId="72" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="73">
+    <Text UId="74"> seperate VZ (sign bit)</Text>
+  </LineComment>
+  <NewLine Num="1" UId="75" />
+  <Access Scope="LocalVariable" UId="76">
+    <Symbol UId="77">
+      <Component Name="sVZ" UId="78" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="79" />
+  <Token Text=":=" UId="80" />
+  <Blank Num="1" UId="81" />
+  <Access Scope="LocalVariable" UId="82">
+    <Symbol UId="83">
+      <Component Name="vwords" UId="84" />
+      <Token Text="." UId="85" />
+      <Component Name="HDHW" UId="86" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="87" />
+  <Token Text="AND" UId="88" />
+  <Blank Num="1" UId="89" />
+  <Access Scope="LocalConstant" UId="90">
+    <Constant Name="cVZmask" UId="91" />
+  </Access>
+  <Token Text=";" UId="94" />
+  <NewLine Num="2" UId="95" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="96">
+    <Text UId="97"> seperate CH (exponent field with offset(cBias))</Text>
+  </LineComment>
+  <NewLine Num="1" UId="98" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="99">
+    <Text UId="100"> seperate exponent of the 64Bit value</Text>
+  </LineComment>
+  <NewLine Num="1" UId="101" />
+  <Access Scope="LocalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="sCH" UId="104" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="105" />
+  <Token Text=":=" UId="106" />
+  <Blank Num="1" UId="107" />
+  <Access Scope="Call" UId="108">
+    <Instruction Name="SHR" UId="109">
+      <Token Text="(" UId="110" />
+      <Parameter Name="IN" UId="111">
+        <Blank Num="1" UId="112" />
+        <Token Text=":=" UId="113" />
+        <Blank Num="1" UId="114" />
+        <Token Text="(" UId="115" />
+        <Access Scope="LocalVariable" UId="116">
+          <Symbol UId="117">
+            <Component Name="vwords" UId="118" />
+            <Token Text="." UId="119" />
+            <Component Name="HDHW" UId="120" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="121" />
+        <Token Text="AND" UId="122" />
+        <Blank Num="1" UId="123" />
+        <Access Scope="LocalConstant" UId="124">
+          <Constant Name="cCHmask" UId="125" />
+        </Access>
+        <Token Text=")" UId="128" />
+      </Parameter>
+      <Token Text="," UId="129" />
+      <Blank Num="1" UId="130" />
+      <Parameter Name="N" UId="131">
+        <Blank Num="1" UId="132" />
+        <Token Text=":=" UId="133" />
+        <Blank Num="1" UId="134" />
+        <Access Scope="LiteralConstant" UId="135">
+          <Constant UId="136">
+            <ConstantValue UId="138">4</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="140" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="141" />
+  <NewLine Num="1" UId="142" />
+  <Access Scope="LocalVariable" UId="143">
+    <Symbol UId="144">
+      <Component Name="sExp" UId="145" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="146" />
+  <Token Text=":=" UId="147" />
+  <Blank Num="1" UId="148" />
+  <Access Scope="Call" UId="149">
+    <Instruction Name="WORD_TO_INT" UId="150">
+      <Token Text="(" UId="151" />
+      <NamelessParameter UId="152">
+        <Access Scope="LocalVariable" UId="153">
+          <Symbol UId="154">
+            <Component Name="sCH" UId="155" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="157" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="158" />
+  <Token Text="-" UId="159" />
+  <Blank Num="1" UId="160" />
+  <Access Scope="Call" UId="161">
+    <Instruction Name="WORD_TO_INT" UId="162">
+      <Token Text="(" UId="163" />
+      <NamelessParameter UId="164">
+        <Access Scope="LocalConstant" UId="165">
+          <Constant Name="cBIAS" UId="166" />
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="170" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="171" />
+  <NewLine Num="2" UId="172" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="173">
+    <Text UId="174"> check the algebraic sign</Text>
+  </LineComment>
+  <NewLine Num="1" UId="175" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="176">
+    <Text UId="177"> negative counter values indicate an error</Text>
+  </LineComment>
+  <NewLine Num="1" UId="178" />
+  <Token Text="IF" UId="179" />
+  <Blank Num="1" UId="180" />
+  <Access Scope="LocalVariable" UId="181">
+    <Symbol UId="182">
+      <Component Name="sVZ" UId="183" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="184" />
+  <Token Text="=" UId="185" />
+  <Blank Num="1" UId="186" />
+  <Access Scope="LocalConstant" UId="187">
+    <Constant Name="cVZmask" UId="188" />
+  </Access>
+  <NewLine Num="1" UId="191" />
+  <Token Text="THEN" UId="192" />
+  <NewLine Num="1" UId="193" />
+  <Blank Num="4" UId="194" />
+  <Access Scope="LocalVariable" UId="195">
+    <Symbol UId="196">
+      <Component Name="sERROR" UId="197" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="198" />
+  <Token Text=":=" UId="199" />
+  <Blank Num="1" UId="200" />
+  <Access Scope="TypedConstant" UId="201">
+    <Constant UId="202">
+      <ConstantValue UId="203">w#16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="204" />
+  <NewLine Num="1" UId="205" />
+  <Token Text="ELSE" UId="206" />
+  <NewLine Num="1" UId="207" />
+  <Blank Num="4" UId="208" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="209">
+    <Text UId="210"> check the special case of the 0 value and the value &lt; 1</Text>
+  </LineComment>
+  <NewLine Num="1" UId="211" />
+  <Blank Num="4" UId="212" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="213">
+    <Text UId="214"> the output values have the format dint --&gt; 0,1 is not possible</Text>
+  </LineComment>
+  <NewLine Num="1" UId="215" />
+  <Blank Num="4" UId="216" />
+  <Token Text="IF" UId="217" />
+  <Blank Num="1" UId="218" />
+  <Access Scope="LocalVariable" UId="219">
+    <Symbol UId="220">
+      <Component Name="sCH" UId="221" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="222" />
+  <Token Text="=" UId="223" />
+  <Blank Num="1" UId="224" />
+  <Access Scope="TypedConstant" UId="225">
+    <Constant UId="226">
+      <ConstantValue UId="227">w#16#0000</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="228" />
+  <Token Text="OR" UId="229" />
+  <Blank Num="1" UId="230" />
+  <Access Scope="Call" UId="231">
+    <Instruction Name="WORD_TO_INT" UId="232">
+      <Token Text="(" UId="233" />
+      <NamelessParameter UId="234">
+        <Access Scope="LocalVariable" UId="235">
+          <Symbol UId="236">
+            <Component Name="sCH" UId="237" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="239" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="240" />
+  <Token Text="&lt;" UId="241" />
+  <Blank Num="1" UId="242" />
+  <Access Scope="Call" UId="243">
+    <Instruction Name="WORD_TO_INT" UId="244">
+      <Token Text="(" UId="245" />
+      <NamelessParameter UId="246">
+        <Access Scope="LocalConstant" UId="247">
+          <Constant Name="cBIAS" UId="248" />
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="252" />
+    </Instruction>
+  </Access>
+  <NewLine Num="1" UId="253" />
+  <Blank Num="4" UId="254" />
+  <Token Text="THEN" UId="255" />
+  <NewLine Num="1" UId="256" />
+  <Blank Num="8" UId="257" />
+  <Access Scope="LocalVariable" UId="258">
+    <Symbol UId="259">
+      <Component Name="sFINE" UId="260" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="261" />
+  <Token Text=":=" UId="262" />
+  <Blank Num="1" UId="263" />
+  <Access Scope="LiteralConstant" UId="264">
+    <Constant UId="265">
+      <ConstantValue UId="267">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="268" />
+  <NewLine Num="1" UId="269" />
+  <Blank Num="8" UId="270" />
+  <Access Scope="LocalVariable" UId="271">
+    <Symbol UId="272">
+      <Component Name="sRAW" UId="273" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="274" />
+  <Token Text=":=" UId="275" />
+  <Blank Num="1" UId="276" />
+  <Access Scope="LiteralConstant" UId="277">
+    <Constant UId="278">
+      <ConstantValue UId="280">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="281" />
+  <NewLine Num="1" UId="282" />
+  <Blank Num="4" UId="283" />
+  <Token Text="ELSE" UId="284" />
+  <NewLine Num="1" UId="285" />
+  <Blank Num="8" UId="286" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="287">
+    <Text UId="288"> **************************</Text>
+  </LineComment>
+  <NewLine Num="1" UId="289" />
+  <Blank Num="8" UId="290" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="291">
+    <Text UId="292"> ********** FINE **********</Text>
+  </LineComment>
+  <NewLine Num="1" UId="293" />
+  <Blank Num="8" UId="294" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="295">
+    <Text UId="296"> **************************</Text>
+  </LineComment>
+  <NewLine Num="1" UId="297" />
+  <Blank Num="8" UId="298" />
+  <NewLine Num="1" UId="299" />
+  <Blank Num="8" UId="300" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="301">
+    <Text UId="302"> *** If the exponent is smaller than 29 the number is smaller than 1.000.000.000</Text>
+  </LineComment>
+  <NewLine Num="1" UId="303" />
+  <Blank Num="8" UId="304" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="305">
+    <Text UId="306"> *** You have to seperate the valid bits (sExp)of the mantissa</Text>
+  </LineComment>
+  <NewLine Num="1" UId="307" />
+  <Blank Num="8" UId="308" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="309">
+    <Text UId="310"> *** At the end you have to add the hidden 1 Bit</Text>
+  </LineComment>
+  <NewLine Num="1" UId="311" />
+  <Blank Num="8" UId="312" />
+  <Token Text="IF" UId="313" />
+  <Blank Num="1" UId="314" />
+  <Access Scope="LocalVariable" UId="315">
+    <Symbol UId="316">
+      <Component Name="sExp" UId="317" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="318" />
+  <Token Text="&lt;" UId="319" />
+  <Blank Num="1" UId="320" />
+  <Access Scope="LiteralConstant" UId="321">
+    <Constant UId="322">
+      <ConstantValue UId="324">29</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="325" />
+  <Blank Num="8" UId="326" />
+  <Token Text="THEN" UId="327" />
+  <NewLine Num="1" UId="328" />
+  <Blank Num="12" UId="329" />
+  <Token Text="IF" UId="330" />
+  <Blank Num="1" UId="331" />
+  <Access Scope="LocalVariable" UId="332">
+    <Symbol UId="333">
+      <Component Name="sExp" UId="334" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="335" />
+  <Token Text="&lt;" UId="336" />
+  <Blank Num="1" UId="337" />
+  <Access Scope="LiteralConstant" UId="338">
+    <Constant UId="339">
+      <ConstantValue UId="341">20</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="342" />
+  <Blank Num="12" UId="343" />
+  <Token Text="THEN" UId="344" />
+  <NewLine Num="1" UId="345" />
+  <Blank Num="16" UId="346" />
+  <Access Scope="LocalVariable" UId="347">
+    <Symbol UId="348">
+      <Component Name="sFINE" UId="349" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="350" />
+  <Token Text=":=" UId="351" />
+  <Blank Num="1" UId="352" />
+  <Access Scope="Call" UId="353">
+    <Instruction Name="DWORD_TO_DINT" UId="354">
+      <Token Text="(" UId="355" />
+      <NamelessParameter UId="356">
+        <Access Scope="Call" UId="357">
+          <Instruction Name="SHR" UId="358">
+            <Token Text="(" UId="359" />
+            <Parameter Name="IN" UId="360">
+              <Blank Num="1" UId="361" />
+              <Token Text=":=" UId="362" />
+              <Blank Num="1" UId="363" />
+              <Token Text="(" UId="364" />
+              <Access Scope="LocalVariable" UId="365">
+                <Symbol UId="366">
+                  <Component Name="sCounterval" UId="367" />
+                  <Token Text="." UId="368" />
+                  <Component Name="hdword" UId="369" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="370" />
+              <Token Text="AND" UId="371" />
+              <Blank Num="1" UId="372" />
+              <Access Scope="LocalConstant" UId="373">
+                <Constant Name="cMTmask" UId="374" />
+              </Access>
+              <Token Text=")" UId="377" />
+            </Parameter>
+            <Token Text="," UId="378" />
+            <Blank Num="1" UId="379" />
+            <Parameter Name="N" UId="380">
+              <Blank Num="1" UId="381" />
+              <Token Text=":=" UId="382" />
+              <Blank Num="1" UId="383" />
+              <Access Scope="LiteralConstant" UId="384">
+                <Constant UId="385">
+                  <ConstantValue UId="387">20</ConstantValue>
+                </Constant>
+              </Access>
+              <Blank Num="1" UId="388" />
+              <Token Text="-" UId="389" />
+              <Blank Num="1" UId="390" />
+              <Access Scope="LocalVariable" UId="391">
+                <Symbol UId="392">
+                  <Component Name="sExp" UId="393" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="395" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="396" />
+        <Token Text="OR" UId="397" />
+        <Blank Num="1" UId="398" />
+        <Access Scope="Call" UId="399">
+          <Instruction Name="SHL" UId="400">
+            <Token Text="(" UId="401" />
+            <Parameter Name="IN" UId="402">
+              <Blank Num="1" UId="403" />
+              <Token Text=":=" UId="404" />
+              <Blank Num="1" UId="405" />
+              <Access Scope="LocalConstant" UId="406">
+                <Constant Name="cMask" UId="407" />
+              </Access>
+            </Parameter>
+            <Token Text="," UId="410" />
+            <Blank Num="1" UId="411" />
+            <Parameter Name="N" UId="412">
+              <Blank Num="1" UId="413" />
+              <Token Text=":=" UId="414" />
+              <Blank Num="1" UId="415" />
+              <Access Scope="LocalVariable" UId="416">
+                <Symbol UId="417">
+                  <Component Name="sExp" UId="418" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="420" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="422" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="423" />
+  <NewLine Num="1" UId="424" />
+  <Blank Num="16" UId="425" />
+  <NewLine Num="1" UId="426" />
+  <Blank Num="12" UId="427" />
+  <Token Text="ELSIF" UId="428" />
+  <Blank Num="1" UId="429" />
+  <Access Scope="LocalVariable" UId="430">
+    <Symbol UId="431">
+      <Component Name="sExp" UId="432" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="433" />
+  <Token Text="=" UId="434" />
+  <Blank Num="1" UId="435" />
+  <Access Scope="LiteralConstant" UId="436">
+    <Constant UId="437">
+      <ConstantValue UId="439">20</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="440" />
+  <Blank Num="12" UId="441" />
+  <Token Text="THEN" UId="442" />
+  <NewLine Num="1" UId="443" />
+  <Blank Num="16" UId="444" />
+  <Access Scope="LocalVariable" UId="445">
+    <Symbol UId="446">
+      <Component Name="sFINE" UId="447" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="448" />
+  <Token Text=":=" UId="449" />
+  <Blank Num="1" UId="450" />
+  <Access Scope="Call" UId="451">
+    <Instruction Name="DWORD_TO_DINT" UId="452">
+      <Token Text="(" UId="453" />
+      <NamelessParameter UId="454">
+        <Access Scope="LocalVariable" UId="455">
+          <Symbol UId="456">
+            <Component Name="sCounterval" UId="457" />
+            <Token Text="." UId="458" />
+            <Component Name="hdword" UId="459" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="460" />
+        <Token Text="AND" UId="461" />
+        <Blank Num="1" UId="462" />
+        <Access Scope="LocalConstant" UId="463">
+          <Constant Name="cMTmask" UId="464" />
+        </Access>
+        <Blank Num="1" UId="467" />
+        <Token Text="OR" UId="468" />
+        <Blank Num="1" UId="469" />
+        <Access Scope="Call" UId="470">
+          <Instruction Name="SHL" UId="471">
+            <Token Text="(" UId="472" />
+            <Parameter Name="IN" UId="473">
+              <Blank Num="1" UId="474" />
+              <Token Text=":=" UId="475" />
+              <Blank Num="1" UId="476" />
+              <Access Scope="LocalConstant" UId="477">
+                <Constant Name="cMask" UId="478" />
+              </Access>
+            </Parameter>
+            <Token Text="," UId="481" />
+            <Blank Num="1" UId="482" />
+            <Parameter Name="N" UId="483">
+              <Blank Num="1" UId="484" />
+              <Token Text=":=" UId="485" />
+              <Blank Num="1" UId="486" />
+              <Access Scope="LiteralConstant" UId="487">
+                <Constant UId="488">
+                  <ConstantValue UId="490">20</ConstantValue>
+                </Constant>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="492" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="494" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="495" />
+  <NewLine Num="1" UId="496" />
+  <Blank Num="12" UId="497" />
+  <Token Text="ELSE" UId="498" />
+  <NewLine Num="1" UId="499" />
+  <Blank Num="16" UId="500" />
+  <Access Scope="LocalVariable" UId="501">
+    <Symbol UId="502">
+      <Component Name="sFINE" UId="503" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="504" />
+  <Token Text=":=" UId="505" />
+  <Blank Num="1" UId="506" />
+  <Access Scope="Call" UId="507">
+    <Instruction Name="DWORD_TO_DINT" UId="508">
+      <Token Text="(" UId="509" />
+      <NamelessParameter UId="510">
+        <Token Text="(" UId="511" />
+        <Access Scope="Call" UId="512">
+          <Instruction Name="SHL" UId="513">
+            <Token Text="(" UId="514" />
+            <Parameter Name="IN" UId="515">
+              <Blank Num="1" UId="516" />
+              <Token Text=":=" UId="517" />
+              <Blank Num="1" UId="518" />
+              <Token Text="(" UId="519" />
+              <Access Scope="LocalVariable" UId="520">
+                <Symbol UId="521">
+                  <Component Name="sCounterval" UId="522" />
+                  <Token Text="." UId="523" />
+                  <Component Name="hdword" UId="524" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="525" />
+              <Token Text="AND" UId="526" />
+              <Blank Num="1" UId="527" />
+              <Access Scope="LocalConstant" UId="528">
+                <Constant Name="cMTmask" UId="529" />
+              </Access>
+              <Token Text=")" UId="532" />
+            </Parameter>
+            <Token Text="," UId="533" />
+            <Blank Num="1" UId="534" />
+            <Parameter Name="N" UId="535">
+              <Blank Num="1" UId="536" />
+              <Token Text=":=" UId="537" />
+              <Blank Num="1" UId="538" />
+              <Access Scope="LocalVariable" UId="539">
+                <Symbol UId="540">
+                  <Component Name="sExp" UId="541" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="542" />
+              <Token Text="-" UId="543" />
+              <Blank Num="1" UId="544" />
+              <Access Scope="LiteralConstant" UId="545">
+                <Constant UId="546">
+                  <ConstantValue UId="548">20</ConstantValue>
+                </Constant>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="550" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="551" />
+        <Token Text="OR" UId="552" />
+        <Blank Num="1" UId="553" />
+        <Access Scope="Call" UId="554">
+          <Instruction Name="SHR" UId="555">
+            <Token Text="(" UId="556" />
+            <Parameter Name="IN" UId="557">
+              <Blank Num="1" UId="558" />
+              <Token Text=":=" UId="559" />
+              <Blank Num="1" UId="560" />
+              <Access Scope="LocalVariable" UId="561">
+                <Symbol UId="562">
+                  <Component Name="sCounterval" UId="563" />
+                  <Token Text="." UId="564" />
+                  <Component Name="ldword" UId="565" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text="," UId="566" />
+            <Blank Num="1" UId="567" />
+            <Parameter Name="N" UId="568">
+              <Blank Num="1" UId="569" />
+              <Token Text=":=" UId="570" />
+              <Blank Num="1" UId="571" />
+              <Access Scope="LiteralConstant" UId="572">
+                <Constant UId="573">
+                  <ConstantValue UId="575">32</ConstantValue>
+                </Constant>
+              </Access>
+              <Blank Num="1" UId="576" />
+              <Token Text="-" UId="577" />
+              <Blank Num="1" UId="578" />
+              <Token Text="(" UId="579" />
+              <Access Scope="LocalVariable" UId="580">
+                <Symbol UId="581">
+                  <Component Name="sExp" UId="582" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="583" />
+              <Token Text="-" UId="584" />
+              <Blank Num="1" UId="585" />
+              <Access Scope="LiteralConstant" UId="586">
+                <Constant UId="587">
+                  <ConstantValue UId="589">20</ConstantValue>
+                </Constant>
+              </Access>
+              <Token Text=")" UId="590" />
+            </Parameter>
+            <Token Text=")" UId="592" />
+          </Instruction>
+        </Access>
+        <Token Text=")" UId="593" />
+        <Blank Num="1" UId="594" />
+        <Token Text="OR" UId="595" />
+        <Blank Num="1" UId="596" />
+        <Access Scope="Call" UId="597">
+          <Instruction Name="SHL" UId="598">
+            <Token Text="(" UId="599" />
+            <Parameter Name="IN" UId="600">
+              <Blank Num="1" UId="601" />
+              <Token Text=":=" UId="602" />
+              <Blank Num="1" UId="603" />
+              <Access Scope="LocalConstant" UId="604">
+                <Constant Name="cMask" UId="605" />
+              </Access>
+            </Parameter>
+            <Token Text="," UId="608" />
+            <Blank Num="1" UId="609" />
+            <Parameter Name="N" UId="610">
+              <Blank Num="1" UId="611" />
+              <Token Text=":=" UId="612" />
+              <Blank Num="1" UId="613" />
+              <Access Scope="LocalVariable" UId="614">
+                <Symbol UId="615">
+                  <Component Name="sExp" UId="616" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="618" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="620" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="621" />
+  <NewLine Num="1" UId="622" />
+  <Blank Num="12" UId="623" />
+  <Token Text="END_IF" UId="624" />
+  <Token Text=";" UId="625" />
+  <NewLine Num="1" UId="626" />
+  <Blank Num="12" UId="627" />
+  <NewLine Num="1" UId="628" />
+  <Blank Num="12" UId="629" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="630">
+    <Text UId="631"> *** If the exponent is 29 the number is between 536.870.912 and 1.073.741.823</Text>
+  </LineComment>
+  <NewLine Num="1" UId="632" />
+  <Blank Num="12" UId="633" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="634">
+    <Text UId="635"> *** You have to subtract 1.000.000.000 if it's bigger than 1.000.000.000</Text>
+  </LineComment>
+  <NewLine Num="1" UId="636" />
+  <Blank Num="12" UId="637" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="638">
+    <Text UId="639"> *** The result ist the fine counter value</Text>
+  </LineComment>
+  <NewLine Num="1" UId="640" />
+  <Blank Num="8" UId="641" />
+  <Token Text="ELSIF" UId="642" />
+  <Blank Num="1" UId="643" />
+  <Access Scope="LocalVariable" UId="644">
+    <Symbol UId="645">
+      <Component Name="sExp" UId="646" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="647" />
+  <Token Text="=" UId="648" />
+  <Blank Num="1" UId="649" />
+  <Access Scope="LiteralConstant" UId="650">
+    <Constant UId="651">
+      <ConstantValue UId="653">29</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="654" />
+  <Blank Num="8" UId="655" />
+  <Token Text="THEN" UId="656" />
+  <NewLine Num="1" UId="657" />
+  <Blank Num="12" UId="658" />
+  <Token Text="IF" UId="659" />
+  <Blank Num="1" UId="660" />
+  <Access Scope="Call" UId="661">
+    <Instruction Name="DWORD_TO_DINT" UId="662">
+      <Token Text="(" UId="663" />
+      <NamelessParameter UId="664">
+        <Token Text="(" UId="665" />
+        <Access Scope="Call" UId="666">
+          <Instruction Name="SHL" UId="667">
+            <Token Text="(" UId="668" />
+            <Parameter Name="IN" UId="669">
+              <Blank Num="1" UId="670" />
+              <Token Text=":=" UId="671" />
+              <Blank Num="1" UId="672" />
+              <Token Text="(" UId="673" />
+              <Access Scope="LocalVariable" UId="674">
+                <Symbol UId="675">
+                  <Component Name="sCounterval" UId="676" />
+                  <Token Text="." UId="677" />
+                  <Component Name="hdword" UId="678" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="679" />
+              <Token Text="AND" UId="680" />
+              <Blank Num="1" UId="681" />
+              <Access Scope="LocalConstant" UId="682">
+                <Constant Name="cMTmask" UId="683" />
+              </Access>
+              <Token Text=")" UId="686" />
+            </Parameter>
+            <Token Text="," UId="687" />
+            <Blank Num="1" UId="688" />
+            <Parameter Name="N" UId="689">
+              <Blank Num="1" UId="690" />
+              <Token Text=":=" UId="691" />
+              <Blank Num="1" UId="692" />
+              <Access Scope="LocalVariable" UId="693">
+                <Symbol UId="694">
+                  <Component Name="sExp" UId="695" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="696" />
+              <Token Text="-" UId="697" />
+              <Blank Num="1" UId="698" />
+              <Access Scope="LiteralConstant" UId="699">
+                <Constant UId="700">
+                  <ConstantValue UId="702">20</ConstantValue>
+                </Constant>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="704" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="705" />
+        <Token Text="OR" UId="706" />
+        <Blank Num="1" UId="707" />
+        <Access Scope="Call" UId="708">
+          <Instruction Name="SHR" UId="709">
+            <Token Text="(" UId="710" />
+            <Parameter Name="IN" UId="711">
+              <Blank Num="1" UId="712" />
+              <Token Text=":=" UId="713" />
+              <Blank Num="1" UId="714" />
+              <Access Scope="LocalVariable" UId="715">
+                <Symbol UId="716">
+                  <Component Name="sCounterval" UId="717" />
+                  <Token Text="." UId="718" />
+                  <Component Name="ldword" UId="719" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text="," UId="720" />
+            <Blank Num="1" UId="721" />
+            <Parameter Name="N" UId="722">
+              <Blank Num="1" UId="723" />
+              <Token Text=":=" UId="724" />
+              <Blank Num="1" UId="725" />
+              <Access Scope="LiteralConstant" UId="726">
+                <Constant UId="727">
+                  <ConstantValue UId="729">32</ConstantValue>
+                </Constant>
+              </Access>
+              <Blank Num="1" UId="730" />
+              <Token Text="-" UId="731" />
+              <Blank Num="1" UId="732" />
+              <Token Text="(" UId="733" />
+              <Access Scope="LocalVariable" UId="734">
+                <Symbol UId="735">
+                  <Component Name="sExp" UId="736" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="737" />
+              <Token Text="-" UId="738" />
+              <Blank Num="1" UId="739" />
+              <Access Scope="LiteralConstant" UId="740">
+                <Constant UId="741">
+                  <ConstantValue UId="743">20</ConstantValue>
+                </Constant>
+              </Access>
+              <Token Text=")" UId="744" />
+            </Parameter>
+            <Token Text=")" UId="746" />
+          </Instruction>
+        </Access>
+        <Token Text=")" UId="747" />
+        <Blank Num="1" UId="748" />
+        <Token Text="OR" UId="749" />
+        <Blank Num="1" UId="750" />
+        <Access Scope="Call" UId="751">
+          <Instruction Name="SHL" UId="752">
+            <Token Text="(" UId="753" />
+            <Parameter Name="IN" UId="754">
+              <Blank Num="1" UId="755" />
+              <Token Text=":=" UId="756" />
+              <Blank Num="1" UId="757" />
+              <Access Scope="LocalConstant" UId="758">
+                <Constant Name="cMask" UId="759" />
+              </Access>
+            </Parameter>
+            <Token Text="," UId="762" />
+            <Blank Num="1" UId="763" />
+            <Parameter Name="N" UId="764">
+              <Blank Num="1" UId="765" />
+              <Token Text=":=" UId="766" />
+              <Blank Num="1" UId="767" />
+              <Access Scope="LocalVariable" UId="768">
+                <Symbol UId="769">
+                  <Component Name="sExp" UId="770" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="772" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="774" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="775" />
+  <Token Text="&gt;" UId="776" />
+  <Blank Num="1" UId="777" />
+  <Access Scope="LocalConstant" UId="778">
+    <Constant Name="cNrGIGA" UId="779" />
+  </Access>
+  <NewLine Num="1" UId="782" />
+  <Blank Num="12" UId="783" />
+  <Token Text="THEN" UId="784" />
+  <NewLine Num="1" UId="785" />
+  <Blank Num="16" UId="786" />
+  <Access Scope="LocalVariable" UId="787">
+    <Symbol UId="788">
+      <Component Name="sFINE" UId="789" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="790" />
+  <Token Text=":=" UId="791" />
+  <Blank Num="1" UId="792" />
+  <Access Scope="Call" UId="793">
+    <Instruction Name="DWORD_TO_DINT" UId="794">
+      <Token Text="(" UId="795" />
+      <NamelessParameter UId="796">
+        <Token Text="(" UId="797" />
+        <Access Scope="Call" UId="798">
+          <Instruction Name="SHL" UId="799">
+            <Token Text="(" UId="800" />
+            <Parameter Name="IN" UId="801">
+              <Blank Num="1" UId="802" />
+              <Token Text=":=" UId="803" />
+              <Blank Num="1" UId="804" />
+              <Token Text="(" UId="805" />
+              <Access Scope="LocalVariable" UId="806">
+                <Symbol UId="807">
+                  <Component Name="sCounterval" UId="808" />
+                  <Token Text="." UId="809" />
+                  <Component Name="hdword" UId="810" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="811" />
+              <Token Text="AND" UId="812" />
+              <Blank Num="1" UId="813" />
+              <Access Scope="LocalConstant" UId="814">
+                <Constant Name="cMTmask" UId="815" />
+              </Access>
+              <Token Text=")" UId="818" />
+            </Parameter>
+            <Token Text="," UId="819" />
+            <Blank Num="1" UId="820" />
+            <Parameter Name="N" UId="821">
+              <Blank Num="1" UId="822" />
+              <Token Text=":=" UId="823" />
+              <Blank Num="1" UId="824" />
+              <Access Scope="LocalVariable" UId="825">
+                <Symbol UId="826">
+                  <Component Name="sExp" UId="827" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="828" />
+              <Token Text="-" UId="829" />
+              <Blank Num="1" UId="830" />
+              <Access Scope="LiteralConstant" UId="831">
+                <Constant UId="832">
+                  <ConstantValue UId="834">20</ConstantValue>
+                </Constant>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="836" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="837" />
+        <Token Text="OR" UId="838" />
+        <Blank Num="1" UId="839" />
+        <Access Scope="Call" UId="840">
+          <Instruction Name="SHR" UId="841">
+            <Token Text="(" UId="842" />
+            <Parameter Name="IN" UId="843">
+              <Blank Num="1" UId="844" />
+              <Token Text=":=" UId="845" />
+              <Blank Num="1" UId="846" />
+              <Access Scope="LocalVariable" UId="847">
+                <Symbol UId="848">
+                  <Component Name="sCounterval" UId="849" />
+                  <Token Text="." UId="850" />
+                  <Component Name="ldword" UId="851" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text="," UId="852" />
+            <Blank Num="1" UId="853" />
+            <Parameter Name="N" UId="854">
+              <Blank Num="1" UId="855" />
+              <Token Text=":=" UId="856" />
+              <Blank Num="1" UId="857" />
+              <Access Scope="LiteralConstant" UId="858">
+                <Constant UId="859">
+                  <ConstantValue UId="861">32</ConstantValue>
+                </Constant>
+              </Access>
+              <Blank Num="1" UId="862" />
+              <Token Text="-" UId="863" />
+              <Blank Num="1" UId="864" />
+              <Token Text="(" UId="865" />
+              <Access Scope="LocalVariable" UId="866">
+                <Symbol UId="867">
+                  <Component Name="sExp" UId="868" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="869" />
+              <Token Text="-" UId="870" />
+              <Blank Num="1" UId="871" />
+              <Access Scope="LiteralConstant" UId="872">
+                <Constant UId="873">
+                  <ConstantValue UId="875">20</ConstantValue>
+                </Constant>
+              </Access>
+              <Token Text=")" UId="876" />
+            </Parameter>
+            <Token Text=")" UId="878" />
+          </Instruction>
+        </Access>
+        <Token Text=")" UId="879" />
+        <Blank Num="1" UId="880" />
+        <Token Text="OR" UId="881" />
+        <Blank Num="1" UId="882" />
+        <Access Scope="Call" UId="883">
+          <Instruction Name="SHL" UId="884">
+            <Token Text="(" UId="885" />
+            <Parameter Name="IN" UId="886">
+              <Blank Num="1" UId="887" />
+              <Token Text=":=" UId="888" />
+              <Blank Num="1" UId="889" />
+              <Access Scope="LocalConstant" UId="890">
+                <Constant Name="cMask" UId="891" />
+              </Access>
+            </Parameter>
+            <Token Text="," UId="894" />
+            <Blank Num="1" UId="895" />
+            <Parameter Name="N" UId="896">
+              <Blank Num="1" UId="897" />
+              <Token Text=":=" UId="898" />
+              <Blank Num="1" UId="899" />
+              <Access Scope="LocalVariable" UId="900">
+                <Symbol UId="901">
+                  <Component Name="sExp" UId="902" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="904" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="906" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="907" />
+  <Token Text="-" UId="908" />
+  <Blank Num="1" UId="909" />
+  <Access Scope="LocalConstant" UId="910">
+    <Constant Name="cNrGIGA" UId="911" />
+  </Access>
+  <Token Text=";" UId="914" />
+  <NewLine Num="1" UId="915" />
+  <Blank Num="16" UId="916" />
+  <NewLine Num="1" UId="917" />
+  <Blank Num="12" UId="918" />
+  <Token Text="ELSIF" UId="919" />
+  <Blank Num="1" UId="920" />
+  <Access Scope="Call" UId="921">
+    <Instruction Name="DWORD_TO_DINT" UId="922">
+      <Token Text="(" UId="923" />
+      <NamelessParameter UId="924">
+        <Token Text="(" UId="925" />
+        <Access Scope="Call" UId="926">
+          <Instruction Name="SHL" UId="927">
+            <Token Text="(" UId="928" />
+            <Parameter Name="IN" UId="929">
+              <Blank Num="1" UId="930" />
+              <Token Text=":=" UId="931" />
+              <Blank Num="1" UId="932" />
+              <Token Text="(" UId="933" />
+              <Access Scope="LocalVariable" UId="934">
+                <Symbol UId="935">
+                  <Component Name="sCounterval" UId="936" />
+                  <Token Text="." UId="937" />
+                  <Component Name="hdword" UId="938" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="939" />
+              <Token Text="AND" UId="940" />
+              <Blank Num="1" UId="941" />
+              <Access Scope="LocalConstant" UId="942">
+                <Constant Name="cMTmask" UId="943" />
+              </Access>
+              <Token Text=")" UId="946" />
+            </Parameter>
+            <Token Text="," UId="947" />
+            <Blank Num="1" UId="948" />
+            <Parameter Name="N" UId="949">
+              <Blank Num="1" UId="950" />
+              <Token Text=":=" UId="951" />
+              <Blank Num="1" UId="952" />
+              <Access Scope="LocalVariable" UId="953">
+                <Symbol UId="954">
+                  <Component Name="sExp" UId="955" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="956" />
+              <Token Text="-" UId="957" />
+              <Blank Num="1" UId="958" />
+              <Access Scope="LiteralConstant" UId="959">
+                <Constant UId="960">
+                  <ConstantValue UId="962">20</ConstantValue>
+                </Constant>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="964" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="965" />
+        <Token Text="OR" UId="966" />
+        <Blank Num="1" UId="967" />
+        <Access Scope="Call" UId="968">
+          <Instruction Name="SHR" UId="969">
+            <Token Text="(" UId="970" />
+            <Parameter Name="IN" UId="971">
+              <Blank Num="1" UId="972" />
+              <Token Text=":=" UId="973" />
+              <Blank Num="1" UId="974" />
+              <Access Scope="LocalVariable" UId="975">
+                <Symbol UId="976">
+                  <Component Name="sCounterval" UId="977" />
+                  <Token Text="." UId="978" />
+                  <Component Name="ldword" UId="979" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text="," UId="980" />
+            <Blank Num="1" UId="981" />
+            <Parameter Name="N" UId="982">
+              <Blank Num="1" UId="983" />
+              <Token Text=":=" UId="984" />
+              <Blank Num="1" UId="985" />
+              <Access Scope="LiteralConstant" UId="986">
+                <Constant UId="987">
+                  <ConstantValue UId="989">32</ConstantValue>
+                </Constant>
+              </Access>
+              <Blank Num="1" UId="990" />
+              <Token Text="-" UId="991" />
+              <Blank Num="1" UId="992" />
+              <Token Text="(" UId="993" />
+              <Access Scope="LocalVariable" UId="994">
+                <Symbol UId="995">
+                  <Component Name="sExp" UId="996" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="997" />
+              <Token Text="-" UId="998" />
+              <Blank Num="1" UId="999" />
+              <Access Scope="LiteralConstant" UId="1000">
+                <Constant UId="1001">
+                  <ConstantValue UId="1003">20</ConstantValue>
+                </Constant>
+              </Access>
+              <Token Text=")" UId="1004" />
+            </Parameter>
+            <Token Text=")" UId="1006" />
+          </Instruction>
+        </Access>
+        <Token Text=")" UId="1007" />
+        <Blank Num="1" UId="1008" />
+        <Token Text="OR" UId="1009" />
+        <Blank Num="1" UId="1010" />
+        <Access Scope="Call" UId="1011">
+          <Instruction Name="SHL" UId="1012">
+            <Token Text="(" UId="1013" />
+            <Parameter Name="IN" UId="1014">
+              <Blank Num="1" UId="1015" />
+              <Token Text=":=" UId="1016" />
+              <Blank Num="1" UId="1017" />
+              <Access Scope="LocalConstant" UId="1018">
+                <Constant Name="cMask" UId="1019" />
+              </Access>
+            </Parameter>
+            <Token Text="," UId="1022" />
+            <Blank Num="1" UId="1023" />
+            <Parameter Name="N" UId="1024">
+              <Blank Num="1" UId="1025" />
+              <Token Text=":=" UId="1026" />
+              <Blank Num="1" UId="1027" />
+              <Access Scope="LocalVariable" UId="1028">
+                <Symbol UId="1029">
+                  <Component Name="sExp" UId="1030" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="1032" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="1034" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1035" />
+  <Token Text="=" UId="1036" />
+  <Blank Num="1" UId="1037" />
+  <Access Scope="LocalConstant" UId="1038">
+    <Constant Name="cNrGIGA" UId="1039" />
+  </Access>
+  <NewLine Num="1" UId="1042" />
+  <Blank Num="12" UId="1043" />
+  <Token Text="THEN" UId="1044" />
+  <NewLine Num="1" UId="1045" />
+  <Blank Num="16" UId="1046" />
+  <Access Scope="LocalVariable" UId="1047">
+    <Symbol UId="1048">
+      <Component Name="sFINE" UId="1049" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1050" />
+  <Token Text=":=" UId="1051" />
+  <Blank Num="1" UId="1052" />
+  <Access Scope="LiteralConstant" UId="1053">
+    <Constant UId="1054">
+      <ConstantValue UId="1056">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1057" />
+  <NewLine Num="1" UId="1058" />
+  <Blank Num="12" UId="1059" />
+  <Token Text="ELSE" UId="1060" />
+  <NewLine Num="1" UId="1061" />
+  <Blank Num="16" UId="1062" />
+  <Access Scope="LocalVariable" UId="1063">
+    <Symbol UId="1064">
+      <Component Name="sFINE" UId="1065" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1066" />
+  <Token Text=":=" UId="1067" />
+  <Blank Num="1" UId="1068" />
+  <Access Scope="Call" UId="1069">
+    <Instruction Name="DWORD_TO_DINT" UId="1070">
+      <Token Text="(" UId="1071" />
+      <NamelessParameter UId="1072">
+        <Token Text="(" UId="1073" />
+        <Access Scope="Call" UId="1074">
+          <Instruction Name="SHL" UId="1075">
+            <Token Text="(" UId="1076" />
+            <Parameter Name="IN" UId="1077">
+              <Blank Num="1" UId="1078" />
+              <Token Text=":=" UId="1079" />
+              <Blank Num="1" UId="1080" />
+              <Token Text="(" UId="1081" />
+              <Access Scope="LocalVariable" UId="1082">
+                <Symbol UId="1083">
+                  <Component Name="sCounterval" UId="1084" />
+                  <Token Text="." UId="1085" />
+                  <Component Name="hdword" UId="1086" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="1087" />
+              <Token Text="AND" UId="1088" />
+              <Blank Num="1" UId="1089" />
+              <Access Scope="LocalConstant" UId="1090">
+                <Constant Name="cMTmask" UId="1091" />
+              </Access>
+              <Token Text=")" UId="1094" />
+            </Parameter>
+            <Token Text="," UId="1095" />
+            <Blank Num="1" UId="1096" />
+            <Parameter Name="N" UId="1097">
+              <Blank Num="1" UId="1098" />
+              <Token Text=":=" UId="1099" />
+              <Blank Num="1" UId="1100" />
+              <Access Scope="LocalVariable" UId="1101">
+                <Symbol UId="1102">
+                  <Component Name="sExp" UId="1103" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="1104" />
+              <Token Text="-" UId="1105" />
+              <Blank Num="1" UId="1106" />
+              <Access Scope="LiteralConstant" UId="1107">
+                <Constant UId="1108">
+                  <ConstantValue UId="1110">20</ConstantValue>
+                </Constant>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="1112" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="1113" />
+        <Token Text="OR" UId="1114" />
+        <Blank Num="1" UId="1115" />
+        <Access Scope="Call" UId="1116">
+          <Instruction Name="SHR" UId="1117">
+            <Token Text="(" UId="1118" />
+            <Parameter Name="IN" UId="1119">
+              <Blank Num="1" UId="1120" />
+              <Token Text=":=" UId="1121" />
+              <Blank Num="1" UId="1122" />
+              <Access Scope="LocalVariable" UId="1123">
+                <Symbol UId="1124">
+                  <Component Name="sCounterval" UId="1125" />
+                  <Token Text="." UId="1126" />
+                  <Component Name="ldword" UId="1127" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text="," UId="1128" />
+            <Blank Num="1" UId="1129" />
+            <Parameter Name="N" UId="1130">
+              <Blank Num="1" UId="1131" />
+              <Token Text=":=" UId="1132" />
+              <Blank Num="1" UId="1133" />
+              <Access Scope="LiteralConstant" UId="1134">
+                <Constant UId="1135">
+                  <ConstantValue UId="1137">32</ConstantValue>
+                </Constant>
+              </Access>
+              <Blank Num="1" UId="1138" />
+              <Token Text="-" UId="1139" />
+              <Blank Num="1" UId="1140" />
+              <Token Text="(" UId="1141" />
+              <Access Scope="LocalVariable" UId="1142">
+                <Symbol UId="1143">
+                  <Component Name="sExp" UId="1144" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="1145" />
+              <Token Text="-" UId="1146" />
+              <Blank Num="1" UId="1147" />
+              <Access Scope="LiteralConstant" UId="1148">
+                <Constant UId="1149">
+                  <ConstantValue UId="1151">20</ConstantValue>
+                </Constant>
+              </Access>
+              <Token Text=")" UId="1152" />
+            </Parameter>
+            <Token Text=")" UId="1154" />
+          </Instruction>
+        </Access>
+        <Token Text=")" UId="1155" />
+        <Blank Num="1" UId="1156" />
+        <Token Text="OR" UId="1157" />
+        <Blank Num="1" UId="1158" />
+        <Access Scope="Call" UId="1159">
+          <Instruction Name="SHL" UId="1160">
+            <Token Text="(" UId="1161" />
+            <Parameter Name="IN" UId="1162">
+              <Blank Num="1" UId="1163" />
+              <Token Text=":=" UId="1164" />
+              <Blank Num="1" UId="1165" />
+              <Access Scope="LocalConstant" UId="1166">
+                <Constant Name="cMask" UId="1167" />
+              </Access>
+            </Parameter>
+            <Token Text="," UId="1170" />
+            <Blank Num="1" UId="1171" />
+            <Parameter Name="N" UId="1172">
+              <Blank Num="1" UId="1173" />
+              <Token Text=":=" UId="1174" />
+              <Blank Num="1" UId="1175" />
+              <Access Scope="LocalVariable" UId="1176">
+                <Symbol UId="1177">
+                  <Component Name="sExp" UId="1178" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="1180" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="1182" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1183" />
+  <NewLine Num="1" UId="1184" />
+  <Blank Num="12" UId="1185" />
+  <Token Text="END_IF" UId="1186" />
+  <Token Text=";" UId="1187" />
+  <NewLine Num="1" UId="1188" />
+  <Blank Num="12" UId="1189" />
+  <NewLine Num="1" UId="1190" />
+  <Blank Num="12" UId="1191" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1192">
+    <Text UId="1193"> *** If the exponent is bigger then 29 you have to divide the number by 1.000.000.000</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1194" />
+  <Blank Num="12" UId="1195" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1196">
+    <Text UId="1197"> *** the rest of the division is the fine counter value</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1198" />
+  <Blank Num="8" UId="1199" />
+  <Token Text="ELSE" UId="1200" />
+  <NewLine Num="1" UId="1201" />
+  <Blank Num="12" UId="1202" />
+  <Access Scope="LocalVariable" UId="1203">
+    <Symbol UId="1204">
+      <Component Name="sDivision" UId="1205" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1206" />
+  <Token Text=":=" UId="1207" />
+  <Blank Num="1" UId="1208" />
+  <Token Text="(" UId="1209" />
+  <Access Scope="Call" UId="1210">
+    <Instruction Name="SHL" UId="1211">
+      <Token Text="(" UId="1212" />
+      <Parameter Name="IN" UId="1213">
+        <Blank Num="1" UId="1214" />
+        <Token Text=":=" UId="1215" />
+        <Blank Num="1" UId="1216" />
+        <Token Text="(" UId="1217" />
+        <Access Scope="LocalVariable" UId="1218">
+          <Symbol UId="1219">
+            <Component Name="sCounterval" UId="1220" />
+            <Token Text="." UId="1221" />
+            <Component Name="hdword" UId="1222" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="1223" />
+        <Token Text="AND" UId="1224" />
+        <Blank Num="1" UId="1225" />
+        <Access Scope="LocalConstant" UId="1226">
+          <Constant Name="cMTmask" UId="1227" />
+        </Access>
+        <Token Text=")" UId="1230" />
+      </Parameter>
+      <Token Text="," UId="1231" />
+      <Blank Num="1" UId="1232" />
+      <Parameter Name="N" UId="1233">
+        <Blank Num="1" UId="1234" />
+        <Token Text=":=" UId="1235" />
+        <Blank Num="1" UId="1236" />
+        <Access Scope="LiteralConstant" UId="1237">
+          <Constant UId="1238">
+            <ConstantValue UId="1240">9</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1242" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1243" />
+  <Token Text="OR" UId="1244" />
+  <Blank Num="1" UId="1245" />
+  <Access Scope="Call" UId="1246">
+    <Instruction Name="SHR" UId="1247">
+      <Token Text="(" UId="1248" />
+      <Parameter Name="IN" UId="1249">
+        <Blank Num="1" UId="1250" />
+        <Token Text=":=" UId="1251" />
+        <Blank Num="1" UId="1252" />
+        <Access Scope="LocalVariable" UId="1253">
+          <Symbol UId="1254">
+            <Component Name="sCounterval" UId="1255" />
+            <Token Text="." UId="1256" />
+            <Component Name="ldword" UId="1257" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1258" />
+      <Blank Num="1" UId="1259" />
+      <Parameter Name="N" UId="1260">
+        <Blank Num="1" UId="1261" />
+        <Token Text=":=" UId="1262" />
+        <Blank Num="1" UId="1263" />
+        <Access Scope="LiteralConstant" UId="1264">
+          <Constant UId="1265">
+            <ConstantValue UId="1267">23</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1269" />
+    </Instruction>
+  </Access>
+  <Token Text=")" UId="1270" />
+  <Blank Num="1" UId="1271" />
+  <Token Text="OR" UId="1272" />
+  <Blank Num="1" UId="1273" />
+  <Access Scope="Call" UId="1274">
+    <Instruction Name="SHL" UId="1275">
+      <Token Text="(" UId="1276" />
+      <Parameter Name="IN" UId="1277">
+        <Blank Num="1" UId="1278" />
+        <Token Text=":=" UId="1279" />
+        <Blank Num="1" UId="1280" />
+        <Access Scope="LocalConstant" UId="1281">
+          <Constant Name="cMask" UId="1282" />
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1285" />
+      <Blank Num="1" UId="1286" />
+      <Parameter Name="N" UId="1287">
+        <Blank Num="1" UId="1288" />
+        <Token Text=":=" UId="1289" />
+        <Blank Num="1" UId="1290" />
+        <Access Scope="LiteralConstant" UId="1291">
+          <Constant UId="1292">
+            <ConstantValue UId="1294">29</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1296" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1297" />
+  <NewLine Num="1" UId="1298" />
+  <Blank Num="12" UId="1299" />
+  <Token Text="FOR" UId="1300" />
+  <Blank Num="1" UId="1301" />
+  <Access Scope="LocalVariable" UId="1302">
+    <Symbol UId="1303">
+      <Component Name="i" UId="1304" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1305" />
+  <Token Text=":=" UId="1306" />
+  <Blank Num="1" UId="1307" />
+  <Access Scope="LiteralConstant" UId="1308">
+    <Constant UId="1309">
+      <ConstantValue UId="1311">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="1312" />
+  <Token Text="TO" UId="1313" />
+  <Blank Num="1" UId="1314" />
+  <Access Scope="LocalVariable" UId="1315">
+    <Symbol UId="1316">
+      <Component Name="sExp" UId="1317" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1318" />
+  <Token Text="-" UId="1319" />
+  <Blank Num="1" UId="1320" />
+  <Access Scope="LiteralConstant" UId="1321">
+    <Constant UId="1322">
+      <ConstantValue UId="1324">29</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="1325" />
+  <Token Text="DO" UId="1326" />
+  <NewLine Num="1" UId="1327" />
+  <Blank Num="16" UId="1328" />
+  <Token Text="IF" UId="1329" />
+  <Blank Num="1" UId="1330" />
+  <Access Scope="Call" UId="1331">
+    <Instruction Name="DWORD_TO_DINT" UId="1332">
+      <Token Text="(" UId="1333" />
+      <NamelessParameter UId="1334">
+        <Access Scope="LocalVariable" UId="1335">
+          <Symbol UId="1336">
+            <Component Name="sDivision" UId="1337" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="1339" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1340" />
+  <Token Text="&gt;" UId="1341" />
+  <Blank Num="1" UId="1342" />
+  <Access Scope="LocalConstant" UId="1343">
+    <Constant Name="cNrGIGA" UId="1344" />
+  </Access>
+  <Blank Num="1" UId="1347" />
+  <Token Text="OR" UId="1348" />
+  <Blank Num="1" UId="1349" />
+  <Access Scope="Call" UId="1350">
+    <Instruction Name="DWORD_TO_DINT" UId="1351">
+      <Token Text="(" UId="1352" />
+      <NamelessParameter UId="1353">
+        <Access Scope="LocalVariable" UId="1354">
+          <Symbol UId="1355">
+            <Component Name="sDivision" UId="1356" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="1358" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1359" />
+  <Token Text="=" UId="1360" />
+  <Blank Num="1" UId="1361" />
+  <Access Scope="LocalConstant" UId="1362">
+    <Constant Name="cNrGIGA" UId="1363" />
+  </Access>
+  <NewLine Num="1" UId="1366" />
+  <Blank Num="16" UId="1367" />
+  <Token Text="THEN" UId="1368" />
+  <NewLine Num="1" UId="1369" />
+  <Blank Num="20" UId="1370" />
+  <NewLine Num="1" UId="1371" />
+  <Blank Num="20" UId="1372" />
+  <Access Scope="LocalVariable" UId="1373">
+    <Symbol UId="1374">
+      <Component Name="sDivision" UId="1375" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1376" />
+  <Token Text=":=" UId="1377" />
+  <Blank Num="1" UId="1378" />
+  <Access Scope="Call" UId="1379">
+    <Instruction Name="DINT_TO_DWORD" UId="1380">
+      <Token Text="(" UId="1381" />
+      <NamelessParameter UId="1382">
+        <Access Scope="Call" UId="1383">
+          <Instruction Name="DWORD_TO_DINT" UId="1384">
+            <Token Text="(" UId="1385" />
+            <NamelessParameter UId="1386">
+              <Access Scope="LocalVariable" UId="1387">
+                <Symbol UId="1388">
+                  <Component Name="sDivision" UId="1389" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="1391" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="1392" />
+        <Token Text="-" UId="1393" />
+        <Blank Num="1" UId="1394" />
+        <Access Scope="LocalConstant" UId="1395">
+          <Constant Name="cNrGIGA" UId="1396" />
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="1400" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1401" />
+  <NewLine Num="1" UId="1402" />
+  <Blank Num="20" UId="1403" />
+  <Token Text="IF" UId="1404" />
+  <Blank Num="1" UId="1405" />
+  <Access Scope="LocalVariable" UId="1406">
+    <Symbol UId="1407">
+      <Component Name="i" UId="1408" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1409" />
+  <Token Text="&lt;&gt;" UId="1410" />
+  <Blank Num="1" UId="1411" />
+  <Access Scope="LocalVariable" UId="1412">
+    <Symbol UId="1413">
+      <Component Name="sExp" UId="1414" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1415" />
+  <Token Text="-" UId="1416" />
+  <Blank Num="1" UId="1417" />
+  <Access Scope="LiteralConstant" UId="1418">
+    <Constant UId="1419">
+      <ConstantValue UId="1421">29</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="1422" />
+  <Blank Num="20" UId="1423" />
+  <Token Text="THEN" UId="1424" />
+  <NewLine Num="1" UId="1425" />
+  <Blank Num="24" UId="1426" />
+  <Access Scope="LocalVariable" UId="1427">
+    <Symbol UId="1428">
+      <Component Name="sDivision" UId="1429" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1430" />
+  <Token Text=":=" UId="1431" />
+  <Blank Num="1" UId="1432" />
+  <Access Scope="Call" UId="1433">
+    <Instruction Name="SHL" UId="1434">
+      <Token Text="(" UId="1435" />
+      <Parameter Name="IN" UId="1436">
+        <Blank Num="1" UId="1437" />
+        <Token Text=":=" UId="1438" />
+        <Blank Num="1" UId="1439" />
+        <Access Scope="LocalVariable" UId="1440">
+          <Symbol UId="1441">
+            <Component Name="sDivision" UId="1442" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1443" />
+      <Blank Num="1" UId="1444" />
+      <Parameter Name="N" UId="1445">
+        <Blank Num="1" UId="1446" />
+        <Token Text=":=" UId="1447" />
+        <Blank Num="1" UId="1448" />
+        <Access Scope="LiteralConstant" UId="1449">
+          <Constant UId="1450">
+            <ConstantValue UId="1452">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1454" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1455" />
+  <Token Text="OR" UId="1456" />
+  <Blank Num="1" UId="1457" />
+  <Token Text="(" UId="1458" />
+  <Access Scope="Call" UId="1459">
+    <Instruction Name="SHR" UId="1460">
+      <Token Text="(" UId="1461" />
+      <Parameter Name="IN" UId="1462">
+        <Blank Num="1" UId="1463" />
+        <Token Text=":=" UId="1464" />
+        <Blank Num="1" UId="1465" />
+        <Access Scope="LocalVariable" UId="1466">
+          <Symbol UId="1467">
+            <Component Name="sCounterval" UId="1468" />
+            <Token Text="." UId="1469" />
+            <Component Name="ldword" UId="1470" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1471" />
+      <Blank Num="1" UId="1472" />
+      <Parameter Name="N" UId="1473">
+        <Blank Num="1" UId="1474" />
+        <Token Text=":=" UId="1475" />
+        <Blank Num="1" UId="1476" />
+        <Access Scope="LiteralConstant" UId="1477">
+          <Constant UId="1478">
+            <ConstantValue UId="1480">22</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="1481" />
+        <Token Text="-" UId="1482" />
+        <Blank Num="1" UId="1483" />
+        <Access Scope="LocalVariable" UId="1484">
+          <Symbol UId="1485">
+            <Component Name="i" UId="1486" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1488" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1489" />
+  <Token Text="AND" UId="1490" />
+  <Blank Num="1" UId="1491" />
+  <Access Scope="LocalConstant" UId="1492">
+    <Constant Name="cMask" UId="1493" />
+  </Access>
+  <Token Text=")" UId="1496" />
+  <Token Text=";" UId="1497" />
+  <NewLine Num="1" UId="1498" />
+  <Blank Num="20" UId="1499" />
+  <Token Text="ELSE" UId="1500" />
+  <NewLine Num="1" UId="1501" />
+  <Blank Num="24" UId="1502" />
+  <Token Text=";" UId="1503" />
+  <NewLine Num="1" UId="1504" />
+  <Blank Num="20" UId="1505" />
+  <Token Text="END_IF" UId="1506" />
+  <Token Text=";" UId="1507" />
+  <NewLine Num="1" UId="1508" />
+  <Blank Num="20" UId="1509" />
+  <NewLine Num="1" UId="1510" />
+  <Blank Num="20" UId="1511" />
+  <Access Scope="LocalVariable" UId="1512">
+    <Symbol UId="1513">
+      <Component Name="sResDiv" UId="1514" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1515" />
+  <Token Text=":=" UId="1516" />
+  <Blank Num="1" UId="1517" />
+  <Access Scope="Call" UId="1518">
+    <Instruction Name="SHL" UId="1519">
+      <Token Text="(" UId="1520" />
+      <Parameter Name="IN" UId="1521">
+        <Blank Num="1" UId="1522" />
+        <Token Text=":=" UId="1523" />
+        <Blank Num="1" UId="1524" />
+        <Access Scope="LocalVariable" UId="1525">
+          <Symbol UId="1526">
+            <Component Name="sResDiv" UId="1527" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1528" />
+      <Blank Num="1" UId="1529" />
+      <Parameter Name="N" UId="1530">
+        <Blank Num="1" UId="1531" />
+        <Token Text=":=" UId="1532" />
+        <Blank Num="1" UId="1533" />
+        <Access Scope="LiteralConstant" UId="1534">
+          <Constant UId="1535">
+            <ConstantValue UId="1537">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1539" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1540" />
+  <Token Text="OR" UId="1541" />
+  <Blank Num="1" UId="1542" />
+  <Access Scope="TypedConstant" UId="1543">
+    <Constant UId="1544">
+      <ConstantValue UId="1545">dw#16#00000001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1546" />
+  <NewLine Num="1" UId="1547" />
+  <Blank Num="16" UId="1548" />
+  <Token Text="ELSE" UId="1549" />
+  <NewLine Num="1" UId="1550" />
+  <Blank Num="20" UId="1551" />
+  <Token Text="IF" UId="1552" />
+  <Blank Num="1" UId="1553" />
+  <Access Scope="LocalVariable" UId="1554">
+    <Symbol UId="1555">
+      <Component Name="i" UId="1556" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1557" />
+  <Token Text="&lt;&gt;" UId="1558" />
+  <Blank Num="1" UId="1559" />
+  <Access Scope="LocalVariable" UId="1560">
+    <Symbol UId="1561">
+      <Component Name="sExp" UId="1562" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1563" />
+  <Token Text="-" UId="1564" />
+  <Blank Num="1" UId="1565" />
+  <Access Scope="LiteralConstant" UId="1566">
+    <Constant UId="1567">
+      <ConstantValue UId="1569">29</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="1570" />
+  <Blank Num="20" UId="1571" />
+  <Token Text="THEN" UId="1572" />
+  <NewLine Num="1" UId="1573" />
+  <Blank Num="24" UId="1574" />
+  <Access Scope="LocalVariable" UId="1575">
+    <Symbol UId="1576">
+      <Component Name="sDivision" UId="1577" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1578" />
+  <Token Text=":=" UId="1579" />
+  <Blank Num="1" UId="1580" />
+  <Access Scope="Call" UId="1581">
+    <Instruction Name="SHL" UId="1582">
+      <Token Text="(" UId="1583" />
+      <Parameter Name="IN" UId="1584">
+        <Blank Num="1" UId="1585" />
+        <Token Text=":=" UId="1586" />
+        <Blank Num="1" UId="1587" />
+        <Access Scope="LocalVariable" UId="1588">
+          <Symbol UId="1589">
+            <Component Name="sDivision" UId="1590" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1591" />
+      <Blank Num="1" UId="1592" />
+      <Parameter Name="N" UId="1593">
+        <Blank Num="1" UId="1594" />
+        <Token Text=":=" UId="1595" />
+        <Blank Num="1" UId="1596" />
+        <Access Scope="LiteralConstant" UId="1597">
+          <Constant UId="1598">
+            <ConstantValue UId="1600">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1602" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1603" />
+  <Token Text="OR" UId="1604" />
+  <Blank Num="1" UId="1605" />
+  <Token Text="(" UId="1606" />
+  <Access Scope="Call" UId="1607">
+    <Instruction Name="SHR" UId="1608">
+      <Token Text="(" UId="1609" />
+      <Parameter Name="IN" UId="1610">
+        <Blank Num="1" UId="1611" />
+        <Token Text=":=" UId="1612" />
+        <Blank Num="1" UId="1613" />
+        <Access Scope="LocalVariable" UId="1614">
+          <Symbol UId="1615">
+            <Component Name="sCounterval" UId="1616" />
+            <Token Text="." UId="1617" />
+            <Component Name="ldword" UId="1618" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1619" />
+      <Blank Num="1" UId="1620" />
+      <Parameter Name="N" UId="1621">
+        <Blank Num="1" UId="1622" />
+        <Token Text=":=" UId="1623" />
+        <Blank Num="1" UId="1624" />
+        <Access Scope="LiteralConstant" UId="1625">
+          <Constant UId="1626">
+            <ConstantValue UId="1628">22</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="1629" />
+        <Token Text="-" UId="1630" />
+        <Blank Num="1" UId="1631" />
+        <Access Scope="LocalVariable" UId="1632">
+          <Symbol UId="1633">
+            <Component Name="i" UId="1634" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1636" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1637" />
+  <Token Text="AND" UId="1638" />
+  <Blank Num="1" UId="1639" />
+  <Access Scope="LocalConstant" UId="1640">
+    <Constant Name="cMask" UId="1641" />
+  </Access>
+  <Token Text=")" UId="1644" />
+  <Token Text=";" UId="1645" />
+  <NewLine Num="1" UId="1646" />
+  <Blank Num="20" UId="1647" />
+  <Token Text="ELSE" UId="1648" />
+  <NewLine Num="1" UId="1649" />
+  <Blank Num="24" UId="1650" />
+  <Token Text=";" UId="1651" />
+  <NewLine Num="1" UId="1652" />
+  <Blank Num="20" UId="1653" />
+  <Token Text="END_IF" UId="1654" />
+  <Token Text=";" UId="1655" />
+  <NewLine Num="1" UId="1656" />
+  <Blank Num="20" UId="1657" />
+  <NewLine Num="1" UId="1658" />
+  <Blank Num="20" UId="1659" />
+  <Access Scope="LocalVariable" UId="1660">
+    <Symbol UId="1661">
+      <Component Name="sResDiv" UId="1662" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1663" />
+  <Token Text=":=" UId="1664" />
+  <Blank Num="1" UId="1665" />
+  <Access Scope="Call" UId="1666">
+    <Instruction Name="SHL" UId="1667">
+      <Token Text="(" UId="1668" />
+      <Parameter Name="IN" UId="1669">
+        <Blank Num="1" UId="1670" />
+        <Token Text=":=" UId="1671" />
+        <Blank Num="1" UId="1672" />
+        <Access Scope="LocalVariable" UId="1673">
+          <Symbol UId="1674">
+            <Component Name="sResDiv" UId="1675" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1676" />
+      <Blank Num="1" UId="1677" />
+      <Parameter Name="N" UId="1678">
+        <Blank Num="1" UId="1679" />
+        <Token Text=":=" UId="1680" />
+        <Blank Num="1" UId="1681" />
+        <Access Scope="LiteralConstant" UId="1682">
+          <Constant UId="1683">
+            <ConstantValue UId="1685">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1687" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1688" />
+  <NewLine Num="1" UId="1689" />
+  <Blank Num="16" UId="1690" />
+  <Token Text="END_IF" UId="1691" />
+  <Token Text=";" UId="1692" />
+  <NewLine Num="1" UId="1693" />
+  <Blank Num="16" UId="1694" />
+  <NewLine Num="1" UId="1695" />
+  <Blank Num="12" UId="1696" />
+  <Token Text="END_FOR" UId="1697" />
+  <Token Text=";" UId="1698" />
+  <NewLine Num="1" UId="1699" />
+  <Blank Num="12" UId="1700" />
+  <NewLine Num="1" UId="1701" />
+  <Blank Num="12" UId="1702" />
+  <Access Scope="LocalVariable" UId="1703">
+    <Symbol UId="1704">
+      <Component Name="sFINE" UId="1705" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1706" />
+  <Token Text=":=" UId="1707" />
+  <Blank Num="1" UId="1708" />
+  <Access Scope="Call" UId="1709">
+    <Instruction Name="DWORD_TO_DINT" UId="1710">
+      <Token Text="(" UId="1711" />
+      <NamelessParameter UId="1712">
+        <Access Scope="LocalVariable" UId="1713">
+          <Symbol UId="1714">
+            <Component Name="sDivision" UId="1715" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="1717" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1718" />
+  <NewLine Num="1" UId="1719" />
+  <Blank Num="12" UId="1720" />
+  <NewLine Num="1" UId="1721" />
+  <Blank Num="8" UId="1722" />
+  <Token Text="END_IF" UId="1723" />
+  <Token Text=";" UId="1724" />
+  <NewLine Num="1" UId="1725" />
+  <Blank Num="8" UId="1726" />
+  <NewLine Num="1" UId="1727" />
+  <Blank Num="8" UId="1728" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1729">
+    <Text UId="1730"> **************************</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1731" />
+  <Blank Num="8" UId="1732" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1733">
+    <Text UId="1734"> ********** RAW ***********</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1735" />
+  <Blank Num="8" UId="1736" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1737">
+    <Text UId="1738"> **************************</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1739" />
+  <Blank Num="8" UId="1740" />
+  <NewLine Num="1" UId="1741" />
+  <Blank Num="8" UId="1742" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1743">
+    <Text UId="1744"> Initialisation of sResDiv for new division</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1745" />
+  <Blank Num="8" UId="1746" />
+  <Access Scope="LocalVariable" UId="1747">
+    <Symbol UId="1748">
+      <Component Name="sResDiv" UId="1749" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1750" />
+  <Token Text=":=" UId="1751" />
+  <Blank Num="1" UId="1752" />
+  <Access Scope="TypedConstant" UId="1753">
+    <Constant UId="1754">
+      <ConstantValue UId="1755">dw#16#00000000</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1756" />
+  <NewLine Num="1" UId="1757" />
+  <Blank Num="8" UId="1758" />
+  <NewLine Num="1" UId="1759" />
+  <Blank Num="8" UId="1760" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1761">
+    <Text UId="1762"> *** If the exponent is smaller than 9 the number is smaller than 1.000</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1763" />
+  <Blank Num="8" UId="1764" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1765">
+    <Text UId="1766"> *** The raw counter value is 0</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1767" />
+  <Blank Num="8" UId="1768" />
+  <Token Text="IF" UId="1769" />
+  <Blank Num="1" UId="1770" />
+  <Access Scope="LocalVariable" UId="1771">
+    <Symbol UId="1772">
+      <Component Name="sExp" UId="1773" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1774" />
+  <Token Text="&lt;" UId="1775" />
+  <Blank Num="1" UId="1776" />
+  <Access Scope="LiteralConstant" UId="1777">
+    <Constant UId="1778">
+      <ConstantValue UId="1780">9</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="1781" />
+  <Blank Num="8" UId="1782" />
+  <Token Text="THEN" UId="1783" />
+  <NewLine Num="1" UId="1784" />
+  <Blank Num="12" UId="1785" />
+  <Access Scope="LocalVariable" UId="1786">
+    <Symbol UId="1787">
+      <Component Name="sRAW" UId="1788" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1789" />
+  <Token Text=":=" UId="1790" />
+  <Blank Num="1" UId="1791" />
+  <Access Scope="LiteralConstant" UId="1792">
+    <Constant UId="1793">
+      <ConstantValue UId="1795">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1796" />
+  <NewLine Num="1" UId="1797" />
+  <Blank Num="12" UId="1798" />
+  <NewLine Num="1" UId="1799" />
+  <Blank Num="12" UId="1800" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1801">
+    <Text UId="1802"> *** If the exponent is 9 the number is between 512 and 1.023</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1803" />
+  <Blank Num="12" UId="1804" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1805">
+    <Text UId="1806"> *** You have to subtract 1.000</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1807" />
+  <Blank Num="12" UId="1808" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1809">
+    <Text UId="1810"> *** The result ist the raw counter value</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1811" />
+  <Blank Num="8" UId="1812" />
+  <Token Text="ELSIF" UId="1813" />
+  <Blank Num="1" UId="1814" />
+  <Access Scope="LocalVariable" UId="1815">
+    <Symbol UId="1816">
+      <Component Name="sExp" UId="1817" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1818" />
+  <Token Text="=" UId="1819" />
+  <Blank Num="1" UId="1820" />
+  <Access Scope="LiteralConstant" UId="1821">
+    <Constant UId="1822">
+      <ConstantValue UId="1824">9</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="1825" />
+  <Blank Num="8" UId="1826" />
+  <Token Text="THEN" UId="1827" />
+  <NewLine Num="1" UId="1828" />
+  <Blank Num="12" UId="1829" />
+  <Token Text="IF" UId="1830" />
+  <Blank Num="1" UId="1831" />
+  <Access Scope="Call" UId="1832">
+    <Instruction Name="DWORD_TO_DINT" UId="1833">
+      <Token Text="(" UId="1834" />
+      <NamelessParameter UId="1835">
+        <Access Scope="Call" UId="1836">
+          <Instruction Name="SHR" UId="1837">
+            <Token Text="(" UId="1838" />
+            <Parameter Name="IN" UId="1839">
+              <Blank Num="1" UId="1840" />
+              <Token Text=":=" UId="1841" />
+              <Blank Num="1" UId="1842" />
+              <Token Text="(" UId="1843" />
+              <Access Scope="LocalVariable" UId="1844">
+                <Symbol UId="1845">
+                  <Component Name="sCounterval" UId="1846" />
+                  <Token Text="." UId="1847" />
+                  <Component Name="hdword" UId="1848" />
+                </Symbol>
+              </Access>
+              <Blank Num="1" UId="1849" />
+              <Token Text="AND" UId="1850" />
+              <Blank Num="1" UId="1851" />
+              <Access Scope="LocalConstant" UId="1852">
+                <Constant Name="cMTmask" UId="1853" />
+              </Access>
+              <Token Text=")" UId="1856" />
+            </Parameter>
+            <Token Text="," UId="1857" />
+            <Blank Num="1" UId="1858" />
+            <Parameter Name="N" UId="1859">
+              <Blank Num="1" UId="1860" />
+              <Token Text=":=" UId="1861" />
+              <Blank Num="1" UId="1862" />
+              <Access Scope="LiteralConstant" UId="1863">
+                <Constant UId="1864">
+                  <ConstantValue UId="1866">20</ConstantValue>
+                </Constant>
+              </Access>
+              <Blank Num="1" UId="1867" />
+              <Token Text="-" UId="1868" />
+              <Blank Num="1" UId="1869" />
+              <Access Scope="LocalVariable" UId="1870">
+                <Symbol UId="1871">
+                  <Component Name="sExp" UId="1872" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="1874" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="1875" />
+        <Token Text="OR" UId="1876" />
+        <Blank Num="1" UId="1877" />
+        <Access Scope="Call" UId="1878">
+          <Instruction Name="SHL" UId="1879">
+            <Token Text="(" UId="1880" />
+            <Parameter Name="IN" UId="1881">
+              <Blank Num="1" UId="1882" />
+              <Token Text=":=" UId="1883" />
+              <Blank Num="1" UId="1884" />
+              <Access Scope="LocalConstant" UId="1885">
+                <Constant Name="cMask" UId="1886" />
+              </Access>
+            </Parameter>
+            <Token Text="," UId="1889" />
+            <Blank Num="1" UId="1890" />
+            <Parameter Name="N" UId="1891">
+              <Blank Num="1" UId="1892" />
+              <Token Text=":=" UId="1893" />
+              <Blank Num="1" UId="1894" />
+              <Access Scope="LocalVariable" UId="1895">
+                <Symbol UId="1896">
+                  <Component Name="sExp" UId="1897" />
+                </Symbol>
+              </Access>
+            </Parameter>
+            <Token Text=")" UId="1899" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="1901" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1902" />
+  <Token Text="&gt;" UId="1903" />
+  <Blank Num="1" UId="1904" />
+  <Access Scope="LocalConstant" UId="1905">
+    <Constant Name="cNrKILO" UId="1906" />
+  </Access>
+  <NewLine Num="1" UId="1909" />
+  <Blank Num="12" UId="1910" />
+  <Token Text="THEN" UId="1911" />
+  <NewLine Num="1" UId="1912" />
+  <Blank Num="16" UId="1913" />
+  <Access Scope="LocalVariable" UId="1914">
+    <Symbol UId="1915">
+      <Component Name="sRAW" UId="1916" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1917" />
+  <Token Text=":=" UId="1918" />
+  <Blank Num="1" UId="1919" />
+  <Access Scope="LiteralConstant" UId="1920">
+    <Constant UId="1921">
+      <ConstantValue UId="1923">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1924" />
+  <NewLine Num="1" UId="1925" />
+  <Blank Num="12" UId="1926" />
+  <Token Text="ELSE" UId="1927" />
+  <NewLine Num="1" UId="1928" />
+  <Blank Num="16" UId="1929" />
+  <Access Scope="LocalVariable" UId="1930">
+    <Symbol UId="1931">
+      <Component Name="sRAW" UId="1932" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1933" />
+  <Token Text=":=" UId="1934" />
+  <Blank Num="1" UId="1935" />
+  <Access Scope="LiteralConstant" UId="1936">
+    <Constant UId="1937">
+      <ConstantValue UId="1939">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1940" />
+  <NewLine Num="1" UId="1941" />
+  <Blank Num="12" UId="1942" />
+  <Token Text="END_IF" UId="1943" />
+  <Token Text=";" UId="1944" />
+  <NewLine Num="1" UId="1945" />
+  <Blank Num="12" UId="1946" />
+  <NewLine Num="1" UId="1947" />
+  <Blank Num="12" UId="1948" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1949">
+    <Text UId="1950"> *** If the exponent is bigger then 29 you have to divide the number by 1.000.000.000</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1951" />
+  <Blank Num="12" UId="1952" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1953">
+    <Text UId="1954"> *** the result of the division is the raw countervalue</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1955" />
+  <Blank Num="8" UId="1956" />
+  <Token Text="ELSE" UId="1957" />
+  <NewLine Num="1" UId="1958" />
+  <Blank Num="12" UId="1959" />
+  <Access Scope="LocalVariable" UId="1960">
+    <Symbol UId="1961">
+      <Component Name="sDivision" UId="1962" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1963" />
+  <Token Text=":=" UId="1964" />
+  <Blank Num="1" UId="1965" />
+  <Access Scope="Call" UId="1966">
+    <Instruction Name="SHR" UId="1967">
+      <Token Text="(" UId="1968" />
+      <Parameter Name="IN" UId="1969">
+        <Blank Num="1" UId="1970" />
+        <Token Text=":=" UId="1971" />
+        <Blank Num="1" UId="1972" />
+        <Token Text="(" UId="1973" />
+        <Access Scope="LocalVariable" UId="1974">
+          <Symbol UId="1975">
+            <Component Name="sCounterval" UId="1976" />
+            <Token Text="." UId="1977" />
+            <Component Name="hdword" UId="1978" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="1979" />
+        <Token Text="AND" UId="1980" />
+        <Blank Num="1" UId="1981" />
+        <Access Scope="LocalConstant" UId="1982">
+          <Constant Name="cMTmask" UId="1983" />
+        </Access>
+        <Token Text=")" UId="1986" />
+      </Parameter>
+      <Token Text="," UId="1987" />
+      <Blank Num="1" UId="1988" />
+      <Parameter Name="N" UId="1989">
+        <Blank Num="1" UId="1990" />
+        <Token Text=":=" UId="1991" />
+        <Blank Num="1" UId="1992" />
+        <Access Scope="LiteralConstant" UId="1993">
+          <Constant UId="1994">
+            <ConstantValue UId="1996">11</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1998" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="1999" />
+  <Token Text="OR" UId="2000" />
+  <Blank Num="1" UId="2001" />
+  <Access Scope="Call" UId="2002">
+    <Instruction Name="SHL" UId="2003">
+      <Token Text="(" UId="2004" />
+      <Parameter Name="IN" UId="2005">
+        <Blank Num="1" UId="2006" />
+        <Token Text=":=" UId="2007" />
+        <Blank Num="1" UId="2008" />
+        <Access Scope="LocalConstant" UId="2009">
+          <Constant Name="cMask" UId="2010" />
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2013" />
+      <Blank Num="1" UId="2014" />
+      <Parameter Name="N" UId="2015">
+        <Blank Num="1" UId="2016" />
+        <Token Text=":=" UId="2017" />
+        <Blank Num="1" UId="2018" />
+        <Access Scope="LiteralConstant" UId="2019">
+          <Constant UId="2020">
+            <ConstantValue UId="2022">9</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="2024" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="2025" />
+  <NewLine Num="1" UId="2026" />
+  <Blank Num="12" UId="2027" />
+  <Token Text="FOR" UId="2028" />
+  <Blank Num="1" UId="2029" />
+  <Access Scope="LocalVariable" UId="2030">
+    <Symbol UId="2031">
+      <Component Name="i" UId="2032" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2033" />
+  <Token Text=":=" UId="2034" />
+  <Blank Num="1" UId="2035" />
+  <Access Scope="LiteralConstant" UId="2036">
+    <Constant UId="2037">
+      <ConstantValue UId="2039">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="2040" />
+  <Token Text="TO" UId="2041" />
+  <Blank Num="1" UId="2042" />
+  <Access Scope="LocalVariable" UId="2043">
+    <Symbol UId="2044">
+      <Component Name="sExp" UId="2045" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2046" />
+  <Token Text="-" UId="2047" />
+  <Blank Num="1" UId="2048" />
+  <Access Scope="LiteralConstant" UId="2049">
+    <Constant UId="2050">
+      <ConstantValue UId="2052">9</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="2053" />
+  <Token Text="DO" UId="2054" />
+  <NewLine Num="1" UId="2055" />
+  <Blank Num="16" UId="2056" />
+  <Token Text="IF" UId="2057" />
+  <Blank Num="1" UId="2058" />
+  <Access Scope="Call" UId="2059">
+    <Instruction Name="DWORD_TO_DINT" UId="2060">
+      <Token Text="(" UId="2061" />
+      <NamelessParameter UId="2062">
+        <Access Scope="LocalVariable" UId="2063">
+          <Symbol UId="2064">
+            <Component Name="sDivision" UId="2065" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="2067" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="2068" />
+  <Token Text="&gt;" UId="2069" />
+  <Blank Num="1" UId="2070" />
+  <Access Scope="LocalConstant" UId="2071">
+    <Constant Name="cNrKILO" UId="2072" />
+  </Access>
+  <Blank Num="1" UId="2075" />
+  <Token Text="OR" UId="2076" />
+  <Blank Num="1" UId="2077" />
+  <Access Scope="Call" UId="2078">
+    <Instruction Name="DWORD_TO_DINT" UId="2079">
+      <Token Text="(" UId="2080" />
+      <NamelessParameter UId="2081">
+        <Access Scope="LocalVariable" UId="2082">
+          <Symbol UId="2083">
+            <Component Name="sDivision" UId="2084" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="2086" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="2087" />
+  <Token Text="=" UId="2088" />
+  <Blank Num="1" UId="2089" />
+  <Access Scope="LocalConstant" UId="2090">
+    <Constant Name="cNrKILO" UId="2091" />
+  </Access>
+  <NewLine Num="1" UId="2094" />
+  <Blank Num="16" UId="2095" />
+  <Token Text="THEN" UId="2096" />
+  <NewLine Num="1" UId="2097" />
+  <Blank Num="20" UId="2098" />
+  <NewLine Num="1" UId="2099" />
+  <Blank Num="20" UId="2100" />
+  <Access Scope="LocalVariable" UId="2101">
+    <Symbol UId="2102">
+      <Component Name="sDivision" UId="2103" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2104" />
+  <Token Text=":=" UId="2105" />
+  <Blank Num="1" UId="2106" />
+  <Access Scope="Call" UId="2107">
+    <Instruction Name="DINT_TO_DWORD" UId="2108">
+      <Token Text="(" UId="2109" />
+      <NamelessParameter UId="2110">
+        <Access Scope="Call" UId="2111">
+          <Instruction Name="DWORD_TO_DINT" UId="2112">
+            <Token Text="(" UId="2113" />
+            <NamelessParameter UId="2114">
+              <Access Scope="LocalVariable" UId="2115">
+                <Symbol UId="2116">
+                  <Component Name="sDivision" UId="2117" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="2119" />
+          </Instruction>
+        </Access>
+        <Blank Num="1" UId="2120" />
+        <Token Text="-" UId="2121" />
+        <Blank Num="1" UId="2122" />
+        <Access Scope="LocalConstant" UId="2123">
+          <Constant Name="cNrKILO" UId="2124" />
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="2128" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="2129" />
+  <NewLine Num="1" UId="2130" />
+  <Blank Num="20" UId="2131" />
+  <Token Text="IF" UId="2132" />
+  <Blank Num="1" UId="2133" />
+  <Access Scope="LocalVariable" UId="2134">
+    <Symbol UId="2135">
+      <Component Name="i" UId="2136" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2137" />
+  <Token Text="&lt;&gt;" UId="2138" />
+  <Blank Num="1" UId="2139" />
+  <Access Scope="LocalVariable" UId="2140">
+    <Symbol UId="2141">
+      <Component Name="sExp" UId="2142" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2143" />
+  <Token Text="-" UId="2144" />
+  <Blank Num="1" UId="2145" />
+  <Access Scope="LiteralConstant" UId="2146">
+    <Constant UId="2147">
+      <ConstantValue UId="2149">9</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="2150" />
+  <Blank Num="20" UId="2151" />
+  <Token Text="THEN" UId="2152" />
+  <NewLine Num="1" UId="2153" />
+  <Blank Num="24" UId="2154" />
+  <Access Scope="LocalVariable" UId="2155">
+    <Symbol UId="2156">
+      <Component Name="sDivision" UId="2157" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2158" />
+  <Token Text=":=" UId="2159" />
+  <Blank Num="1" UId="2160" />
+  <Access Scope="Call" UId="2161">
+    <Instruction Name="SHL" UId="2162">
+      <Token Text="(" UId="2163" />
+      <Parameter Name="IN" UId="2164">
+        <Blank Num="1" UId="2165" />
+        <Token Text=":=" UId="2166" />
+        <Blank Num="1" UId="2167" />
+        <Access Scope="LocalVariable" UId="2168">
+          <Symbol UId="2169">
+            <Component Name="sDivision" UId="2170" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2171" />
+      <Blank Num="1" UId="2172" />
+      <Parameter Name="N" UId="2173">
+        <Blank Num="1" UId="2174" />
+        <Token Text=":=" UId="2175" />
+        <Blank Num="1" UId="2176" />
+        <Access Scope="LiteralConstant" UId="2177">
+          <Constant UId="2178">
+            <ConstantValue UId="2180">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="2182" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="2183" />
+  <NewLine Num="1" UId="2184" />
+  <Blank Num="24" UId="2185" />
+  <Token Text="IF" UId="2186" />
+  <Blank Num="1" UId="2187" />
+  <Access Scope="LocalVariable" UId="2188">
+    <Symbol UId="2189">
+      <Component Name="i" UId="2190" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2191" />
+  <Token Text="&lt;=" UId="2192" />
+  <Blank Num="1" UId="2193" />
+  <Access Scope="LiteralConstant" UId="2194">
+    <Constant UId="2195">
+      <ConstantValue UId="2197">10</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="2198" />
+  <Blank Num="24" UId="2199" />
+  <Token Text="THEN" UId="2200" />
+  <NewLine Num="1" UId="2201" />
+  <Blank Num="28" UId="2202" />
+  <Access Scope="LocalVariable" UId="2203">
+    <Symbol UId="2204">
+      <Component Name="sDivision" UId="2205" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2206" />
+  <Token Text=":=" UId="2207" />
+  <Blank Num="1" UId="2208" />
+  <Access Scope="LocalVariable" UId="2209">
+    <Symbol UId="2210">
+      <Component Name="sDivision" UId="2211" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2212" />
+  <Token Text="OR" UId="2213" />
+  <Blank Num="1" UId="2214" />
+  <Token Text="(" UId="2215" />
+  <Access Scope="Call" UId="2216">
+    <Instruction Name="SHR" UId="2217">
+      <Token Text="(" UId="2218" />
+      <Parameter Name="IN" UId="2219">
+        <Blank Num="1" UId="2220" />
+        <Token Text=":=" UId="2221" />
+        <Blank Num="1" UId="2222" />
+        <Access Scope="LocalVariable" UId="2223">
+          <Symbol UId="2224">
+            <Component Name="sCounterval" UId="2225" />
+            <Token Text="." UId="2226" />
+            <Component Name="hdword" UId="2227" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2228" />
+      <Blank Num="1" UId="2229" />
+      <Parameter Name="N" UId="2230">
+        <Blank Num="1" UId="2231" />
+        <Token Text=":=" UId="2232" />
+        <Blank Num="1" UId="2233" />
+        <Access Scope="LiteralConstant" UId="2234">
+          <Constant UId="2235">
+            <ConstantValue UId="2237">11</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="2238" />
+        <Token Text="-" UId="2239" />
+        <Blank Num="1" UId="2240" />
+        <Token Text="(" UId="2241" />
+        <Access Scope="LocalVariable" UId="2242">
+          <Symbol UId="2243">
+            <Component Name="i" UId="2244" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="2245" />
+        <Token Text="+" UId="2246" />
+        <Blank Num="1" UId="2247" />
+        <Access Scope="LiteralConstant" UId="2248">
+          <Constant UId="2249">
+            <ConstantValue UId="2251">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="2252" />
+      </Parameter>
+      <Token Text=")" UId="2254" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="2255" />
+  <Token Text="AND" UId="2256" />
+  <Blank Num="1" UId="2257" />
+  <Access Scope="LocalConstant" UId="2258">
+    <Constant Name="cMask" UId="2259" />
+  </Access>
+  <Token Text=")" UId="2262" />
+  <Token Text=";" UId="2263" />
+  <NewLine Num="1" UId="2264" />
+  <Blank Num="24" UId="2265" />
+  <Token Text="ELSE" UId="2266" />
+  <NewLine Num="1" UId="2267" />
+  <Blank Num="28" UId="2268" />
+  <Access Scope="LocalVariable" UId="2269">
+    <Symbol UId="2270">
+      <Component Name="sDivision" UId="2271" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2272" />
+  <Token Text=":=" UId="2273" />
+  <Blank Num="1" UId="2274" />
+  <Access Scope="LocalVariable" UId="2275">
+    <Symbol UId="2276">
+      <Component Name="sDivision" UId="2277" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2278" />
+  <Token Text="OR" UId="2279" />
+  <Blank Num="1" UId="2280" />
+  <Token Text="(" UId="2281" />
+  <Access Scope="Call" UId="2282">
+    <Instruction Name="SHR" UId="2283">
+      <Token Text="(" UId="2284" />
+      <Parameter Name="IN" UId="2285">
+        <Blank Num="1" UId="2286" />
+        <Token Text=":=" UId="2287" />
+        <Blank Num="1" UId="2288" />
+        <Access Scope="LocalVariable" UId="2289">
+          <Symbol UId="2290">
+            <Component Name="sCounterval" UId="2291" />
+            <Token Text="." UId="2292" />
+            <Component Name="ldword" UId="2293" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2294" />
+      <Blank Num="1" UId="2295" />
+      <Parameter Name="N" UId="2296">
+        <Blank Num="1" UId="2297" />
+        <Token Text=":=" UId="2298" />
+        <Blank Num="1" UId="2299" />
+        <Access Scope="LiteralConstant" UId="2300">
+          <Constant UId="2301">
+            <ConstantValue UId="2303">32</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="2304" />
+        <Token Text="-" UId="2305" />
+        <Blank Num="1" UId="2306" />
+        <Token Text="(" UId="2307" />
+        <Token Text="(" UId="2308" />
+        <Access Scope="LocalVariable" UId="2309">
+          <Symbol UId="2310">
+            <Component Name="i" UId="2311" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="2312" />
+        <Token Text="+" UId="2313" />
+        <Blank Num="1" UId="2314" />
+        <Access Scope="LiteralConstant" UId="2315">
+          <Constant UId="2316">
+            <ConstantValue UId="2318">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="2319" />
+        <Blank Num="1" UId="2320" />
+        <Token Text="-" UId="2321" />
+        <Blank Num="1" UId="2322" />
+        <Access Scope="LiteralConstant" UId="2323">
+          <Constant UId="2324">
+            <ConstantValue UId="2326">11</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="2327" />
+      </Parameter>
+      <Token Text=")" UId="2329" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="2330" />
+  <Token Text="AND" UId="2331" />
+  <Blank Num="1" UId="2332" />
+  <Access Scope="LocalConstant" UId="2333">
+    <Constant Name="cMask" UId="2334" />
+  </Access>
+  <Token Text=")" UId="2337" />
+  <Token Text=";" UId="2338" />
+  <NewLine Num="1" UId="2339" />
+  <Blank Num="24" UId="2340" />
+  <Token Text="END_IF" UId="2341" />
+  <Token Text=";" UId="2342" />
+  <NewLine Num="1" UId="2343" />
+  <Blank Num="24" UId="2344" />
+  <NewLine Num="1" UId="2345" />
+  <Blank Num="20" UId="2346" />
+  <Token Text="ELSE" UId="2347" />
+  <NewLine Num="1" UId="2348" />
+  <Blank Num="24" UId="2349" />
+  <Token Text=";" UId="2350" />
+  <NewLine Num="1" UId="2351" />
+  <Blank Num="20" UId="2352" />
+  <Token Text="END_IF" UId="2353" />
+  <Token Text=";" UId="2354" />
+  <NewLine Num="1" UId="2355" />
+  <Blank Num="20" UId="2356" />
+  <NewLine Num="1" UId="2357" />
+  <Blank Num="20" UId="2358" />
+  <Access Scope="LocalVariable" UId="2359">
+    <Symbol UId="2360">
+      <Component Name="sResDiv" UId="2361" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2362" />
+  <Token Text=":=" UId="2363" />
+  <Blank Num="1" UId="2364" />
+  <Access Scope="Call" UId="2365">
+    <Instruction Name="SHL" UId="2366">
+      <Token Text="(" UId="2367" />
+      <Parameter Name="IN" UId="2368">
+        <Blank Num="1" UId="2369" />
+        <Token Text=":=" UId="2370" />
+        <Blank Num="1" UId="2371" />
+        <Access Scope="LocalVariable" UId="2372">
+          <Symbol UId="2373">
+            <Component Name="sResDiv" UId="2374" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2375" />
+      <Blank Num="1" UId="2376" />
+      <Parameter Name="N" UId="2377">
+        <Blank Num="1" UId="2378" />
+        <Token Text=":=" UId="2379" />
+        <Blank Num="1" UId="2380" />
+        <Access Scope="LiteralConstant" UId="2381">
+          <Constant UId="2382">
+            <ConstantValue UId="2384">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="2386" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="2387" />
+  <Token Text="OR" UId="2388" />
+  <Blank Num="1" UId="2389" />
+  <Access Scope="TypedConstant" UId="2390">
+    <Constant UId="2391">
+      <ConstantValue UId="2392">dw#16#00000001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="2393" />
+  <NewLine Num="1" UId="2394" />
+  <Blank Num="16" UId="2395" />
+  <Token Text="ELSE" UId="2396" />
+  <NewLine Num="1" UId="2397" />
+  <Blank Num="20" UId="2398" />
+  <Token Text="IF" UId="2399" />
+  <Blank Num="1" UId="2400" />
+  <Access Scope="LocalVariable" UId="2401">
+    <Symbol UId="2402">
+      <Component Name="i" UId="2403" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2404" />
+  <Token Text="&lt;&gt;" UId="2405" />
+  <Blank Num="1" UId="2406" />
+  <Access Scope="LocalVariable" UId="2407">
+    <Symbol UId="2408">
+      <Component Name="sExp" UId="2409" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2410" />
+  <Token Text="-" UId="2411" />
+  <Blank Num="1" UId="2412" />
+  <Access Scope="LiteralConstant" UId="2413">
+    <Constant UId="2414">
+      <ConstantValue UId="2416">9</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="2417" />
+  <Blank Num="20" UId="2418" />
+  <Token Text="THEN" UId="2419" />
+  <NewLine Num="1" UId="2420" />
+  <Blank Num="24" UId="2421" />
+  <Access Scope="LocalVariable" UId="2422">
+    <Symbol UId="2423">
+      <Component Name="sDivision" UId="2424" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2425" />
+  <Token Text=":=" UId="2426" />
+  <Blank Num="1" UId="2427" />
+  <Access Scope="Call" UId="2428">
+    <Instruction Name="SHL" UId="2429">
+      <Token Text="(" UId="2430" />
+      <Parameter Name="IN" UId="2431">
+        <Blank Num="1" UId="2432" />
+        <Token Text=":=" UId="2433" />
+        <Blank Num="1" UId="2434" />
+        <Access Scope="LocalVariable" UId="2435">
+          <Symbol UId="2436">
+            <Component Name="sDivision" UId="2437" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2438" />
+      <Blank Num="1" UId="2439" />
+      <Parameter Name="N" UId="2440">
+        <Blank Num="1" UId="2441" />
+        <Token Text=":=" UId="2442" />
+        <Blank Num="1" UId="2443" />
+        <Access Scope="LiteralConstant" UId="2444">
+          <Constant UId="2445">
+            <ConstantValue UId="2447">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="2449" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="2450" />
+  <NewLine Num="1" UId="2451" />
+  <Blank Num="24" UId="2452" />
+  <Token Text="IF" UId="2453" />
+  <Blank Num="1" UId="2454" />
+  <Access Scope="LocalVariable" UId="2455">
+    <Symbol UId="2456">
+      <Component Name="i" UId="2457" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2458" />
+  <Token Text="&lt;=" UId="2459" />
+  <Blank Num="1" UId="2460" />
+  <Access Scope="LiteralConstant" UId="2461">
+    <Constant UId="2462">
+      <ConstantValue UId="2464">10</ConstantValue>
+    </Constant>
+  </Access>
+  <NewLine Num="1" UId="2465" />
+  <Blank Num="24" UId="2466" />
+  <Token Text="THEN" UId="2467" />
+  <NewLine Num="1" UId="2468" />
+  <Blank Num="28" UId="2469" />
+  <Access Scope="LocalVariable" UId="2470">
+    <Symbol UId="2471">
+      <Component Name="sDivision" UId="2472" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2473" />
+  <Token Text=":=" UId="2474" />
+  <Blank Num="1" UId="2475" />
+  <Access Scope="LocalVariable" UId="2476">
+    <Symbol UId="2477">
+      <Component Name="sDivision" UId="2478" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2479" />
+  <Token Text="OR" UId="2480" />
+  <Blank Num="1" UId="2481" />
+  <Token Text="(" UId="2482" />
+  <Access Scope="Call" UId="2483">
+    <Instruction Name="SHR" UId="2484">
+      <Token Text="(" UId="2485" />
+      <Parameter Name="IN" UId="2486">
+        <Blank Num="1" UId="2487" />
+        <Token Text=":=" UId="2488" />
+        <Blank Num="1" UId="2489" />
+        <Access Scope="LocalVariable" UId="2490">
+          <Symbol UId="2491">
+            <Component Name="sCounterval" UId="2492" />
+            <Token Text="." UId="2493" />
+            <Component Name="hdword" UId="2494" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2495" />
+      <Blank Num="1" UId="2496" />
+      <Parameter Name="N" UId="2497">
+        <Blank Num="1" UId="2498" />
+        <Token Text=":=" UId="2499" />
+        <Blank Num="1" UId="2500" />
+        <Access Scope="LiteralConstant" UId="2501">
+          <Constant UId="2502">
+            <ConstantValue UId="2504">11</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="2505" />
+        <Token Text="-" UId="2506" />
+        <Blank Num="1" UId="2507" />
+        <Token Text="(" UId="2508" />
+        <Access Scope="LocalVariable" UId="2509">
+          <Symbol UId="2510">
+            <Component Name="i" UId="2511" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="2512" />
+        <Token Text="+" UId="2513" />
+        <Blank Num="1" UId="2514" />
+        <Access Scope="LiteralConstant" UId="2515">
+          <Constant UId="2516">
+            <ConstantValue UId="2518">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="2519" />
+      </Parameter>
+      <Token Text=")" UId="2521" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="2522" />
+  <Token Text="AND" UId="2523" />
+  <Blank Num="1" UId="2524" />
+  <Access Scope="LocalConstant" UId="2525">
+    <Constant Name="cMask" UId="2526" />
+  </Access>
+  <Token Text=")" UId="2529" />
+  <Token Text=";" UId="2530" />
+  <NewLine Num="1" UId="2531" />
+  <Blank Num="24" UId="2532" />
+  <Token Text="ELSE" UId="2533" />
+  <NewLine Num="1" UId="2534" />
+  <Blank Num="28" UId="2535" />
+  <Access Scope="LocalVariable" UId="2536">
+    <Symbol UId="2537">
+      <Component Name="sDivision" UId="2538" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2539" />
+  <Token Text=":=" UId="2540" />
+  <Blank Num="1" UId="2541" />
+  <Access Scope="LocalVariable" UId="2542">
+    <Symbol UId="2543">
+      <Component Name="sDivision" UId="2544" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2545" />
+  <Token Text="OR" UId="2546" />
+  <Blank Num="1" UId="2547" />
+  <Token Text="(" UId="2548" />
+  <Access Scope="Call" UId="2549">
+    <Instruction Name="SHR" UId="2550">
+      <Token Text="(" UId="2551" />
+      <Parameter Name="IN" UId="2552">
+        <Blank Num="1" UId="2553" />
+        <Token Text=":=" UId="2554" />
+        <Blank Num="1" UId="2555" />
+        <Access Scope="LocalVariable" UId="2556">
+          <Symbol UId="2557">
+            <Component Name="sCounterval" UId="2558" />
+            <Token Text="." UId="2559" />
+            <Component Name="ldword" UId="2560" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2561" />
+      <Blank Num="1" UId="2562" />
+      <Parameter Name="N" UId="2563">
+        <Blank Num="1" UId="2564" />
+        <Token Text=":=" UId="2565" />
+        <Blank Num="1" UId="2566" />
+        <Access Scope="LiteralConstant" UId="2567">
+          <Constant UId="2568">
+            <ConstantValue UId="2570">32</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="2571" />
+        <Token Text="-" UId="2572" />
+        <Blank Num="1" UId="2573" />
+        <Token Text="(" UId="2574" />
+        <Token Text="(" UId="2575" />
+        <Access Scope="LocalVariable" UId="2576">
+          <Symbol UId="2577">
+            <Component Name="i" UId="2578" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="2579" />
+        <Token Text="+" UId="2580" />
+        <Blank Num="1" UId="2581" />
+        <Access Scope="LiteralConstant" UId="2582">
+          <Constant UId="2583">
+            <ConstantValue UId="2585">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="2586" />
+        <Blank Num="1" UId="2587" />
+        <Token Text="-" UId="2588" />
+        <Blank Num="1" UId="2589" />
+        <Access Scope="LiteralConstant" UId="2590">
+          <Constant UId="2591">
+            <ConstantValue UId="2593">11</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="2594" />
+      </Parameter>
+      <Token Text=")" UId="2596" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="2597" />
+  <Token Text="AND" UId="2598" />
+  <Blank Num="1" UId="2599" />
+  <Access Scope="LocalConstant" UId="2600">
+    <Constant Name="cMask" UId="2601" />
+  </Access>
+  <Token Text=")" UId="2604" />
+  <Token Text=";" UId="2605" />
+  <NewLine Num="1" UId="2606" />
+  <Blank Num="24" UId="2607" />
+  <Token Text="END_IF" UId="2608" />
+  <Token Text=";" UId="2609" />
+  <NewLine Num="1" UId="2610" />
+  <Blank Num="24" UId="2611" />
+  <NewLine Num="1" UId="2612" />
+  <Blank Num="20" UId="2613" />
+  <Token Text="ELSE" UId="2614" />
+  <NewLine Num="1" UId="2615" />
+  <Blank Num="24" UId="2616" />
+  <Token Text=";" UId="2617" />
+  <NewLine Num="1" UId="2618" />
+  <Blank Num="20" UId="2619" />
+  <Token Text="END_IF" UId="2620" />
+  <Token Text=";" UId="2621" />
+  <NewLine Num="1" UId="2622" />
+  <Blank Num="20" UId="2623" />
+  <NewLine Num="1" UId="2624" />
+  <Blank Num="20" UId="2625" />
+  <Access Scope="LocalVariable" UId="2626">
+    <Symbol UId="2627">
+      <Component Name="sResDiv" UId="2628" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2629" />
+  <Token Text=":=" UId="2630" />
+  <Blank Num="1" UId="2631" />
+  <Access Scope="Call" UId="2632">
+    <Instruction Name="SHL" UId="2633">
+      <Token Text="(" UId="2634" />
+      <Parameter Name="IN" UId="2635">
+        <Blank Num="1" UId="2636" />
+        <Token Text=":=" UId="2637" />
+        <Blank Num="1" UId="2638" />
+        <Access Scope="LocalVariable" UId="2639">
+          <Symbol UId="2640">
+            <Component Name="sResDiv" UId="2641" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="2642" />
+      <Blank Num="1" UId="2643" />
+      <Parameter Name="N" UId="2644">
+        <Blank Num="1" UId="2645" />
+        <Token Text=":=" UId="2646" />
+        <Blank Num="1" UId="2647" />
+        <Access Scope="LiteralConstant" UId="2648">
+          <Constant UId="2649">
+            <ConstantValue UId="2651">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="2653" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="2654" />
+  <NewLine Num="1" UId="2655" />
+  <Blank Num="16" UId="2656" />
+  <Token Text="END_IF" UId="2657" />
+  <Token Text=";" UId="2658" />
+  <NewLine Num="1" UId="2659" />
+  <Blank Num="16" UId="2660" />
+  <NewLine Num="1" UId="2661" />
+  <Blank Num="12" UId="2662" />
+  <Token Text="END_FOR" UId="2663" />
+  <Token Text=";" UId="2664" />
+  <NewLine Num="1" UId="2665" />
+  <Blank Num="12" UId="2666" />
+  <NewLine Num="1" UId="2667" />
+  <Blank Num="12" UId="2668" />
+  <Access Scope="LocalVariable" UId="2669">
+    <Symbol UId="2670">
+      <Component Name="sRAW" UId="2671" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2672" />
+  <Token Text=":=" UId="2673" />
+  <Blank Num="1" UId="2674" />
+  <Access Scope="Call" UId="2675">
+    <Instruction Name="DWORD_TO_DINT" UId="2676">
+      <Token Text="(" UId="2677" />
+      <NamelessParameter UId="2678">
+        <Access Scope="LocalVariable" UId="2679">
+          <Symbol UId="2680">
+            <Component Name="sResDiv" UId="2681" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="2683" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="2684" />
+  <NewLine Num="1" UId="2685" />
+  <Blank Num="12" UId="2686" />
+  <NewLine Num="1" UId="2687" />
+  <Blank Num="8" UId="2688" />
+  <Token Text="END_IF" UId="2689" />
+  <Token Text=";" UId="2690" />
+  <NewLine Num="1" UId="2691" />
+  <Blank Num="8" UId="2692" />
+  <NewLine Num="1" UId="2693" />
+  <Blank Num="4" UId="2694" />
+  <Token Text="END_IF" UId="2695" />
+  <Token Text=";" UId="2696" />
+  <NewLine Num="1" UId="2697" />
+  <Blank Num="4" UId="2698" />
+  <Access Scope="LocalVariable" UId="2699">
+    <Symbol UId="2700">
+      <Component Name="sERROR" UId="2701" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2702" />
+  <Token Text=":=" UId="2703" />
+  <Blank Num="1" UId="2704" />
+  <Access Scope="TypedConstant" UId="2705">
+    <Constant UId="2706">
+      <ConstantValue UId="2707">w#16#0000</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="2708" />
+  <NewLine Num="1" UId="2709" />
+  <Token Text="END_IF" UId="2710" />
+  <Token Text=";" UId="2711" />
+  <NewLine Num="2" UId="2712" />
+  <Access Scope="LocalVariable" UId="2713">
+    <Symbol UId="2714">
+      <Component Name="FINE" UId="2715" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2716" />
+  <Token Text=":=" UId="2717" />
+  <Blank Num="1" UId="2718" />
+  <Access Scope="LocalVariable" UId="2719">
+    <Symbol UId="2720">
+      <Component Name="sFINE" UId="2721" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="2722" />
+  <NewLine Num="1" UId="2723" />
+  <Access Scope="LocalVariable" UId="2724">
+    <Symbol UId="2725">
+      <Component Name="RAW" UId="2726" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2727" />
+  <Token Text=":=" UId="2728" />
+  <Blank Num="1" UId="2729" />
+  <Access Scope="LocalVariable" UId="2730">
+    <Symbol UId="2731">
+      <Component Name="sRAW" UId="2732" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="2733" />
+  <NewLine Num="1" UId="2734" />
+  <Access Scope="LocalVariable" UId="2735">
+    <Symbol UId="2736">
+      <Component Name="ERROR" UId="2737" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="2738" />
+  <Token Text=":=" UId="2739" />
+  <Blank Num="1" UId="2740" />
+  <Access Scope="LocalVariable" UId="2741">
+    <Symbol UId="2742">
+      <Component Name="sERROR" UId="2743" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="2744" />
+  <NewLine Num="1" UId="2745" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="19" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1A" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>LProcPAC-Conversion</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

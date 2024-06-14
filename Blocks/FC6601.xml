@@ -1,0 +1,1662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:40.4003111Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>Imtech</HeaderAuthor>
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input">
+    <Member Name="i_dWord" Datatype="DWord" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">double-word which has to be converted</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="O_cChar1" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">1st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar2" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">2st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar3" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">3st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar4" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">4st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar5" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">5st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar6" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">6st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar7" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">7st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar8" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">8st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar9" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">9st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar10" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">10st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar11" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">11st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar12" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">12st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar13" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">13st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar14" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">14st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar15" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">15st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="O_cChar16" Datatype="Char" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">16st character of numeric value</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="tmp_iChar_1" Datatype="DInt" />
+    <Member Name="tmp_iChar_2" Datatype="DInt" />
+    <Member Name="tmp_iChar_3" Datatype="DInt" />
+    <Member Name="tmp_iChar_4" Datatype="DInt" />
+    <Member Name="tmp_iChar_5" Datatype="DInt" />
+    <Member Name="tmp_iChar_6" Datatype="DInt" />
+    <Member Name="tmp_iChar_7" Datatype="DInt" />
+    <Member Name="tmp_iChar_8" Datatype="DInt" />
+    <Member Name="tmp_iChar_9" Datatype="DInt" />
+    <Member Name="tmp_iChar_10" Datatype="DInt" />
+    <Member Name="tmp_iChar_11" Datatype="DInt" />
+    <Member Name="tmp_iChar_12" Datatype="DInt" />
+    <Member Name="tmp_iChar_13" Datatype="DInt" />
+    <Member Name="tmp_iChar_14" Datatype="DInt" />
+    <Member Name="tmp_iChar_15" Datatype="DInt" />
+    <Member Name="tmp_iChar_16" Datatype="DInt" />
+    <Member Name="tmp_i_sum" Datatype="DInt" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>LGBDwordTo16Char</Name>
+      <Number>6601</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>Char 1 ist the lowest
+and
+Char 16 is the highest
+
+Note
+Char 16 to 11 are always 0</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v3">
+  <StlStatement UId="23">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#1000000000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_10" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="27">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <LineComment Inserted="false">
+      <Text>Char 9</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_10" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#1000000000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="31">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#100000000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_9" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="40">
+    <LineComment Inserted="false">
+      <Text>Char 8</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_9" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#100000000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="45">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="47">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="49">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="50">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#10000000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="52">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_8" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="53">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="54">
+    <LineComment Inserted="false">
+      <Text>Char 7</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="55">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_8" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#10000000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="59">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="61">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="63">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#1000000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="66">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_7" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="68">
+    <LineComment Inserted="false">
+      <Text>Char 6</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="69">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_7" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="70">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#1000000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="72">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="73">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="75">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="76">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="77">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="78">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#100000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="80">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_6" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="81">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="82">
+    <LineComment Inserted="false">
+      <Text>Char 5</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="83">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_6" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="84">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#100000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="85">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="86">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="87">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="88">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="89">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="90">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="91">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#10000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="93">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="94">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_5" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="95">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="96">
+    <LineComment Inserted="false">
+      <Text>Char 4</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="97">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_5" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="98">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#10000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="99">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="100">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="101">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="102">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="103">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="104">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="105">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="106">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#1000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="107">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="108">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_4" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="109">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="110">
+    <LineComment Inserted="false">
+      <Text>Char 3</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="111">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_4" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="112">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#1000</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="113">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="114">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="115">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="116">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="117">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="118">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="119">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="120">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="121">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="122">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_3" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="123">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="124">
+    <LineComment Inserted="false">
+      <Text>Char 2</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="125">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_3" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="126">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="127">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="128">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="129">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="130">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="131">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="132">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="133">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="134">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#10</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="135">
+    <StlToken Text="DIV_D" />
+  </StlStatement>
+  <StlStatement UId="136">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_2" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="137">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="138">
+    <LineComment Inserted="false">
+      <Text>Char 1</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="139">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_2" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="140">
+    <StlToken Text="L" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#10</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="141">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="142">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="143">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="144">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="145">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="i_dWord" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="146">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_i_sum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="147">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="148">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>Char 10</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>seperat each char of the dword </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v3">
+  <StlStatement UId="23">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar16" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="27">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar15" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar14" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="31">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar13" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar12" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar11" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_10" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar10" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="45">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_9" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="47">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="49">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar9" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="50">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_8" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="52">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="53">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar8" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="55">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_7" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="59">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar7" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="61">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_6" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="63">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar6" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="66">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_5" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="68">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="69">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar5" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="70">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_4" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="72">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="73">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar4" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="75">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="76">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_3" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="77">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="78">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar3" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="80">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="81">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_2" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="82">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="83">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="84">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar2" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="85">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="86">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="tmp_iChar_1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="87">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>48</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="88">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="89">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="O_cChar1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="90">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="91">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <LabelDeclaration>
+      <Label Name="ende" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="21" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>making out of the int an ASCII</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="24" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="26" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="27" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="28" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="29" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="2A" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>convert double-word to 16-numeric-chars</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="2B" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="2C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

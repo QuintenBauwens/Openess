@@ -1,0 +1,2023 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:29.8172485Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>VCC</HeaderAuthor>
+      <HeaderFamily>PNIODiag</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>0.0.0.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input">
+    <Member Name="I_HWIOSYSTEM" Datatype="HW_IOSYSTEM" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">HW ID ProfiNet System</MultiLanguageText><MultiLanguageText Lang="en-GB">HW ID ProfiNet System</MultiLanguageText><MultiLanguageText Lang="sv-SE">HW ID ProfiNet System</MultiLanguageText><MultiLanguageText Lang="nl-BE">HW ID ProfiNet System</MultiLanguageText><MultiLanguageText Lang="en-US">HW ID ProfiNet System</MultiLanguageText><MultiLanguageText Lang="zh-HK">HW ID ProfiNet System</MultiLanguageText></Comment></Member>
+    <Member Name="I_PLCIOSYSTEM" Datatype="HW_INTERFACE" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">HW ID ProfiNet System PLC Port 1</MultiLanguageText><MultiLanguageText Lang="en-GB">HW ID ProfiNet System PLC Port 1</MultiLanguageText><MultiLanguageText Lang="sv-SE">HW ID ProfiNet System PLC Port 1</MultiLanguageText><MultiLanguageText Lang="nl-BE">HW ID ProfiNet System PLC Port 1</MultiLanguageText><MultiLanguageText Lang="en-US">HW ID ProfiNet System PLC Port 1</MultiLanguageText><MultiLanguageText Lang="zh-HK">HW ID ProfiNet System PLC Port 1</MultiLanguageText></Comment></Member>
+    <Member Name="I_LastDeviceNumber" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="en-GB">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="sv-SE">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="nl-BE">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="en-US">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="zh-HK">Last Device of ProfiNet System</MultiLanguageText></Comment></Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="O_LastDeviceNumber" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="en-GB">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="sv-SE">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="nl-BE">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="en-US">Last Device of ProfiNet System</MultiLanguageText><MultiLanguageText Lang="zh-HK">Last Device of ProfiNet System</MultiLanguageText></Comment></Member>
+  </Section>
+  <Section Name="InOut">
+    <Member Name="IO_DeviceExist" Datatype="Array[0..255] of Bool" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-US">IO devices exist</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">IO devices exist</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">IO devices exist</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">IO devices exist</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">IO devices exist</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">IO devices exist</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="IO_HWIdentifier" Datatype="Array[0..255] of UInt" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">HW Device</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">HW Device</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">HW Device</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">HW Device</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">HW Device</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">HW Device</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="IO_PNIODIAG_Global" Datatype="&quot;H_PNIODiagS7-1500&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="HMICmd_ResetPNStatus" Datatype="Bool" />
+          <Member Name="HMICmd_ActivateDeactivate" Datatype="Bool" />
+          <Member Name="PNMode" Datatype="USInt" />
+          <Member Name="DeviceNumber" Datatype="Int" />
+          <Member Name="ActivateDeactivateBusy" Datatype="Bool" />
+          <Member Name="GlobStat_DeviceFaulty" Datatype="Bool" />
+          <Member Name="GlobStat_DeviceDisabled" Datatype="Bool" />
+          <Member Name="GlobStat_DeviceServiceReq" Datatype="Bool" />
+          <Member Name="IPAddressPLC" Datatype="Array[0..3] of USInt" />
+          <Member Name="DeviceColor" Datatype="Array[0..255] of USInt" />
+          <Member Name="DeviceFaulty" Datatype="Array[0..255] of Bool" />
+          <Member Name="DeviceDisabled" Datatype="Array[0..255] of Bool" />
+          <Member Name="DeviceExist" Datatype="Array[0..255] of Bool" />
+          <Member Name="DeviceServiceReq" Datatype="Array[0..255] of Bool" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+  <Section Name="Static">
+    <Member Name="PNDeviceConfigured" Datatype="Array[0..255] of Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">IO devices are configured</MultiLanguageText><MultiLanguageText Lang="zh-CN">IO devices are configured</MultiLanguageText><MultiLanguageText Lang="en-GB">IO devices are configured</MultiLanguageText><MultiLanguageText Lang="sv-SE">IO devices are configured</MultiLanguageText><MultiLanguageText Lang="nl-BE">IO devices are configured</MultiLanguageText><MultiLanguageText Lang="zh-HK">IO devices are configured</MultiLanguageText></Comment></Member>
+    <Member Name="PNDeviceExist" Datatype="Array[0..255] of Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="en-GB">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="sv-SE">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="nl-BE">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="en-US">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="zh-HK">IO devices are faulty</MultiLanguageText></Comment></Member>
+    <Member Name="PNDeviceFaulty" Datatype="Array[0..255] of Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="zh-CN">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="en-GB">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="sv-SE">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="nl-BE">IO devices are faulty</MultiLanguageText><MultiLanguageText Lang="zh-HK">IO devices are faulty</MultiLanguageText></Comment></Member>
+    <Member Name="PNDeviceDisabled" Datatype="Array[0..255] of Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">IO devices are disabled</MultiLanguageText><MultiLanguageText Lang="zh-CN">IO devices are disabled</MultiLanguageText><MultiLanguageText Lang="en-GB">IO devices are disabled</MultiLanguageText><MultiLanguageText Lang="sv-SE">IO devices are disabled</MultiLanguageText><MultiLanguageText Lang="nl-BE">IO devices are disabled</MultiLanguageText><MultiLanguageText Lang="zh-HK">IO devices are disabled</MultiLanguageText></Comment></Member>
+    <Member Name="PNDeviceServiceReq" Datatype="Array[0..255] of Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">IO devices for which a problem has occurred</MultiLanguageText><MultiLanguageText Lang="en-GB">IO devices for which a problem has occurred</MultiLanguageText><MultiLanguageText Lang="sv-SE">IO devices for which a problem has occurred</MultiLanguageText><MultiLanguageText Lang="nl-BE">IO devices for which a problem has occurred</MultiLanguageText><MultiLanguageText Lang="en-US">IO devices for which a problem has occurred</MultiLanguageText><MultiLanguageText Lang="zh-HK">IO devices for which a problem has occurred</MultiLanguageText></Comment></Member>
+    <Member Name="Edge" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText><MultiLanguageText Lang="en-GB">Temp</MultiLanguageText><MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText><MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText><MultiLanguageText Lang="en-US">Temp</MultiLanguageText><MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText></Comment></Member>
+    <Member Name="GeoAdress" Datatype="GEOADDR" Version="1.0" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">Int Function</MultiLanguageText><MultiLanguageText Lang="en-GB">Int Function</MultiLanguageText><MultiLanguageText Lang="sv-SE">Int Function</MultiLanguageText><MultiLanguageText Lang="nl-BE">Int Function</MultiLanguageText><MultiLanguageText Lang="en-US">Int Function</MultiLanguageText><MultiLanguageText Lang="zh-HK">Int Function</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="HWTYPE" Datatype="UInt"><StartValue>2</StartValue></Member><Member Name="AREA" Datatype="UInt"><StartValue>1</StartValue></Member><Member Name="IOSYSTEM" Datatype="UInt"><StartValue>100</StartValue></Member><Member Name="STATION" Datatype="UInt" /><Member Name="SLOT" Datatype="UInt" /><Member Name="SUBSLOT" Datatype="UInt" /></Section></Sections></Member>
+    <Member Name="_ReadIP" Datatype="&quot;LPNIODiagReadIPS7-1500&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="sv-SE">FB</MultiLanguageText><MultiLanguageText Lang="en-US">FB</MultiLanguageText><MultiLanguageText Lang="nl-BE">FB</MultiLanguageText><MultiLanguageText Lang="en-GB">FB</MultiLanguageText><MultiLanguageText Lang="zh-HK">FB</MultiLanguageText><MultiLanguageText Lang="zh-CN">FB</MultiLanguageText></Comment><Sections><Section Name="Input"><Member Name="I_ReqIN" Datatype="Bool" /><Member Name="I_HWID" Datatype="UInt" /></Section><Section Name="Output"><Member Name="O_IPParam" Datatype="Struct"><Member Name="IPAddress" Datatype="Array[0..3] of USInt" /><Member Name="SubnetMask" Datatype="Array[0..3] of USInt" /><Member Name="StandardGateway" Datatype="Array[0..3] of USInt" /><Member Name="MACAddress" Datatype="Array[0..5] of USInt" /><Member Name="PNName" Datatype="String" /></Member><Member Name="O_Busy" Datatype="Bool" /><Member Name="O_Valid" Datatype="Bool" /><Member Name="O_Error" Datatype="Bool" /><Member Name="O_Status" Datatype="DWord" /><Member Name="O_LEN" Datatype="UInt" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="ReqFlag" Datatype="Bool" /><Member Name="RDREC_Status" Datatype="DWord" /><Member Name="RDREC_LEN" Datatype="UInt" /><Member Name="RDREC_Valid" Datatype="Bool" /><Member Name="RDREC_Busy" Datatype="Bool" /><Member Name="RDREC_Error" Datatype="Bool" /><Member Name="StatusSave" Datatype="DWord" /><Member Name="PDInterfaceDataReal" Datatype="Struct"><Member Name="BlockType" Datatype="UInt" /><Member Name="BlockLength" Datatype="UInt" /><Member Name="BlockVersionHigh" Datatype="USInt" /><Member Name="BlockVersionLow" Datatype="USInt" /><Member Name="Data" Datatype="Array[0..301] of Byte" /><Member Name="OwnChassisID" Datatype="String" /></Member><Member Name="R_TRIG" Datatype="R_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="RDREC" Datatype="RDREC" Version="1.0"><Sections><Section Name="Input"><Member Name="REQ" Datatype="Bool" /><Member Name="ID" Datatype="HW_IO" /><Member Name="INDEX" Datatype="DInt" /><Member Name="MLEN" Datatype="UInt" /></Section><Section Name="Output"><Member Name="VALID" Datatype="Bool" /><Member Name="BUSY" Datatype="Bool" /><Member Name="ERROR" Datatype="Bool" /><Member Name="STATUS" Datatype="DWord" /><Member Name="LEN" Datatype="UInt" /></Section><Section Name="InOut"><Member Name="RECORD" Datatype="Variant" /></Section><Section Name="Static" /></Sections></Member></Section></Sections></Member>
+    <Member Name="TimerResetPNStatus" Datatype="TP_TIME" Version="1.0" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Timer</MultiLanguageText><MultiLanguageText Lang="sv-SE">Timer</MultiLanguageText><MultiLanguageText Lang="nl-BE">Timer</MultiLanguageText><MultiLanguageText Lang="en-GB">Timer</MultiLanguageText><MultiLanguageText Lang="zh-HK">Timer</MultiLanguageText><MultiLanguageText Lang="zh-CN">Timer</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="No1" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ReturnMode1" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ReturnMode2" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ReturnMode3" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ReturnMode4" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ReturnMode5" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ReturnGeo" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ReturnActPNIO" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="en-US">Temp</MultiLanguageText>
+        <MultiLanguageText Lang="zh-HK">Temp</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>true</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>true</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>200</MemoryReserve>
+      <Name>LPNIODiagS7-1500</Name>
+      <Number>2205</Number>
+      <ProgrammingLanguage>SCL</ProgrammingLanguage>
+      <RetainMemoryReserve>0</RetainMemoryReserve>
+      <SetENOAutomatically>True</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v2">
+  <NewLine Num="1" UId="21" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="22">
+    <Text UId="23">**** 1 - Inputs **** Activate Scan</Text>
+  </LineComment>
+  <NewLine Num="1" UId="24" />
+  <Token Text="IF" UId="25" />
+  <Blank Num="1" UId="26" />
+  <Access Scope="GlobalVariable" UId="27">
+    <Symbol UId="28">
+      <Component Name="TRUE" UId="29" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="30" />
+  <Token Text="THEN" UId="31" />
+  <NewLine Num="1" UId="32" />
+  <Blank Num="4" UId="33" />
+  <Access Scope="LocalVariable" UId="34">
+    <Symbol UId="35">
+      <Component Name="ReturnMode1" UId="36" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="37" />
+  <Token Text=":=" UId="38" />
+  <Blank Num="1" UId="39" />
+  <Access Scope="Call" UId="40">
+    <Instruction Name="DeviceStates" UId="41">
+      <Token Text="(" UId="42" />
+      <Parameter Name="LADDR" UId="43">
+        <Blank Num="1" UId="44" />
+        <Token Text=":=" UId="45" />
+        <Blank Num="1" UId="46" />
+        <Access Scope="LocalVariable" UId="47">
+          <Symbol UId="48">
+            <Component Name="I_HWIOSYSTEM" UId="49" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="50" />
+      <Blank Num="1" UId="51" />
+      <Parameter Name="MODE" UId="52">
+        <Blank Num="1" UId="53" />
+        <Token Text=":=" UId="54" />
+        <Blank Num="1" UId="55" />
+        <Access Scope="LiteralConstant" UId="56">
+          <Constant UId="57">
+            <ConstantValue UId="59">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="60" />
+      <Blank Num="1" UId="61" />
+      <Parameter Name="STATE" UId="62">
+        <Blank Num="1" UId="63" />
+        <Token Text=":=" UId="64" />
+        <Blank Num="1" UId="65" />
+        <Access Scope="LocalVariable" UId="66">
+          <Symbol UId="67">
+            <Component Name="PNDeviceConfigured" UId="68" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="70" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="71" />
+  <Blank Num="1" UId="72" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="73">
+    <Text UId="74">1:IO devices are configured</Text>
+  </LineComment>
+  <NewLine Num="1" UId="75" />
+  <Blank Num="4" UId="76" />
+  <Access Scope="LocalVariable" UId="77">
+    <Symbol UId="78">
+      <Component Name="ReturnMode2" UId="79" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="80" />
+  <Token Text=":=" UId="81" />
+  <Blank Num="1" UId="82" />
+  <Access Scope="Call" UId="83">
+    <Instruction Name="DeviceStates" UId="84">
+      <Token Text="(" UId="85" />
+      <Parameter Name="LADDR" UId="86">
+        <Blank Num="1" UId="87" />
+        <Token Text=":=" UId="88" />
+        <Blank Num="1" UId="89" />
+        <Access Scope="LocalVariable" UId="90">
+          <Symbol UId="91">
+            <Component Name="I_HWIOSYSTEM" UId="92" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="93" />
+      <Blank Num="1" UId="94" />
+      <Parameter Name="MODE" UId="95">
+        <Blank Num="1" UId="96" />
+        <Token Text=":=" UId="97" />
+        <Blank Num="1" UId="98" />
+        <Access Scope="LiteralConstant" UId="99">
+          <Constant UId="100">
+            <ConstantValue UId="102">2</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="103" />
+      <Blank Num="1" UId="104" />
+      <Parameter Name="STATE" UId="105">
+        <Blank Num="1" UId="106" />
+        <Token Text=":=" UId="107" />
+        <Blank Num="1" UId="108" />
+        <Access Scope="LocalVariable" UId="109">
+          <Symbol UId="110">
+            <Component Name="PNDeviceFaulty" UId="111" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="113" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="114" />
+  <Blank Num="1" UId="115" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="116">
+    <Text UId="117">2: IO devices are faulty   </Text>
+  </LineComment>
+  <NewLine Num="1" UId="118" />
+  <Blank Num="4" UId="119" />
+  <Access Scope="LocalVariable" UId="120">
+    <Symbol UId="121">
+      <Component Name="ReturnMode3" UId="122" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="123" />
+  <Token Text=":=" UId="124" />
+  <Blank Num="1" UId="125" />
+  <Access Scope="Call" UId="126">
+    <Instruction Name="DeviceStates" UId="127">
+      <Token Text="(" UId="128" />
+      <Parameter Name="LADDR" UId="129">
+        <Blank Num="1" UId="130" />
+        <Token Text=":=" UId="131" />
+        <Blank Num="1" UId="132" />
+        <Access Scope="LocalVariable" UId="133">
+          <Symbol UId="134">
+            <Component Name="I_HWIOSYSTEM" UId="135" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="136" />
+      <Blank Num="1" UId="137" />
+      <Parameter Name="MODE" UId="138">
+        <Blank Num="1" UId="139" />
+        <Token Text=":=" UId="140" />
+        <Blank Num="1" UId="141" />
+        <Access Scope="LiteralConstant" UId="142">
+          <Constant UId="143">
+            <ConstantValue UId="145">3</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="146" />
+      <Blank Num="1" UId="147" />
+      <Parameter Name="STATE" UId="148">
+        <Blank Num="1" UId="149" />
+        <Token Text=":=" UId="150" />
+        <Blank Num="1" UId="151" />
+        <Access Scope="LocalVariable" UId="152">
+          <Symbol UId="153">
+            <Component Name="PNDeviceDisabled" UId="154" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="156" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="157" />
+  <Blank Num="1" UId="158" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="159">
+    <Text UId="160">3: IO devices are disabled</Text>
+  </LineComment>
+  <NewLine Num="1" UId="161" />
+  <Blank Num="4" UId="162" />
+  <Access Scope="LocalVariable" UId="163">
+    <Symbol UId="164">
+      <Component Name="ReturnMode4" UId="165" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="166" />
+  <Token Text=":=" UId="167" />
+  <Blank Num="1" UId="168" />
+  <Access Scope="Call" UId="169">
+    <Instruction Name="DeviceStates" UId="170">
+      <Token Text="(" UId="171" />
+      <Parameter Name="LADDR" UId="172">
+        <Blank Num="1" UId="173" />
+        <Token Text=":=" UId="174" />
+        <Blank Num="1" UId="175" />
+        <Access Scope="LocalVariable" UId="176">
+          <Symbol UId="177">
+            <Component Name="I_HWIOSYSTEM" UId="178" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="179" />
+      <Blank Num="1" UId="180" />
+      <Parameter Name="MODE" UId="181">
+        <Blank Num="1" UId="182" />
+        <Token Text=":=" UId="183" />
+        <Blank Num="1" UId="184" />
+        <Access Scope="LiteralConstant" UId="185">
+          <Constant UId="186">
+            <ConstantValue UId="188">4</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="189" />
+      <Blank Num="1" UId="190" />
+      <Parameter Name="STATE" UId="191">
+        <Blank Num="1" UId="192" />
+        <Token Text=":=" UId="193" />
+        <Blank Num="1" UId="194" />
+        <Access Scope="LocalVariable" UId="195">
+          <Symbol UId="196">
+            <Component Name="PNDeviceExist" UId="197" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="199" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="200" />
+  <Blank Num="1" UId="201" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="202">
+    <Text UId="203">4: IO devices exist</Text>
+  </LineComment>
+  <NewLine Num="1" UId="204" />
+  <Blank Num="4" UId="205" />
+  <Access Scope="LocalVariable" UId="206">
+    <Symbol UId="207">
+      <Component Name="ReturnMode5" UId="208" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="209" />
+  <Token Text=":=" UId="210" />
+  <Blank Num="1" UId="211" />
+  <Access Scope="Call" UId="212">
+    <Instruction Name="DeviceStates" UId="213">
+      <Token Text="(" UId="214" />
+      <Parameter Name="LADDR" UId="215">
+        <Blank Num="1" UId="216" />
+        <Token Text=":=" UId="217" />
+        <Blank Num="1" UId="218" />
+        <Access Scope="LocalVariable" UId="219">
+          <Symbol UId="220">
+            <Component Name="I_HWIOSYSTEM" UId="221" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="222" />
+      <Blank Num="1" UId="223" />
+      <Parameter Name="MODE" UId="224">
+        <Blank Num="1" UId="225" />
+        <Token Text=":=" UId="226" />
+        <Blank Num="1" UId="227" />
+        <Access Scope="LiteralConstant" UId="228">
+          <Constant UId="229">
+            <ConstantValue UId="231">5</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="232" />
+      <Blank Num="1" UId="233" />
+      <Parameter Name="STATE" UId="234">
+        <Blank Num="1" UId="235" />
+        <Token Text=":=" UId="236" />
+        <Blank Num="1" UId="237" />
+        <Access Scope="LocalVariable" UId="238">
+          <Symbol UId="239">
+            <Component Name="PNDeviceServiceReq" UId="240" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="242" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="243" />
+  <Blank Num="1" UId="244" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="245">
+    <Text UId="246">5: IO devices for which a problem has occurred    </Text>
+  </LineComment>
+  <NewLine Num="1" UId="247" />
+  <Token Text="END_IF" UId="248" />
+  <Token Text=";" UId="249" />
+  <NewLine Num="2" UId="250" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="251">
+    <Text UId="252">**** 2.2 - Alarms - Alarm Generation **** Reset Alarm and Warning</Text>
+  </LineComment>
+  <NewLine Num="1" UId="253" />
+  <Access Scope="LocalVariable" UId="254">
+    <Symbol UId="255">
+      <Component Name="IO_PNIODIAG_Global" UId="256" />
+      <Token Text="." UId="257" />
+      <Component Name="GlobStat_DeviceFaulty" UId="258" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="259" />
+  <Token Text=":=" UId="260" />
+  <Blank Num="1" UId="261" />
+  <Access Scope="LiteralConstant" UId="262">
+    <Constant UId="263">
+      <ConstantValue UId="265">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="266" />
+  <NewLine Num="1" UId="267" />
+  <Access Scope="LocalVariable" UId="268">
+    <Symbol UId="269">
+      <Component Name="IO_PNIODIAG_Global" UId="270" />
+      <Token Text="." UId="271" />
+      <Component Name="GlobStat_DeviceDisabled" UId="272" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="273" />
+  <Token Text=":=" UId="274" />
+  <Blank Num="1" UId="275" />
+  <Access Scope="LiteralConstant" UId="276">
+    <Constant UId="277">
+      <ConstantValue UId="279">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="280" />
+  <NewLine Num="1" UId="281" />
+  <Access Scope="LocalVariable" UId="282">
+    <Symbol UId="283">
+      <Component Name="IO_PNIODIAG_Global" UId="284" />
+      <Token Text="." UId="285" />
+      <Component Name="GlobStat_DeviceServiceReq" UId="286" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="287" />
+  <Token Text=":=" UId="288" />
+  <Blank Num="1" UId="289" />
+  <Access Scope="LiteralConstant" UId="290">
+    <Constant UId="291">
+      <ConstantValue UId="293">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="294" />
+  <NewLine Num="2" UId="295" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="296">
+    <Text UId="297">**** 4.4 - Machine status - Calculated  **** Set Status color on the HMI</Text>
+  </LineComment>
+  <NewLine Num="1" UId="298" />
+  <Token Text="FOR" UId="299" />
+  <Blank Num="1" UId="300" />
+  <Access Scope="LocalVariable" UId="301">
+    <Symbol UId="302">
+      <Component Name="No1" UId="303" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="304" />
+  <Token Text=":=" UId="305" />
+  <Blank Num="1" UId="306" />
+  <Access Scope="LiteralConstant" UId="307">
+    <Constant UId="308">
+      <ConstantValue UId="310">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="311" />
+  <Token Text="TO" UId="312" />
+  <Blank Num="1" UId="313" />
+  <Access Scope="LocalVariable" UId="314">
+    <Symbol UId="315">
+      <Component Name="I_LastDeviceNumber" UId="316" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="317" />
+  <Token Text="DO" UId="318" />
+  <NewLine Num="1" UId="319" />
+  <Blank Num="4" UId="320" />
+  <Token Text="IF" UId="321" />
+  <Blank Num="1" UId="322" />
+  <Access Scope="LocalVariable" UId="323">
+    <Symbol UId="324">
+      <Component Name="PNDeviceConfigured" UId="325">
+        <Token Text="[" UId="326" />
+        <Access Scope="LocalVariable" UId="327">
+          <Symbol UId="328">
+            <Component Name="No1" UId="329" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="330" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="331" />
+  <Token Text="THEN" UId="332" />
+  <NewLine Num="1" UId="333" />
+  <Blank Num="8" UId="334" />
+  <NewLine Num="1" UId="335" />
+  <Blank Num="8" UId="336" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="337">
+    <Text UId="338">Get HW_DEVICE number from all PN devices that are aviable on the PROFINET</Text>
+  </LineComment>
+  <NewLine Num="1" UId="339" />
+  <Blank Num="8" UId="340" />
+  <Access Scope="LocalVariable" UId="341">
+    <Symbol UId="342">
+      <Component Name="GeoAdress" UId="343" />
+      <Token Text="." UId="344" />
+      <Component Name="AREA" UId="345" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="346" />
+  <Token Text=":=" UId="347" />
+  <Blank Num="1" UId="348" />
+  <Access Scope="LiteralConstant" UId="349">
+    <Constant UId="350">
+      <ConstantValue UId="352">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="353" />
+  <NewLine Num="1" UId="354" />
+  <Blank Num="8" UId="355" />
+  <Access Scope="LocalVariable" UId="356">
+    <Symbol UId="357">
+      <Component Name="GeoAdress" UId="358" />
+      <Token Text="." UId="359" />
+      <Component Name="HWTYPE" UId="360" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="361" />
+  <Token Text=":=" UId="362" />
+  <Blank Num="1" UId="363" />
+  <Access Scope="LiteralConstant" UId="364">
+    <Constant UId="365">
+      <ConstantValue UId="367">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="368" />
+  <NewLine Num="1" UId="369" />
+  <Blank Num="8" UId="370" />
+  <Access Scope="LocalVariable" UId="371">
+    <Symbol UId="372">
+      <Component Name="GeoAdress" UId="373" />
+      <Token Text="." UId="374" />
+      <Component Name="STATION" UId="375" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="376" />
+  <Token Text=":=" UId="377" />
+  <Blank Num="1" UId="378" />
+  <Access Scope="Call" UId="379">
+    <Instruction Name="INT_TO_UINT" UId="380">
+      <Token Text="(" UId="381" />
+      <NamelessParameter UId="382">
+        <Access Scope="LocalVariable" UId="383">
+          <Symbol UId="384">
+            <Component Name="No1" UId="385" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="387" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="388" />
+  <NewLine Num="1" UId="389" />
+  <Blank Num="8" UId="390" />
+  <Access Scope="LocalVariable" UId="391">
+    <Symbol UId="392">
+      <Component Name="ReturnGeo" UId="393" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="394" />
+  <Token Text=":=" UId="395" />
+  <Blank Num="1" UId="396" />
+  <Access Scope="Call" UId="397">
+    <Instruction Name="GEO2LOG" UId="398">
+      <Token Text="(" UId="399" />
+      <Parameter Name="GEOADDR" UId="400">
+        <Blank Num="1" UId="401" />
+        <Token Text=":=" UId="402" />
+        <Blank Num="1" UId="403" />
+        <Access Scope="LocalVariable" UId="404">
+          <Symbol UId="405">
+            <Component Name="GeoAdress" UId="406" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="407" />
+      <Blank Num="1" UId="408" />
+      <Parameter Name="LADDR" UId="409">
+        <Blank Num="1" UId="410" />
+        <Token Text="=&gt;" UId="411" />
+        <Blank Num="1" UId="412" />
+        <Access Scope="LocalVariable" UId="413">
+          <Symbol UId="414">
+            <Component Name="IO_HWIdentifier" UId="415">
+              <Token Text="[" UId="416" />
+              <Access Scope="LocalVariable" UId="417">
+                <Symbol UId="418">
+                  <Component Name="No1" UId="419" />
+                </Symbol>
+              </Access>
+              <Token Text="]" UId="420" />
+            </Component>
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="422" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="423" />
+  <NewLine Num="1" UId="424" />
+  <Blank Num="8" UId="425" />
+  <NewLine Num="1" UId="426" />
+  <Blank Num="8" UId="427" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="428">
+    <Text UId="429">Check If IO Devices Are Faulty</Text>
+  </LineComment>
+  <NewLine Num="1" UId="430" />
+  <Blank Num="8" UId="431" />
+  <Token Text="IF" UId="432" />
+  <Blank Num="1" UId="433" />
+  <Access Scope="LocalVariable" UId="434">
+    <Symbol UId="435">
+      <Component Name="PNDeviceFaulty" UId="436">
+        <Token Text="[" UId="437" />
+        <Access Scope="LocalVariable" UId="438">
+          <Symbol UId="439">
+            <Component Name="No1" UId="440" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="441" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="442" />
+  <Token Text="THEN" UId="443" />
+  <NewLine Num="1" UId="444" />
+  <Blank Num="12" UId="445" />
+  <Access Scope="LocalVariable" UId="446">
+    <Symbol UId="447">
+      <Component Name="IO_PNIODIAG_Global" UId="448" />
+      <Token Text="." UId="449" />
+      <Component Name="DeviceColor" UId="450">
+        <Token Text="[" UId="451" />
+        <Access Scope="LocalVariable" UId="452">
+          <Symbol UId="453">
+            <Component Name="No1" UId="454" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="455" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="456" />
+  <Blank Num="1" UId="457" />
+  <Access Scope="LiteralConstant" UId="458">
+    <Constant UId="459">
+      <ConstantValue UId="461">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="462" />
+  <Blank Num="1" UId="463" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="464">
+    <Text UId="465">red</Text>
+  </LineComment>
+  <NewLine Num="1" UId="466" />
+  <Blank Num="12" UId="467" />
+  <Access Scope="LocalVariable" UId="468">
+    <Symbol UId="469">
+      <Component Name="IO_PNIODIAG_Global" UId="470" />
+      <Token Text="." UId="471" />
+      <Component Name="DeviceFaulty" UId="472">
+        <Token Text="[" UId="473" />
+        <Access Scope="LocalVariable" UId="474">
+          <Symbol UId="475">
+            <Component Name="No1" UId="476" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="477" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="478" />
+  <Token Text=":=" UId="479" />
+  <Blank Num="1" UId="480" />
+  <Access Scope="LiteralConstant" UId="481">
+    <Constant UId="482">
+      <ConstantValue UId="484">True</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="485" />
+  <NewLine Num="1" UId="486" />
+  <Blank Num="12" UId="487" />
+  <Access Scope="LocalVariable" UId="488">
+    <Symbol UId="489">
+      <Component Name="IO_PNIODIAG_Global" UId="490" />
+      <Token Text="." UId="491" />
+      <Component Name="DeviceDisabled" UId="492">
+        <Token Text="[" UId="493" />
+        <Access Scope="LocalVariable" UId="494">
+          <Symbol UId="495">
+            <Component Name="No1" UId="496" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="497" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="498" />
+  <Token Text=":=" UId="499" />
+  <Blank Num="1" UId="500" />
+  <Access Scope="LiteralConstant" UId="501">
+    <Constant UId="502">
+      <ConstantValue UId="504">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="505" />
+  <NewLine Num="1" UId="506" />
+  <Blank Num="12" UId="507" />
+  <Access Scope="LocalVariable" UId="508">
+    <Symbol UId="509">
+      <Component Name="IO_PNIODIAG_Global" UId="510" />
+      <Token Text="." UId="511" />
+      <Component Name="DeviceServiceReq" UId="512">
+        <Token Text="[" UId="513" />
+        <Access Scope="LocalVariable" UId="514">
+          <Symbol UId="515">
+            <Component Name="No1" UId="516" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="517" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="518" />
+  <Token Text=":=" UId="519" />
+  <Blank Num="1" UId="520" />
+  <Access Scope="LiteralConstant" UId="521">
+    <Constant UId="522">
+      <ConstantValue UId="524">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="525" />
+  <NewLine Num="1" UId="526" />
+  <Blank Num="12" UId="527" />
+  <Access Scope="LocalVariable" UId="528">
+    <Symbol UId="529">
+      <Component Name="IO_PNIODIAG_Global" UId="530" />
+      <Token Text="." UId="531" />
+      <Component Name="GlobStat_DeviceFaulty" UId="532" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="533" />
+  <Token Text=":=" UId="534" />
+  <Blank Num="1" UId="535" />
+  <Access Scope="LiteralConstant" UId="536">
+    <Constant UId="537">
+      <ConstantValue UId="539">True</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="540" />
+  <NewLine Num="1" UId="541" />
+  <Blank Num="12" UId="542" />
+  <Access Scope="LocalVariable" UId="543">
+    <Symbol UId="544">
+      <Component Name="IO_PNIODIAG_Global" UId="545" />
+      <Token Text="." UId="546" />
+      <Component Name="GlobStat_DeviceDisabled" UId="547" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="548" />
+  <Token Text=":=" UId="549" />
+  <Blank Num="1" UId="550" />
+  <Access Scope="LiteralConstant" UId="551">
+    <Constant UId="552">
+      <ConstantValue UId="554">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="555" />
+  <NewLine Num="1" UId="556" />
+  <Blank Num="12" UId="557" />
+  <Access Scope="LocalVariable" UId="558">
+    <Symbol UId="559">
+      <Component Name="IO_PNIODIAG_Global" UId="560" />
+      <Token Text="." UId="561" />
+      <Component Name="GlobStat_DeviceServiceReq" UId="562" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="563" />
+  <Token Text=":=" UId="564" />
+  <Blank Num="1" UId="565" />
+  <Access Scope="LiteralConstant" UId="566">
+    <Constant UId="567">
+      <ConstantValue UId="569">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="570" />
+  <NewLine Num="1" UId="571" />
+  <Blank Num="12" UId="572" />
+  <NewLine Num="1" UId="573" />
+  <Blank Num="12" UId="574" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="575">
+    <Text UId="576">Check If  Maintenance Demand Or Service Request Is Active   </Text>
+  </LineComment>
+  <NewLine Num="1" UId="577" />
+  <Blank Num="8" UId="578" />
+  <Token Text="ELSIF" UId="579" />
+  <Blank Num="1" UId="580" />
+  <Access Scope="LocalVariable" UId="581">
+    <Symbol UId="582">
+      <Component Name="PNDeviceServiceReq" UId="583">
+        <Token Text="[" UId="584" />
+        <Access Scope="LocalVariable" UId="585">
+          <Symbol UId="586">
+            <Component Name="No1" UId="587" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="588" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="589" />
+  <Token Text="=" UId="590" />
+  <Blank Num="1" UId="591" />
+  <Access Scope="LiteralConstant" UId="592">
+    <Constant UId="593">
+      <ConstantValue UId="595">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="596" />
+  <Token Text="THEN" UId="597" />
+  <NewLine Num="1" UId="598" />
+  <Blank Num="12" UId="599" />
+  <Access Scope="LocalVariable" UId="600">
+    <Symbol UId="601">
+      <Component Name="IO_PNIODIAG_Global" UId="602" />
+      <Token Text="." UId="603" />
+      <Component Name="DeviceColor" UId="604">
+        <Token Text="[" UId="605" />
+        <Access Scope="LocalVariable" UId="606">
+          <Symbol UId="607">
+            <Component Name="No1" UId="608" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="609" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="610" />
+  <Token Text=":=" UId="611" />
+  <Blank Num="1" UId="612" />
+  <Access Scope="LiteralConstant" UId="613">
+    <Constant UId="614">
+      <ConstantValue UId="616">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="617" />
+  <Blank Num="1" UId="618" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="619">
+    <Text UId="620">yellow</Text>
+  </LineComment>
+  <NewLine Num="1" UId="621" />
+  <Blank Num="12" UId="622" />
+  <Access Scope="LocalVariable" UId="623">
+    <Symbol UId="624">
+      <Component Name="IO_PNIODIAG_Global" UId="625" />
+      <Token Text="." UId="626" />
+      <Component Name="DeviceServiceReq" UId="627">
+        <Token Text="[" UId="628" />
+        <Access Scope="LocalVariable" UId="629">
+          <Symbol UId="630">
+            <Component Name="No1" UId="631" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="632" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="633" />
+  <Token Text=":=" UId="634" />
+  <Blank Num="1" UId="635" />
+  <Access Scope="LiteralConstant" UId="636">
+    <Constant UId="637">
+      <ConstantValue UId="639">True</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="640" />
+  <NewLine Num="1" UId="641" />
+  <Blank Num="12" UId="642" />
+  <Access Scope="LocalVariable" UId="643">
+    <Symbol UId="644">
+      <Component Name="IO_PNIODIAG_Global" UId="645" />
+      <Token Text="." UId="646" />
+      <Component Name="GlobStat_DeviceServiceReq" UId="647" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="648" />
+  <Token Text=":=" UId="649" />
+  <Blank Num="1" UId="650" />
+  <Access Scope="LiteralConstant" UId="651">
+    <Constant UId="652">
+      <ConstantValue UId="654">True</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="655" />
+  <NewLine Num="1" UId="656" />
+  <Blank Num="12" UId="657" />
+  <NewLine Num="1" UId="658" />
+  <Blank Num="12" UId="659" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="660">
+    <Text UId="661">Check if IO Devices Are disabled</Text>
+  </LineComment>
+  <NewLine Num="1" UId="662" />
+  <Blank Num="8" UId="663" />
+  <Token Text="ELSIF" UId="664" />
+  <Blank Num="1" UId="665" />
+  <Access Scope="LocalVariable" UId="666">
+    <Symbol UId="667">
+      <Component Name="PNDeviceDisabled" UId="668">
+        <Token Text="[" UId="669" />
+        <Access Scope="LocalVariable" UId="670">
+          <Symbol UId="671">
+            <Component Name="No1" UId="672" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="673" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="674" />
+  <Token Text="=" UId="675" />
+  <Blank Num="1" UId="676" />
+  <Access Scope="LiteralConstant" UId="677">
+    <Constant UId="678">
+      <ConstantValue UId="680">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="681" />
+  <Token Text="THEN" UId="682" />
+  <NewLine Num="1" UId="683" />
+  <Blank Num="12" UId="684" />
+  <Access Scope="LocalVariable" UId="685">
+    <Symbol UId="686">
+      <Component Name="IO_PNIODIAG_Global" UId="687" />
+      <Token Text="." UId="688" />
+      <Component Name="DeviceColor" UId="689">
+        <Token Text="[" UId="690" />
+        <Access Scope="LocalVariable" UId="691">
+          <Symbol UId="692">
+            <Component Name="No1" UId="693" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="694" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="695" />
+  <Token Text=":=" UId="696" />
+  <Blank Num="1" UId="697" />
+  <Access Scope="LiteralConstant" UId="698">
+    <Constant UId="699">
+      <ConstantValue UId="701">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="702" />
+  <Blank Num="1" UId="703" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="704">
+    <Text UId="705">blue</Text>
+  </LineComment>
+  <NewLine Num="1" UId="706" />
+  <Blank Num="12" UId="707" />
+  <Access Scope="LocalVariable" UId="708">
+    <Symbol UId="709">
+      <Component Name="IO_PNIODIAG_Global" UId="710" />
+      <Token Text="." UId="711" />
+      <Component Name="DeviceDisabled" UId="712">
+        <Token Text="[" UId="713" />
+        <Access Scope="LocalVariable" UId="714">
+          <Symbol UId="715">
+            <Component Name="No1" UId="716" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="717" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="718" />
+  <Token Text=":=" UId="719" />
+  <Blank Num="1" UId="720" />
+  <Access Scope="LiteralConstant" UId="721">
+    <Constant UId="722">
+      <ConstantValue UId="724">True</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="725" />
+  <NewLine Num="1" UId="726" />
+  <Blank Num="12" UId="727" />
+  <Access Scope="LocalVariable" UId="728">
+    <Symbol UId="729">
+      <Component Name="IO_PNIODIAG_Global" UId="730" />
+      <Token Text="." UId="731" />
+      <Component Name="DeviceFaulty" UId="732">
+        <Token Text="[" UId="733" />
+        <Access Scope="LocalVariable" UId="734">
+          <Symbol UId="735">
+            <Component Name="No1" UId="736" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="737" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="738" />
+  <Token Text=":=" UId="739" />
+  <Blank Num="1" UId="740" />
+  <Access Scope="LiteralConstant" UId="741">
+    <Constant UId="742">
+      <ConstantValue UId="744">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="745" />
+  <NewLine Num="1" UId="746" />
+  <Blank Num="12" UId="747" />
+  <Access Scope="LocalVariable" UId="748">
+    <Symbol UId="749">
+      <Component Name="IO_PNIODIAG_Global" UId="750" />
+      <Token Text="." UId="751" />
+      <Component Name="GlobStat_DeviceFaulty" UId="752" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="753" />
+  <Token Text=":=" UId="754" />
+  <Blank Num="1" UId="755" />
+  <Access Scope="LiteralConstant" UId="756">
+    <Constant UId="757">
+      <ConstantValue UId="759">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="760" />
+  <NewLine Num="1" UId="761" />
+  <Blank Num="12" UId="762" />
+  <Access Scope="LocalVariable" UId="763">
+    <Symbol UId="764">
+      <Component Name="IO_PNIODIAG_Global" UId="765" />
+      <Token Text="." UId="766" />
+      <Component Name="GlobStat_DeviceDisabled" UId="767" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="768" />
+  <Token Text=":=" UId="769" />
+  <Blank Num="1" UId="770" />
+  <Access Scope="LiteralConstant" UId="771">
+    <Constant UId="772">
+      <ConstantValue UId="774">True</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="775" />
+  <NewLine Num="1" UId="776" />
+  <Blank Num="12" UId="777" />
+  <NewLine Num="1" UId="778" />
+  <Blank Num="12" UId="779" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="780">
+    <Text UId="781">Check If IO Devices Are Existing Without Error/Fault</Text>
+  </LineComment>
+  <NewLine Num="1" UId="782" />
+  <Blank Num="8" UId="783" />
+  <Token Text="ELSIF" UId="784" />
+  <Blank Num="1" UId="785" />
+  <Access Scope="LocalVariable" UId="786">
+    <Symbol UId="787">
+      <Component Name="PNDeviceExist" UId="788">
+        <Token Text="[" UId="789" />
+        <Access Scope="LocalVariable" UId="790">
+          <Symbol UId="791">
+            <Component Name="No1" UId="792" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="793" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="794" />
+  <Token Text="=" UId="795" />
+  <Blank Num="1" UId="796" />
+  <Access Scope="LiteralConstant" UId="797">
+    <Constant UId="798">
+      <ConstantValue UId="800">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="801" />
+  <Token Text="THEN" UId="802" />
+  <NewLine Num="1" UId="803" />
+  <Blank Num="12" UId="804" />
+  <Access Scope="LocalVariable" UId="805">
+    <Symbol UId="806">
+      <Component Name="IO_PNIODIAG_Global" UId="807" />
+      <Token Text="." UId="808" />
+      <Component Name="DeviceColor" UId="809">
+        <Token Text="[" UId="810" />
+        <Access Scope="LocalVariable" UId="811">
+          <Symbol UId="812">
+            <Component Name="No1" UId="813" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="814" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="815" />
+  <Token Text=":=" UId="816" />
+  <Blank Num="1" UId="817" />
+  <Access Scope="LiteralConstant" UId="818">
+    <Constant UId="819">
+      <ConstantValue UId="821">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="822" />
+  <Blank Num="1" UId="823" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="824">
+    <Text UId="825">green</Text>
+  </LineComment>
+  <NewLine Num="1" UId="826" />
+  <Blank Num="8" UId="827" />
+  <Token Text="END_IF" UId="828" />
+  <Token Text=";" UId="829" />
+  <NewLine Num="1" UId="830" />
+  <Blank Num="4" UId="831" />
+  <Token Text="END_IF" UId="832" />
+  <Token Text=";" UId="833" />
+  <NewLine Num="1" UId="834" />
+  <Token Text="END_FOR" UId="835" />
+  <Token Text=";" UId="836" />
+  <NewLine Num="3" UId="837" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="838">
+    <Text UId="839">**** 4.4 - Machine status - Calculated  **** Get IP Address of PLC</Text>
+  </LineComment>
+  <NewLine Num="1" UId="840" />
+  <Access Scope="Call" UId="841">
+    <CallInfo UId="842" BlockType="FB" Name="LPNIODiagReadIPS7-1500">
+      <Instance Scope="LocalVariable" UId="843">
+        <Component Name="_ReadIP" UId="844" />
+      </Instance>
+      <Token Text="(" UId="845" />
+      <Parameter Name="I_ReqIN" UId="846">
+        <Blank Num="1" UId="847" />
+        <Token Text=":=" UId="848" />
+        <Blank Num="1" UId="849" />
+        <Access Scope="GlobalVariable" UId="850">
+          <Symbol UId="851">
+            <Component Name="TRUE" UId="852" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="853" />
+      <NewLine Num="1" UId="854" />
+      <Blank Num="9" UId="855" />
+      <Parameter Name="I_HWID" UId="856">
+        <Blank Num="1" UId="857" />
+        <Token Text=":=" UId="858" />
+        <Blank Num="1" UId="859" />
+        <Access Scope="LocalVariable" UId="860">
+          <Symbol UId="861">
+            <Component Name="I_PLCIOSYSTEM" UId="862" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="869" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="870" />
+  <NewLine Num="3" UId="871" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="872">
+    <Text UId="873">**** 4.4 - Machine status - Calculated  **** Reset the status from the HMI</Text>
+  </LineComment>
+  <NewLine Num="1" UId="874" />
+  <Token Text="IF" UId="875" />
+  <Blank Num="1" UId="876" />
+  <Access Scope="LocalVariable" UId="877">
+    <Symbol UId="878">
+      <Component Name="IO_PNIODIAG_Global" UId="879" />
+      <Token Text="." UId="880" />
+      <Component Name="HMICmd_ResetPNStatus" UId="881" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="882" />
+  <Token Text="AND" UId="883" />
+  <Blank Num="1" UId="884" />
+  <Token Text="NOT" UId="885" />
+  <Blank Num="1" UId="886" />
+  <Access Scope="LocalVariable" UId="887">
+    <Symbol UId="888">
+      <Component Name="Edge" UId="889" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="890" />
+  <Token Text="THEN" UId="891" />
+  <NewLine Num="1" UId="892" />
+  <Blank Num="4" UId="893" />
+  <Access Scope="LocalVariable" UId="894">
+    <Symbol UId="895">
+      <Component Name="Edge" UId="896" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="897" />
+  <Token Text=":=" UId="898" />
+  <Blank Num="1" UId="899" />
+  <Access Scope="LiteralConstant" UId="900">
+    <Constant UId="901">
+      <ConstantValue UId="903">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="904" />
+  <NewLine Num="1" UId="905" />
+  <Blank Num="4" UId="906" />
+  <Token Text="FOR" UId="907" />
+  <Blank Num="1" UId="908" />
+  <Access Scope="LocalVariable" UId="909">
+    <Symbol UId="910">
+      <Component Name="No1" UId="911" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="912" />
+  <Token Text=":=" UId="913" />
+  <Blank Num="1" UId="914" />
+  <Access Scope="LiteralConstant" UId="915">
+    <Constant UId="916">
+      <ConstantValue UId="918">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="919" />
+  <Token Text="TO" UId="920" />
+  <Blank Num="1" UId="921" />
+  <Access Scope="LocalVariable" UId="922">
+    <Symbol UId="923">
+      <Component Name="I_LastDeviceNumber" UId="924" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="925" />
+  <Token Text="DO" UId="926" />
+  <NewLine Num="1" UId="927" />
+  <Blank Num="8" UId="928" />
+  <Access Scope="LocalVariable" UId="929">
+    <Symbol UId="930">
+      <Component Name="IO_PNIODIAG_Global" UId="931" />
+      <Token Text="." UId="932" />
+      <Component Name="DeviceFaulty" UId="933">
+        <Token Text="[" UId="934" />
+        <Access Scope="LocalVariable" UId="935">
+          <Symbol UId="936">
+            <Component Name="No1" UId="937" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="938" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="939" />
+  <Token Text=":=" UId="940" />
+  <Blank Num="1" UId="941" />
+  <Access Scope="LiteralConstant" UId="942">
+    <Constant UId="943">
+      <ConstantValue UId="945">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="946" />
+  <NewLine Num="1" UId="947" />
+  <Blank Num="8" UId="948" />
+  <Access Scope="LocalVariable" UId="949">
+    <Symbol UId="950">
+      <Component Name="IO_PNIODIAG_Global" UId="951" />
+      <Token Text="." UId="952" />
+      <Component Name="DeviceDisabled" UId="953">
+        <Token Text="[" UId="954" />
+        <Access Scope="LocalVariable" UId="955">
+          <Symbol UId="956">
+            <Component Name="No1" UId="957" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="958" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="959" />
+  <Token Text=":=" UId="960" />
+  <Blank Num="1" UId="961" />
+  <Access Scope="LiteralConstant" UId="962">
+    <Constant UId="963">
+      <ConstantValue UId="965">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="966" />
+  <NewLine Num="1" UId="967" />
+  <Blank Num="8" UId="968" />
+  <Access Scope="LocalVariable" UId="969">
+    <Symbol UId="970">
+      <Component Name="IO_PNIODIAG_Global" UId="971" />
+      <Token Text="." UId="972" />
+      <Component Name="DeviceServiceReq" UId="973">
+        <Token Text="[" UId="974" />
+        <Access Scope="LocalVariable" UId="975">
+          <Symbol UId="976">
+            <Component Name="No1" UId="977" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="978" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="979" />
+  <Token Text=":=" UId="980" />
+  <Blank Num="1" UId="981" />
+  <Access Scope="LiteralConstant" UId="982">
+    <Constant UId="983">
+      <ConstantValue UId="985">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="986" />
+  <NewLine Num="1" UId="987" />
+  <Blank Num="8" UId="988" />
+  <Access Scope="LocalVariable" UId="989">
+    <Symbol UId="990">
+      <Component Name="IO_PNIODIAG_Global" UId="991" />
+      <Token Text="." UId="992" />
+      <Component Name="GlobStat_DeviceFaulty" UId="993" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="994" />
+  <Token Text=":=" UId="995" />
+  <Blank Num="1" UId="996" />
+  <Access Scope="LiteralConstant" UId="997">
+    <Constant UId="998">
+      <ConstantValue UId="1000">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1001" />
+  <NewLine Num="1" UId="1002" />
+  <Blank Num="8" UId="1003" />
+  <Access Scope="LocalVariable" UId="1004">
+    <Symbol UId="1005">
+      <Component Name="IO_PNIODIAG_Global" UId="1006" />
+      <Token Text="." UId="1007" />
+      <Component Name="GlobStat_DeviceDisabled" UId="1008" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1009" />
+  <Token Text=":=" UId="1010" />
+  <Blank Num="1" UId="1011" />
+  <Access Scope="LiteralConstant" UId="1012">
+    <Constant UId="1013">
+      <ConstantValue UId="1015">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1016" />
+  <NewLine Num="1" UId="1017" />
+  <Blank Num="8" UId="1018" />
+  <Access Scope="LocalVariable" UId="1019">
+    <Symbol UId="1020">
+      <Component Name="IO_PNIODIAG_Global" UId="1021" />
+      <Token Text="." UId="1022" />
+      <Component Name="GlobStat_DeviceServiceReq" UId="1023" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1024" />
+  <Token Text=":=" UId="1025" />
+  <Blank Num="1" UId="1026" />
+  <Access Scope="LiteralConstant" UId="1027">
+    <Constant UId="1028">
+      <ConstantValue UId="1030">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1031" />
+  <NewLine Num="1" UId="1032" />
+  <Blank Num="4" UId="1033" />
+  <Token Text="END_FOR" UId="1034" />
+  <Token Text=";" UId="1035" />
+  <NewLine Num="1" UId="1036" />
+  <Blank Num="4" UId="1037" />
+  <Access Scope="LocalVariable" UId="1038">
+    <Symbol UId="1039">
+      <Component Name="Edge" UId="1040" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1041" />
+  <Token Text=":=" UId="1042" />
+  <Blank Num="1" UId="1043" />
+  <Access Scope="LiteralConstant" UId="1044">
+    <Constant UId="1045">
+      <ConstantValue UId="1047">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1048" />
+  <NewLine Num="1" UId="1049" />
+  <Token Text="END_IF" UId="1050" />
+  <Token Text=";" UId="1051" />
+  <NewLine Num="1" UId="1052" />
+  <Access Scope="LocalVariable" UId="1053">
+    <Symbol UId="1054">
+      <Component Name="TimerResetPNStatus" UId="1055" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="1056">
+    <Instruction UId="1057">
+      <Token Text="(" UId="1058" />
+      <Parameter Name="IN" UId="1059">
+        <Token Text=":=" UId="1060" />
+        <Access Scope="LocalVariable" UId="1061">
+          <Symbol UId="1062">
+            <Component Name="IO_PNIODIAG_Global" UId="1063" />
+            <Token Text="." UId="1064" />
+            <Component Name="HMICmd_ResetPNStatus" UId="1065" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1066" />
+      <NewLine Num="1" UId="1067" />
+      <Blank Num="20" UId="1068" />
+      <Parameter Name="PT" UId="1069">
+        <Token Text=":=" UId="1070" />
+        <Access Scope="TypedConstant" UId="1071">
+          <Constant UId="1072">
+            <ConstantValue UId="1073">T#500ms</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1074" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1075" />
+  <NewLine Num="1" UId="1076" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1077">
+    <Text UId="1078">IF #TimerResetPNStatus.Q THEN</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1079" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1080">
+    <Text UId="1081">    #IO_PNIODIAG_Global.HMICmd_ResetPNStatus := False;</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1082" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1083">
+    <Text UId="1084">END_IF;</Text>
+  </LineComment>
+  <NewLine Num="3" UId="1085" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1086">
+    <Text UId="1087">**** 4.4 - Machine status - Calculated  **** Activate or Deactivate PN Devices</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1088" />
+  <Access Scope="LocalVariable" UId="1089">
+    <Symbol UId="1090">
+      <Component Name="ReturnActPNIO" UId="1091" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1092" />
+  <Token Text=":=" UId="1093" />
+  <Blank Num="1" UId="1094" />
+  <Access Scope="Call" UId="1095">
+    <Instruction Name="D_ACT_DP" UId="1096">
+      <Token Text="(" UId="1097" />
+      <Parameter Name="REQ" UId="1098">
+        <Blank Num="1" UId="1099" />
+        <Token Text=":=" UId="1100" />
+        <Blank Num="1" UId="1101" />
+        <Access Scope="LocalVariable" UId="1102">
+          <Symbol UId="1103">
+            <Component Name="IO_PNIODIAG_Global" UId="1104" />
+            <Token Text="." UId="1105" />
+            <Component Name="HMICmd_ActivateDeactivate" UId="1106" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1107" />
+      <Blank Num="1" UId="1108" />
+      <Parameter Name="MODE" UId="1109">
+        <Blank Num="1" UId="1110" />
+        <Token Text=":=" UId="1111" />
+        <Access Scope="LocalVariable" UId="1112">
+          <Symbol UId="1113">
+            <Component Name="IO_PNIODIAG_Global" UId="1114" />
+            <Token Text="." UId="1115" />
+            <Component Name="PNMode" UId="1116" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1117" />
+      <Blank Num="1" UId="1118" />
+      <Parameter Name="LADDR" UId="1119">
+        <Blank Num="1" UId="1120" />
+        <Token Text=":=" UId="1121" />
+        <Blank Num="1" UId="1122" />
+        <Access Scope="LocalVariable" UId="1123">
+          <Symbol UId="1124">
+            <Component Name="IO_HWIdentifier" UId="1125">
+              <Token Text="[" UId="1126" />
+              <Blank Num="1" UId="1127" />
+              <Access Scope="LocalVariable" UId="1128">
+                <Symbol UId="1129">
+                  <Component Name="IO_PNIODIAG_Global" UId="1130" />
+                  <Token Text="." UId="1131" />
+                  <Component Name="DeviceNumber" UId="1132" />
+                </Symbol>
+              </Access>
+              <Token Text="]" UId="1133" />
+            </Component>
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1134" />
+      <Blank Num="1" UId="1135" />
+      <Parameter Name="BUSY" UId="1136">
+        <Blank Num="1" UId="1137" />
+        <Token Text="=&gt;" UId="1138" />
+        <Blank Num="1" UId="1139" />
+        <Access Scope="LocalVariable" UId="1140">
+          <Symbol UId="1141">
+            <Component Name="IO_PNIODIAG_Global" UId="1142" />
+            <Token Text="." UId="1143" />
+            <Component Name="ActivateDeactivateBusy" UId="1144" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="1146" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1147" />
+  <NewLine Num="1" UId="1148" />
+  <Access Scope="LocalVariable" UId="1149">
+    <Symbol UId="1150">
+      <Component Name="IO_PNIODIAG_Global" UId="1151" />
+      <Token Text="." UId="1152" />
+      <Component Name="HMICmd_ActivateDeactivate" UId="1153" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1154" />
+  <Token Text=":=" UId="1155" />
+  <Blank Num="1" UId="1156" />
+  <Access Scope="LiteralConstant" UId="1157">
+    <Constant UId="1158">
+      <ConstantValue UId="1160">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1161" />
+  <NewLine Num="3" UId="1162" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1163">
+    <Text UId="1164"> **** 4.6 - Machine status - Indication ****  Animation</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1165" />
+  <Access Scope="LocalVariable" UId="1166">
+    <Symbol UId="1167">
+      <Component Name="IO_PNIODIAG_Global" UId="1168" />
+      <Token Text="." UId="1169" />
+      <Component Name="IPAddressPLC" UId="1170">
+        <Token Text="[" UId="1171" />
+        <Access Scope="LiteralConstant" UId="1172">
+          <Constant UId="1173">
+            <ConstantValue UId="1175">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1176" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1177" />
+  <Blank Num="1" UId="1178" />
+  <Access Scope="LocalVariable" UId="1179">
+    <Symbol UId="1180">
+      <Component Name="_ReadIP" UId="1181" />
+      <Token Text="." UId="1182" />
+      <Component Name="O_IPParam" UId="1183" />
+      <Token Text="." UId="1184" />
+      <Component Name="IPAddress" UId="1185">
+        <Token Text="[" UId="1186" />
+        <Access Scope="LiteralConstant" UId="1187">
+          <Constant UId="1188">
+            <ConstantValue UId="1190">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1191" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1192" />
+  <NewLine Num="1" UId="1193" />
+  <Access Scope="LocalVariable" UId="1194">
+    <Symbol UId="1195">
+      <Component Name="IO_PNIODIAG_Global" UId="1196" />
+      <Token Text="." UId="1197" />
+      <Component Name="IPAddressPLC" UId="1198">
+        <Token Text="[" UId="1199" />
+        <Access Scope="LiteralConstant" UId="1200">
+          <Constant UId="1201">
+            <ConstantValue UId="1203">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1204" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1205" />
+  <Token Text=":=" UId="1206" />
+  <Blank Num="1" UId="1207" />
+  <Access Scope="LocalVariable" UId="1208">
+    <Symbol UId="1209">
+      <Component Name="_ReadIP" UId="1210" />
+      <Token Text="." UId="1211" />
+      <Component Name="O_IPParam" UId="1212" />
+      <Token Text="." UId="1213" />
+      <Component Name="IPAddress" UId="1214">
+        <Token Text="[" UId="1215" />
+        <Access Scope="LiteralConstant" UId="1216">
+          <Constant UId="1217">
+            <ConstantValue UId="1219">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1220" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1221" />
+  <NewLine Num="1" UId="1222" />
+  <Access Scope="LocalVariable" UId="1223">
+    <Symbol UId="1224">
+      <Component Name="IO_PNIODIAG_Global" UId="1225" />
+      <Token Text="." UId="1226" />
+      <Component Name="IPAddressPLC" UId="1227">
+        <Token Text="[" UId="1228" />
+        <Access Scope="LiteralConstant" UId="1229">
+          <Constant UId="1230">
+            <ConstantValue UId="1232">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1233" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1234" />
+  <Token Text=":=" UId="1235" />
+  <Blank Num="1" UId="1236" />
+  <Access Scope="LocalVariable" UId="1237">
+    <Symbol UId="1238">
+      <Component Name="_ReadIP" UId="1239" />
+      <Token Text="." UId="1240" />
+      <Component Name="O_IPParam" UId="1241" />
+      <Token Text="." UId="1242" />
+      <Component Name="IPAddress" UId="1243">
+        <Token Text="[" UId="1244" />
+        <Access Scope="LiteralConstant" UId="1245">
+          <Constant UId="1246">
+            <ConstantValue UId="1248">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1249" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1250" />
+  <NewLine Num="1" UId="1251" />
+  <Access Scope="LocalVariable" UId="1252">
+    <Symbol UId="1253">
+      <Component Name="IO_PNIODIAG_Global" UId="1254" />
+      <Token Text="." UId="1255" />
+      <Component Name="IPAddressPLC" UId="1256">
+        <Token Text="[" UId="1257" />
+        <Access Scope="LiteralConstant" UId="1258">
+          <Constant UId="1259">
+            <ConstantValue UId="1261">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1262" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1263" />
+  <Token Text=":=" UId="1264" />
+  <Blank Num="1" UId="1265" />
+  <Access Scope="LocalVariable" UId="1266">
+    <Symbol UId="1267">
+      <Component Name="_ReadIP" UId="1268" />
+      <Token Text="." UId="1269" />
+      <Component Name="O_IPParam" UId="1270" />
+      <Token Text="." UId="1271" />
+      <Component Name="IPAddress" UId="1272">
+        <Token Text="[" UId="1273" />
+        <Access Scope="LiteralConstant" UId="1274">
+          <Constant UId="1275">
+            <ConstantValue UId="1277">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1278" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1279" />
+  <NewLine Num="2" UId="1280" />
+  <Access Scope="LocalVariable" UId="1281">
+    <Symbol UId="1282">
+      <Component Name="IO_PNIODIAG_Global" UId="1283" />
+      <Token Text="." UId="1284" />
+      <Component Name="DeviceExist" UId="1285" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1286" />
+  <Token Text=":=" UId="1287" />
+  <Blank Num="1" UId="1288" />
+  <Access Scope="LocalVariable" UId="1289">
+    <Symbol UId="1290">
+      <Component Name="PNDeviceExist" UId="1291" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1292" />
+  <NewLine Num="1" UId="1293" />
+  <Access Scope="LocalVariable" UId="1294">
+    <Symbol UId="1295">
+      <Component Name="IO_DeviceExist" UId="1296" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1297" />
+  <Token Text=":=" UId="1298" />
+  <Blank Num="1" UId="1299" />
+  <Access Scope="LocalVariable" UId="1300">
+    <Symbol UId="1301">
+      <Component Name="PNDeviceExist" UId="1302" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1303" />
+  <NewLine Num="2" UId="1304" />
+  <Access Scope="LocalVariable" UId="1305">
+    <Symbol UId="1306">
+      <Component Name="O_LastDeviceNumber" UId="1307" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1308" />
+  <Token Text=":=" UId="1309" />
+  <Blank Num="1" UId="1310" />
+  <Access Scope="LocalVariable" UId="1311">
+    <Symbol UId="1312">
+      <Component Name="I_LastDeviceNumber" UId="1313" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1314" />
+  <NewLine Num="1" UId="1315" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>PN_IO for HMI</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="19" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>PN_IO for HMI</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1A" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>PN_IO for HMI</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>PN_IO for HMI</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text>PN_IO for HMI</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>PN_IO for HMI</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:23.0005579Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <InstanceOfName>LVIDSTrack</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input">
+    <Member Name="I_DataModeManEn" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_OutOfUse" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_TagID" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_BodyID" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_CarrierID" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_MixNbr" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_BodyType1" Datatype="DInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_PopID" Datatype="UDInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_PopIDSuffix" Datatype="Char" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_PopType" Datatype="UDInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_Start" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="O_Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_Nok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_Busy" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_Status" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_Alarm" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+  </Section>
+  <Section Name="InOut">
+    <Member Name="IO_VIDS" Datatype="&quot;VIDS&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="VEMData" Datatype="&quot;VEMData&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="CommandCode" Datatype="UDInt" />
+                <Member Name="FunctionCode" Datatype="UDInt" />
+                <Member Name="ErrorCode" Datatype="DInt" />
+                <Member Name="UserID" Datatype="Array[1..8] of Char" />
+                <Member Name="Identification" Datatype="UDInt" />
+                <Member Name="BodyID" Datatype="UDInt" />
+                <Member Name="CarrierID" Datatype="UDInt" />
+                <Member Name="BodyTypeMatrix" Datatype="UDInt" />
+                <Member Name="Routing" Datatype="UDInt" />
+                <Member Name="Destination" Datatype="UDInt" />
+                <Member Name="WorkUntil" Datatype="UDInt" />
+                <Member Name="BegWorkAfter" Datatype="UDInt" />
+                <Member Name="BodyCargoStatus" Datatype="UDInt" />
+                <Member Name="CarrierCargoStatus" Datatype="UDInt" />
+                <Member Name="EquipmentWork" Datatype="UDInt" />
+                <Member Name="AvailabilityStatus" Datatype="UDInt" />
+                <Member Name="ModelYear" Datatype="UDInt" />
+                <Member Name="PreSerieInfo" Datatype="UDInt" />
+                <Member Name="WorkStatus" Datatype="UDInt" />
+                <Member Name="BodyType1" Datatype="UDInt" />
+                <Member Name="BodyType2" Datatype="UDInt" />
+                <Member Name="RobotProgramNumber" Datatype="UDInt" />
+                <Member Name="PLCProgramNumber" Datatype="UDInt" />
+                <Member Name="EquipmentWorkDone" Datatype="UDInt" />
+                <Member Name="SequenceNumber" Datatype="UDInt" />
+                <Member Name="BufferIn" Datatype="UDInt" />
+                <Member Name="BufferOut" Datatype="UDInt" />
+                <Member Name="CarrierType" Datatype="UDInt" />
+                <Member Name="CarrierLapCounter" Datatype="UDInt" />
+                <Member Name="CarrierIDUBFlow" Datatype="UDInt" />
+                <Member Name="CarrierBodyType" Datatype="UDInt" />
+                <Member Name="AddQualityItemEquipment" Datatype="UDInt" />
+                <Member Name="CheckQualityItemEquipment" Datatype="UDInt" />
+                <Member Name="CarrierMaxCycleCount" Datatype="UDInt" />
+                <Member Name="SurfacerColour" Datatype="UDInt" />
+                <Member Name="TopCoatColour" Datatype="UDInt" />
+                <Member Name="ClearCoatColour" Datatype="UDInt" />
+                <Member Name="Variant" Datatype="Array[1..12] of Char" />
+                <Member Name="VinNumber" Datatype="Array[1..20] of Char" />
+                <Member Name="MixNumber" Datatype="UDInt" />
+                <Member Name="IdType" Datatype="UDInt" />
+                <Member Name="PopType" Datatype="UDInt" />
+                <Member Name="PopID" Datatype="UDInt" />
+                <Member Name="PopIDSuffix" Datatype="Char" />
+                <Member Name="Spare13" Datatype="USInt" />
+                <Member Name="Spare12" Datatype="USInt" />
+                <Member Name="Spare11" Datatype="USInt" />
+                <Member Name="Spare10" Datatype="UDInt" />
+                <Member Name="Spare9" Datatype="UDInt" />
+                <Member Name="Spare8" Datatype="UDInt" />
+                <Member Name="Spare7" Datatype="UDInt" />
+                <Member Name="Spare6" Datatype="UDInt" />
+                <Member Name="Spare5" Datatype="UDInt" />
+                <Member Name="Spare4" Datatype="UDInt" />
+                <Member Name="Spare3" Datatype="UDInt" />
+                <Member Name="Spare2" Datatype="UDInt" />
+                <Member Name="Spare1" Datatype="UDInt" />
+                <Member Name="SpecficDataKey" Datatype="UDInt" />
+                <Member Name="SpecificDataLength" Datatype="UDInt" />
+                <Member Name="SpecificDataID" Datatype="UDInt" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="SpecificDataInit" Datatype="Array[0..2047] of Byte" />
+          <Member Name="GetVEMData" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="GetVEMDataByRFID" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="GetVEMDataByTagReplace" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="Confirm" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="GetSpecData" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="GetNextID" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="Track" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="ReplaceTag" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="Couple" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="DeCouple" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="InitTag" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="ChangeData" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="PutSpecData" Datatype="&quot;VIDSFunctionHandshake&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="BeginReq" Datatype="Bool" />
+                <Member Name="BeginReqMem" Datatype="Bool" />
+                <Member Name="OkBegin" Datatype="Bool" />
+                <Member Name="Begin" Datatype="Bool" />
+                <Member Name="Running" Datatype="Bool" />
+                <Member Name="Finished" Datatype="Bool" />
+                <Member Name="Status" Datatype="Int" />
+                <Member Name="Reset" Datatype="Bool" />
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="IDType" Datatype="DWord" />
+          <Member Name="CmdCodeSent" Datatype="DWord" />
+          <Member Name="CmdCodeRcvd" Datatype="DWord" />
+          <Member Name="ResetAlarm" Datatype="Bool" />
+          <Member Name="PartPres" Datatype="Bool" />
+          <Member Name="VEMDataValid" Datatype="Bool" />
+          <Member Name="VEMDataNotValid" Datatype="Bool" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO_Alarm" Datatype="&quot;Alarm&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="AlarmAActive" Datatype="Bool" />
+          <Member Name="AlarmBActive" Datatype="Bool" />
+          <Member Name="AlarmCActive" Datatype="Bool" />
+          <Member Name="AlarmDActive" Datatype="Bool" />
+          <Member Name="AlarmABCondition" Datatype="Bool" />
+          <Member Name="AlarmAActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmBActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmCActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmDActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmABConditionUpperLevel" Datatype="Bool" />
+          <Member Name="EnableAlarmUpperLevel" Datatype="Bool" />
+          <Member Name="SafetyNotOkUpperLevel" Datatype="Bool" />
+          <Member Name="SafetyNok" Datatype="Bool" />
+          <Member Name="EnableAlarmMechanicNOk" Datatype="Bool" />
+          <Member Name="EnableAlarmTransportNOk" Datatype="Bool" />
+          <Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" />
+          <Member Name="UpperLevelHWNok" Datatype="Bool" />
+          <Member Name="Feature1" Datatype="Bool" />
+          <Member Name="Feature2" Datatype="Bool" />
+          <Member Name="Feature3" Datatype="Bool" />
+          <Member Name="Feature4" Datatype="Bool" />
+          <Member Name="Feature5" Datatype="Bool" />
+          <Member Name="Feature6" Datatype="Bool" />
+          <Member Name="Feature7" Datatype="Bool" />
+          <Member Name="Feature8" Datatype="Bool" />
+          <Member Name="Feature9" Datatype="Bool" />
+          <Member Name="Feature10" Datatype="Bool" />
+          <Member Name="Feature11" Datatype="Bool" />
+          <Member Name="Feature12" Datatype="Bool" />
+          <Member Name="Feature13" Datatype="Bool" />
+          <Member Name="Feature14" Datatype="Bool" />
+          <Member Name="Feature15" Datatype="Bool" />
+          <Member Name="AlarmInstance" Datatype="WString" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="H_Track" Datatype="&quot;H_LVIDSTrack&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="H_msgPartPresAnim" Datatype="Word" />
+          <Member Name="H_msgStatus" Datatype="Int" />
+          <Member Name="H_msgTrackNok" Datatype="Word" />
+          <Member Name="H_msgTrackOk" Datatype="Word" />
+          <Member Name="H_msgVEMDataNotValid" Datatype="Int" />
+          <Member Name="H_msgVEMDataValid" Datatype="Int" />
+          <Member Name="H_txtBodyID" Datatype="DWord" />
+          <Member Name="H_txtBodyIDTracked" Datatype="DWord" />
+          <Member Name="H_txtBodyType1" Datatype="DWord" />
+          <Member Name="H_txtBodyType1Tracked" Datatype="DWord" />
+          <Member Name="H_txtCarrierID" Datatype="DWord" />
+          <Member Name="H_txtCarrierIDTracked" Datatype="DWord" />
+          <Member Name="H_txtCommandCodeRcvd" Datatype="DWord" />
+          <Member Name="H_txtCommandCodeSent" Datatype="DWord" />
+          <Member Name="H_txtMixNbr" Datatype="DWord" />
+          <Member Name="H_txtMixNbrTracked" Datatype="DWord" />
+          <Member Name="H_txtTagID" Datatype="DWord" />
+          <Member Name="H_txtTagIDTracked" Datatype="DWord" />
+          <Member Name="H_txtPopId" Datatype="DWord" />
+          <Member Name="H_txtPopIdTracked" Datatype="DWord" />
+          <Member Name="H_txtPopIdSuffix" Datatype="Char" />
+          <Member Name="H_txtPopIdSuffixTracked" Datatype="Char" />
+          <Member Name="H_txtPopType" Datatype="DWord" />
+          <Member Name="H_txtPopTypeTracked" Datatype="DWord" />
+          <Member Name="H_btnManTrackAnim" Datatype="Word" />
+          <Member Name="H_btnManForceAnim" Datatype="Word" />
+          <Member Name="H_btnManOkAnim" Datatype="Word" />
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="H_HMI" Datatype="&quot;H_HMI&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="H_IAnim" Datatype="DWord" />
+          <Member Name="H_IAnim2" Datatype="DInt" />
+          <Member Name="H_IAnim3" Datatype="DInt" />
+          <Member Name="H_IAnim4" Datatype="Real" />
+          <Member Name="H_FncSelInHMI" Datatype="Bool" />
+          <Member Name="H_ForceManMove" Datatype="Bool" />
+          <Member Name="H_ResetMem" Datatype="Bool" />
+          <Member Name="H_OutOfUse" Datatype="Bool" />
+          <Member Name="H_CommandDW1" Datatype="DWord" />
+          <Member Name="H_CommandDW2" Datatype="DWord" />
+          <Member Name="H_CommandDW3" Datatype="DWord" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+  <Section Name="Static">
+    <Member Name="BtnManTrack" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BtnManForce" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BtnManOK" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BlockAutoStart" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="RSAutoBlock" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="TagIDMem" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BodyNbrMem" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="MixNbrMem" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="CarrierIDMem" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BodyType1Mem" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="PopIDMem" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="PopIDSuffixMem" Datatype="Char" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="PopTypeMem" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="StartEdg" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="StartPls" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="StartTrackEdge2" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="StartCmdMem" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="FinishPls" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="FinishEdge" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="Status" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="Alarm" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="Ok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="Nok" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BtnManConfirmVisible" Datatype="Word" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BtnManConfirmGreen" Datatype="Word" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BtnManForceVisible" Datatype="Word" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="BtnManForceGreen" Datatype="Word" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>_209230NCB01VIDSTracking</Name>
+      <Number>2006</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="A" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="B" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="C" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="E" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

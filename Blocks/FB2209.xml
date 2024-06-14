@@ -1,0 +1,1684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:29.7830472Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>VCC</HeaderAuthor>
+      <HeaderFamily>PNIODiag</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>0.0.0.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input">
+    <Member Name="I_ReqIN" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="I_HWID" Datatype="UInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><StartValue>16#64</StartValue></Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="O_IPParam" Datatype="Struct" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Member Name="IPAddress" Datatype="Array[0..3] of USInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="SubnetMask" Datatype="Array[0..3] of USInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="StandardGateway" Datatype="Array[0..3] of USInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="MACAddress" Datatype="Array[0..5] of USInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="PNName" Datatype="String"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member></Member>
+    <Member Name="O_Busy" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_Valid" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_Error" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_Status" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_LEN" Datatype="UInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="ReqFlag" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="RDREC_Status" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="RDREC_LEN" Datatype="UInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="RDREC_Valid" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="RDREC_Busy" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="RDREC_Error" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="StatusSave" Datatype="DWord" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="PDInterfaceDataReal" Datatype="Struct" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Member Name="BlockType" Datatype="UInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="BlockLength" Datatype="UInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="BlockVersionHigh" Datatype="USInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="BlockVersionLow" Datatype="USInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="Data" Datatype="Array[0..301] of Byte"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member><Member Name="OwnChassisID" Datatype="String"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member></Member>
+    <Member Name="R_TRIG" Datatype="R_TRIG" Version="1.0" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="RDREC" Datatype="RDREC" Version="1.0" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="REQ" Datatype="Bool" /><Member Name="ID" Datatype="HW_IO" /><Member Name="INDEX" Datatype="DInt" /><Member Name="MLEN" Datatype="UInt" /></Section><Section Name="Output"><Member Name="VALID" Datatype="Bool" /><Member Name="BUSY" Datatype="Bool" /><Member Name="ERROR" Datatype="Bool" /><Member Name="STATUS" Datatype="DWord" /><Member Name="LEN" Datatype="UInt" /></Section><Section Name="InOut"><Member Name="RECORD" Datatype="Variant" /></Section><Section Name="Static" /></Sections></Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="IPParValStartAddress" Datatype="USInt" />
+    <Member Name="LengthOwnChassisID" Datatype="USInt" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>LPNIODiagReadIPS7-1500</Name>
+      <Number>2209</Number>
+      <ProgrammingLanguage>SCL</ProgrammingLanguage>
+      <SetENOAutomatically>False</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>apette18,PADA</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v2">
+  <LineComment Inserted="true" NoClosingBracket="false" UId="21">
+    <Text UId="22">
+=================================================================================================================
+This Block is used for reading the IP Address, Subnet Mask etc. of the PLC.
+=================================================================================================================
+</Text>
+  </LineComment>
+  <NewLine Num="2" UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="R_TRIG" UId="26" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="27">
+    <Instruction UId="28">
+      <Token Text="(" UId="29" />
+      <Parameter Name="CLK" UId="30">
+        <Token Text=":=" UId="31" />
+        <Access Scope="LocalVariable" UId="32">
+          <Symbol UId="33">
+            <Component Name="I_ReqIN" UId="34" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="35" />
+      <NewLine Num="1" UId="36" />
+      <Blank Num="8" UId="37" />
+      <Parameter Name="Q" UId="38">
+        <Token Text="=&gt;" UId="39" />
+        <Access Scope="LocalVariable" UId="40">
+          <Symbol UId="41">
+            <Component Name="ReqFlag" UId="42" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="43" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="44" />
+  <NewLine Num="2" UId="45" />
+  <Access Scope="LocalVariable" UId="46">
+    <Symbol UId="47">
+      <Component Name="RDREC" UId="48" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="49">
+    <Instruction UId="50">
+      <Token Text="(" UId="51" />
+      <Parameter Name="REQ" UId="52">
+        <Token Text=":=" UId="53" />
+        <Access Scope="LocalVariable" UId="54">
+          <Symbol UId="55">
+            <Component Name="ReqFlag" UId="56" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="57" />
+      <NewLine Num="1" UId="58" />
+      <Blank Num="7" UId="59" />
+      <Parameter Name="ID" UId="60">
+        <Token Text=":=" UId="61" />
+        <Access Scope="LocalVariable" UId="62">
+          <Symbol UId="63">
+            <Component Name="I_HWID" UId="64" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="65" />
+      <NewLine Num="1" UId="66" />
+      <Blank Num="7" UId="67" />
+      <Parameter Name="INDEX" UId="68">
+        <Token Text=":=" UId="69" />
+        <Access Scope="TypedConstant" UId="70">
+          <Constant UId="71">
+            <ConstantValue UId="72">w#16#8080</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="73" />
+      <NewLine Num="1" UId="74" />
+      <Blank Num="7" UId="75" />
+      <Parameter Name="MLEN" UId="76">
+        <Token Text=":=" UId="77" />
+        <Access Scope="LiteralConstant" UId="78">
+          <Constant UId="79">
+            <ConstantValue UId="81">300</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="82" />
+      <NewLine Num="1" UId="83" />
+      <Blank Num="7" UId="84" />
+      <Parameter Name="VALID" UId="85">
+        <Token Text="=&gt;" UId="86" />
+        <Access Scope="LocalVariable" UId="87">
+          <Symbol UId="88">
+            <Component Name="RDREC_Valid" UId="89" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="90" />
+      <NewLine Num="1" UId="91" />
+      <Blank Num="7" UId="92" />
+      <Parameter Name="BUSY" UId="93">
+        <Token Text="=&gt;" UId="94" />
+        <Access Scope="LocalVariable" UId="95">
+          <Symbol UId="96">
+            <Component Name="RDREC_Busy" UId="97" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="98" />
+      <NewLine Num="1" UId="99" />
+      <Blank Num="7" UId="100" />
+      <Parameter Name="ERROR" UId="101">
+        <Token Text="=&gt;" UId="102" />
+        <Access Scope="LocalVariable" UId="103">
+          <Symbol UId="104">
+            <Component Name="RDREC_Error" UId="105" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="106" />
+      <NewLine Num="1" UId="107" />
+      <Blank Num="7" UId="108" />
+      <Parameter Name="STATUS" UId="109">
+        <Token Text="=&gt;" UId="110" />
+        <Access Scope="LocalVariable" UId="111">
+          <Symbol UId="112">
+            <Component Name="RDREC_Status" UId="113" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="114" />
+      <NewLine Num="1" UId="115" />
+      <Blank Num="7" UId="116" />
+      <Parameter Name="LEN" UId="117">
+        <Token Text="=&gt;" UId="118" />
+        <Access Scope="LocalVariable" UId="119">
+          <Symbol UId="120">
+            <Component Name="RDREC_LEN" UId="121" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="122" />
+      <NewLine Num="1" UId="123" />
+      <Blank Num="7" UId="124" />
+      <Parameter Name="RECORD" UId="125">
+        <Token Text=":=" UId="126" />
+        <Access Scope="LocalVariable" UId="127">
+          <Symbol UId="128">
+            <Component Name="PDInterfaceDataReal" UId="129" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="130" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="131" />
+  <NewLine Num="2" UId="132" />
+  <Token Text="IF" UId="133" />
+  <Blank Num="1" UId="134" />
+  <Access Scope="LocalVariable" UId="135">
+    <Symbol UId="136">
+      <Component Name="RDREC_Valid" UId="137" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="138" />
+  <Token Text="THEN" UId="139" />
+  <NewLine Num="1" UId="140" />
+  <Blank Num="2" UId="141" />
+  <NewLine Num="1" UId="142" />
+  <Blank Num="4" UId="143" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="144">
+    <Text UId="145"> Get PN-interface Name. String starts at an odd address within the array</Text>
+  </LineComment>
+  <NewLine Num="1" UId="146" />
+  <Blank Num="4" UId="147" />
+  <Access Scope="Call" UId="148">
+    <Instruction Name="Chars_TO_Strg" UId="149">
+      <Token Text="(" UId="150" />
+      <Parameter Name="Chars" UId="151">
+        <Blank Num="1" UId="152" />
+        <Token Text=":=" UId="153" />
+        <Blank Num="1" UId="154" />
+        <Access Scope="LocalVariable" UId="155">
+          <Symbol UId="156">
+            <Component Name="PDInterfaceDataReal" UId="157" />
+            <Token Text="." UId="158" />
+            <Component Name="Data" UId="159" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="160" />
+      <Blank Num="1" UId="161" />
+      <Parameter Name="pChars" UId="162">
+        <Blank Num="1" UId="163" />
+        <Token Text=":=" UId="164" />
+        <Blank Num="1" UId="165" />
+        <Access Scope="LiteralConstant" UId="166">
+          <Constant UId="167">
+            <ConstantValue UId="169">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="170" />
+      <Blank Num="1" UId="171" />
+      <Parameter Name="Cnt" UId="172">
+        <Blank Num="1" UId="173" />
+        <Token Text=":=" UId="174" />
+        <Blank Num="1" UId="175" />
+        <Access Scope="LocalVariable" UId="176">
+          <Symbol UId="177">
+            <Component Name="PDInterfaceDataReal" UId="178" />
+            <Token Text="." UId="179" />
+            <Component Name="Data" UId="180">
+              <Token Text="[" UId="181" />
+              <Access Scope="LiteralConstant" UId="182">
+                <Constant UId="183">
+                  <ConstantValue UId="185">0</ConstantValue>
+                </Constant>
+              </Access>
+              <Token Text="]" UId="186" />
+            </Component>
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="187" />
+      <Blank Num="1" UId="188" />
+      <Parameter Name="Strg" UId="189">
+        <Blank Num="1" UId="190" />
+        <Token Text="=&gt;" UId="191" />
+        <Blank Num="1" UId="192" />
+        <Access Scope="LocalVariable" UId="193">
+          <Symbol UId="194">
+            <Component Name="O_IPParam" UId="195" />
+            <Token Text="." UId="196" />
+            <Component Name="PNName" UId="197" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Blank Num="1" UId="198" />
+      <Token Text=")" UId="199" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="200" />
+  <NewLine Num="1" UId="201" />
+  <Blank Num="3" UId="202" />
+  <NewLine Num="1" UId="203" />
+  <Blank Num="4" UId="204" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="205">
+    <Text UId="206"> Calculate start address of IP-address data. Blockdata is padded to make it Unsigned32 aligned!      </Text>
+  </LineComment>
+  <NewLine Num="1" UId="207" />
+  <Blank Num="4" UId="208" />
+  <Access Scope="LocalVariable" UId="209">
+    <Symbol UId="210">
+      <Component Name="IPParValStartAddress" UId="211" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="212" />
+  <Token Text=":=" UId="213" />
+  <Blank Num="1" UId="214" />
+  <Access Scope="LocalVariable" UId="215">
+    <Symbol UId="216">
+      <Component Name="PDInterfaceDataReal" UId="217" />
+      <Token Text="." UId="218" />
+      <Component Name="Data" UId="219">
+        <Token Text="[" UId="220" />
+        <Access Scope="LiteralConstant" UId="221">
+          <Constant UId="222">
+            <ConstantValue UId="224">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="225" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="2" UId="226" />
+  <Token Text="+" UId="227" />
+  <Blank Num="1" UId="228" />
+  <Token Text="(" UId="229" />
+  <Access Scope="LiteralConstant" UId="230">
+    <Constant UId="231">
+      <ConstantValue UId="233">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="234" />
+  <Token Text="-" UId="235" />
+  <Blank Num="1" UId="236" />
+  <Token Text="(" UId="237" />
+  <Token Text="(" UId="238" />
+  <Access Scope="LocalVariable" UId="239">
+    <Symbol UId="240">
+      <Component Name="PDInterfaceDataReal" UId="241" />
+      <Token Text="." UId="242" />
+      <Component Name="Data" UId="243">
+        <Token Text="[" UId="244" />
+        <Access Scope="LiteralConstant" UId="245">
+          <Constant UId="246">
+            <ConstantValue UId="248">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="249" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="250" />
+  <Token Text="+" UId="251" />
+  <Blank Num="1" UId="252" />
+  <Access Scope="LiteralConstant" UId="253">
+    <Constant UId="254">
+      <ConstantValue UId="256">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="257" />
+  <Blank Num="1" UId="258" />
+  <Token Text="MOD" UId="259" />
+  <Blank Num="1" UId="260" />
+  <Access Scope="LiteralConstant" UId="261">
+    <Constant UId="262">
+      <ConstantValue UId="264">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="265" />
+  <Token Text=")" UId="266" />
+  <Token Text=";" UId="267" />
+  <NewLine Num="1" UId="268" />
+  <Blank Num="4" UId="269" />
+  <NewLine Num="1" UId="270" />
+  <Blank Num="4" UId="271" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="272">
+    <Text UId="273"> Copy MAC-Address data</Text>
+  </LineComment>
+  <NewLine Num="1" UId="274" />
+  <Blank Num="4" UId="275" />
+  <Access Scope="LocalVariable" UId="276">
+    <Symbol UId="277">
+      <Component Name="O_IPParam" UId="278" />
+      <Token Text="." UId="279" />
+      <Component Name="MACAddress" UId="280">
+        <Token Text="[" UId="281" />
+        <Access Scope="LiteralConstant" UId="282">
+          <Constant UId="283">
+            <ConstantValue UId="285">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="286" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="287" />
+  <Token Text=":=" UId="288" />
+  <Blank Num="1" UId="289" />
+  <Access Scope="LocalVariable" UId="290">
+    <Symbol UId="291">
+      <Component Name="PDInterfaceDataReal" UId="292" />
+      <Token Text="." UId="293" />
+      <Component Name="Data" UId="294">
+        <Token Text="[" UId="295" />
+        <Access Scope="LocalVariable" UId="296">
+          <Symbol UId="297">
+            <Component Name="IPParValStartAddress" UId="298" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="299" />
+        <Token Text="+" UId="300" />
+        <Blank Num="1" UId="301" />
+        <Access Scope="LiteralConstant" UId="302">
+          <Constant UId="303">
+            <ConstantValue UId="305">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="306" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="307" />
+  <NewLine Num="1" UId="308" />
+  <Blank Num="4" UId="309" />
+  <Access Scope="LocalVariable" UId="310">
+    <Symbol UId="311">
+      <Component Name="O_IPParam" UId="312" />
+      <Token Text="." UId="313" />
+      <Component Name="MACAddress" UId="314">
+        <Token Text="[" UId="315" />
+        <Access Scope="LiteralConstant" UId="316">
+          <Constant UId="317">
+            <ConstantValue UId="319">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="320" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="321" />
+  <Token Text=":=" UId="322" />
+  <Blank Num="1" UId="323" />
+  <Access Scope="LocalVariable" UId="324">
+    <Symbol UId="325">
+      <Component Name="PDInterfaceDataReal" UId="326" />
+      <Token Text="." UId="327" />
+      <Component Name="Data" UId="328">
+        <Token Text="[" UId="329" />
+        <Access Scope="LocalVariable" UId="330">
+          <Symbol UId="331">
+            <Component Name="IPParValStartAddress" UId="332" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="333" />
+        <Token Text="+" UId="334" />
+        <Blank Num="1" UId="335" />
+        <Access Scope="LiteralConstant" UId="336">
+          <Constant UId="337">
+            <ConstantValue UId="339">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="340" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="341" />
+  <NewLine Num="1" UId="342" />
+  <Blank Num="4" UId="343" />
+  <Access Scope="LocalVariable" UId="344">
+    <Symbol UId="345">
+      <Component Name="O_IPParam" UId="346" />
+      <Token Text="." UId="347" />
+      <Component Name="MACAddress" UId="348">
+        <Token Text="[" UId="349" />
+        <Access Scope="LiteralConstant" UId="350">
+          <Constant UId="351">
+            <ConstantValue UId="353">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="354" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="355" />
+  <Token Text=":=" UId="356" />
+  <Blank Num="1" UId="357" />
+  <Access Scope="LocalVariable" UId="358">
+    <Symbol UId="359">
+      <Component Name="PDInterfaceDataReal" UId="360" />
+      <Token Text="." UId="361" />
+      <Component Name="Data" UId="362">
+        <Token Text="[" UId="363" />
+        <Access Scope="LocalVariable" UId="364">
+          <Symbol UId="365">
+            <Component Name="IPParValStartAddress" UId="366" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="367" />
+        <Token Text="+" UId="368" />
+        <Blank Num="1" UId="369" />
+        <Access Scope="LiteralConstant" UId="370">
+          <Constant UId="371">
+            <ConstantValue UId="373">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="374" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="375" />
+  <NewLine Num="1" UId="376" />
+  <Blank Num="4" UId="377" />
+  <Access Scope="LocalVariable" UId="378">
+    <Symbol UId="379">
+      <Component Name="O_IPParam" UId="380" />
+      <Token Text="." UId="381" />
+      <Component Name="MACAddress" UId="382">
+        <Token Text="[" UId="383" />
+        <Access Scope="LiteralConstant" UId="384">
+          <Constant UId="385">
+            <ConstantValue UId="387">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="388" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="389" />
+  <Token Text=":=" UId="390" />
+  <Blank Num="1" UId="391" />
+  <Access Scope="LocalVariable" UId="392">
+    <Symbol UId="393">
+      <Component Name="PDInterfaceDataReal" UId="394" />
+      <Token Text="." UId="395" />
+      <Component Name="Data" UId="396">
+        <Token Text="[" UId="397" />
+        <Access Scope="LocalVariable" UId="398">
+          <Symbol UId="399">
+            <Component Name="IPParValStartAddress" UId="400" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="401" />
+        <Token Text="+" UId="402" />
+        <Blank Num="1" UId="403" />
+        <Access Scope="LiteralConstant" UId="404">
+          <Constant UId="405">
+            <ConstantValue UId="407">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="408" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="409" />
+  <NewLine Num="1" UId="410" />
+  <Blank Num="4" UId="411" />
+  <Access Scope="LocalVariable" UId="412">
+    <Symbol UId="413">
+      <Component Name="O_IPParam" UId="414" />
+      <Token Text="." UId="415" />
+      <Component Name="MACAddress" UId="416">
+        <Token Text="[" UId="417" />
+        <Access Scope="LiteralConstant" UId="418">
+          <Constant UId="419">
+            <ConstantValue UId="421">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="422" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="423" />
+  <Token Text=":=" UId="424" />
+  <Blank Num="1" UId="425" />
+  <Access Scope="LocalVariable" UId="426">
+    <Symbol UId="427">
+      <Component Name="PDInterfaceDataReal" UId="428" />
+      <Token Text="." UId="429" />
+      <Component Name="Data" UId="430">
+        <Token Text="[" UId="431" />
+        <Access Scope="LocalVariable" UId="432">
+          <Symbol UId="433">
+            <Component Name="IPParValStartAddress" UId="434" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="435" />
+        <Token Text="+" UId="436" />
+        <Blank Num="1" UId="437" />
+        <Access Scope="LiteralConstant" UId="438">
+          <Constant UId="439">
+            <ConstantValue UId="441">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="442" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="443" />
+  <NewLine Num="1" UId="444" />
+  <Blank Num="4" UId="445" />
+  <Access Scope="LocalVariable" UId="446">
+    <Symbol UId="447">
+      <Component Name="O_IPParam" UId="448" />
+      <Token Text="." UId="449" />
+      <Component Name="MACAddress" UId="450">
+        <Token Text="[" UId="451" />
+        <Access Scope="LiteralConstant" UId="452">
+          <Constant UId="453">
+            <ConstantValue UId="455">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="456" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="457" />
+  <Token Text=":=" UId="458" />
+  <Blank Num="1" UId="459" />
+  <Access Scope="LocalVariable" UId="460">
+    <Symbol UId="461">
+      <Component Name="PDInterfaceDataReal" UId="462" />
+      <Token Text="." UId="463" />
+      <Component Name="Data" UId="464">
+        <Token Text="[" UId="465" />
+        <Access Scope="LocalVariable" UId="466">
+          <Symbol UId="467">
+            <Component Name="IPParValStartAddress" UId="468" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="469" />
+        <Token Text="+" UId="470" />
+        <Blank Num="1" UId="471" />
+        <Access Scope="LiteralConstant" UId="472">
+          <Constant UId="473">
+            <ConstantValue UId="475">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="476" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="477" />
+  <NewLine Num="1" UId="478" />
+  <Blank Num="4" UId="479" />
+  <NewLine Num="1" UId="480" />
+  <Blank Num="5" UId="481" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="482">
+    <Text UId="483"> Copy IP-Address data</Text>
+  </LineComment>
+  <NewLine Num="1" UId="484" />
+  <Blank Num="4" UId="485" />
+  <Access Scope="LocalVariable" UId="486">
+    <Symbol UId="487">
+      <Component Name="O_IPParam" UId="488" />
+      <Token Text="." UId="489" />
+      <Component Name="IPAddress" UId="490">
+        <Token Text="[" UId="491" />
+        <Access Scope="LiteralConstant" UId="492">
+          <Constant UId="493">
+            <ConstantValue UId="495">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="496" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="497" />
+  <Token Text=":=" UId="498" />
+  <Blank Num="1" UId="499" />
+  <Access Scope="LocalVariable" UId="500">
+    <Symbol UId="501">
+      <Component Name="PDInterfaceDataReal" UId="502" />
+      <Token Text="." UId="503" />
+      <Component Name="Data" UId="504">
+        <Token Text="[" UId="505" />
+        <Access Scope="LocalVariable" UId="506">
+          <Symbol UId="507">
+            <Component Name="IPParValStartAddress" UId="508" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="509" />
+        <Token Text="+" UId="510" />
+        <Blank Num="1" UId="511" />
+        <Access Scope="LiteralConstant" UId="512">
+          <Constant UId="513">
+            <ConstantValue UId="515">8</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="516" />
+        <Token Text="+" UId="517" />
+        <Blank Num="1" UId="518" />
+        <Access Scope="LiteralConstant" UId="519">
+          <Constant UId="520">
+            <ConstantValue UId="522">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="523" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="524" />
+  <NewLine Num="1" UId="525" />
+  <Blank Num="4" UId="526" />
+  <Access Scope="LocalVariable" UId="527">
+    <Symbol UId="528">
+      <Component Name="O_IPParam" UId="529" />
+      <Token Text="." UId="530" />
+      <Component Name="IPAddress" UId="531">
+        <Token Text="[" UId="532" />
+        <Access Scope="LiteralConstant" UId="533">
+          <Constant UId="534">
+            <ConstantValue UId="536">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="537" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="538" />
+  <Token Text=":=" UId="539" />
+  <Blank Num="1" UId="540" />
+  <Access Scope="LocalVariable" UId="541">
+    <Symbol UId="542">
+      <Component Name="PDInterfaceDataReal" UId="543" />
+      <Token Text="." UId="544" />
+      <Component Name="Data" UId="545">
+        <Token Text="[" UId="546" />
+        <Access Scope="LocalVariable" UId="547">
+          <Symbol UId="548">
+            <Component Name="IPParValStartAddress" UId="549" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="550" />
+        <Token Text="+" UId="551" />
+        <Blank Num="1" UId="552" />
+        <Access Scope="LiteralConstant" UId="553">
+          <Constant UId="554">
+            <ConstantValue UId="556">8</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="557" />
+        <Token Text="+" UId="558" />
+        <Blank Num="1" UId="559" />
+        <Access Scope="LiteralConstant" UId="560">
+          <Constant UId="561">
+            <ConstantValue UId="563">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="564" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="565" />
+  <NewLine Num="1" UId="566" />
+  <Blank Num="4" UId="567" />
+  <Access Scope="LocalVariable" UId="568">
+    <Symbol UId="569">
+      <Component Name="O_IPParam" UId="570" />
+      <Token Text="." UId="571" />
+      <Component Name="IPAddress" UId="572">
+        <Token Text="[" UId="573" />
+        <Access Scope="LiteralConstant" UId="574">
+          <Constant UId="575">
+            <ConstantValue UId="577">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="578" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="579" />
+  <Token Text=":=" UId="580" />
+  <Blank Num="1" UId="581" />
+  <Access Scope="LocalVariable" UId="582">
+    <Symbol UId="583">
+      <Component Name="PDInterfaceDataReal" UId="584" />
+      <Token Text="." UId="585" />
+      <Component Name="Data" UId="586">
+        <Token Text="[" UId="587" />
+        <Access Scope="LocalVariable" UId="588">
+          <Symbol UId="589">
+            <Component Name="IPParValStartAddress" UId="590" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="591" />
+        <Token Text="+" UId="592" />
+        <Blank Num="1" UId="593" />
+        <Access Scope="LiteralConstant" UId="594">
+          <Constant UId="595">
+            <ConstantValue UId="597">8</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="598" />
+        <Token Text="+" UId="599" />
+        <Blank Num="1" UId="600" />
+        <Access Scope="LiteralConstant" UId="601">
+          <Constant UId="602">
+            <ConstantValue UId="604">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="605" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="606" />
+  <NewLine Num="1" UId="607" />
+  <Blank Num="4" UId="608" />
+  <Access Scope="LocalVariable" UId="609">
+    <Symbol UId="610">
+      <Component Name="O_IPParam" UId="611" />
+      <Token Text="." UId="612" />
+      <Component Name="IPAddress" UId="613">
+        <Token Text="[" UId="614" />
+        <Access Scope="LiteralConstant" UId="615">
+          <Constant UId="616">
+            <ConstantValue UId="618">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="619" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="620" />
+  <Token Text=":=" UId="621" />
+  <Blank Num="1" UId="622" />
+  <Access Scope="LocalVariable" UId="623">
+    <Symbol UId="624">
+      <Component Name="PDInterfaceDataReal" UId="625" />
+      <Token Text="." UId="626" />
+      <Component Name="Data" UId="627">
+        <Token Text="[" UId="628" />
+        <Access Scope="LocalVariable" UId="629">
+          <Symbol UId="630">
+            <Component Name="IPParValStartAddress" UId="631" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="632" />
+        <Token Text="+" UId="633" />
+        <Blank Num="1" UId="634" />
+        <Access Scope="LiteralConstant" UId="635">
+          <Constant UId="636">
+            <ConstantValue UId="638">8</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="639" />
+        <Token Text="+" UId="640" />
+        <Blank Num="1" UId="641" />
+        <Access Scope="LiteralConstant" UId="642">
+          <Constant UId="643">
+            <ConstantValue UId="645">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="646" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="647" />
+  <NewLine Num="1" UId="648" />
+  <Blank Num="4" UId="649" />
+  <NewLine Num="1" UId="650" />
+  <Blank Num="4" UId="651" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="652">
+    <Text UId="653"> Copy Subnetmask data</Text>
+  </LineComment>
+  <NewLine Num="1" UId="654" />
+  <Blank Num="4" UId="655" />
+  <Access Scope="LocalVariable" UId="656">
+    <Symbol UId="657">
+      <Component Name="O_IPParam" UId="658" />
+      <Token Text="." UId="659" />
+      <Component Name="SubnetMask" UId="660">
+        <Token Text="[" UId="661" />
+        <Access Scope="LiteralConstant" UId="662">
+          <Constant UId="663">
+            <ConstantValue UId="665">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="666" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="667" />
+  <Token Text=":=" UId="668" />
+  <Blank Num="1" UId="669" />
+  <Access Scope="LocalVariable" UId="670">
+    <Symbol UId="671">
+      <Component Name="PDInterfaceDataReal" UId="672" />
+      <Token Text="." UId="673" />
+      <Component Name="Data" UId="674">
+        <Token Text="[" UId="675" />
+        <Access Scope="LocalVariable" UId="676">
+          <Symbol UId="677">
+            <Component Name="IPParValStartAddress" UId="678" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="679" />
+        <Token Text="+" UId="680" />
+        <Blank Num="1" UId="681" />
+        <Access Scope="LiteralConstant" UId="682">
+          <Constant UId="683">
+            <ConstantValue UId="685">12</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="686" />
+        <Token Text="+" UId="687" />
+        <Blank Num="1" UId="688" />
+        <Access Scope="LiteralConstant" UId="689">
+          <Constant UId="690">
+            <ConstantValue UId="692">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="693" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="694" />
+  <NewLine Num="1" UId="695" />
+  <Blank Num="4" UId="696" />
+  <Access Scope="LocalVariable" UId="697">
+    <Symbol UId="698">
+      <Component Name="O_IPParam" UId="699" />
+      <Token Text="." UId="700" />
+      <Component Name="SubnetMask" UId="701">
+        <Token Text="[" UId="702" />
+        <Access Scope="LiteralConstant" UId="703">
+          <Constant UId="704">
+            <ConstantValue UId="706">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="707" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="708" />
+  <Token Text=":=" UId="709" />
+  <Blank Num="1" UId="710" />
+  <Access Scope="LocalVariable" UId="711">
+    <Symbol UId="712">
+      <Component Name="PDInterfaceDataReal" UId="713" />
+      <Token Text="." UId="714" />
+      <Component Name="Data" UId="715">
+        <Token Text="[" UId="716" />
+        <Access Scope="LocalVariable" UId="717">
+          <Symbol UId="718">
+            <Component Name="IPParValStartAddress" UId="719" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="720" />
+        <Token Text="+" UId="721" />
+        <Blank Num="1" UId="722" />
+        <Access Scope="LiteralConstant" UId="723">
+          <Constant UId="724">
+            <ConstantValue UId="726">12</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="727" />
+        <Token Text="+" UId="728" />
+        <Blank Num="1" UId="729" />
+        <Access Scope="LiteralConstant" UId="730">
+          <Constant UId="731">
+            <ConstantValue UId="733">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="734" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="735" />
+  <NewLine Num="1" UId="736" />
+  <Blank Num="4" UId="737" />
+  <Access Scope="LocalVariable" UId="738">
+    <Symbol UId="739">
+      <Component Name="O_IPParam" UId="740" />
+      <Token Text="." UId="741" />
+      <Component Name="SubnetMask" UId="742">
+        <Token Text="[" UId="743" />
+        <Access Scope="LiteralConstant" UId="744">
+          <Constant UId="745">
+            <ConstantValue UId="747">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="748" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="749" />
+  <Token Text=":=" UId="750" />
+  <Blank Num="1" UId="751" />
+  <Access Scope="LocalVariable" UId="752">
+    <Symbol UId="753">
+      <Component Name="PDInterfaceDataReal" UId="754" />
+      <Token Text="." UId="755" />
+      <Component Name="Data" UId="756">
+        <Token Text="[" UId="757" />
+        <Access Scope="LocalVariable" UId="758">
+          <Symbol UId="759">
+            <Component Name="IPParValStartAddress" UId="760" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="761" />
+        <Token Text="+" UId="762" />
+        <Blank Num="1" UId="763" />
+        <Access Scope="LiteralConstant" UId="764">
+          <Constant UId="765">
+            <ConstantValue UId="767">12</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="768" />
+        <Token Text="+" UId="769" />
+        <Blank Num="1" UId="770" />
+        <Access Scope="LiteralConstant" UId="771">
+          <Constant UId="772">
+            <ConstantValue UId="774">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="775" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="776" />
+  <NewLine Num="1" UId="777" />
+  <Blank Num="4" UId="778" />
+  <Access Scope="LocalVariable" UId="779">
+    <Symbol UId="780">
+      <Component Name="O_IPParam" UId="781" />
+      <Token Text="." UId="782" />
+      <Component Name="SubnetMask" UId="783">
+        <Token Text="[" UId="784" />
+        <Access Scope="LiteralConstant" UId="785">
+          <Constant UId="786">
+            <ConstantValue UId="788">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="789" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="790" />
+  <Token Text=":=" UId="791" />
+  <Blank Num="1" UId="792" />
+  <Access Scope="LocalVariable" UId="793">
+    <Symbol UId="794">
+      <Component Name="PDInterfaceDataReal" UId="795" />
+      <Token Text="." UId="796" />
+      <Component Name="Data" UId="797">
+        <Token Text="[" UId="798" />
+        <Access Scope="LocalVariable" UId="799">
+          <Symbol UId="800">
+            <Component Name="IPParValStartAddress" UId="801" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="802" />
+        <Token Text="+" UId="803" />
+        <Blank Num="1" UId="804" />
+        <Access Scope="LiteralConstant" UId="805">
+          <Constant UId="806">
+            <ConstantValue UId="808">12</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="809" />
+        <Token Text="+" UId="810" />
+        <Blank Num="1" UId="811" />
+        <Access Scope="LiteralConstant" UId="812">
+          <Constant UId="813">
+            <ConstantValue UId="815">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="816" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="817" />
+  <NewLine Num="1" UId="818" />
+  <Blank Num="2" UId="819" />
+  <NewLine Num="1" UId="820" />
+  <Blank Num="2" UId="821" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="822">
+    <Text UId="823"> Copy Standard Gateway data</Text>
+  </LineComment>
+  <NewLine Num="1" UId="824" />
+  <Blank Num="4" UId="825" />
+  <Access Scope="LocalVariable" UId="826">
+    <Symbol UId="827">
+      <Component Name="O_IPParam" UId="828" />
+      <Token Text="." UId="829" />
+      <Component Name="StandardGateway" UId="830">
+        <Token Text="[" UId="831" />
+        <Access Scope="LiteralConstant" UId="832">
+          <Constant UId="833">
+            <ConstantValue UId="835">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="836" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="837" />
+  <Token Text=":=" UId="838" />
+  <Blank Num="1" UId="839" />
+  <Access Scope="LocalVariable" UId="840">
+    <Symbol UId="841">
+      <Component Name="PDInterfaceDataReal" UId="842" />
+      <Token Text="." UId="843" />
+      <Component Name="Data" UId="844">
+        <Token Text="[" UId="845" />
+        <Access Scope="LocalVariable" UId="846">
+          <Symbol UId="847">
+            <Component Name="IPParValStartAddress" UId="848" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="849" />
+        <Token Text="+" UId="850" />
+        <Blank Num="1" UId="851" />
+        <Access Scope="LiteralConstant" UId="852">
+          <Constant UId="853">
+            <ConstantValue UId="855">16</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="856" />
+        <Token Text="+" UId="857" />
+        <Blank Num="1" UId="858" />
+        <Access Scope="LiteralConstant" UId="859">
+          <Constant UId="860">
+            <ConstantValue UId="862">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="863" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="864" />
+  <NewLine Num="1" UId="865" />
+  <Blank Num="4" UId="866" />
+  <Access Scope="LocalVariable" UId="867">
+    <Symbol UId="868">
+      <Component Name="O_IPParam" UId="869" />
+      <Token Text="." UId="870" />
+      <Component Name="StandardGateway" UId="871">
+        <Token Text="[" UId="872" />
+        <Access Scope="LiteralConstant" UId="873">
+          <Constant UId="874">
+            <ConstantValue UId="876">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="877" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="878" />
+  <Token Text=":=" UId="879" />
+  <Blank Num="1" UId="880" />
+  <Access Scope="LocalVariable" UId="881">
+    <Symbol UId="882">
+      <Component Name="PDInterfaceDataReal" UId="883" />
+      <Token Text="." UId="884" />
+      <Component Name="Data" UId="885">
+        <Token Text="[" UId="886" />
+        <Access Scope="LocalVariable" UId="887">
+          <Symbol UId="888">
+            <Component Name="IPParValStartAddress" UId="889" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="890" />
+        <Token Text="+" UId="891" />
+        <Blank Num="1" UId="892" />
+        <Access Scope="LiteralConstant" UId="893">
+          <Constant UId="894">
+            <ConstantValue UId="896">16</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="897" />
+        <Token Text="+" UId="898" />
+        <Blank Num="1" UId="899" />
+        <Access Scope="LiteralConstant" UId="900">
+          <Constant UId="901">
+            <ConstantValue UId="903">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="904" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="905" />
+  <NewLine Num="1" UId="906" />
+  <Blank Num="4" UId="907" />
+  <Access Scope="LocalVariable" UId="908">
+    <Symbol UId="909">
+      <Component Name="O_IPParam" UId="910" />
+      <Token Text="." UId="911" />
+      <Component Name="StandardGateway" UId="912">
+        <Token Text="[" UId="913" />
+        <Access Scope="LiteralConstant" UId="914">
+          <Constant UId="915">
+            <ConstantValue UId="917">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="918" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="919" />
+  <Token Text=":=" UId="920" />
+  <Blank Num="1" UId="921" />
+  <Access Scope="LocalVariable" UId="922">
+    <Symbol UId="923">
+      <Component Name="PDInterfaceDataReal" UId="924" />
+      <Token Text="." UId="925" />
+      <Component Name="Data" UId="926">
+        <Token Text="[" UId="927" />
+        <Access Scope="LocalVariable" UId="928">
+          <Symbol UId="929">
+            <Component Name="IPParValStartAddress" UId="930" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="931" />
+        <Token Text="+" UId="932" />
+        <Blank Num="1" UId="933" />
+        <Access Scope="LiteralConstant" UId="934">
+          <Constant UId="935">
+            <ConstantValue UId="937">16</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="938" />
+        <Token Text="+" UId="939" />
+        <Blank Num="1" UId="940" />
+        <Access Scope="LiteralConstant" UId="941">
+          <Constant UId="942">
+            <ConstantValue UId="944">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="945" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="946" />
+  <NewLine Num="1" UId="947" />
+  <Blank Num="4" UId="948" />
+  <Access Scope="LocalVariable" UId="949">
+    <Symbol UId="950">
+      <Component Name="O_IPParam" UId="951" />
+      <Token Text="." UId="952" />
+      <Component Name="StandardGateway" UId="953">
+        <Token Text="[" UId="954" />
+        <Access Scope="LiteralConstant" UId="955">
+          <Constant UId="956">
+            <ConstantValue UId="958">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="959" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="960" />
+  <Token Text=":=" UId="961" />
+  <Blank Num="1" UId="962" />
+  <Access Scope="LocalVariable" UId="963">
+    <Symbol UId="964">
+      <Component Name="PDInterfaceDataReal" UId="965" />
+      <Token Text="." UId="966" />
+      <Component Name="Data" UId="967">
+        <Token Text="[" UId="968" />
+        <Access Scope="LocalVariable" UId="969">
+          <Symbol UId="970">
+            <Component Name="IPParValStartAddress" UId="971" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="972" />
+        <Token Text="+" UId="973" />
+        <Blank Num="1" UId="974" />
+        <Access Scope="LiteralConstant" UId="975">
+          <Constant UId="976">
+            <ConstantValue UId="978">16</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="979" />
+        <Token Text="+" UId="980" />
+        <Blank Num="1" UId="981" />
+        <Access Scope="LiteralConstant" UId="982">
+          <Constant UId="983">
+            <ConstantValue UId="985">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="986" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="987" />
+  <NewLine Num="1" UId="988" />
+  <Blank Num="2" UId="989" />
+  <NewLine Num="1" UId="990" />
+  <Token Text="END_IF" UId="991" />
+  <Token Text=";" UId="992" />
+  <NewLine Num="2" UId="993" />
+  <Token Text="IF" UId="994" />
+  <Blank Num="1" UId="995" />
+  <Access Scope="LocalVariable" UId="996">
+    <Symbol UId="997">
+      <Component Name="RDREC_Error" UId="998" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="999" />
+  <Token Text="THEN" UId="1000" />
+  <NewLine Num="1" UId="1001" />
+  <Blank Num="2" UId="1002" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1003">
+    <Text UId="1004"> Statement section IF</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1005" />
+  <Blank Num="2" UId="1006" />
+  <Access Scope="LocalVariable" UId="1007">
+    <Symbol UId="1008">
+      <Component Name="StatusSave" UId="1009" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1010" />
+  <Access Scope="LocalVariable" UId="1011">
+    <Symbol UId="1012">
+      <Component Name="RDREC_Status" UId="1013" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1014" />
+  <NewLine Num="1" UId="1015" />
+  <Blank Num="2" UId="1016" />
+  <Access Scope="LocalVariable" UId="1017">
+    <Symbol UId="1018">
+      <Component Name="O_LEN" UId="1019" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1020" />
+  <Access Scope="LiteralConstant" UId="1021">
+    <Constant UId="1022">
+      <ConstantValue UId="1024">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1025" />
+  <NewLine Num="1" UId="1026" />
+  <Token Text="ELSE" UId="1027" />
+  <NewLine Num="1" UId="1028" />
+  <Blank Num="2" UId="1029" />
+  <Access Scope="LocalVariable" UId="1030">
+    <Symbol UId="1031">
+      <Component Name="StatusSave" UId="1032" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1033" />
+  <Access Scope="LiteralConstant" UId="1034">
+    <Constant UId="1035">
+      <ConstantValue UId="1037">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1038" />
+  <NewLine Num="1" UId="1039" />
+  <Blank Num="2" UId="1040" />
+  <Access Scope="LocalVariable" UId="1041">
+    <Symbol UId="1042">
+      <Component Name="O_LEN" UId="1043" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1044" />
+  <Access Scope="LocalVariable" UId="1045">
+    <Symbol UId="1046">
+      <Component Name="RDREC_LEN" UId="1047" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1048" />
+  <NewLine Num="1" UId="1049" />
+  <Token Text="END_IF" UId="1050" />
+  <Token Text=";" UId="1051" />
+  <NewLine Num="3" UId="1052" />
+  <Token Text="IF" UId="1053" />
+  <Blank Num="2" UId="1054" />
+  <Access Scope="LocalVariable" UId="1055">
+    <Symbol UId="1056">
+      <Component Name="RDREC_Error" UId="1057" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1058" />
+  <Token Text="OR" UId="1059" />
+  <Blank Num="1" UId="1060" />
+  <Access Scope="LocalVariable" UId="1061">
+    <Symbol UId="1062">
+      <Component Name="RDREC_Valid" UId="1063" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1064" />
+  <Token Text="THEN" UId="1065" />
+  <NewLine Num="1" UId="1066" />
+  <Blank Num="2" UId="1067" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1068">
+    <Text UId="1069"> Statement section IF</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1070" />
+  <Blank Num="2" UId="1071" />
+  <Access Scope="LocalVariable" UId="1072">
+    <Symbol UId="1073">
+      <Component Name="ReqFlag" UId="1074" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1075" />
+  <Access Scope="LiteralConstant" UId="1076">
+    <Constant UId="1077">
+      <ConstantValue UId="1079">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1080" />
+  <NewLine Num="1" UId="1081" />
+  <Token Text="END_IF" UId="1082" />
+  <Token Text=";" UId="1083" />
+  <NewLine Num="2" UId="1084" />
+  <Access Scope="LocalVariable" UId="1085">
+    <Symbol UId="1086">
+      <Component Name="O_Status" UId="1087" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1088" />
+  <Access Scope="LocalVariable" UId="1089">
+    <Symbol UId="1090">
+      <Component Name="StatusSave" UId="1091" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1092" />
+  <NewLine Num="1" UId="1093" />
+  <Access Scope="LocalVariable" UId="1094">
+    <Symbol UId="1095">
+      <Component Name="O_Valid" UId="1096" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1097" />
+  <Access Scope="LocalVariable" UId="1098">
+    <Symbol UId="1099">
+      <Component Name="RDREC_Valid" UId="1100" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1101" />
+  <NewLine Num="1" UId="1102" />
+  <Access Scope="LocalVariable" UId="1103">
+    <Symbol UId="1104">
+      <Component Name="O_Busy" UId="1105" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1106" />
+  <Access Scope="LocalVariable" UId="1107">
+    <Symbol UId="1108">
+      <Component Name="RDREC_Busy" UId="1109" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1110" />
+  <NewLine Num="1" UId="1111" />
+  <Access Scope="LocalVariable" UId="1112">
+    <Symbol UId="1113">
+      <Component Name="O_Error" UId="1114" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="1115" />
+  <Access Scope="LocalVariable" UId="1116">
+    <Symbol UId="1117">
+      <Component Name="RDREC_Error" UId="1118" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1119" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>LPNIODiagReadIPS7-1500</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="19" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>LPNIODiagReadIPS7-1500</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1A" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>LPNIODiagReadIPS7-1500</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>LPNIODiagReadIPS7-1500</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text>LPNIODiagReadIPS7-1500</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>LPNIODiagReadIPS7-1500</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

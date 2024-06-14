@@ -1,0 +1,1166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:35.0496997Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>VCC</HeaderAuthor>
+      <HeaderFamily>ProcEq</HeaderFamily>
+      <HeaderName>Pid</HeaderName>
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input">
+    <Member Name="I_CYCLE" Datatype="Time" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Sample time</MultiLanguageText><MultiLanguageText Lang="en-US">Sample time</MultiLanguageText><MultiLanguageText Lang="sv-SE">Sample time</MultiLanguageText><MultiLanguageText Lang="nl-BE">Sample time</MultiLanguageText><MultiLanguageText Lang="zh-HK">Sample time</MultiLanguageText><MultiLanguageText Lang="zh-CN">Sample time</MultiLanguageText></Comment></Member>
+    <Member Name="H_TI" Datatype="Time" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Reset time</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Reset time</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Reset time</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Reset time</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Reset time</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Reset time</MultiLanguageText></Comment></Member>
+    <Member Name="H_TD" Datatype="Time" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Derivative time</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Derivative time</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Derivative time</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Derivative time</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Derivative time</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Derivative time</MultiLanguageText></Comment></Member>
+    <Member Name="I_Manual_Value" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Setpoint Manual</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Setpoint Manual</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Setpoint Manual</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Setpoint Manual</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Setpoint Manual</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Setpoint Manual</MultiLanguageText></Comment></Member>
+    <Member Name="I_SP_Auto" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Setpoint for controller</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Setpoint for controller</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Setpoint for controller</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Setpoint for controller</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Setpoint for controller</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Setpoint for controller</MultiLanguageText></Comment></Member>
+    <Member Name="I_PV_PID" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Process value</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Process value</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Process value</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Process value</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Process value</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Process value</MultiLanguageText></Comment></Member>
+    <Member Name="H_GAIN" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Proportional Gain</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Proportional Gain</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Proportional Gain</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Proportional Gain</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Proportional Gain</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Proportional Gain</MultiLanguageText></Comment></Member>
+    <Member Name="H_DEADB_W" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Deadband width</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Deadband width</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Deadband width</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Deadband width</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Deadband width</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Deadband width</MultiLanguageText></Comment></Member>
+    <Member Name="H_LMN_HLM" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Manipulated value high limit</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Manipulated value high limit</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Manipulated value high limit</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Manipulated value high limit</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Manipulated value high limit</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Manipulated value high limit</MultiLanguageText></Comment><StartValue>100.0</StartValue></Member>
+    <Member Name="H_LMN_LLM" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Manipulated value low limit</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Manipulated value low limit</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Manipulated value low limit</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Manipulated value low limit</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Manipulated value low limit</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Manipulated value low limit</MultiLanguageText></Comment></Member>
+    <Member Name="I_COM_RST" Datatype="Bool" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Initialising reset of controller</MultiLanguageText><MultiLanguageText Lang="en-US">Initialising reset of controller</MultiLanguageText><MultiLanguageText Lang="sv-SE">Initialising reset of controller</MultiLanguageText><MultiLanguageText Lang="nl-BE">Initialising reset of controller</MultiLanguageText><MultiLanguageText Lang="zh-HK">Initialising reset of controller</MultiLanguageText><MultiLanguageText Lang="zh-CN">Initialising reset of controller</MultiLanguageText></Comment></Member>
+    <Member Name="I_MAN_ON" Datatype="Bool" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Manual value on</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Manual value on</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Manual value on</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Manual value on</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Manual value on</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Manual value on</MultiLanguageText></Comment></Member>
+    <Member Name="H_Direct" Datatype="Bool" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid in Direct mode (output increase if SP&gt;PV)</MultiLanguageText><MultiLanguageText Lang="en-US">Pid in Direct mode (output increase if SP&gt;PV)</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid in Direct mode (output increase if SP&gt;PV)</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid in Direct mode (output increase if SP&gt;PV)</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid in Direct mode (output increase if SP&gt;PV)</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid in Direct mode (output increase if SP&gt;PV)</MultiLanguageText></Comment><StartValue>TRUE</StartValue></Member>
+    <Member Name="H_P_SEL" Datatype="Bool" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid P selected</MultiLanguageText><MultiLanguageText Lang="en-US">Pid P selected</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid P selected</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid P selected</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid P selected</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid P selected</MultiLanguageText></Comment></Member>
+    <Member Name="H_I_SEL" Datatype="Bool" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid I selected</MultiLanguageText><MultiLanguageText Lang="en-US">Pid I selected</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid I selected</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid I selected</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid I selected</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid I selected</MultiLanguageText></Comment></Member>
+    <Member Name="H_D_SEL" Datatype="Bool" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid D selected</MultiLanguageText><MultiLanguageText Lang="en-US">Pid D selected</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid D selected</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid D selected</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid D selected</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid D selected</MultiLanguageText></Comment></Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="O_SP_PID" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Setpoint used in Pid controller</MultiLanguageText><MultiLanguageText Lang="en-US">Setpoint used in Pid controller</MultiLanguageText><MultiLanguageText Lang="sv-SE">Setpoint used in Pid controller</MultiLanguageText><MultiLanguageText Lang="nl-BE">Setpoint used in Pid controller</MultiLanguageText><MultiLanguageText Lang="zh-HK">Setpoint used in Pid controller</MultiLanguageText><MultiLanguageText Lang="zh-CN">Setpoint used in Pid controller</MultiLanguageText></Comment></Member>
+    <Member Name="O_LMN_PID" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Output value Pid Controller</MultiLanguageText><MultiLanguageText Lang="en-US">Output value Pid Controller</MultiLanguageText><MultiLanguageText Lang="sv-SE">Output value Pid Controller</MultiLanguageText><MultiLanguageText Lang="nl-BE">Output value Pid Controller</MultiLanguageText><MultiLanguageText Lang="zh-HK">Output value Pid Controller</MultiLanguageText><MultiLanguageText Lang="zh-CN">Output value Pid Controller</MultiLanguageText></Comment></Member>
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Gain" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Gain in function of Pid direct or not</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Gain in function of Pid direct or not</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Gain in function of Pid direct or not</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Gain in function of Pid direct or not</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Gain in function of Pid direct or not</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Gain in function of Pid direct or not</MultiLanguageText></Comment></Member>
+    <Member Name="DirectCoef" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Value +1 or -1 if Pid direct or not</MultiLanguageText><MultiLanguageText Lang="en-US">Value +1 or -1 if Pid direct or not</MultiLanguageText><MultiLanguageText Lang="sv-SE">Value +1 or -1 if Pid direct or not</MultiLanguageText><MultiLanguageText Lang="nl-BE">Value +1 or -1 if Pid direct or not</MultiLanguageText><MultiLanguageText Lang="zh-HK">Value +1 or -1 if Pid direct or not</MultiLanguageText><MultiLanguageText Lang="zh-CN">Value +1 or -1 if Pid direct or not</MultiLanguageText></Comment></Member>
+    <Member Name="M_LMN" Datatype="Real" Remanence="SetInIDB" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Manipulated value from controller</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Manipulated value from controller</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Manipulated value from controller</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Manipulated value from controller</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Manipulated value from controller</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Manipulated value from controller</MultiLanguageText></Comment></Member>
+    <Member Name="PidControl" Datatype="CONT_C" Version="1.1" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-GB">Pid Controller</MultiLanguageText><MultiLanguageText Lang="en-US">Pid Controller</MultiLanguageText><MultiLanguageText Lang="sv-SE">Pid Controller</MultiLanguageText><MultiLanguageText Lang="nl-BE">Pid Controller</MultiLanguageText><MultiLanguageText Lang="zh-HK">Pid Controller</MultiLanguageText><MultiLanguageText Lang="zh-CN">Pid Controller</MultiLanguageText></Comment><Sections><Section Name="Input"><Member Name="COM_RST" Datatype="Bool" /><Member Name="MAN_ON" Datatype="Bool" /><Member Name="PVPER_ON" Datatype="Bool" /><Member Name="P_SEL" Datatype="Bool" /><Member Name="I_SEL" Datatype="Bool" /><Member Name="INT_HOLD" Datatype="Bool" /><Member Name="I_ITL_ON" Datatype="Bool" /><Member Name="D_SEL" Datatype="Bool" /><Member Name="CYCLE" Datatype="Time" /><Member Name="SP_INT" Datatype="Real" /><Member Name="PV_IN" Datatype="Real" /><Member Name="PV_PER" Datatype="Word" /><Member Name="MAN" Datatype="Real" /><Member Name="GAIN" Datatype="Real" /><Member Name="TI" Datatype="Time" /><Member Name="TD" Datatype="Time" /><Member Name="TM_LAG" Datatype="Time" /><Member Name="DEADB_W" Datatype="Real" /><Member Name="LMN_HLM" Datatype="Real" /><Member Name="LMN_LLM" Datatype="Real" /><Member Name="PV_FAC" Datatype="Real" /><Member Name="PV_OFF" Datatype="Real" /><Member Name="LMN_FAC" Datatype="Real" /><Member Name="LMN_OFF" Datatype="Real" /><Member Name="I_ITLVAL" Datatype="Real" /><Member Name="DISV" Datatype="Real" /></Section><Section Name="Output"><Member Name="LMN" Datatype="Real" /><Member Name="LMN_PER" Datatype="Word" /><Member Name="QLMN_HLM" Datatype="Bool" /><Member Name="QLMN_LLM" Datatype="Bool" /><Member Name="LMN_P" Datatype="Real" /><Member Name="LMN_I" Datatype="Real" /><Member Name="LMN_D" Datatype="Real" /><Member Name="PV" Datatype="Real" /><Member Name="ER" Datatype="Real" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="sInvAlt" Datatype="Real" /><Member Name="sIanteilAlt" Datatype="Real" /><Member Name="sRestInt" Datatype="Real" /><Member Name="sRestDif" Datatype="Real" /><Member Name="sRueck" Datatype="Real" /><Member Name="sLmn" Datatype="Real" /><Member Name="sbArwHLmOn" Datatype="Bool" /><Member Name="sbArwLLmOn" Datatype="Bool" /><Member Name="sbILimOn" Datatype="Bool" /></Section></Sections></Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>LProcPid</Name>
+      <Number>1713</Number>
+      <ProgrammingLanguage>FBD</ProgrammingLanguage>
+      <SetENOAutomatically>False</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>================================================================================
+The Process Value is controlled by the Pid controller.
+================================================================================
+</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>================================================================================
+The Process Value is controlled by the Pid controller.
+================================================================================
+</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>================================================================================
+The Process Value is controlled by the Pid controller.
+================================================================================
+</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>================================================================================
+The Process Value is controlled by the Pid controller.
+================================================================================
+</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text>================================================================================
+The Process Value is controlled by the Pid controller.
+================================================================================
+</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>================================================================================
+The Process Value is controlled by the Pid controller.
+================================================================================
+</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="H_Direct" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="22">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="DirectCoef" />
+      </Symbol>
+    </Access>
+    <Part Name="Move" UId="24" DisabledENO="false">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="26">
+      <IdentCon UId="22" />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="27">
+      <NameCon UId="24" Name="out1" />
+      <IdentCon UId="23" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control Direct: Gain>0 and Output increase when SP>PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="H_Direct" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="22">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>-1.0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="DirectCoef" />
+      </Symbol>
+    </Access>
+    <Part Name="Move" UId="24" DisabledENO="false">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+      <Negated Name="en" />
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="26">
+      <IdentCon UId="22" />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="27">
+      <NameCon UId="24" Name="out1" />
+      <IdentCon UId="23" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="21" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="24" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control not Direct: Gain&lt;0 and Output increase when SP&lt;PV</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="26" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="TRUE" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="H_GAIN" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="DirectCoef" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Gain" />
+      </Symbol>
+    </Access>
+    <Part Name="Mul" UId="25" DisabledENO="false">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <TemplateValue Name="SrcType" Type="Type">Real</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="26">
+      <IdentCon UId="21" />
+      <NameCon UId="25" Name="en" />
+    </Wire>
+    <Wire UId="27">
+      <IdentCon UId="22" />
+      <NameCon UId="25" Name="in1" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="23" />
+      <NameCon UId="25" Name="in2" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="25" Name="out" />
+      <IdentCon UId="24" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="27" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="28" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="32" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Gain Calculation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="TRUE" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="I_COM_RST" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="I_MAN_ON" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="FALSE" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="H_P_SEL" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="H_I_SEL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="FALSE" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="FALSE" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="H_D_SEL" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="I_CYCLE" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="I_SP_Auto" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="I_PV_PID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="I_Manual_Value" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="Gain" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="H_TI" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="H_TD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="H_DEADB_W" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="H_LMN_HLM" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="H_LMN_LLM" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="40">
+      <Symbol>
+        <Component Name="M_LMN" />
+      </Symbol>
+    </Access>
+    <Part Name="CONT_C" Version="1.1" UId="41">
+      <Instance Scope="LocalVariable" UId="42">
+        <Component Name="PidControl" />
+      </Instance>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="59">
+      <IdentCon UId="21" />
+      <NameCon UId="41" Name="en" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="22" />
+      <NameCon UId="41" Name="COM_RST" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="23" />
+      <NameCon UId="41" Name="MAN_ON" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="24" />
+      <NameCon UId="41" Name="PVPER_ON" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="25" />
+      <NameCon UId="41" Name="P_SEL" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="26" />
+      <NameCon UId="41" Name="I_SEL" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="27" />
+      <NameCon UId="41" Name="INT_HOLD" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="28" />
+      <NameCon UId="41" Name="I_ITL_ON" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="29" />
+      <NameCon UId="41" Name="D_SEL" />
+    </Wire>
+    <Wire UId="68">
+      <IdentCon UId="30" />
+      <NameCon UId="41" Name="CYCLE" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="31" />
+      <NameCon UId="41" Name="SP_INT" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="32" />
+      <NameCon UId="41" Name="PV_IN" />
+    </Wire>
+    <Wire UId="71">
+      <OpenCon UId="43" />
+      <NameCon UId="41" Name="PV_PER" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="33" />
+      <NameCon UId="41" Name="MAN" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="34" />
+      <NameCon UId="41" Name="GAIN" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="35" />
+      <NameCon UId="41" Name="TI" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="36" />
+      <NameCon UId="41" Name="TD" />
+    </Wire>
+    <Wire UId="76">
+      <OpenCon UId="44" />
+      <NameCon UId="41" Name="TM_LAG" />
+    </Wire>
+    <Wire UId="77">
+      <IdentCon UId="37" />
+      <NameCon UId="41" Name="DEADB_W" />
+    </Wire>
+    <Wire UId="78">
+      <IdentCon UId="38" />
+      <NameCon UId="41" Name="LMN_HLM" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="39" />
+      <NameCon UId="41" Name="LMN_LLM" />
+    </Wire>
+    <Wire UId="80">
+      <OpenCon UId="45" />
+      <NameCon UId="41" Name="PV_FAC" />
+    </Wire>
+    <Wire UId="81">
+      <OpenCon UId="46" />
+      <NameCon UId="41" Name="PV_OFF" />
+    </Wire>
+    <Wire UId="82">
+      <OpenCon UId="47" />
+      <NameCon UId="41" Name="LMN_FAC" />
+    </Wire>
+    <Wire UId="83">
+      <OpenCon UId="48" />
+      <NameCon UId="41" Name="LMN_OFF" />
+    </Wire>
+    <Wire UId="84">
+      <OpenCon UId="49" />
+      <NameCon UId="41" Name="I_ITLVAL" />
+    </Wire>
+    <Wire UId="85">
+      <OpenCon UId="50" />
+      <NameCon UId="41" Name="DISV" />
+    </Wire>
+    <Wire UId="86">
+      <NameCon UId="41" Name="LMN" />
+      <IdentCon UId="40" />
+    </Wire>
+    <Wire UId="87">
+      <NameCon UId="41" Name="LMN_PER" />
+      <OpenCon UId="51" />
+    </Wire>
+    <Wire UId="88">
+      <NameCon UId="41" Name="QLMN_HLM" />
+      <OpenCon UId="52" />
+    </Wire>
+    <Wire UId="89">
+      <NameCon UId="41" Name="QLMN_LLM" />
+      <OpenCon UId="53" />
+    </Wire>
+    <Wire UId="90">
+      <NameCon UId="41" Name="LMN_P" />
+      <OpenCon UId="54" />
+    </Wire>
+    <Wire UId="91">
+      <NameCon UId="41" Name="LMN_I" />
+      <OpenCon UId="55" />
+    </Wire>
+    <Wire UId="92">
+      <NameCon UId="41" Name="LMN_D" />
+      <OpenCon UId="56" />
+    </Wire>
+    <Wire UId="93">
+      <NameCon UId="41" Name="PV" />
+      <OpenCon UId="57" />
+    </Wire>
+    <Wire UId="94">
+      <NameCon UId="41" Name="ER" />
+      <OpenCon UId="58" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="39" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="3D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="40" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="42" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="43" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>**** 7 - Submodules - Non-machine **** Pid control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="44" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="TRUE" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="I_SP_Auto" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="O_SP_PID" />
+      </Symbol>
+    </Access>
+    <Part Name="Move" UId="24" DisabledENO="false">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="26">
+      <IdentCon UId="22" />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="27">
+      <NameCon UId="24" Name="out1" />
+      <IdentCon UId="23" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="45" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Copy internal Setpoint to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="47" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>Copy internal Setpoint to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>Copy internal Setpoint to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="49" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>Copy internal Setpoint to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="4A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>Copy internal Setpoint to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="4B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>Copy internal Setpoint to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="4C" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="4D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>**** 8 - Outputs **** Copy internal Setpoint to outpu</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="4E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>**** 8 - Outputs **** Copy internal Setpoint to outpu</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="4F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>**** 8 - Outputs **** Copy internal Setpoint to outpu</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="50" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>**** 8 - Outputs **** Copy internal Setpoint to outpu</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="51" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>**** 8 - Outputs **** Copy internal Setpoint to outpu</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="52" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>**** 8 - Outputs **** Copy internal Setpoint to outpu</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="53" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="TRUE" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="M_LMN" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="O_LMN_PID" />
+      </Symbol>
+    </Access>
+    <Part Name="Move" UId="24" DisabledENO="false">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="26">
+      <IdentCon UId="22" />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="27">
+      <NameCon UId="24" Name="out1" />
+      <IdentCon UId="23" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="54" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="55" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="56" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="57" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="58" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="59" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="5A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="5B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="5C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>**** 8 - Outputs **** Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="5D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>**** 8 - Outputs **** Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="5E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>**** 8 - Outputs **** Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="5F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>**** 8 - Outputs **** Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="60" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text>**** 8 - Outputs **** Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="61" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>**** 8 - Outputs **** Copy Pid Manipulated value to output</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="62" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="63" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>LProcPid</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="64" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>LProcPid</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="65" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>LProcPid</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="66" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>LProcPid</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="67" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text>LProcPid</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="68" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>LProcPid</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

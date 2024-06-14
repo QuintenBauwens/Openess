@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:59.7631731Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>VCC</HeaderAuthor>
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.0.0.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>209000NCP01Alarm</Name>
+      <Number>258</Number>
+      <ProgrammingLanguage>FBD</ProgrammingLanguage>
+      <SetENOAutomatically>False</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>=============================================================================
+This Module Controls All Alarm Sending To VD 
+=============================================================================</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>=============================================================================
+This Module Controls All Alarm Sending To VD 
+=============================================================================</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>=============================================================================
+This Module Controls All Alarm Sending To VD 
+=============================================================================</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="TRUE" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="_209000NCP01VDComMasterAlarmReportRcv" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="_209000NCP01VDComMasterAlarmReportSnd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="_209000NCP01VDComLocalAlarmReportRcv" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="_209000NCP01VDComLocalAlarmReportSnd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="_209000NCP01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="_209210ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="_209220ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="_209230ZM01Alarms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="_209000NCP01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="_209210ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="43">
+      <Symbol>
+        <Component Name="_209220ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="45">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="46">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="47">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="48">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="49">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="50">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="51">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="52">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="53">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="54">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="55">
+      <Symbol>
+        <Component Name="_209230ZM01AlarmsCompare" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="56">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>100</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="57">
+      <Constant>
+        <ConstantType>DInt</ConstantType>
+        <ConstantValue>50</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="58">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>14</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="TypedConstant" UId="59">
+      <Constant>
+        <ConstantValue>T#500MS</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="60">
+      <Symbol>
+        <Component Name="_209000NCP01ComVD" />
+        <Component Name="VDAlarmReport" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="61">
+      <Symbol>
+        <Component Name="_209000NCP01Alarm" />
+        <Component Name="AlarmDB" />
+      </Symbol>
+    </Access>
+    <Call UId="62">
+      <CallInfo Name="LComAlarm" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="63">
+          <Component Name="_209000NCP01AlarmHandler" />
+        </Instance>
+        <Parameter Name="C_VDCommRecvDB" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_VDCommSendDB" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_LocalRecvDB" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_LocalSendDB" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_GenAlarmDB" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ1" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ2" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ3" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ4" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ5" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ6" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ7" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ8" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ9" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ10" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ11" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ12" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ13" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmDBMZ14" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_GenAlarmCompare" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ1" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ2" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ3" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ4" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ5" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ6" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ7" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ8" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ9" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ10" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ11" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ12" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ13" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_AlarmCompareDBMZ14" Section="Input" Type="DB_ANY" />
+        <Parameter Name="C_SubSystem" Section="Input" Type="Int" />
+        <Parameter Name="C_SendDelay" Section="Input" Type="DInt" />
+        <Parameter Name="C_NbrOfModeZone" Section="Input" Type="Int" />
+        <Parameter Name="C_Filter" Section="Input" Type="Time" />
+        <Parameter Name="IO_VD" Section="InOut" Type="VDComm" />
+        <Parameter Name="IO_AlarmDB" Section="InOut" Type="AlarmDB" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="64">
+      <IdentCon UId="21" />
+      <NameCon UId="62" Name="en" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="22" />
+      <NameCon UId="62" Name="C_VDCommRecvDB" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="23" />
+      <NameCon UId="62" Name="C_VDCommSendDB" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="24" />
+      <NameCon UId="62" Name="C_LocalRecvDB" />
+    </Wire>
+    <Wire UId="68">
+      <IdentCon UId="25" />
+      <NameCon UId="62" Name="C_LocalSendDB" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="26" />
+      <NameCon UId="62" Name="C_GenAlarmDB" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="27" />
+      <NameCon UId="62" Name="C_AlarmDBMZ1" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="28" />
+      <NameCon UId="62" Name="C_AlarmDBMZ2" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="29" />
+      <NameCon UId="62" Name="C_AlarmDBMZ3" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="30" />
+      <NameCon UId="62" Name="C_AlarmDBMZ4" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="31" />
+      <NameCon UId="62" Name="C_AlarmDBMZ5" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="32" />
+      <NameCon UId="62" Name="C_AlarmDBMZ6" />
+    </Wire>
+    <Wire UId="76">
+      <IdentCon UId="33" />
+      <NameCon UId="62" Name="C_AlarmDBMZ7" />
+    </Wire>
+    <Wire UId="77">
+      <IdentCon UId="34" />
+      <NameCon UId="62" Name="C_AlarmDBMZ8" />
+    </Wire>
+    <Wire UId="78">
+      <IdentCon UId="35" />
+      <NameCon UId="62" Name="C_AlarmDBMZ9" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="36" />
+      <NameCon UId="62" Name="C_AlarmDBMZ10" />
+    </Wire>
+    <Wire UId="80">
+      <IdentCon UId="37" />
+      <NameCon UId="62" Name="C_AlarmDBMZ11" />
+    </Wire>
+    <Wire UId="81">
+      <IdentCon UId="38" />
+      <NameCon UId="62" Name="C_AlarmDBMZ12" />
+    </Wire>
+    <Wire UId="82">
+      <IdentCon UId="39" />
+      <NameCon UId="62" Name="C_AlarmDBMZ13" />
+    </Wire>
+    <Wire UId="83">
+      <IdentCon UId="40" />
+      <NameCon UId="62" Name="C_AlarmDBMZ14" />
+    </Wire>
+    <Wire UId="84">
+      <IdentCon UId="41" />
+      <NameCon UId="62" Name="C_GenAlarmCompare" />
+    </Wire>
+    <Wire UId="85">
+      <IdentCon UId="42" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ1" />
+    </Wire>
+    <Wire UId="86">
+      <IdentCon UId="43" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ2" />
+    </Wire>
+    <Wire UId="87">
+      <IdentCon UId="44" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ3" />
+    </Wire>
+    <Wire UId="88">
+      <IdentCon UId="45" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ4" />
+    </Wire>
+    <Wire UId="89">
+      <IdentCon UId="46" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ5" />
+    </Wire>
+    <Wire UId="90">
+      <IdentCon UId="47" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ6" />
+    </Wire>
+    <Wire UId="91">
+      <IdentCon UId="48" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ7" />
+    </Wire>
+    <Wire UId="92">
+      <IdentCon UId="49" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ8" />
+    </Wire>
+    <Wire UId="93">
+      <IdentCon UId="50" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ9" />
+    </Wire>
+    <Wire UId="94">
+      <IdentCon UId="51" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ10" />
+    </Wire>
+    <Wire UId="95">
+      <IdentCon UId="52" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ11" />
+    </Wire>
+    <Wire UId="96">
+      <IdentCon UId="53" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ12" />
+    </Wire>
+    <Wire UId="97">
+      <IdentCon UId="54" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ13" />
+    </Wire>
+    <Wire UId="98">
+      <IdentCon UId="55" />
+      <NameCon UId="62" Name="C_AlarmCompareDBMZ14" />
+    </Wire>
+    <Wire UId="99">
+      <IdentCon UId="56" />
+      <NameCon UId="62" Name="C_SubSystem" />
+    </Wire>
+    <Wire UId="100">
+      <IdentCon UId="57" />
+      <NameCon UId="62" Name="C_SendDelay" />
+    </Wire>
+    <Wire UId="101">
+      <IdentCon UId="58" />
+      <NameCon UId="62" Name="C_NbrOfModeZone" />
+    </Wire>
+    <Wire UId="102">
+      <IdentCon UId="59" />
+      <NameCon UId="62" Name="C_Filter" />
+    </Wire>
+    <Wire UId="103">
+      <IdentCon UId="60" />
+      <NameCon UId="62" Name="IO_VD" />
+    </Wire>
+    <Wire UId="104">
+      <IdentCon UId="61" />
+      <NameCon UId="62" Name="IO_AlarmDB" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>Alarm Handler Send Requests</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>Alarm Handler Send Requests</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>Alarm Handler Send Requests</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>Alarm Handler Send Requests</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>**** 7.1 - Submodule - NonMachine **** Alarm Handler</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>**** 7.1 - Submodule - NonMachine **** Alarm Handler</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>**** 7.1 - Submodule - NonMachine **** Alarm Handler</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>**** 7.1 - Submodule - NonMachine **** Alarm Handler</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="19" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>Alarm</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1A" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>Alarm</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>209000NCP01Alarm</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>Alarm</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

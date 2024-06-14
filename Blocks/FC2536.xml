@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:27.1341827Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input">
+    <Member Name="I_UpperLevelAlarm" Datatype="&quot;Alarm&quot;" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">Alarm UDT Upperlevel</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="AlarmAActive" Datatype="Bool" />
+          <Member Name="AlarmBActive" Datatype="Bool" />
+          <Member Name="AlarmCActive" Datatype="Bool" />
+          <Member Name="AlarmDActive" Datatype="Bool" />
+          <Member Name="AlarmABCondition" Datatype="Bool" />
+          <Member Name="AlarmAActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmBActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmCActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmDActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmABConditionUpperLevel" Datatype="Bool" />
+          <Member Name="EnableAlarmUpperLevel" Datatype="Bool" />
+          <Member Name="SafetyNotOkUpperLevel" Datatype="Bool" />
+          <Member Name="SafetyNok" Datatype="Bool" />
+          <Member Name="EnableAlarmMechanicNOk" Datatype="Bool" />
+          <Member Name="EnableAlarmTransportNOk" Datatype="Bool" />
+          <Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" />
+          <Member Name="UpperLevelHWNok" Datatype="Bool" />
+          <Member Name="Feature1" Datatype="Bool" />
+          <Member Name="Feature2" Datatype="Bool" />
+          <Member Name="Feature3" Datatype="Bool" />
+          <Member Name="Feature4" Datatype="Bool" />
+          <Member Name="Feature5" Datatype="Bool" />
+          <Member Name="Feature6" Datatype="Bool" />
+          <Member Name="Feature7" Datatype="Bool" />
+          <Member Name="Feature8" Datatype="Bool" />
+          <Member Name="Feature9" Datatype="Bool" />
+          <Member Name="Feature10" Datatype="Bool" />
+          <Member Name="Feature11" Datatype="Bool" />
+          <Member Name="Feature12" Datatype="Bool" />
+          <Member Name="Feature13" Datatype="Bool" />
+          <Member Name="Feature14" Datatype="Bool" />
+          <Member Name="Feature15" Datatype="Bool" />
+          <Member Name="AlarmInstance" Datatype="WString" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut">
+    <Member Name="IO_Alarm" Datatype="&quot;Alarm&quot;" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-GB">Alarm UDT Upperlevel -1 (1 level under upperlevel)</MultiLanguageText>
+      </Comment>
+      <Sections>
+        <Section Name="None">
+          <Member Name="AlarmAActive" Datatype="Bool" />
+          <Member Name="AlarmBActive" Datatype="Bool" />
+          <Member Name="AlarmCActive" Datatype="Bool" />
+          <Member Name="AlarmDActive" Datatype="Bool" />
+          <Member Name="AlarmABCondition" Datatype="Bool" />
+          <Member Name="AlarmAActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmBActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmCActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmDActiveUpperLevel" Datatype="Bool" />
+          <Member Name="AlarmABConditionUpperLevel" Datatype="Bool" />
+          <Member Name="EnableAlarmUpperLevel" Datatype="Bool" />
+          <Member Name="SafetyNotOkUpperLevel" Datatype="Bool" />
+          <Member Name="SafetyNok" Datatype="Bool" />
+          <Member Name="EnableAlarmMechanicNOk" Datatype="Bool" />
+          <Member Name="EnableAlarmTransportNOk" Datatype="Bool" />
+          <Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" />
+          <Member Name="UpperLevelHWNok" Datatype="Bool" />
+          <Member Name="Feature1" Datatype="Bool" />
+          <Member Name="Feature2" Datatype="Bool" />
+          <Member Name="Feature3" Datatype="Bool" />
+          <Member Name="Feature4" Datatype="Bool" />
+          <Member Name="Feature5" Datatype="Bool" />
+          <Member Name="Feature6" Datatype="Bool" />
+          <Member Name="Feature7" Datatype="Bool" />
+          <Member Name="Feature8" Datatype="Bool" />
+          <Member Name="Feature9" Datatype="Bool" />
+          <Member Name="Feature10" Datatype="Bool" />
+          <Member Name="Feature11" Datatype="Bool" />
+          <Member Name="Feature12" Datatype="Bool" />
+          <Member Name="Feature13" Datatype="Bool" />
+          <Member Name="Feature14" Datatype="Bool" />
+          <Member Name="Feature15" Datatype="Bool" />
+          <Member Name="AlarmInstance" Datatype="WString" />
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>LAlarmSummaryMerge</Name>
+      <Number>2536</Number>
+      <ProgrammingLanguage>FBD</ProgrammingLanguage>
+      <SetENOAutomatically>False</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>=============================================================================
+This module is used to sum all alarm's from all objects "FB&amp;FC's" and the send it to LMode &amp; LSystemVar-S71500
+=============================================================================</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>=============================================================================
+FC tom merge Alarm UDT's
+Shall be called in last network of  upperlevel -1
+=============================================================================</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v3">
+  <StlStatement UId="24">
+    <LineComment Inserted="false">
+      <Text> Activate Alarm A</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="82">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="I_UpperLevelAlarm" />
+        <Component Name="AlarmAActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmAActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmAActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="83">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="44">
+    <LineComment Inserted="false">
+      <Text> Activate Alarm B</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="I_UpperLevelAlarm" />
+        <Component Name="AlarmBActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="47">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmBActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="27">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmBActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="62">
+    <LineComment Inserted="false">
+      <Text> Activate Alarm C</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="I_UpperLevelAlarm" />
+        <Component Name="AlarmCActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmCActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmCActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="84">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="87">
+    <LineComment Inserted="false">
+      <Text> Activate Alarm D</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="89">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="I_UpperLevelAlarm" />
+        <Component Name="AlarmDActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="75">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmDActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmDActive" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="70">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="109">
+    <LineComment Inserted="false">
+      <Text> Activate AlarmABCondition</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="111">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="I_UpperLevelAlarm" />
+        <Component Name="AlarmABCondition" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="96">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmABCondition" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IO_Alarm" />
+        <Component Name="AlarmABCondition" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>Alarm's Active</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text>**** 2.2 - Alarms - Alarm generation **** Alarm's Active</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text>**** 2.2 - Alarms - Alarm generation **** Alarm's Active</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text>**** 2.2 - Alarms - Alarm generation **** Alarm's Active</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text>**** 2.2 - Alarms - Alarm generation **** Alarm's Active</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="19" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text>LAlarmSummary</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1A" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text>LAlarmSummary</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text>LAlarmSummaryMerge</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text>LAlarmSummary</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

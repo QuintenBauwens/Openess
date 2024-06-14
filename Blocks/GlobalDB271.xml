@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:12.2995239Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <HeaderAuthor>VCC</HeaderAuthor>
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Static">
+    <Member Name="PNIODiag_StartFillList" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - Start with fill-in the list</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - Start with fill-in the list</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - Start with fill-in the list</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - Start with fill-in the list</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - Start with fill-in the list</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - Start with fill-in the list</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_LastDeviceNumber" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - Last Device Number</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - Last Device Number</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - Last Device Number</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - Last Device Number</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - Last Device Number</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - Last Device Number</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_ListIPDone" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - The list with the IP adress is done</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - The list with the IP adress is done</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - The list with the IP adress is done</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - The list with the IP adress is done</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - The list with the IP adress is done</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - The list with the IP adress is done</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_ListMACDone" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - The list with the MAC adress is done</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - The list with the MAC adress is done</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - The list with the MAC adress is done</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - The list with the MAC adress is done</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - The list with the MAC adress is done</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - The list with the MAC adress is done</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_ListNameDone" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - The list with the Profinet name is done</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - The list with the Profinet name is done</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - The list with the Profinet name is done</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - The list with the Profinet name is done</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - The list with the Profinet name is done</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - The list with the Profinet name is done</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_ListAllDone" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - All lists are done</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - All lists are done</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - All lists are done</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - All lists are done</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - All lists are done</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - All lists are done</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_ListBusy" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - Busy with fill in of the lists</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - Busy with fill in of the lists</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - Busy with fill in of the lists</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - Busy with fill in of the lists</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - Busy with fill in of the lists</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - Busy with fill in of the lists</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_DeviceExist" Datatype="Array[0..255] of Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - List with existing devices</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - List with existing devices</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - List with existing devices</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - List with existing devices</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - List with existing devices</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - List with existing devices</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_HWIdentifier" Datatype="Array[0..255] of UInt" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">PNIODiag - List with hardware indentifier from each device</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - List with hardware indentifier from each device</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - List with hardware indentifier from each device</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - List with hardware indentifier from each device</MultiLanguageText><MultiLanguageText Lang="en-US">PNIODiag - List with hardware indentifier from each device</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - List with hardware indentifier from each device</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_GetStationName" Datatype="Array[0..255] of String" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">PNIODiag - List with Profinet name from each device</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - List with Profinet name from each device</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - List with Profinet name from each device</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - List with Profinet name from each device</MultiLanguageText><MultiLanguageText Lang="en-US">PNIODiag - List with Profinet name from each device</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - List with Profinet name from each device</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_GetStationIP" Datatype="Array[0..255] of IF_CONF_v4" Version="1.0" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODiag - List with IP adress from each device</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - List with IP adress from each device</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - List with IP adress from each device</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - List with IP adress from each device</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - List with IP adress from each device</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODiag - List with IP adress from each device</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="Id" Datatype="UInt" /><Member Name="Length" Datatype="UInt" /><Member Name="Mode" Datatype="UInt" /><Member Name="InterfaceAddress" Datatype="IP_V4" Version="1.0"><Sections><Section Name="None"><Member Name="ADDR" Datatype="Array[1..4] of Byte" /></Section></Sections></Member><Member Name="SubnetMask" Datatype="IP_V4" Version="1.0"><Sections><Section Name="None"><Member Name="ADDR" Datatype="Array[1..4] of Byte" /></Section></Sections></Member><Member Name="DefaultRouter" Datatype="IP_V4" Version="1.0"><Sections><Section Name="None"><Member Name="ADDR" Datatype="Array[1..4] of Byte" /></Section></Sections></Member></Section></Sections></Member>
+    <Member Name="PNIODiag_GetStationMAC" Datatype="Array[0..255] of IF_CONF_MAC" Version="1.0" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="zh-CN">PNIODiag - List with MAC adress from each device</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODiag - List with MAC adress from each device</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODiag - List with MAC adress from each device</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODiag - List with MAC adress from each device</MultiLanguageText><MultiLanguageText Lang="en-US">PNIODiag - List with MAC adress from each device</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODiag - List with MAC adress from each device</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="Id" Datatype="UInt" /><Member Name="Length" Datatype="UInt" /><Member Name="Mode" Datatype="UInt" /><Member Name="Mac" Datatype="Array[1..6] of Byte" /></Section></Sections></Member>
+    <Member Name="PNIODiag_Global" Datatype="&quot;H_PNIODiagS7-1500&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODIAG - HMI</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODIAG - HMI</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODIAG - HMI</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODIAG - HMI</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODIAG - HMI</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODIAG - HMI</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="HMICmd_ResetPNStatus" Datatype="Bool" /><Member Name="HMICmd_ActivateDeactivate" Datatype="Bool" /><Member Name="PNMode" Datatype="USInt" /><Member Name="DeviceNumber" Datatype="Int" /><Member Name="ActivateDeactivateBusy" Datatype="Bool" /><Member Name="GlobStat_DeviceFaulty" Datatype="Bool" /><Member Name="GlobStat_DeviceDisabled" Datatype="Bool" /><Member Name="GlobStat_DeviceServiceReq" Datatype="Bool" /><Member Name="IPAddressPLC" Datatype="Array[0..3] of USInt" /><Member Name="DeviceColor" Datatype="Array[0..255] of USInt" /><Member Name="DeviceFaulty" Datatype="Array[0..255] of Bool" /><Member Name="DeviceDisabled" Datatype="Array[0..255] of Bool" /><Member Name="DeviceExist" Datatype="Array[0..255] of Bool" /><Member Name="DeviceServiceReq" Datatype="Array[0..255] of Bool" /></Section></Sections></Member>
+    <Member Name="PNIODiag_ListStationName" Datatype="Array[0..255] of String[25]" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODIAG - HMI list</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_ListIPAddress" Datatype="Array[0..255] of String[15]" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODIAG - HMI list</MultiLanguageText></Comment></Member>
+    <Member Name="PNIODiag_ListMACAddress" Datatype="Array[0..255] of String[18]" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="sv-SE">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="nl-BE">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="en-GB">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="zh-HK">PNIODIAG - HMI list</MultiLanguageText><MultiLanguageText Lang="zh-CN">PNIODIAG - HMI list</MultiLanguageText></Comment></Member>
+    <Member Name="Edge001" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Edge</MultiLanguageText><MultiLanguageText Lang="sv-SE">Edge</MultiLanguageText><MultiLanguageText Lang="nl-BE">Edge</MultiLanguageText><MultiLanguageText Lang="en-GB">Edge</MultiLanguageText><MultiLanguageText Lang="zh-HK">Edge</MultiLanguageText><MultiLanguageText Lang="zh-CN">Edge</MultiLanguageText></Comment></Member>
+    <Member Name="Edge002" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Edge</MultiLanguageText><MultiLanguageText Lang="sv-SE">Edge</MultiLanguageText><MultiLanguageText Lang="nl-BE">Edge</MultiLanguageText><MultiLanguageText Lang="en-GB">Edge</MultiLanguageText><MultiLanguageText Lang="zh-HK">Edge</MultiLanguageText><MultiLanguageText Lang="zh-CN">Edge</MultiLanguageText></Comment></Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>0</MemoryReserve>
+      <Name>_209000NCP01PNIODiagList</Name>
+      <Number>271</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="A" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="B" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="C" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="E" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

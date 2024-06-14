@@ -1,0 +1,1328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:21.716242Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <HeaderAuthor>CSTAAL</HeaderAuthor>
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <InstanceOfName>LModeSummary</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input" />
+  <Section Name="Output">
+    <Member Name="O_SumAutoMode" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumAutoModeSel" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumStepMode" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumStepModeSel" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumHomeRunMode" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumHomeRunModeSel" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumManualMode" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumManualModeSel" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumAnyProdModeActive" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumAnyProdModeSel" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="O_SumMode" Datatype="&quot;Modes&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="LGeneralFunc" Datatype="Struct"><Member Name="Lamptest" Datatype="Bool" /><Member Name="LamptestSteady" Datatype="Bool" /><Member Name="GenHighSpeed" Datatype="Bool" /><Member Name="GenRevSwitch" Datatype="Bool" /><Member Name="GenReverseAlarm" Datatype="Bool" /><Member Name="ProDiag" Datatype="Bool" /></Member><Member Name="LModeSelector" Datatype="Struct"><Member Name="AutoSel" Datatype="Bool" /><Member Name="AllAutoSel" Datatype="Bool" /><Member Name="StepSel" Datatype="Bool" /><Member Name="HomeRunSel" Datatype="Bool" /><Member Name="ManualSel" Datatype="Bool" /><Member Name="ForcedManActSel" Datatype="Bool" /><Member Name="PBSetSel" Datatype="Bool" /><Member Name="PBResetSel" Datatype="Bool" /><Member Name="StartPBSel" Datatype="Bool" /><Member Name="AlarmResetPBSel" Datatype="Bool" /><Member Name="ResetTMSel" Datatype="Bool" /><Member Name="ResetSeqSel" Datatype="Bool" /><Member Name="CycleFinishedSel" Datatype="Bool" /><Member Name="HomeRunRedoSel" Datatype="Bool" /><Member Name="HomeRunWorkDoneSel" Datatype="Bool" /><Member Name="ResetSafetyInputSel" Datatype="Bool" /></Member><Member Name="LMode" Datatype="Struct"><Member Name="AutoMode" Datatype="Bool" /><Member Name="StepMode" Datatype="Bool" /><Member Name="HomeRunMode" Datatype="Bool" /><Member Name="ManualMode" Datatype="Bool" /><Member Name="ForcedMan" Datatype="Bool" /><Member Name="AutoStepRun" Datatype="Bool" /><Member Name="AutoStepHomeRunAct" Datatype="Bool" /><Member Name="StartPB" Datatype="Bool" /><Member Name="AlarmResetPB" Datatype="Bool" /><Member Name="SetPBMan" Datatype="Bool" /><Member Name="ResetPBMan" Datatype="Bool" /><Member Name="ResetTM" Datatype="Bool" /><Member Name="ResetSeq" Datatype="Bool" /><Member Name="CycleFinished" Datatype="Bool" /><Member Name="AlarmABAct" Datatype="Bool" /><Member Name="AlarmABCAct" Datatype="Bool" /><Member Name="AlarmABCDAct" Datatype="Bool" /><Member Name="HaltButton" Datatype="Bool" /><Member Name="AutoModeWarning" Datatype="Bool" /><Member Name="HomeRunRedo" Datatype="Bool" /><Member Name="HomeRunWorkDone" Datatype="Bool" /><Member Name="HomeRunRedoResetPosEdge" Datatype="Bool" /><Member Name="HomeRunWorkDoneResetPosEdge" Datatype="Bool" /><Member Name="HomeRunRedoReset" Datatype="Bool" /><Member Name="HomeRunWorkDoneReset" Datatype="Bool" /><Member Name="ResetSafetyInput" Datatype="Bool" /><Member Name="AlarmABCActSafetyOk" Datatype="Bool" /><Member Name="ActiveMode" Datatype="DWord" /><Member Name="SelectedMode" Datatype="Word" /><Member Name="AlarmA" Datatype="Bool" /><Member Name="AlarmB" Datatype="Bool" /><Member Name="AlarmC" Datatype="Bool" /><Member Name="AlarmD" Datatype="Bool" /><Member Name="AlarmABCondition" Datatype="Bool" /><Member Name="HomePos" Datatype="Bool" /><Member Name="HomeRunRedoSel" Datatype="Bool" /><Member Name="HomeRunWorkDoneSel" Datatype="Bool" /><Member Name="SafetyOk" Datatype="Bool" /><Member Name="ZMAlarmABCondition" Datatype="Bool" /><Member Name="ZMAlarmA" Datatype="Bool" /><Member Name="ZMAlarmB" Datatype="Bool" /><Member Name="ZMAlarmC" Datatype="Bool" /><Member Name="ZMAlarmD" Datatype="Bool" /><Member Name="UpperLevelZSAlarmABCondition" Datatype="Bool" /><Member Name="UpperLevelZSAlarmA" Datatype="Bool" /><Member Name="UpperLevelZSAlarmB" Datatype="Bool" /><Member Name="UpperLevelZSAlarmC" Datatype="Bool" /><Member Name="UpperLevelZSAlarmD" Datatype="Bool" /><Member Name="UpperLevelPLCAlarmABCondition" Datatype="Bool" /><Member Name="UpperLevelPLCAlarmA" Datatype="Bool" /><Member Name="UpperLevelPLCAlarmB" Datatype="Bool" /><Member Name="UpperLevelPLCAlarmC" Datatype="Bool" /><Member Name="UpperLevelPLCAlarmD" Datatype="Bool" /><Member Name="ScreenChanged" Datatype="Bool" /></Member><Member Name="LProductionMode" Datatype="Struct"><Member Name="ProductionMode" Datatype="Word" /><Member Name="BypassModeSel" Datatype="Bool" /><Member Name="BypassMode" Datatype="Bool" /><Member Name="EmptyStnModeSel" Datatype="Bool" /><Member Name="EmptyStnMode" Datatype="Bool" /><Member Name="SimWithPartModeSel" Datatype="Bool" /><Member Name="SimWithPartMode" Datatype="Bool" /><Member Name="SimWithoutPartModeSel" Datatype="Bool" /><Member Name="SimWithoutPartMode" Datatype="Bool" /><Member Name="MaintModeSel" Datatype="Bool" /><Member Name="MaintMode" Datatype="Bool" /><Member Name="CycleStpBeforeModeSel" Datatype="Bool" /><Member Name="CycleStpBeforeMode" Datatype="Bool" /><Member Name="CycleStpAfterModeSel" Datatype="Bool" /><Member Name="CycleStpAfterMode" Datatype="Bool" /><Member Name="ProdStpModeSel" Datatype="Bool" /><Member Name="ProdStpMode" Datatype="Bool" /><Member Name="AnyProdModeSel" Datatype="Bool" /><Member Name="AnyProdModeActive" Datatype="Bool" /><Member Name="CycleStpHomeposModeSel" Datatype="Bool" /><Member Name="CycleStpHomeposMode" Datatype="Bool" /><Member Name="EmptyStnReached" Datatype="Bool" /><Member Name="MaintReached" Datatype="Bool" /><Member Name="CycleStpBeforeReached" Datatype="Bool" /><Member Name="CycleStpHomeposReached" Datatype="Bool" /><Member Name="CycleStpAfterReached" Datatype="Bool" /><Member Name="ProdStpReached" Datatype="Bool" /><Member Name="ProdStpActiveConv" Datatype="Bool" /><Member Name="ZMStatus" Datatype="&quot;ZMStatus&quot;"><Sections><Section Name="None"><Member Name="BreakActive" Datatype="Bool" /><Member Name="ProductionStopActive" Datatype="Bool" /><Member Name="LocalLineStopActive" Datatype="Bool" /><Member Name="ServiceActive" Datatype="Bool" /><Member Name="PreventiveMaintenanceActive" Datatype="Bool" /><Member Name="AndonOperational" Datatype="Bool" /><Member Name="AndonStopActive" Datatype="Bool" /><Member Name="EquipmentActive" Datatype="Bool" /><Member Name="TeamMeetingActive" Datatype="Bool" /><Member Name="MuteSound" Datatype="Bool" /><Member Name="SafetyOk" Datatype="Bool" /><Member Name="ServiceReq" Datatype="Bool" /><Member Name="WeekendModeActive" Datatype="Bool" /><Member Name="EcoModeActive" Datatype="Bool" /><Member Name="spare4" Datatype="Bool" /><Member Name="spare5" Datatype="Bool" /><Member Name="spare6" Datatype="Bool" /><Member Name="spare7" Datatype="Bool" /><Member Name="spare8" Datatype="Bool" /><Member Name="spare9" Datatype="Bool" /><Member Name="spare10" Datatype="Bool" /><Member Name="spare11" Datatype="Bool" /><Member Name="spare12" Datatype="Bool" /><Member Name="spare13" Datatype="Bool" /><Member Name="spare14" Datatype="Bool" /><Member Name="spare15" Datatype="Bool" /><Member Name="spare16" Datatype="Bool" /><Member Name="spare17" Datatype="Bool" /><Member Name="spare18" Datatype="Bool" /><Member Name="spare19" Datatype="Bool" /><Member Name="spare20" Datatype="Bool" /><Member Name="spare21" Datatype="Bool" /></Section></Sections></Member><Member Name="SupervisionProdModeCmdReq" Datatype="&quot;SupervisionProdModeCmdReq&quot;"><Sections><Section Name="None"><Member Name="ProdBreakReqOn" Datatype="Bool" /><Member Name="ProdStopReqOn" Datatype="Bool" /><Member Name="EmptyStationReqOn" Datatype="Bool" /><Member Name="MaintModeReqOn" Datatype="Bool" /><Member Name="EcoModeReqOn" Datatype="Bool" /><Member Name="WeekendModeReqOn" Datatype="Bool" /><Member Name="Spare1" Datatype="Bool" /><Member Name="Spare2" Datatype="Bool" /><Member Name="Spare3" Datatype="Bool" /><Member Name="Spare4" Datatype="Bool" /><Member Name="Spare5" Datatype="Bool" /><Member Name="Spare6" Datatype="Bool" /><Member Name="Spare7" Datatype="Bool" /><Member Name="Spare8" Datatype="Bool" /><Member Name="Spare9" Datatype="Bool" /><Member Name="ProdBreakReqOff" Datatype="Bool" /><Member Name="ProdStopReqOff" Datatype="Bool" /><Member Name="EmptyStationReqOff" Datatype="Bool" /><Member Name="MaintModeReqOff" Datatype="Bool" /><Member Name="EcoModeReqOff" Datatype="Bool" /><Member Name="WeekendModeReqOff" Datatype="Bool" /><Member Name="Spare16" Datatype="Bool" /><Member Name="Spare17" Datatype="Bool" /><Member Name="Spare18" Datatype="Bool" /><Member Name="Spare19" Datatype="Bool" /><Member Name="Spare20" Datatype="Bool" /><Member Name="Spare21" Datatype="Bool" /><Member Name="Spare22" Datatype="Bool" /><Member Name="Spare23" Datatype="Bool" /><Member Name="Spare24" Datatype="Bool" /><Member Name="Spare25" Datatype="Bool" /><Member Name="Spare26" Datatype="Bool" /></Section></Sections></Member></Member><Member Name="Alarm" Datatype="&quot;Alarm&quot;"><Sections><Section Name="None"><Member Name="AlarmAActive" Datatype="Bool" /><Member Name="AlarmBActive" Datatype="Bool" /><Member Name="AlarmCActive" Datatype="Bool" /><Member Name="AlarmDActive" Datatype="Bool" /><Member Name="AlarmABCondition" Datatype="Bool" /><Member Name="AlarmAActiveUpperLevel" Datatype="Bool" /><Member Name="AlarmBActiveUpperLevel" Datatype="Bool" /><Member Name="AlarmCActiveUpperLevel" Datatype="Bool" /><Member Name="AlarmDActiveUpperLevel" Datatype="Bool" /><Member Name="AlarmABConditionUpperLevel" Datatype="Bool" /><Member Name="EnableAlarmUpperLevel" Datatype="Bool" /><Member Name="SafetyNotOkUpperLevel" Datatype="Bool" /><Member Name="SafetyNok" Datatype="Bool" /><Member Name="EnableAlarmMechanicNOk" Datatype="Bool" /><Member Name="EnableAlarmTransportNOk" Datatype="Bool" /><Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" /><Member Name="UpperLevelHWNok" Datatype="Bool" /><Member Name="Feature1" Datatype="Bool" /><Member Name="Feature2" Datatype="Bool" /><Member Name="Feature3" Datatype="Bool" /><Member Name="Feature4" Datatype="Bool" /><Member Name="Feature5" Datatype="Bool" /><Member Name="Feature6" Datatype="Bool" /><Member Name="Feature7" Datatype="Bool" /><Member Name="Feature8" Datatype="Bool" /><Member Name="Feature9" Datatype="Bool" /><Member Name="Feature10" Datatype="Bool" /><Member Name="Feature11" Datatype="Bool" /><Member Name="Feature12" Datatype="Bool" /><Member Name="Feature13" Datatype="Bool" /><Member Name="Feature14" Datatype="Bool" /><Member Name="Feature15" Datatype="Bool" /><Member Name="AlarmInstance" Datatype="WString" /></Section></Sections></Member></Section></Sections></Member>
+  </Section>
+  <Section Name="InOut">
+    <Member Name="IO_ModesZM1" Datatype="&quot;Modes&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="LGeneralFunc" Datatype="Struct">
+            <Member Name="Lamptest" Datatype="Bool" />
+            <Member Name="LamptestSteady" Datatype="Bool" />
+            <Member Name="GenHighSpeed" Datatype="Bool" />
+            <Member Name="GenRevSwitch" Datatype="Bool" />
+            <Member Name="GenReverseAlarm" Datatype="Bool" />
+            <Member Name="ProDiag" Datatype="Bool" />
+          </Member>
+          <Member Name="LModeSelector" Datatype="Struct">
+            <Member Name="AutoSel" Datatype="Bool" />
+            <Member Name="AllAutoSel" Datatype="Bool" />
+            <Member Name="StepSel" Datatype="Bool" />
+            <Member Name="HomeRunSel" Datatype="Bool" />
+            <Member Name="ManualSel" Datatype="Bool" />
+            <Member Name="ForcedManActSel" Datatype="Bool" />
+            <Member Name="PBSetSel" Datatype="Bool" />
+            <Member Name="PBResetSel" Datatype="Bool" />
+            <Member Name="StartPBSel" Datatype="Bool" />
+            <Member Name="AlarmResetPBSel" Datatype="Bool" />
+            <Member Name="ResetTMSel" Datatype="Bool" />
+            <Member Name="ResetSeqSel" Datatype="Bool" />
+            <Member Name="CycleFinishedSel" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="ResetSafetyInputSel" Datatype="Bool" />
+          </Member>
+          <Member Name="LMode" Datatype="Struct">
+            <Member Name="AutoMode" Datatype="Bool" />
+            <Member Name="StepMode" Datatype="Bool" />
+            <Member Name="HomeRunMode" Datatype="Bool" />
+            <Member Name="ManualMode" Datatype="Bool" />
+            <Member Name="ForcedMan" Datatype="Bool" />
+            <Member Name="AutoStepRun" Datatype="Bool" />
+            <Member Name="AutoStepHomeRunAct" Datatype="Bool" />
+            <Member Name="StartPB" Datatype="Bool" />
+            <Member Name="AlarmResetPB" Datatype="Bool" />
+            <Member Name="SetPBMan" Datatype="Bool" />
+            <Member Name="ResetPBMan" Datatype="Bool" />
+            <Member Name="ResetTM" Datatype="Bool" />
+            <Member Name="ResetSeq" Datatype="Bool" />
+            <Member Name="CycleFinished" Datatype="Bool" />
+            <Member Name="AlarmABAct" Datatype="Bool" />
+            <Member Name="AlarmABCAct" Datatype="Bool" />
+            <Member Name="AlarmABCDAct" Datatype="Bool" />
+            <Member Name="HaltButton" Datatype="Bool" />
+            <Member Name="AutoModeWarning" Datatype="Bool" />
+            <Member Name="HomeRunRedo" Datatype="Bool" />
+            <Member Name="HomeRunWorkDone" Datatype="Bool" />
+            <Member Name="HomeRunRedoResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunRedoReset" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneReset" Datatype="Bool" />
+            <Member Name="ResetSafetyInput" Datatype="Bool" />
+            <Member Name="AlarmABCActSafetyOk" Datatype="Bool" />
+            <Member Name="ActiveMode" Datatype="DWord" />
+            <Member Name="SelectedMode" Datatype="Word" />
+            <Member Name="AlarmA" Datatype="Bool" />
+            <Member Name="AlarmB" Datatype="Bool" />
+            <Member Name="AlarmC" Datatype="Bool" />
+            <Member Name="AlarmD" Datatype="Bool" />
+            <Member Name="AlarmABCondition" Datatype="Bool" />
+            <Member Name="HomePos" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="SafetyOk" Datatype="Bool" />
+            <Member Name="ZMAlarmABCondition" Datatype="Bool" />
+            <Member Name="ZMAlarmA" Datatype="Bool" />
+            <Member Name="ZMAlarmB" Datatype="Bool" />
+            <Member Name="ZMAlarmC" Datatype="Bool" />
+            <Member Name="ZMAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmD" Datatype="Bool" />
+            <Member Name="ScreenChanged" Datatype="Bool" />
+          </Member>
+          <Member Name="LProductionMode" Datatype="Struct">
+            <Member Name="ProductionMode" Datatype="Word" />
+            <Member Name="BypassModeSel" Datatype="Bool" />
+            <Member Name="BypassMode" Datatype="Bool" />
+            <Member Name="EmptyStnModeSel" Datatype="Bool" />
+            <Member Name="EmptyStnMode" Datatype="Bool" />
+            <Member Name="SimWithPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithPartMode" Datatype="Bool" />
+            <Member Name="SimWithoutPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithoutPartMode" Datatype="Bool" />
+            <Member Name="MaintModeSel" Datatype="Bool" />
+            <Member Name="MaintMode" Datatype="Bool" />
+            <Member Name="CycleStpBeforeModeSel" Datatype="Bool" />
+            <Member Name="CycleStpBeforeMode" Datatype="Bool" />
+            <Member Name="CycleStpAfterModeSel" Datatype="Bool" />
+            <Member Name="CycleStpAfterMode" Datatype="Bool" />
+            <Member Name="ProdStpModeSel" Datatype="Bool" />
+            <Member Name="ProdStpMode" Datatype="Bool" />
+            <Member Name="AnyProdModeSel" Datatype="Bool" />
+            <Member Name="AnyProdModeActive" Datatype="Bool" />
+            <Member Name="CycleStpHomeposModeSel" Datatype="Bool" />
+            <Member Name="CycleStpHomeposMode" Datatype="Bool" />
+            <Member Name="EmptyStnReached" Datatype="Bool" />
+            <Member Name="MaintReached" Datatype="Bool" />
+            <Member Name="CycleStpBeforeReached" Datatype="Bool" />
+            <Member Name="CycleStpHomeposReached" Datatype="Bool" />
+            <Member Name="CycleStpAfterReached" Datatype="Bool" />
+            <Member Name="ProdStpReached" Datatype="Bool" />
+            <Member Name="ProdStpActiveConv" Datatype="Bool" />
+            <Member Name="ZMStatus" Datatype="&quot;ZMStatus&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="BreakActive" Datatype="Bool" />
+                  <Member Name="ProductionStopActive" Datatype="Bool" />
+                  <Member Name="LocalLineStopActive" Datatype="Bool" />
+                  <Member Name="ServiceActive" Datatype="Bool" />
+                  <Member Name="PreventiveMaintenanceActive" Datatype="Bool" />
+                  <Member Name="AndonOperational" Datatype="Bool" />
+                  <Member Name="AndonStopActive" Datatype="Bool" />
+                  <Member Name="EquipmentActive" Datatype="Bool" />
+                  <Member Name="TeamMeetingActive" Datatype="Bool" />
+                  <Member Name="MuteSound" Datatype="Bool" />
+                  <Member Name="SafetyOk" Datatype="Bool" />
+                  <Member Name="ServiceReq" Datatype="Bool" />
+                  <Member Name="WeekendModeActive" Datatype="Bool" />
+                  <Member Name="EcoModeActive" Datatype="Bool" />
+                  <Member Name="spare4" Datatype="Bool" />
+                  <Member Name="spare5" Datatype="Bool" />
+                  <Member Name="spare6" Datatype="Bool" />
+                  <Member Name="spare7" Datatype="Bool" />
+                  <Member Name="spare8" Datatype="Bool" />
+                  <Member Name="spare9" Datatype="Bool" />
+                  <Member Name="spare10" Datatype="Bool" />
+                  <Member Name="spare11" Datatype="Bool" />
+                  <Member Name="spare12" Datatype="Bool" />
+                  <Member Name="spare13" Datatype="Bool" />
+                  <Member Name="spare14" Datatype="Bool" />
+                  <Member Name="spare15" Datatype="Bool" />
+                  <Member Name="spare16" Datatype="Bool" />
+                  <Member Name="spare17" Datatype="Bool" />
+                  <Member Name="spare18" Datatype="Bool" />
+                  <Member Name="spare19" Datatype="Bool" />
+                  <Member Name="spare20" Datatype="Bool" />
+                  <Member Name="spare21" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="SupervisionProdModeCmdReq" Datatype="&quot;SupervisionProdModeCmdReq&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="ProdBreakReqOn" Datatype="Bool" />
+                  <Member Name="ProdStopReqOn" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOn" Datatype="Bool" />
+                  <Member Name="MaintModeReqOn" Datatype="Bool" />
+                  <Member Name="EcoModeReqOn" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOn" Datatype="Bool" />
+                  <Member Name="Spare1" Datatype="Bool" />
+                  <Member Name="Spare2" Datatype="Bool" />
+                  <Member Name="Spare3" Datatype="Bool" />
+                  <Member Name="Spare4" Datatype="Bool" />
+                  <Member Name="Spare5" Datatype="Bool" />
+                  <Member Name="Spare6" Datatype="Bool" />
+                  <Member Name="Spare7" Datatype="Bool" />
+                  <Member Name="Spare8" Datatype="Bool" />
+                  <Member Name="Spare9" Datatype="Bool" />
+                  <Member Name="ProdBreakReqOff" Datatype="Bool" />
+                  <Member Name="ProdStopReqOff" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOff" Datatype="Bool" />
+                  <Member Name="MaintModeReqOff" Datatype="Bool" />
+                  <Member Name="EcoModeReqOff" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOff" Datatype="Bool" />
+                  <Member Name="Spare16" Datatype="Bool" />
+                  <Member Name="Spare17" Datatype="Bool" />
+                  <Member Name="Spare18" Datatype="Bool" />
+                  <Member Name="Spare19" Datatype="Bool" />
+                  <Member Name="Spare20" Datatype="Bool" />
+                  <Member Name="Spare21" Datatype="Bool" />
+                  <Member Name="Spare22" Datatype="Bool" />
+                  <Member Name="Spare23" Datatype="Bool" />
+                  <Member Name="Spare24" Datatype="Bool" />
+                  <Member Name="Spare25" Datatype="Bool" />
+                  <Member Name="Spare26" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="Alarm" Datatype="&quot;Alarm&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="AlarmAActive" Datatype="Bool" />
+                <Member Name="AlarmBActive" Datatype="Bool" />
+                <Member Name="AlarmCActive" Datatype="Bool" />
+                <Member Name="AlarmDActive" Datatype="Bool" />
+                <Member Name="AlarmABCondition" Datatype="Bool" />
+                <Member Name="AlarmAActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmBActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmCActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmDActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmABConditionUpperLevel" Datatype="Bool" />
+                <Member Name="EnableAlarmUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNotOkUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNok" Datatype="Bool" />
+                <Member Name="EnableAlarmMechanicNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmTransportNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" />
+                <Member Name="UpperLevelHWNok" Datatype="Bool" />
+                <Member Name="Feature1" Datatype="Bool" />
+                <Member Name="Feature2" Datatype="Bool" />
+                <Member Name="Feature3" Datatype="Bool" />
+                <Member Name="Feature4" Datatype="Bool" />
+                <Member Name="Feature5" Datatype="Bool" />
+                <Member Name="Feature6" Datatype="Bool" />
+                <Member Name="Feature7" Datatype="Bool" />
+                <Member Name="Feature8" Datatype="Bool" />
+                <Member Name="Feature9" Datatype="Bool" />
+                <Member Name="Feature10" Datatype="Bool" />
+                <Member Name="Feature11" Datatype="Bool" />
+                <Member Name="Feature12" Datatype="Bool" />
+                <Member Name="Feature13" Datatype="Bool" />
+                <Member Name="Feature14" Datatype="Bool" />
+                <Member Name="Feature15" Datatype="Bool" />
+                <Member Name="AlarmInstance" Datatype="WString" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO_ModesZM2" Datatype="&quot;Modes&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="LGeneralFunc" Datatype="Struct">
+            <Member Name="Lamptest" Datatype="Bool" />
+            <Member Name="LamptestSteady" Datatype="Bool" />
+            <Member Name="GenHighSpeed" Datatype="Bool" />
+            <Member Name="GenRevSwitch" Datatype="Bool" />
+            <Member Name="GenReverseAlarm" Datatype="Bool" />
+            <Member Name="ProDiag" Datatype="Bool" />
+          </Member>
+          <Member Name="LModeSelector" Datatype="Struct">
+            <Member Name="AutoSel" Datatype="Bool" />
+            <Member Name="AllAutoSel" Datatype="Bool" />
+            <Member Name="StepSel" Datatype="Bool" />
+            <Member Name="HomeRunSel" Datatype="Bool" />
+            <Member Name="ManualSel" Datatype="Bool" />
+            <Member Name="ForcedManActSel" Datatype="Bool" />
+            <Member Name="PBSetSel" Datatype="Bool" />
+            <Member Name="PBResetSel" Datatype="Bool" />
+            <Member Name="StartPBSel" Datatype="Bool" />
+            <Member Name="AlarmResetPBSel" Datatype="Bool" />
+            <Member Name="ResetTMSel" Datatype="Bool" />
+            <Member Name="ResetSeqSel" Datatype="Bool" />
+            <Member Name="CycleFinishedSel" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="ResetSafetyInputSel" Datatype="Bool" />
+          </Member>
+          <Member Name="LMode" Datatype="Struct">
+            <Member Name="AutoMode" Datatype="Bool" />
+            <Member Name="StepMode" Datatype="Bool" />
+            <Member Name="HomeRunMode" Datatype="Bool" />
+            <Member Name="ManualMode" Datatype="Bool" />
+            <Member Name="ForcedMan" Datatype="Bool" />
+            <Member Name="AutoStepRun" Datatype="Bool" />
+            <Member Name="AutoStepHomeRunAct" Datatype="Bool" />
+            <Member Name="StartPB" Datatype="Bool" />
+            <Member Name="AlarmResetPB" Datatype="Bool" />
+            <Member Name="SetPBMan" Datatype="Bool" />
+            <Member Name="ResetPBMan" Datatype="Bool" />
+            <Member Name="ResetTM" Datatype="Bool" />
+            <Member Name="ResetSeq" Datatype="Bool" />
+            <Member Name="CycleFinished" Datatype="Bool" />
+            <Member Name="AlarmABAct" Datatype="Bool" />
+            <Member Name="AlarmABCAct" Datatype="Bool" />
+            <Member Name="AlarmABCDAct" Datatype="Bool" />
+            <Member Name="HaltButton" Datatype="Bool" />
+            <Member Name="AutoModeWarning" Datatype="Bool" />
+            <Member Name="HomeRunRedo" Datatype="Bool" />
+            <Member Name="HomeRunWorkDone" Datatype="Bool" />
+            <Member Name="HomeRunRedoResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunRedoReset" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneReset" Datatype="Bool" />
+            <Member Name="ResetSafetyInput" Datatype="Bool" />
+            <Member Name="AlarmABCActSafetyOk" Datatype="Bool" />
+            <Member Name="ActiveMode" Datatype="DWord" />
+            <Member Name="SelectedMode" Datatype="Word" />
+            <Member Name="AlarmA" Datatype="Bool" />
+            <Member Name="AlarmB" Datatype="Bool" />
+            <Member Name="AlarmC" Datatype="Bool" />
+            <Member Name="AlarmD" Datatype="Bool" />
+            <Member Name="AlarmABCondition" Datatype="Bool" />
+            <Member Name="HomePos" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="SafetyOk" Datatype="Bool" />
+            <Member Name="ZMAlarmABCondition" Datatype="Bool" />
+            <Member Name="ZMAlarmA" Datatype="Bool" />
+            <Member Name="ZMAlarmB" Datatype="Bool" />
+            <Member Name="ZMAlarmC" Datatype="Bool" />
+            <Member Name="ZMAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmD" Datatype="Bool" />
+            <Member Name="ScreenChanged" Datatype="Bool" />
+          </Member>
+          <Member Name="LProductionMode" Datatype="Struct">
+            <Member Name="ProductionMode" Datatype="Word" />
+            <Member Name="BypassModeSel" Datatype="Bool" />
+            <Member Name="BypassMode" Datatype="Bool" />
+            <Member Name="EmptyStnModeSel" Datatype="Bool" />
+            <Member Name="EmptyStnMode" Datatype="Bool" />
+            <Member Name="SimWithPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithPartMode" Datatype="Bool" />
+            <Member Name="SimWithoutPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithoutPartMode" Datatype="Bool" />
+            <Member Name="MaintModeSel" Datatype="Bool" />
+            <Member Name="MaintMode" Datatype="Bool" />
+            <Member Name="CycleStpBeforeModeSel" Datatype="Bool" />
+            <Member Name="CycleStpBeforeMode" Datatype="Bool" />
+            <Member Name="CycleStpAfterModeSel" Datatype="Bool" />
+            <Member Name="CycleStpAfterMode" Datatype="Bool" />
+            <Member Name="ProdStpModeSel" Datatype="Bool" />
+            <Member Name="ProdStpMode" Datatype="Bool" />
+            <Member Name="AnyProdModeSel" Datatype="Bool" />
+            <Member Name="AnyProdModeActive" Datatype="Bool" />
+            <Member Name="CycleStpHomeposModeSel" Datatype="Bool" />
+            <Member Name="CycleStpHomeposMode" Datatype="Bool" />
+            <Member Name="EmptyStnReached" Datatype="Bool" />
+            <Member Name="MaintReached" Datatype="Bool" />
+            <Member Name="CycleStpBeforeReached" Datatype="Bool" />
+            <Member Name="CycleStpHomeposReached" Datatype="Bool" />
+            <Member Name="CycleStpAfterReached" Datatype="Bool" />
+            <Member Name="ProdStpReached" Datatype="Bool" />
+            <Member Name="ProdStpActiveConv" Datatype="Bool" />
+            <Member Name="ZMStatus" Datatype="&quot;ZMStatus&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="BreakActive" Datatype="Bool" />
+                  <Member Name="ProductionStopActive" Datatype="Bool" />
+                  <Member Name="LocalLineStopActive" Datatype="Bool" />
+                  <Member Name="ServiceActive" Datatype="Bool" />
+                  <Member Name="PreventiveMaintenanceActive" Datatype="Bool" />
+                  <Member Name="AndonOperational" Datatype="Bool" />
+                  <Member Name="AndonStopActive" Datatype="Bool" />
+                  <Member Name="EquipmentActive" Datatype="Bool" />
+                  <Member Name="TeamMeetingActive" Datatype="Bool" />
+                  <Member Name="MuteSound" Datatype="Bool" />
+                  <Member Name="SafetyOk" Datatype="Bool" />
+                  <Member Name="ServiceReq" Datatype="Bool" />
+                  <Member Name="WeekendModeActive" Datatype="Bool" />
+                  <Member Name="EcoModeActive" Datatype="Bool" />
+                  <Member Name="spare4" Datatype="Bool" />
+                  <Member Name="spare5" Datatype="Bool" />
+                  <Member Name="spare6" Datatype="Bool" />
+                  <Member Name="spare7" Datatype="Bool" />
+                  <Member Name="spare8" Datatype="Bool" />
+                  <Member Name="spare9" Datatype="Bool" />
+                  <Member Name="spare10" Datatype="Bool" />
+                  <Member Name="spare11" Datatype="Bool" />
+                  <Member Name="spare12" Datatype="Bool" />
+                  <Member Name="spare13" Datatype="Bool" />
+                  <Member Name="spare14" Datatype="Bool" />
+                  <Member Name="spare15" Datatype="Bool" />
+                  <Member Name="spare16" Datatype="Bool" />
+                  <Member Name="spare17" Datatype="Bool" />
+                  <Member Name="spare18" Datatype="Bool" />
+                  <Member Name="spare19" Datatype="Bool" />
+                  <Member Name="spare20" Datatype="Bool" />
+                  <Member Name="spare21" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="SupervisionProdModeCmdReq" Datatype="&quot;SupervisionProdModeCmdReq&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="ProdBreakReqOn" Datatype="Bool" />
+                  <Member Name="ProdStopReqOn" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOn" Datatype="Bool" />
+                  <Member Name="MaintModeReqOn" Datatype="Bool" />
+                  <Member Name="EcoModeReqOn" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOn" Datatype="Bool" />
+                  <Member Name="Spare1" Datatype="Bool" />
+                  <Member Name="Spare2" Datatype="Bool" />
+                  <Member Name="Spare3" Datatype="Bool" />
+                  <Member Name="Spare4" Datatype="Bool" />
+                  <Member Name="Spare5" Datatype="Bool" />
+                  <Member Name="Spare6" Datatype="Bool" />
+                  <Member Name="Spare7" Datatype="Bool" />
+                  <Member Name="Spare8" Datatype="Bool" />
+                  <Member Name="Spare9" Datatype="Bool" />
+                  <Member Name="ProdBreakReqOff" Datatype="Bool" />
+                  <Member Name="ProdStopReqOff" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOff" Datatype="Bool" />
+                  <Member Name="MaintModeReqOff" Datatype="Bool" />
+                  <Member Name="EcoModeReqOff" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOff" Datatype="Bool" />
+                  <Member Name="Spare16" Datatype="Bool" />
+                  <Member Name="Spare17" Datatype="Bool" />
+                  <Member Name="Spare18" Datatype="Bool" />
+                  <Member Name="Spare19" Datatype="Bool" />
+                  <Member Name="Spare20" Datatype="Bool" />
+                  <Member Name="Spare21" Datatype="Bool" />
+                  <Member Name="Spare22" Datatype="Bool" />
+                  <Member Name="Spare23" Datatype="Bool" />
+                  <Member Name="Spare24" Datatype="Bool" />
+                  <Member Name="Spare25" Datatype="Bool" />
+                  <Member Name="Spare26" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="Alarm" Datatype="&quot;Alarm&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="AlarmAActive" Datatype="Bool" />
+                <Member Name="AlarmBActive" Datatype="Bool" />
+                <Member Name="AlarmCActive" Datatype="Bool" />
+                <Member Name="AlarmDActive" Datatype="Bool" />
+                <Member Name="AlarmABCondition" Datatype="Bool" />
+                <Member Name="AlarmAActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmBActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmCActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmDActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmABConditionUpperLevel" Datatype="Bool" />
+                <Member Name="EnableAlarmUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNotOkUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNok" Datatype="Bool" />
+                <Member Name="EnableAlarmMechanicNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmTransportNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" />
+                <Member Name="UpperLevelHWNok" Datatype="Bool" />
+                <Member Name="Feature1" Datatype="Bool" />
+                <Member Name="Feature2" Datatype="Bool" />
+                <Member Name="Feature3" Datatype="Bool" />
+                <Member Name="Feature4" Datatype="Bool" />
+                <Member Name="Feature5" Datatype="Bool" />
+                <Member Name="Feature6" Datatype="Bool" />
+                <Member Name="Feature7" Datatype="Bool" />
+                <Member Name="Feature8" Datatype="Bool" />
+                <Member Name="Feature9" Datatype="Bool" />
+                <Member Name="Feature10" Datatype="Bool" />
+                <Member Name="Feature11" Datatype="Bool" />
+                <Member Name="Feature12" Datatype="Bool" />
+                <Member Name="Feature13" Datatype="Bool" />
+                <Member Name="Feature14" Datatype="Bool" />
+                <Member Name="Feature15" Datatype="Bool" />
+                <Member Name="AlarmInstance" Datatype="WString" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO_ModesZM3" Datatype="&quot;Modes&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="LGeneralFunc" Datatype="Struct">
+            <Member Name="Lamptest" Datatype="Bool" />
+            <Member Name="LamptestSteady" Datatype="Bool" />
+            <Member Name="GenHighSpeed" Datatype="Bool" />
+            <Member Name="GenRevSwitch" Datatype="Bool" />
+            <Member Name="GenReverseAlarm" Datatype="Bool" />
+            <Member Name="ProDiag" Datatype="Bool" />
+          </Member>
+          <Member Name="LModeSelector" Datatype="Struct">
+            <Member Name="AutoSel" Datatype="Bool" />
+            <Member Name="AllAutoSel" Datatype="Bool" />
+            <Member Name="StepSel" Datatype="Bool" />
+            <Member Name="HomeRunSel" Datatype="Bool" />
+            <Member Name="ManualSel" Datatype="Bool" />
+            <Member Name="ForcedManActSel" Datatype="Bool" />
+            <Member Name="PBSetSel" Datatype="Bool" />
+            <Member Name="PBResetSel" Datatype="Bool" />
+            <Member Name="StartPBSel" Datatype="Bool" />
+            <Member Name="AlarmResetPBSel" Datatype="Bool" />
+            <Member Name="ResetTMSel" Datatype="Bool" />
+            <Member Name="ResetSeqSel" Datatype="Bool" />
+            <Member Name="CycleFinishedSel" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="ResetSafetyInputSel" Datatype="Bool" />
+          </Member>
+          <Member Name="LMode" Datatype="Struct">
+            <Member Name="AutoMode" Datatype="Bool" />
+            <Member Name="StepMode" Datatype="Bool" />
+            <Member Name="HomeRunMode" Datatype="Bool" />
+            <Member Name="ManualMode" Datatype="Bool" />
+            <Member Name="ForcedMan" Datatype="Bool" />
+            <Member Name="AutoStepRun" Datatype="Bool" />
+            <Member Name="AutoStepHomeRunAct" Datatype="Bool" />
+            <Member Name="StartPB" Datatype="Bool" />
+            <Member Name="AlarmResetPB" Datatype="Bool" />
+            <Member Name="SetPBMan" Datatype="Bool" />
+            <Member Name="ResetPBMan" Datatype="Bool" />
+            <Member Name="ResetTM" Datatype="Bool" />
+            <Member Name="ResetSeq" Datatype="Bool" />
+            <Member Name="CycleFinished" Datatype="Bool" />
+            <Member Name="AlarmABAct" Datatype="Bool" />
+            <Member Name="AlarmABCAct" Datatype="Bool" />
+            <Member Name="AlarmABCDAct" Datatype="Bool" />
+            <Member Name="HaltButton" Datatype="Bool" />
+            <Member Name="AutoModeWarning" Datatype="Bool" />
+            <Member Name="HomeRunRedo" Datatype="Bool" />
+            <Member Name="HomeRunWorkDone" Datatype="Bool" />
+            <Member Name="HomeRunRedoResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunRedoReset" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneReset" Datatype="Bool" />
+            <Member Name="ResetSafetyInput" Datatype="Bool" />
+            <Member Name="AlarmABCActSafetyOk" Datatype="Bool" />
+            <Member Name="ActiveMode" Datatype="DWord" />
+            <Member Name="SelectedMode" Datatype="Word" />
+            <Member Name="AlarmA" Datatype="Bool" />
+            <Member Name="AlarmB" Datatype="Bool" />
+            <Member Name="AlarmC" Datatype="Bool" />
+            <Member Name="AlarmD" Datatype="Bool" />
+            <Member Name="AlarmABCondition" Datatype="Bool" />
+            <Member Name="HomePos" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="SafetyOk" Datatype="Bool" />
+            <Member Name="ZMAlarmABCondition" Datatype="Bool" />
+            <Member Name="ZMAlarmA" Datatype="Bool" />
+            <Member Name="ZMAlarmB" Datatype="Bool" />
+            <Member Name="ZMAlarmC" Datatype="Bool" />
+            <Member Name="ZMAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmD" Datatype="Bool" />
+            <Member Name="ScreenChanged" Datatype="Bool" />
+          </Member>
+          <Member Name="LProductionMode" Datatype="Struct">
+            <Member Name="ProductionMode" Datatype="Word" />
+            <Member Name="BypassModeSel" Datatype="Bool" />
+            <Member Name="BypassMode" Datatype="Bool" />
+            <Member Name="EmptyStnModeSel" Datatype="Bool" />
+            <Member Name="EmptyStnMode" Datatype="Bool" />
+            <Member Name="SimWithPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithPartMode" Datatype="Bool" />
+            <Member Name="SimWithoutPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithoutPartMode" Datatype="Bool" />
+            <Member Name="MaintModeSel" Datatype="Bool" />
+            <Member Name="MaintMode" Datatype="Bool" />
+            <Member Name="CycleStpBeforeModeSel" Datatype="Bool" />
+            <Member Name="CycleStpBeforeMode" Datatype="Bool" />
+            <Member Name="CycleStpAfterModeSel" Datatype="Bool" />
+            <Member Name="CycleStpAfterMode" Datatype="Bool" />
+            <Member Name="ProdStpModeSel" Datatype="Bool" />
+            <Member Name="ProdStpMode" Datatype="Bool" />
+            <Member Name="AnyProdModeSel" Datatype="Bool" />
+            <Member Name="AnyProdModeActive" Datatype="Bool" />
+            <Member Name="CycleStpHomeposModeSel" Datatype="Bool" />
+            <Member Name="CycleStpHomeposMode" Datatype="Bool" />
+            <Member Name="EmptyStnReached" Datatype="Bool" />
+            <Member Name="MaintReached" Datatype="Bool" />
+            <Member Name="CycleStpBeforeReached" Datatype="Bool" />
+            <Member Name="CycleStpHomeposReached" Datatype="Bool" />
+            <Member Name="CycleStpAfterReached" Datatype="Bool" />
+            <Member Name="ProdStpReached" Datatype="Bool" />
+            <Member Name="ProdStpActiveConv" Datatype="Bool" />
+            <Member Name="ZMStatus" Datatype="&quot;ZMStatus&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="BreakActive" Datatype="Bool" />
+                  <Member Name="ProductionStopActive" Datatype="Bool" />
+                  <Member Name="LocalLineStopActive" Datatype="Bool" />
+                  <Member Name="ServiceActive" Datatype="Bool" />
+                  <Member Name="PreventiveMaintenanceActive" Datatype="Bool" />
+                  <Member Name="AndonOperational" Datatype="Bool" />
+                  <Member Name="AndonStopActive" Datatype="Bool" />
+                  <Member Name="EquipmentActive" Datatype="Bool" />
+                  <Member Name="TeamMeetingActive" Datatype="Bool" />
+                  <Member Name="MuteSound" Datatype="Bool" />
+                  <Member Name="SafetyOk" Datatype="Bool" />
+                  <Member Name="ServiceReq" Datatype="Bool" />
+                  <Member Name="WeekendModeActive" Datatype="Bool" />
+                  <Member Name="EcoModeActive" Datatype="Bool" />
+                  <Member Name="spare4" Datatype="Bool" />
+                  <Member Name="spare5" Datatype="Bool" />
+                  <Member Name="spare6" Datatype="Bool" />
+                  <Member Name="spare7" Datatype="Bool" />
+                  <Member Name="spare8" Datatype="Bool" />
+                  <Member Name="spare9" Datatype="Bool" />
+                  <Member Name="spare10" Datatype="Bool" />
+                  <Member Name="spare11" Datatype="Bool" />
+                  <Member Name="spare12" Datatype="Bool" />
+                  <Member Name="spare13" Datatype="Bool" />
+                  <Member Name="spare14" Datatype="Bool" />
+                  <Member Name="spare15" Datatype="Bool" />
+                  <Member Name="spare16" Datatype="Bool" />
+                  <Member Name="spare17" Datatype="Bool" />
+                  <Member Name="spare18" Datatype="Bool" />
+                  <Member Name="spare19" Datatype="Bool" />
+                  <Member Name="spare20" Datatype="Bool" />
+                  <Member Name="spare21" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="SupervisionProdModeCmdReq" Datatype="&quot;SupervisionProdModeCmdReq&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="ProdBreakReqOn" Datatype="Bool" />
+                  <Member Name="ProdStopReqOn" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOn" Datatype="Bool" />
+                  <Member Name="MaintModeReqOn" Datatype="Bool" />
+                  <Member Name="EcoModeReqOn" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOn" Datatype="Bool" />
+                  <Member Name="Spare1" Datatype="Bool" />
+                  <Member Name="Spare2" Datatype="Bool" />
+                  <Member Name="Spare3" Datatype="Bool" />
+                  <Member Name="Spare4" Datatype="Bool" />
+                  <Member Name="Spare5" Datatype="Bool" />
+                  <Member Name="Spare6" Datatype="Bool" />
+                  <Member Name="Spare7" Datatype="Bool" />
+                  <Member Name="Spare8" Datatype="Bool" />
+                  <Member Name="Spare9" Datatype="Bool" />
+                  <Member Name="ProdBreakReqOff" Datatype="Bool" />
+                  <Member Name="ProdStopReqOff" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOff" Datatype="Bool" />
+                  <Member Name="MaintModeReqOff" Datatype="Bool" />
+                  <Member Name="EcoModeReqOff" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOff" Datatype="Bool" />
+                  <Member Name="Spare16" Datatype="Bool" />
+                  <Member Name="Spare17" Datatype="Bool" />
+                  <Member Name="Spare18" Datatype="Bool" />
+                  <Member Name="Spare19" Datatype="Bool" />
+                  <Member Name="Spare20" Datatype="Bool" />
+                  <Member Name="Spare21" Datatype="Bool" />
+                  <Member Name="Spare22" Datatype="Bool" />
+                  <Member Name="Spare23" Datatype="Bool" />
+                  <Member Name="Spare24" Datatype="Bool" />
+                  <Member Name="Spare25" Datatype="Bool" />
+                  <Member Name="Spare26" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="Alarm" Datatype="&quot;Alarm&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="AlarmAActive" Datatype="Bool" />
+                <Member Name="AlarmBActive" Datatype="Bool" />
+                <Member Name="AlarmCActive" Datatype="Bool" />
+                <Member Name="AlarmDActive" Datatype="Bool" />
+                <Member Name="AlarmABCondition" Datatype="Bool" />
+                <Member Name="AlarmAActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmBActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmCActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmDActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmABConditionUpperLevel" Datatype="Bool" />
+                <Member Name="EnableAlarmUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNotOkUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNok" Datatype="Bool" />
+                <Member Name="EnableAlarmMechanicNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmTransportNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" />
+                <Member Name="UpperLevelHWNok" Datatype="Bool" />
+                <Member Name="Feature1" Datatype="Bool" />
+                <Member Name="Feature2" Datatype="Bool" />
+                <Member Name="Feature3" Datatype="Bool" />
+                <Member Name="Feature4" Datatype="Bool" />
+                <Member Name="Feature5" Datatype="Bool" />
+                <Member Name="Feature6" Datatype="Bool" />
+                <Member Name="Feature7" Datatype="Bool" />
+                <Member Name="Feature8" Datatype="Bool" />
+                <Member Name="Feature9" Datatype="Bool" />
+                <Member Name="Feature10" Datatype="Bool" />
+                <Member Name="Feature11" Datatype="Bool" />
+                <Member Name="Feature12" Datatype="Bool" />
+                <Member Name="Feature13" Datatype="Bool" />
+                <Member Name="Feature14" Datatype="Bool" />
+                <Member Name="Feature15" Datatype="Bool" />
+                <Member Name="AlarmInstance" Datatype="WString" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO_ModesZM4" Datatype="&quot;Modes&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="LGeneralFunc" Datatype="Struct">
+            <Member Name="Lamptest" Datatype="Bool" />
+            <Member Name="LamptestSteady" Datatype="Bool" />
+            <Member Name="GenHighSpeed" Datatype="Bool" />
+            <Member Name="GenRevSwitch" Datatype="Bool" />
+            <Member Name="GenReverseAlarm" Datatype="Bool" />
+            <Member Name="ProDiag" Datatype="Bool" />
+          </Member>
+          <Member Name="LModeSelector" Datatype="Struct">
+            <Member Name="AutoSel" Datatype="Bool" />
+            <Member Name="AllAutoSel" Datatype="Bool" />
+            <Member Name="StepSel" Datatype="Bool" />
+            <Member Name="HomeRunSel" Datatype="Bool" />
+            <Member Name="ManualSel" Datatype="Bool" />
+            <Member Name="ForcedManActSel" Datatype="Bool" />
+            <Member Name="PBSetSel" Datatype="Bool" />
+            <Member Name="PBResetSel" Datatype="Bool" />
+            <Member Name="StartPBSel" Datatype="Bool" />
+            <Member Name="AlarmResetPBSel" Datatype="Bool" />
+            <Member Name="ResetTMSel" Datatype="Bool" />
+            <Member Name="ResetSeqSel" Datatype="Bool" />
+            <Member Name="CycleFinishedSel" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="ResetSafetyInputSel" Datatype="Bool" />
+          </Member>
+          <Member Name="LMode" Datatype="Struct">
+            <Member Name="AutoMode" Datatype="Bool" />
+            <Member Name="StepMode" Datatype="Bool" />
+            <Member Name="HomeRunMode" Datatype="Bool" />
+            <Member Name="ManualMode" Datatype="Bool" />
+            <Member Name="ForcedMan" Datatype="Bool" />
+            <Member Name="AutoStepRun" Datatype="Bool" />
+            <Member Name="AutoStepHomeRunAct" Datatype="Bool" />
+            <Member Name="StartPB" Datatype="Bool" />
+            <Member Name="AlarmResetPB" Datatype="Bool" />
+            <Member Name="SetPBMan" Datatype="Bool" />
+            <Member Name="ResetPBMan" Datatype="Bool" />
+            <Member Name="ResetTM" Datatype="Bool" />
+            <Member Name="ResetSeq" Datatype="Bool" />
+            <Member Name="CycleFinished" Datatype="Bool" />
+            <Member Name="AlarmABAct" Datatype="Bool" />
+            <Member Name="AlarmABCAct" Datatype="Bool" />
+            <Member Name="AlarmABCDAct" Datatype="Bool" />
+            <Member Name="HaltButton" Datatype="Bool" />
+            <Member Name="AutoModeWarning" Datatype="Bool" />
+            <Member Name="HomeRunRedo" Datatype="Bool" />
+            <Member Name="HomeRunWorkDone" Datatype="Bool" />
+            <Member Name="HomeRunRedoResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunRedoReset" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneReset" Datatype="Bool" />
+            <Member Name="ResetSafetyInput" Datatype="Bool" />
+            <Member Name="AlarmABCActSafetyOk" Datatype="Bool" />
+            <Member Name="ActiveMode" Datatype="DWord" />
+            <Member Name="SelectedMode" Datatype="Word" />
+            <Member Name="AlarmA" Datatype="Bool" />
+            <Member Name="AlarmB" Datatype="Bool" />
+            <Member Name="AlarmC" Datatype="Bool" />
+            <Member Name="AlarmD" Datatype="Bool" />
+            <Member Name="AlarmABCondition" Datatype="Bool" />
+            <Member Name="HomePos" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="SafetyOk" Datatype="Bool" />
+            <Member Name="ZMAlarmABCondition" Datatype="Bool" />
+            <Member Name="ZMAlarmA" Datatype="Bool" />
+            <Member Name="ZMAlarmB" Datatype="Bool" />
+            <Member Name="ZMAlarmC" Datatype="Bool" />
+            <Member Name="ZMAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmD" Datatype="Bool" />
+            <Member Name="ScreenChanged" Datatype="Bool" />
+          </Member>
+          <Member Name="LProductionMode" Datatype="Struct">
+            <Member Name="ProductionMode" Datatype="Word" />
+            <Member Name="BypassModeSel" Datatype="Bool" />
+            <Member Name="BypassMode" Datatype="Bool" />
+            <Member Name="EmptyStnModeSel" Datatype="Bool" />
+            <Member Name="EmptyStnMode" Datatype="Bool" />
+            <Member Name="SimWithPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithPartMode" Datatype="Bool" />
+            <Member Name="SimWithoutPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithoutPartMode" Datatype="Bool" />
+            <Member Name="MaintModeSel" Datatype="Bool" />
+            <Member Name="MaintMode" Datatype="Bool" />
+            <Member Name="CycleStpBeforeModeSel" Datatype="Bool" />
+            <Member Name="CycleStpBeforeMode" Datatype="Bool" />
+            <Member Name="CycleStpAfterModeSel" Datatype="Bool" />
+            <Member Name="CycleStpAfterMode" Datatype="Bool" />
+            <Member Name="ProdStpModeSel" Datatype="Bool" />
+            <Member Name="ProdStpMode" Datatype="Bool" />
+            <Member Name="AnyProdModeSel" Datatype="Bool" />
+            <Member Name="AnyProdModeActive" Datatype="Bool" />
+            <Member Name="CycleStpHomeposModeSel" Datatype="Bool" />
+            <Member Name="CycleStpHomeposMode" Datatype="Bool" />
+            <Member Name="EmptyStnReached" Datatype="Bool" />
+            <Member Name="MaintReached" Datatype="Bool" />
+            <Member Name="CycleStpBeforeReached" Datatype="Bool" />
+            <Member Name="CycleStpHomeposReached" Datatype="Bool" />
+            <Member Name="CycleStpAfterReached" Datatype="Bool" />
+            <Member Name="ProdStpReached" Datatype="Bool" />
+            <Member Name="ProdStpActiveConv" Datatype="Bool" />
+            <Member Name="ZMStatus" Datatype="&quot;ZMStatus&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="BreakActive" Datatype="Bool" />
+                  <Member Name="ProductionStopActive" Datatype="Bool" />
+                  <Member Name="LocalLineStopActive" Datatype="Bool" />
+                  <Member Name="ServiceActive" Datatype="Bool" />
+                  <Member Name="PreventiveMaintenanceActive" Datatype="Bool" />
+                  <Member Name="AndonOperational" Datatype="Bool" />
+                  <Member Name="AndonStopActive" Datatype="Bool" />
+                  <Member Name="EquipmentActive" Datatype="Bool" />
+                  <Member Name="TeamMeetingActive" Datatype="Bool" />
+                  <Member Name="MuteSound" Datatype="Bool" />
+                  <Member Name="SafetyOk" Datatype="Bool" />
+                  <Member Name="ServiceReq" Datatype="Bool" />
+                  <Member Name="WeekendModeActive" Datatype="Bool" />
+                  <Member Name="EcoModeActive" Datatype="Bool" />
+                  <Member Name="spare4" Datatype="Bool" />
+                  <Member Name="spare5" Datatype="Bool" />
+                  <Member Name="spare6" Datatype="Bool" />
+                  <Member Name="spare7" Datatype="Bool" />
+                  <Member Name="spare8" Datatype="Bool" />
+                  <Member Name="spare9" Datatype="Bool" />
+                  <Member Name="spare10" Datatype="Bool" />
+                  <Member Name="spare11" Datatype="Bool" />
+                  <Member Name="spare12" Datatype="Bool" />
+                  <Member Name="spare13" Datatype="Bool" />
+                  <Member Name="spare14" Datatype="Bool" />
+                  <Member Name="spare15" Datatype="Bool" />
+                  <Member Name="spare16" Datatype="Bool" />
+                  <Member Name="spare17" Datatype="Bool" />
+                  <Member Name="spare18" Datatype="Bool" />
+                  <Member Name="spare19" Datatype="Bool" />
+                  <Member Name="spare20" Datatype="Bool" />
+                  <Member Name="spare21" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="SupervisionProdModeCmdReq" Datatype="&quot;SupervisionProdModeCmdReq&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="ProdBreakReqOn" Datatype="Bool" />
+                  <Member Name="ProdStopReqOn" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOn" Datatype="Bool" />
+                  <Member Name="MaintModeReqOn" Datatype="Bool" />
+                  <Member Name="EcoModeReqOn" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOn" Datatype="Bool" />
+                  <Member Name="Spare1" Datatype="Bool" />
+                  <Member Name="Spare2" Datatype="Bool" />
+                  <Member Name="Spare3" Datatype="Bool" />
+                  <Member Name="Spare4" Datatype="Bool" />
+                  <Member Name="Spare5" Datatype="Bool" />
+                  <Member Name="Spare6" Datatype="Bool" />
+                  <Member Name="Spare7" Datatype="Bool" />
+                  <Member Name="Spare8" Datatype="Bool" />
+                  <Member Name="Spare9" Datatype="Bool" />
+                  <Member Name="ProdBreakReqOff" Datatype="Bool" />
+                  <Member Name="ProdStopReqOff" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOff" Datatype="Bool" />
+                  <Member Name="MaintModeReqOff" Datatype="Bool" />
+                  <Member Name="EcoModeReqOff" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOff" Datatype="Bool" />
+                  <Member Name="Spare16" Datatype="Bool" />
+                  <Member Name="Spare17" Datatype="Bool" />
+                  <Member Name="Spare18" Datatype="Bool" />
+                  <Member Name="Spare19" Datatype="Bool" />
+                  <Member Name="Spare20" Datatype="Bool" />
+                  <Member Name="Spare21" Datatype="Bool" />
+                  <Member Name="Spare22" Datatype="Bool" />
+                  <Member Name="Spare23" Datatype="Bool" />
+                  <Member Name="Spare24" Datatype="Bool" />
+                  <Member Name="Spare25" Datatype="Bool" />
+                  <Member Name="Spare26" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="Alarm" Datatype="&quot;Alarm&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="AlarmAActive" Datatype="Bool" />
+                <Member Name="AlarmBActive" Datatype="Bool" />
+                <Member Name="AlarmCActive" Datatype="Bool" />
+                <Member Name="AlarmDActive" Datatype="Bool" />
+                <Member Name="AlarmABCondition" Datatype="Bool" />
+                <Member Name="AlarmAActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmBActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmCActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmDActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmABConditionUpperLevel" Datatype="Bool" />
+                <Member Name="EnableAlarmUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNotOkUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNok" Datatype="Bool" />
+                <Member Name="EnableAlarmMechanicNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmTransportNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" />
+                <Member Name="UpperLevelHWNok" Datatype="Bool" />
+                <Member Name="Feature1" Datatype="Bool" />
+                <Member Name="Feature2" Datatype="Bool" />
+                <Member Name="Feature3" Datatype="Bool" />
+                <Member Name="Feature4" Datatype="Bool" />
+                <Member Name="Feature5" Datatype="Bool" />
+                <Member Name="Feature6" Datatype="Bool" />
+                <Member Name="Feature7" Datatype="Bool" />
+                <Member Name="Feature8" Datatype="Bool" />
+                <Member Name="Feature9" Datatype="Bool" />
+                <Member Name="Feature10" Datatype="Bool" />
+                <Member Name="Feature11" Datatype="Bool" />
+                <Member Name="Feature12" Datatype="Bool" />
+                <Member Name="Feature13" Datatype="Bool" />
+                <Member Name="Feature14" Datatype="Bool" />
+                <Member Name="Feature15" Datatype="Bool" />
+                <Member Name="AlarmInstance" Datatype="WString" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO_ModesZM5" Datatype="&quot;Modes&quot;" Accessibility="Public">
+      <Sections>
+        <Section Name="None">
+          <Member Name="LGeneralFunc" Datatype="Struct">
+            <Member Name="Lamptest" Datatype="Bool" />
+            <Member Name="LamptestSteady" Datatype="Bool" />
+            <Member Name="GenHighSpeed" Datatype="Bool" />
+            <Member Name="GenRevSwitch" Datatype="Bool" />
+            <Member Name="GenReverseAlarm" Datatype="Bool" />
+            <Member Name="ProDiag" Datatype="Bool" />
+          </Member>
+          <Member Name="LModeSelector" Datatype="Struct">
+            <Member Name="AutoSel" Datatype="Bool" />
+            <Member Name="AllAutoSel" Datatype="Bool" />
+            <Member Name="StepSel" Datatype="Bool" />
+            <Member Name="HomeRunSel" Datatype="Bool" />
+            <Member Name="ManualSel" Datatype="Bool" />
+            <Member Name="ForcedManActSel" Datatype="Bool" />
+            <Member Name="PBSetSel" Datatype="Bool" />
+            <Member Name="PBResetSel" Datatype="Bool" />
+            <Member Name="StartPBSel" Datatype="Bool" />
+            <Member Name="AlarmResetPBSel" Datatype="Bool" />
+            <Member Name="ResetTMSel" Datatype="Bool" />
+            <Member Name="ResetSeqSel" Datatype="Bool" />
+            <Member Name="CycleFinishedSel" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="ResetSafetyInputSel" Datatype="Bool" />
+          </Member>
+          <Member Name="LMode" Datatype="Struct">
+            <Member Name="AutoMode" Datatype="Bool" />
+            <Member Name="StepMode" Datatype="Bool" />
+            <Member Name="HomeRunMode" Datatype="Bool" />
+            <Member Name="ManualMode" Datatype="Bool" />
+            <Member Name="ForcedMan" Datatype="Bool" />
+            <Member Name="AutoStepRun" Datatype="Bool" />
+            <Member Name="AutoStepHomeRunAct" Datatype="Bool" />
+            <Member Name="StartPB" Datatype="Bool" />
+            <Member Name="AlarmResetPB" Datatype="Bool" />
+            <Member Name="SetPBMan" Datatype="Bool" />
+            <Member Name="ResetPBMan" Datatype="Bool" />
+            <Member Name="ResetTM" Datatype="Bool" />
+            <Member Name="ResetSeq" Datatype="Bool" />
+            <Member Name="CycleFinished" Datatype="Bool" />
+            <Member Name="AlarmABAct" Datatype="Bool" />
+            <Member Name="AlarmABCAct" Datatype="Bool" />
+            <Member Name="AlarmABCDAct" Datatype="Bool" />
+            <Member Name="HaltButton" Datatype="Bool" />
+            <Member Name="AutoModeWarning" Datatype="Bool" />
+            <Member Name="HomeRunRedo" Datatype="Bool" />
+            <Member Name="HomeRunWorkDone" Datatype="Bool" />
+            <Member Name="HomeRunRedoResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneResetPosEdge" Datatype="Bool" />
+            <Member Name="HomeRunRedoReset" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneReset" Datatype="Bool" />
+            <Member Name="ResetSafetyInput" Datatype="Bool" />
+            <Member Name="AlarmABCActSafetyOk" Datatype="Bool" />
+            <Member Name="ActiveMode" Datatype="DWord" />
+            <Member Name="SelectedMode" Datatype="Word" />
+            <Member Name="AlarmA" Datatype="Bool" />
+            <Member Name="AlarmB" Datatype="Bool" />
+            <Member Name="AlarmC" Datatype="Bool" />
+            <Member Name="AlarmD" Datatype="Bool" />
+            <Member Name="AlarmABCondition" Datatype="Bool" />
+            <Member Name="HomePos" Datatype="Bool" />
+            <Member Name="HomeRunRedoSel" Datatype="Bool" />
+            <Member Name="HomeRunWorkDoneSel" Datatype="Bool" />
+            <Member Name="SafetyOk" Datatype="Bool" />
+            <Member Name="ZMAlarmABCondition" Datatype="Bool" />
+            <Member Name="ZMAlarmA" Datatype="Bool" />
+            <Member Name="ZMAlarmB" Datatype="Bool" />
+            <Member Name="ZMAlarmC" Datatype="Bool" />
+            <Member Name="ZMAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelZSAlarmD" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmABCondition" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmA" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmB" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmC" Datatype="Bool" />
+            <Member Name="UpperLevelPLCAlarmD" Datatype="Bool" />
+            <Member Name="ScreenChanged" Datatype="Bool" />
+          </Member>
+          <Member Name="LProductionMode" Datatype="Struct">
+            <Member Name="ProductionMode" Datatype="Word" />
+            <Member Name="BypassModeSel" Datatype="Bool" />
+            <Member Name="BypassMode" Datatype="Bool" />
+            <Member Name="EmptyStnModeSel" Datatype="Bool" />
+            <Member Name="EmptyStnMode" Datatype="Bool" />
+            <Member Name="SimWithPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithPartMode" Datatype="Bool" />
+            <Member Name="SimWithoutPartModeSel" Datatype="Bool" />
+            <Member Name="SimWithoutPartMode" Datatype="Bool" />
+            <Member Name="MaintModeSel" Datatype="Bool" />
+            <Member Name="MaintMode" Datatype="Bool" />
+            <Member Name="CycleStpBeforeModeSel" Datatype="Bool" />
+            <Member Name="CycleStpBeforeMode" Datatype="Bool" />
+            <Member Name="CycleStpAfterModeSel" Datatype="Bool" />
+            <Member Name="CycleStpAfterMode" Datatype="Bool" />
+            <Member Name="ProdStpModeSel" Datatype="Bool" />
+            <Member Name="ProdStpMode" Datatype="Bool" />
+            <Member Name="AnyProdModeSel" Datatype="Bool" />
+            <Member Name="AnyProdModeActive" Datatype="Bool" />
+            <Member Name="CycleStpHomeposModeSel" Datatype="Bool" />
+            <Member Name="CycleStpHomeposMode" Datatype="Bool" />
+            <Member Name="EmptyStnReached" Datatype="Bool" />
+            <Member Name="MaintReached" Datatype="Bool" />
+            <Member Name="CycleStpBeforeReached" Datatype="Bool" />
+            <Member Name="CycleStpHomeposReached" Datatype="Bool" />
+            <Member Name="CycleStpAfterReached" Datatype="Bool" />
+            <Member Name="ProdStpReached" Datatype="Bool" />
+            <Member Name="ProdStpActiveConv" Datatype="Bool" />
+            <Member Name="ZMStatus" Datatype="&quot;ZMStatus&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="BreakActive" Datatype="Bool" />
+                  <Member Name="ProductionStopActive" Datatype="Bool" />
+                  <Member Name="LocalLineStopActive" Datatype="Bool" />
+                  <Member Name="ServiceActive" Datatype="Bool" />
+                  <Member Name="PreventiveMaintenanceActive" Datatype="Bool" />
+                  <Member Name="AndonOperational" Datatype="Bool" />
+                  <Member Name="AndonStopActive" Datatype="Bool" />
+                  <Member Name="EquipmentActive" Datatype="Bool" />
+                  <Member Name="TeamMeetingActive" Datatype="Bool" />
+                  <Member Name="MuteSound" Datatype="Bool" />
+                  <Member Name="SafetyOk" Datatype="Bool" />
+                  <Member Name="ServiceReq" Datatype="Bool" />
+                  <Member Name="WeekendModeActive" Datatype="Bool" />
+                  <Member Name="EcoModeActive" Datatype="Bool" />
+                  <Member Name="spare4" Datatype="Bool" />
+                  <Member Name="spare5" Datatype="Bool" />
+                  <Member Name="spare6" Datatype="Bool" />
+                  <Member Name="spare7" Datatype="Bool" />
+                  <Member Name="spare8" Datatype="Bool" />
+                  <Member Name="spare9" Datatype="Bool" />
+                  <Member Name="spare10" Datatype="Bool" />
+                  <Member Name="spare11" Datatype="Bool" />
+                  <Member Name="spare12" Datatype="Bool" />
+                  <Member Name="spare13" Datatype="Bool" />
+                  <Member Name="spare14" Datatype="Bool" />
+                  <Member Name="spare15" Datatype="Bool" />
+                  <Member Name="spare16" Datatype="Bool" />
+                  <Member Name="spare17" Datatype="Bool" />
+                  <Member Name="spare18" Datatype="Bool" />
+                  <Member Name="spare19" Datatype="Bool" />
+                  <Member Name="spare20" Datatype="Bool" />
+                  <Member Name="spare21" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="SupervisionProdModeCmdReq" Datatype="&quot;SupervisionProdModeCmdReq&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="ProdBreakReqOn" Datatype="Bool" />
+                  <Member Name="ProdStopReqOn" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOn" Datatype="Bool" />
+                  <Member Name="MaintModeReqOn" Datatype="Bool" />
+                  <Member Name="EcoModeReqOn" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOn" Datatype="Bool" />
+                  <Member Name="Spare1" Datatype="Bool" />
+                  <Member Name="Spare2" Datatype="Bool" />
+                  <Member Name="Spare3" Datatype="Bool" />
+                  <Member Name="Spare4" Datatype="Bool" />
+                  <Member Name="Spare5" Datatype="Bool" />
+                  <Member Name="Spare6" Datatype="Bool" />
+                  <Member Name="Spare7" Datatype="Bool" />
+                  <Member Name="Spare8" Datatype="Bool" />
+                  <Member Name="Spare9" Datatype="Bool" />
+                  <Member Name="ProdBreakReqOff" Datatype="Bool" />
+                  <Member Name="ProdStopReqOff" Datatype="Bool" />
+                  <Member Name="EmptyStationReqOff" Datatype="Bool" />
+                  <Member Name="MaintModeReqOff" Datatype="Bool" />
+                  <Member Name="EcoModeReqOff" Datatype="Bool" />
+                  <Member Name="WeekendModeReqOff" Datatype="Bool" />
+                  <Member Name="Spare16" Datatype="Bool" />
+                  <Member Name="Spare17" Datatype="Bool" />
+                  <Member Name="Spare18" Datatype="Bool" />
+                  <Member Name="Spare19" Datatype="Bool" />
+                  <Member Name="Spare20" Datatype="Bool" />
+                  <Member Name="Spare21" Datatype="Bool" />
+                  <Member Name="Spare22" Datatype="Bool" />
+                  <Member Name="Spare23" Datatype="Bool" />
+                  <Member Name="Spare24" Datatype="Bool" />
+                  <Member Name="Spare25" Datatype="Bool" />
+                  <Member Name="Spare26" Datatype="Bool" />
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="Alarm" Datatype="&quot;Alarm&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="AlarmAActive" Datatype="Bool" />
+                <Member Name="AlarmBActive" Datatype="Bool" />
+                <Member Name="AlarmCActive" Datatype="Bool" />
+                <Member Name="AlarmDActive" Datatype="Bool" />
+                <Member Name="AlarmABCondition" Datatype="Bool" />
+                <Member Name="AlarmAActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmBActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmCActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmDActiveUpperLevel" Datatype="Bool" />
+                <Member Name="AlarmABConditionUpperLevel" Datatype="Bool" />
+                <Member Name="EnableAlarmUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNotOkUpperLevel" Datatype="Bool" />
+                <Member Name="SafetyNok" Datatype="Bool" />
+                <Member Name="EnableAlarmMechanicNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmTransportNOk" Datatype="Bool" />
+                <Member Name="EnableAlarmIOSystemNOk" Datatype="Bool" />
+                <Member Name="UpperLevelHWNok" Datatype="Bool" />
+                <Member Name="Feature1" Datatype="Bool" />
+                <Member Name="Feature2" Datatype="Bool" />
+                <Member Name="Feature3" Datatype="Bool" />
+                <Member Name="Feature4" Datatype="Bool" />
+                <Member Name="Feature5" Datatype="Bool" />
+                <Member Name="Feature6" Datatype="Bool" />
+                <Member Name="Feature7" Datatype="Bool" />
+                <Member Name="Feature8" Datatype="Bool" />
+                <Member Name="Feature9" Datatype="Bool" />
+                <Member Name="Feature10" Datatype="Bool" />
+                <Member Name="Feature11" Datatype="Bool" />
+                <Member Name="Feature12" Datatype="Bool" />
+                <Member Name="Feature13" Datatype="Bool" />
+                <Member Name="Feature14" Datatype="Bool" />
+                <Member Name="Feature15" Datatype="Bool" />
+                <Member Name="AlarmInstance" Datatype="WString" />
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+  <Section Name="Static" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>_209230ZS01ModeSummary</Name>
+      <Number>1901</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="A" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="B" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="C" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="E" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

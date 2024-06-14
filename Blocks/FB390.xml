@@ -1,0 +1,1957 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:56.0504788Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AcknowledgeErrorsRequired>true</AcknowledgeErrorsRequired>
+      <AutoNumber>false</AutoNumber>
+      <ExtensionBlockName />
+      <GraphVersion>6.0</GraphVersion>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <InitialValuesAcquisition>false</InitialValuesAcquisition>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Base">
+    <Sections Datatype="GRAPH_BASE" Version="1.0">
+      <Section Name="Input" />
+      <Section Name="Output" />
+      <Section Name="InOut" />
+      <Section Name="Static">
+        <Member Name="OFF_SQ_BASE" Datatype="Bool" />
+      </Section>
+    </Sections>
+  </Section>
+  <Section Name="Input">
+    <Member Name="OFF_SQ" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Turn sequence off</MultiLanguageText><MultiLanguageText Lang="sv-SE">Turn sequence off</MultiLanguageText><MultiLanguageText Lang="nl-BE">Turn sequence off</MultiLanguageText><MultiLanguageText Lang="en-GB">Turn sequence off</MultiLanguageText><MultiLanguageText Lang="zh-HK">Turn sequence off</MultiLanguageText><MultiLanguageText Lang="zh-CN">Turn sequence off</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="INIT_SQ" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Set sequence to initial state</MultiLanguageText><MultiLanguageText Lang="sv-SE">Set sequence to initial state</MultiLanguageText><MultiLanguageText Lang="nl-BE">Set sequence to initial state</MultiLanguageText><MultiLanguageText Lang="en-GB">Set sequence to initial state</MultiLanguageText><MultiLanguageText Lang="zh-HK">Set sequence to initial state</MultiLanguageText><MultiLanguageText Lang="zh-CN">Set sequence to initial state</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="ACK_EF" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Acknowledge all errors and faults</MultiLanguageText><MultiLanguageText Lang="sv-SE">Acknowledge all errors and faults</MultiLanguageText><MultiLanguageText Lang="nl-BE">Acknowledge all errors and faults</MultiLanguageText><MultiLanguageText Lang="en-GB">Acknowledge all errors and faults</MultiLanguageText><MultiLanguageText Lang="zh-HK">Acknowledge all errors and faults</MultiLanguageText><MultiLanguageText Lang="zh-CN">Acknowledge all errors and faults</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="S_PREV" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Output previous step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="sv-SE">Output previous step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="nl-BE">Output previous step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="en-GB">Output previous step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="zh-HK">Output previous step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="zh-CN">Output previous step in parameter S_NO</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="S_NEXT" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Indicate next step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="sv-SE">Indicate next step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="nl-BE">Indicate next step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="en-GB">Indicate next step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="zh-HK">Indicate next step in parameter S_NO</MultiLanguageText><MultiLanguageText Lang="zh-CN">Indicate next step in parameter S_NO</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="SW_AUTO" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Automatic mode</MultiLanguageText><MultiLanguageText Lang="sv-SE">Automatic mode</MultiLanguageText><MultiLanguageText Lang="nl-BE">Automatic mode</MultiLanguageText><MultiLanguageText Lang="en-GB">Automatic mode</MultiLanguageText><MultiLanguageText Lang="zh-HK">Automatic mode</MultiLanguageText><MultiLanguageText Lang="zh-CN">Automatic mode</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="SW_TAP" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Semiautomatic/switch with transition</MultiLanguageText><MultiLanguageText Lang="sv-SE">Semiautomatic/switch with transition</MultiLanguageText><MultiLanguageText Lang="nl-BE">Semiautomatic/switch with transition</MultiLanguageText><MultiLanguageText Lang="en-GB">Semiautomatic/switch with transition</MultiLanguageText><MultiLanguageText Lang="zh-HK">Semiautomatic/switch with transition</MultiLanguageText><MultiLanguageText Lang="zh-CN">Semiautomatic/switch with transition</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="SW_TOP" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Semiautomatic/ignore transition</MultiLanguageText><MultiLanguageText Lang="sv-SE">Semiautomatic/ignore transition</MultiLanguageText><MultiLanguageText Lang="nl-BE">Semiautomatic/ignore transition</MultiLanguageText><MultiLanguageText Lang="en-GB">Semiautomatic/ignore transition</MultiLanguageText><MultiLanguageText Lang="zh-HK">Semiautomatic/ignore transition</MultiLanguageText><MultiLanguageText Lang="zh-CN">Semiautomatic/ignore transition</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="SW_MAN" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Manual mode</MultiLanguageText><MultiLanguageText Lang="sv-SE">Manual mode</MultiLanguageText><MultiLanguageText Lang="nl-BE">Manual mode</MultiLanguageText><MultiLanguageText Lang="en-GB">Manual mode</MultiLanguageText><MultiLanguageText Lang="zh-HK">Manual mode</MultiLanguageText><MultiLanguageText Lang="zh-CN">Manual mode</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="S_SEL" Datatype="Int" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Select step to be output to S_NO</MultiLanguageText><MultiLanguageText Lang="sv-SE">Select step to be output to S_NO</MultiLanguageText><MultiLanguageText Lang="nl-BE">Select step to be output to S_NO</MultiLanguageText><MultiLanguageText Lang="en-GB">Select step to be output to S_NO</MultiLanguageText><MultiLanguageText Lang="zh-HK">Select step to be output to S_NO</MultiLanguageText><MultiLanguageText Lang="zh-CN">Select step to be output to S_NO</MultiLanguageText></Comment><StartValue Informative="true">0</StartValue></Member>
+    <Member Name="S_ON" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Activate step indicated in S_NO</MultiLanguageText><MultiLanguageText Lang="sv-SE">Activate step indicated in S_NO</MultiLanguageText><MultiLanguageText Lang="nl-BE">Activate step indicated in S_NO</MultiLanguageText><MultiLanguageText Lang="en-GB">Activate step indicated in S_NO</MultiLanguageText><MultiLanguageText Lang="zh-HK">Activate step indicated in S_NO</MultiLanguageText><MultiLanguageText Lang="zh-CN">Activate step indicated in S_NO</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="S_OFF" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Deactivate step indicated S_NO</MultiLanguageText><MultiLanguageText Lang="sv-SE">Deactivate step indicated S_NO</MultiLanguageText><MultiLanguageText Lang="nl-BE">Deactivate step indicated S_NO</MultiLanguageText><MultiLanguageText Lang="en-GB">Deactivate step indicated S_NO</MultiLanguageText><MultiLanguageText Lang="zh-HK">Deactivate step indicated S_NO</MultiLanguageText><MultiLanguageText Lang="zh-CN">Deactivate step indicated S_NO</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="T_PUSH" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Enable transition to switch in semi automatic mode</MultiLanguageText><MultiLanguageText Lang="sv-SE">Enable transition to switch in semi automatic mode</MultiLanguageText><MultiLanguageText Lang="nl-BE">Enable transition to switch in semi automatic mode</MultiLanguageText><MultiLanguageText Lang="en-GB">Enable transition to switch in semi automatic mode</MultiLanguageText><MultiLanguageText Lang="zh-HK">Enable transition to switch in semi automatic mode</MultiLanguageText><MultiLanguageText Lang="zh-CN">Enable transition to switch in semi automatic mode</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="S_NO" Datatype="Int" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step number</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step number</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step number</MultiLanguageText><MultiLanguageText Lang="en-GB">Step number</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step number</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step number</MultiLanguageText></Comment><StartValue Informative="true">0</StartValue></Member>
+    <Member Name="S_MORE" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">More steps are available and can be shown in S_NO</MultiLanguageText><MultiLanguageText Lang="sv-SE">More steps are available and can be shown in S_NO</MultiLanguageText><MultiLanguageText Lang="nl-BE">More steps are available and can be shown in S_NO</MultiLanguageText><MultiLanguageText Lang="en-GB">More steps are available and can be shown in S_NO</MultiLanguageText><MultiLanguageText Lang="zh-HK">More steps are available and can be shown in S_NO</MultiLanguageText><MultiLanguageText Lang="zh-CN">More steps are available and can be shown in S_NO</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="S_ACTIVE" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step indicated in S_NO is active</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step indicated in S_NO is active</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step indicated in S_NO is active</MultiLanguageText><MultiLanguageText Lang="en-GB">Step indicated in S_NO is active</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step indicated in S_NO is active</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step indicated in S_NO is active</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="ERR_FLT" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Interlock or supervision group error</MultiLanguageText><MultiLanguageText Lang="sv-SE">Interlock or supervision group error</MultiLanguageText><MultiLanguageText Lang="nl-BE">Interlock or supervision group error</MultiLanguageText><MultiLanguageText Lang="en-GB">Interlock or supervision group error</MultiLanguageText><MultiLanguageText Lang="zh-HK">Interlock or supervision group error</MultiLanguageText><MultiLanguageText Lang="zh-CN">Interlock or supervision group error</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="AUTO_ON" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Automatic mode is active</MultiLanguageText><MultiLanguageText Lang="sv-SE">Automatic mode is active</MultiLanguageText><MultiLanguageText Lang="nl-BE">Automatic mode is active</MultiLanguageText><MultiLanguageText Lang="en-GB">Automatic mode is active</MultiLanguageText><MultiLanguageText Lang="zh-HK">Automatic mode is active</MultiLanguageText><MultiLanguageText Lang="zh-CN">Automatic mode is active</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="TAP_ON" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Semiautomatic mode/step with transition enabled</MultiLanguageText><MultiLanguageText Lang="sv-SE">Semiautomatic mode/step with transition enabled</MultiLanguageText><MultiLanguageText Lang="nl-BE">Semiautomatic mode/step with transition enabled</MultiLanguageText><MultiLanguageText Lang="en-GB">Semiautomatic mode/step with transition enabled</MultiLanguageText><MultiLanguageText Lang="zh-HK">Semiautomatic mode/step with transition enabled</MultiLanguageText><MultiLanguageText Lang="zh-CN">Semiautomatic mode/step with transition enabled</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="TOP_ON" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Semiautomatic mode/ignore transition enabled</MultiLanguageText><MultiLanguageText Lang="sv-SE">Semiautomatic mode/ignore transition enabled</MultiLanguageText><MultiLanguageText Lang="nl-BE">Semiautomatic mode/ignore transition enabled</MultiLanguageText><MultiLanguageText Lang="en-GB">Semiautomatic mode/ignore transition enabled</MultiLanguageText><MultiLanguageText Lang="zh-HK">Semiautomatic mode/ignore transition enabled</MultiLanguageText><MultiLanguageText Lang="zh-CN">Semiautomatic mode/ignore transition enabled</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+    <Member Name="MAN_ON" Datatype="Bool" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Manual mode is active</MultiLanguageText><MultiLanguageText Lang="sv-SE">Manual mode is active</MultiLanguageText><MultiLanguageText Lang="nl-BE">Manual mode is active</MultiLanguageText><MultiLanguageText Lang="en-GB">Manual mode is active</MultiLanguageText><MultiLanguageText Lang="zh-HK">Manual mode is active</MultiLanguageText><MultiLanguageText Lang="zh-CN">Manual mode is active</MultiLanguageText></Comment><StartValue Informative="true">false</StartValue></Member>
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="RT_DATA" Datatype="G7_RTDataPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Internal data area</MultiLanguageText><MultiLanguageText Lang="sv-SE">Internal data area</MultiLanguageText><MultiLanguageText Lang="nl-BE">Internal data area</MultiLanguageText><MultiLanguageText Lang="en-GB">Internal data area</MultiLanguageText><MultiLanguageText Lang="zh-HK">Internal data area</MultiLanguageText><MultiLanguageText Lang="zh-CN">Internal data area</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="VERSION" Datatype="String[10]"><StartValue Informative="true">'V6.0'</StartValue></Member><Member Name="S_DISPLAY" Datatype="Int" /><Member Name="S_SEL_OLD" Datatype="Int" /><Member Name="S_DISPIDX" Datatype="USInt"><StartValue Informative="true">255</StartValue></Member><Member Name="T_DISPIDX" Datatype="USInt"><StartValue Informative="true">255</StartValue></Member><Member Name="MOP_EDGE" Datatype="G7_MOPPlus_V6" Version="1.0"><Sections><Section Name="None"><Member Name="AUTO" Datatype="Bool" /><Member Name="MAN" Datatype="Bool" /><Member Name="TAP" Datatype="Bool" /><Member Name="TOP" Datatype="Bool" /><Member Name="ACK_S" Datatype="Bool" /><Member Name="REG_S" Datatype="Bool" /><Member Name="T_PREV" Datatype="Bool" /><Member Name="T_NEXT" Datatype="Bool" /><Member Name="LOCK" Datatype="Bool" /><Member Name="SUP" Datatype="Bool" /><Member Name="ACKREQ" Datatype="Bool" /><Member Name="SSKIP" Datatype="Bool" /><Member Name="OFF" Datatype="Bool" /><Member Name="INIT" Datatype="Bool" /><Member Name="HALT" Datatype="Bool" /><Member Name="TMS_HALT" Datatype="Bool" /><Member Name="OPS_ZERO" Datatype="Bool" /><Member Name="SACT_DISP" Datatype="Bool" /><Member Name="SEF_DISP" Datatype="Bool" /><Member Name="SALL_DISP" Datatype="Bool" /><Member Name="S_PREV" Datatype="Bool" /><Member Name="S_NEXT" Datatype="Bool" /><Member Name="S_SELOK" Datatype="Bool" /><Member Name="S_ON" Datatype="Bool" /><Member Name="S_OFF" Datatype="Bool" /><Member Name="T_PUSH" Datatype="Bool" /><Member Name="REG" Datatype="Bool" /><Member Name="ACK" Datatype="Bool" /><Member Name="IL_PERM" Datatype="Bool" /><Member Name="T_PERM" Datatype="Bool" /><Member Name="ILP_MAN" Datatype="Bool" /><Member Name="LMODE" Datatype="Bool" /><Member Name="RESET_CRIT" Datatype="Bool" /></Section></Sections></Member><Member Name="MOP" Datatype="G7_MOPPlus_V6" Version="1.0"><Sections><Section Name="None"><Member Name="AUTO" Datatype="Bool"><StartValue Informative="true">true</StartValue></Member><Member Name="MAN" Datatype="Bool" /><Member Name="TAP" Datatype="Bool" /><Member Name="TOP" Datatype="Bool" /><Member Name="ACK_S" Datatype="Bool" /><Member Name="REG_S" Datatype="Bool" /><Member Name="T_PREV" Datatype="Bool" /><Member Name="T_NEXT" Datatype="Bool" /><Member Name="LOCK" Datatype="Bool"><StartValue Informative="true">true</StartValue></Member><Member Name="SUP" Datatype="Bool"><StartValue Informative="true">true</StartValue></Member><Member Name="ACKREQ" Datatype="Bool"><StartValue Informative="true">true</StartValue></Member><Member Name="SSKIP" Datatype="Bool" /><Member Name="OFF" Datatype="Bool" /><Member Name="INIT" Datatype="Bool"><StartValue Informative="true">true</StartValue></Member><Member Name="HALT" Datatype="Bool" /><Member Name="TMS_HALT" Datatype="Bool" /><Member Name="OPS_ZERO" Datatype="Bool" /><Member Name="SACT_DISP" Datatype="Bool"><StartValue Informative="true">true</StartValue></Member><Member Name="SEF_DISP" Datatype="Bool" /><Member Name="SALL_DISP" Datatype="Bool" /><Member Name="S_PREV" Datatype="Bool" /><Member Name="S_NEXT" Datatype="Bool" /><Member Name="S_SELOK" Datatype="Bool" /><Member Name="S_ON" Datatype="Bool" /><Member Name="S_OFF" Datatype="Bool" /><Member Name="T_PUSH" Datatype="Bool" /><Member Name="REG" Datatype="Bool" /><Member Name="ACK" Datatype="Bool" /><Member Name="IL_PERM" Datatype="Bool" /><Member Name="T_PERM" Datatype="Bool" /><Member Name="ILP_MAN" Datatype="Bool" /><Member Name="LMODE" Datatype="Bool" /><Member Name="RESET_CRIT" Datatype="Bool" /></Section></Sections></Member><Member Name="TIME_DELTA" Datatype="Time" /><Member Name="SQ_FLAGS" Datatype="G7_SQFlagsPlus_V6" Version="1.0"><Sections><Section Name="None"><Member Name="ERR_FLT" Datatype="Bool" /><Member Name="ERROR" Datatype="Bool" /><Member Name="FAULT" Datatype="Bool" /><Member Name="RT_FAIL" Datatype="Bool" /><Member Name="NO_SNO" Datatype="Bool" /><Member Name="NF_OFL" Datatype="Bool" /><Member Name="SA_OFL" Datatype="Bool" /><Member Name="TV_OFL" Datatype="Bool" /><Member Name="NO_SWI" Datatype="Bool" /><Member Name="CYC_OP" Datatype="Bool" /><Member Name="AS_MSG" Datatype="Bool"><StartValue Informative="true">true</StartValue></Member><Member Name="SQ_BUSY" Datatype="Bool" /><Member Name="SA_BUSY" Datatype="Bool" /></Section></Sections></Member><Member Name="PRE_CNT" Datatype="USInt"><StartValue Informative="true">1</StartValue></Member><Member Name="POST_CNT" Datatype="USInt"><StartValue Informative="true">1</StartValue></Member><Member Name="SQ_CNT" Datatype="USInt"><StartValue Informative="true">1</StartValue></Member><Member Name="S_CNT" Datatype="USInt"><StartValue Informative="true">12</StartValue></Member><Member Name="LOCK_CNT" Datatype="USInt" /><Member Name="SUP_CNT" Datatype="USInt" /><Member Name="T_CNT" Datatype="USInt"><StartValue Informative="true">14</StartValue></Member><Member Name="SQ_PART_CNT" Datatype="USInt"><StartValue Informative="true">7</StartValue></Member><Member Name="MAX_TVAL" Datatype="USInt"><StartValue Informative="true">5</StartValue></Member><Member Name="MAX_SACT" Datatype="USInt"><StartValue Informative="true">1</StartValue></Member><Member Name="AS_MSG" Datatype="Byte"><StartValue Informative="true">16#65</StartValue></Member><Member Name="EXEC_BITS" Datatype="Array[0..249] of Bool" /><Member Name="OFFSETS" Datatype="G7_OffsetsPlus_V6" Version="1.0"><Sections><Section Name="None"><Member Name="SINI_OFFSET" Datatype="UInt" /><Member Name="LSTT_OFFSET" Datatype="UInt"><StartValue Informative="true">2</StartValue></Member><Member Name="ATAJ_OFFSET" Datatype="UInt"><StartValue Informative="true">16</StartValue></Member><Member Name="ATAB_OFFSET" Datatype="UInt"><StartValue Informative="true">30</StartValue></Member><Member Name="PSTT_OFFSET" Datatype="UInt"><StartValue Informative="true">44</StartValue></Member><Member Name="NSTT_OFFSET" Datatype="UInt"><StartValue Informative="true">58</StartValue></Member><Member Name="ASSJ_OFFSET" Datatype="UInt"><StartValue Informative="true">72</StartValue></Member><Member Name="ASSB_OFFSET" Datatype="UInt"><StartValue Informative="true">84</StartValue></Member><Member Name="PTTS_OFFSET" Datatype="UInt"><StartValue Informative="true">96</StartValue></Member><Member Name="NTTS_OFFSET" Datatype="UInt"><StartValue Informative="true">108</StartValue></Member><Member Name="SW_SQTS_OFFSET" Datatype="UInt"><StartValue Informative="true">120</StartValue></Member><Member Name="SWITCH_OFFSET" Datatype="UInt"><StartValue Informative="true">132</StartValue></Member><Member Name="TVX_OFFSET" Datatype="UInt"><StartValue Informative="true">139</StartValue></Member><Member Name="TTX_OFFSET" Datatype="UInt"><StartValue Informative="true">145</StartValue></Member><Member Name="TSX_OFFSET" Datatype="UInt"><StartValue Informative="true">151</StartValue></Member><Member Name="S00X_OFFSET" Datatype="UInt"><StartValue Informative="true">153</StartValue></Member><Member Name="SOFFX_OFFSET" Datatype="UInt"><StartValue Informative="true">155</StartValue></Member><Member Name="SONX_OFFSET" Datatype="UInt"><StartValue Informative="true">157</StartValue></Member><Member Name="SAX_OFFSET" Datatype="UInt"><StartValue Informative="true">159</StartValue></Member><Member Name="SERRX_OFFSET" Datatype="UInt"><StartValue Informative="true">161</StartValue></Member><Member Name="SMX_OFFSET" Datatype="UInt"><StartValue Informative="true">174</StartValue></Member><Member Name="S0X_OFFSET" Datatype="UInt"><StartValue Informative="true">187</StartValue></Member><Member Name="S1X_OFFSET" Datatype="UInt"><StartValue Informative="true">200</StartValue></Member></Section></Sections></Member><Member Name="THRESHOLD_SUP" Datatype="USInt" /><Member Name="THRESHOLD_WARN" Datatype="USInt" /><Member Name="GC_FLAGS" Datatype="G7_GCFlagsPlus_V6" Version="1.0"><Sections><Section Name="None"><Member Name="COND_ED" Datatype="USInt"><StartValue Informative="true">16#E2</StartValue></Member><Member Name="SSKIP_ON" Datatype="Bool" /><Member Name="ACK_REQ" Datatype="Bool"><StartValue Informative="true">true</StartValue></Member><Member Name="ILP_MAN" Datatype="Bool" /><Member Name="SWM_LOCKED" Datatype="Bool" /><Member Name="SET_ENO" Datatype="Bool" /><Member Name="IL_CAT" Datatype="USInt"><StartValue Informative="true">1</StartValue></Member><Member Name="IL_SUBCAT_1" Datatype="USInt" /><Member Name="IL_SUBCAT_2" Datatype="USInt" /><Member Name="REACT_CAT" Datatype="USInt"><StartValue Informative="true">1</StartValue></Member><Member Name="REACT_SUBCAT_1" Datatype="USInt" /><Member Name="REACT_SUBCAT_2" Datatype="USInt" /><Member Name="WARN_CAT" Datatype="USInt"><StartValue Informative="true">2</StartValue></Member><Member Name="WARN_SUBCAT_1" Datatype="USInt" /><Member Name="WARN_SUBCAT_2" Datatype="USInt" /><Member Name="CRIT_ON" Datatype="Bool" /></Section></Sections></Member></Section></Sections></Member>
+    <Member Name="T1-End" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">1</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-Init" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">2</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-StartRead" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">3</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-DataCheck" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">6</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-BodyData" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">7</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-StartTrack" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">8</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-ReadDone" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">41</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T2-ReadError" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">42</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-ReadOK" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">51</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T2-ReadNOK" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">52</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-TrackDone" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">91</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T2-TrackError" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">92</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T1-TrackOK" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">101</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="T2-TrackNOK" Datatype="G7_TransitionPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Transition structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Transition structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Transition structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Transition structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Transition structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="TV" Datatype="Bool" /><Member Name="TT" Datatype="Bool" /><Member Name="TS" Datatype="Bool" /><Member Name="TNO" Datatype="Int"><StartValue Informative="true">102</StartValue></Member><Member Name="CRIT" Datatype="DWord" /><Member Name="CRIT_OLD" Datatype="DWord" /><Member Name="CRIT_FLT" Datatype="DWord" /></Section></Sections></Member>
+    <Member Name="S0-INIT" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">1</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B1-StartRead" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">2</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B1-ReadBusy" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">3</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B1-DataCheck" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">5</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B1-BodyData" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">6</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B1-StartTrack" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">7</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B1-TrackBusy" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">8</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="S0-CycleEnd" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">10</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B1-ReadOK" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">41</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B2-ReadNOK" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">42</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B1-TrackOK" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">91</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+    <Member Name="B2-TrackNOK" Datatype="G7_StepPlus_V6" Version="1.0" Remanence="Retain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" Informative="true" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment Informative="true"><MultiLanguageText Lang="en-US">Step structure</MultiLanguageText><MultiLanguageText Lang="sv-SE">Step structure</MultiLanguageText><MultiLanguageText Lang="nl-BE">Step structure</MultiLanguageText><MultiLanguageText Lang="en-GB">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-HK">Step structure</MultiLanguageText><MultiLanguageText Lang="zh-CN">Step structure</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="S1" Datatype="Bool" /><Member Name="L1" Datatype="Bool" /><Member Name="V1" Datatype="Bool" /><Member Name="R1" Datatype="Bool" /><Member Name="A1" Datatype="Bool" /><Member Name="S0" Datatype="Bool" /><Member Name="L0" Datatype="Bool" /><Member Name="V0" Datatype="Bool" /><Member Name="X" Datatype="Bool" /><Member Name="LA" Datatype="Bool" /><Member Name="VA" Datatype="Bool" /><Member Name="RA" Datatype="Bool" /><Member Name="AA" Datatype="Bool" /><Member Name="SS" Datatype="Bool" /><Member Name="LS" Datatype="Bool" /><Member Name="VS" Datatype="Bool" /><Member Name="SNO" Datatype="Int"><StartValue Informative="true">92</StartValue></Member><Member Name="T" Datatype="Time" /><Member Name="U" Datatype="Time" /><Member Name="T_MAX" Datatype="Time"><StartValue Informative="true">T#10S</StartValue></Member><Member Name="T_WARN" Datatype="Time"><StartValue Informative="true">T#7S</StartValue></Member><Member Name="CRIT_LOC" Datatype="DWord" /><Member Name="CRIT_LOC_ERR" Datatype="DWord" /><Member Name="SM" Datatype="Bool" /><Member Name="H_IL_ERR" Datatype="Byte" /><Member Name="H_SV_FLT" Datatype="Byte"><StartValue Informative="true">16#04</StartValue></Member></Section></Sections></Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <LanguageInNetworks>FBD</LanguageInNetworks>
+      <LockOperatingMode>false</LockOperatingMode>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>209220NCB01TagSeq</Name>
+      <Number>390</Number>
+      <PermanentILProcessingInMANMode>false</PermanentILProcessingInMANMode>
+      <ProgrammingLanguage>GRAPH</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <SkipSteps>false</SkipSteps>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+      <WithAlarmHandling>true</WithAlarmHandling>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><Graph xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/Graph/v4">
+  <PreOperations>
+    <PermanentOperation ProgrammingLanguage="FBD" />
+  </PreOperations>
+  <Sequence>
+    <Title>
+      <MultiLanguageText Lang="en-GB">209220NCB01 Tag Sequence</MultiLanguageText>
+    </Title>
+    <Comment>
+      <MultiLanguageText Lang="en-US" />
+      <MultiLanguageText Lang="sv-SE" />
+      <MultiLanguageText Lang="nl-BE" />
+      <MultiLanguageText Lang="en-GB">Tag Sequence of 209220NCB01 </MultiLanguageText>
+      <MultiLanguageText Lang="zh-HK" />
+      <MultiLanguageText Lang="zh-CN" />
+    </Comment>
+    <Steps>
+      <Step Number="1" Init="true" Name="S0-INIT" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">INIT</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;_209220NCB01TagSequence&quot;.INITStep" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action Qualifier="R">
+            <Token Text="&quot;_209220NCB01TagSequence&quot;.SeqStarted" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action Qualifier="R">
+            <Token Text="&quot;_209220NCB01TagSequence&quot;.SeqFinished" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="2" Init="false" Name="B1-StartRead" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Start Getting VEM Data by Reading the Tag with RFID</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;_209220NCB01TagSequence&quot;.StartReadRFID" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action Qualifier="S">
+            <Token Text="&quot;_209220NCB01TagSequence&quot;.SeqStarted" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="3" Init="false" Name="B1-ReadBusy" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">The Tag Reading is Busy</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;NotUsedBool&quot;" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="41" Init="false" Name="B1-ReadOK" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Reading of Tag is OK</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;NotUsedBool&quot;" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="42" Init="false" Name="B2-ReadNOK" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Reading of Tag is Not OK</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;NotUsedBool&quot;" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="10" Init="false" Name="S0-CycleEnd" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Finished</MultiLanguageText>
+          </Title>
+          <Action Qualifier="R">
+            <Token Text="&quot;_209220NCB01TagSequence&quot;.SeqStarted" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action Qualifier="S">
+            <Token Text="&quot;_209220NCB01TagSequence&quot;.SeqFinished" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="5" Init="false" Name="B1-DataCheck" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Check if the Received Data is Valid</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;NotUsedBool&quot;" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="6" Init="false" Name="B1-BodyData" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Prepare Data for local use (ex. Shift Register)</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;_209220ZM01DataHandling&quot;.&quot;209220NCB01BodyData&quot;.Identification" />
+            <Token Text=" " />
+            <Token Text=":=" />
+            <Token Text=" " />
+            <Token Text="&quot;_209220ZM01DataHandling&quot;.&quot;209220NCB01VEMData&quot;.Identification" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action Qualifier="N">
+            <Token Text="&quot;_209220ZM01DataHandling&quot;.&quot;209220NCB01BodyData&quot;.BodyTypeMatrix" />
+            <Token Text=" " />
+            <Token Text=":=" />
+            <Token Text=" " />
+            <Token Text="&quot;_209220ZM01DataHandling&quot;.&quot;209220NCB01VEMData&quot;.BodyTypeMatrix" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action Qualifier="N">
+            <Token Text="&quot;_209220ZM01DataHandling&quot;.&quot;209220NCB01BodyData&quot;.BodyID" />
+            <Token Text=" " />
+            <Token Text=":=" />
+            <Token Text=" " />
+            <Token Text="&quot;_209220ZM01DataHandling&quot;.&quot;209220NCB01VEMData&quot;.BodyID" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action Qualifier="N">
+            <Token Text="&quot;_209220ZM01DataHandling&quot;.&quot;209220NCB01BodyData&quot;.Routing" />
+            <Token Text=" " />
+            <Token Text=":=" />
+            <Token Text=" " />
+            <Token Text="&quot;_209220ZM01DataHandling&quot;.&quot;209220NCB01VEMData&quot;.Routing" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="7" Init="false" Name="B1-StartTrack" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Start Tracking the Body</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;_209220NCB01TagSequence&quot;.StartTracking" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="91" Init="false" Name="B1-TrackOK" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Tracking of the Body is OK</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;NotUsedBool&quot;" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="92" Init="false" Name="B2-TrackNOK" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">Tracking of the Body is Not OK</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;NotUsedBool&quot;" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+      <Step Number="8" Init="false" Name="B1-TrackBusy" MaximumStepTime="T#10S" WarningTime="T#7S">
+        <Actions>
+          <Title>
+            <MultiLanguageText Lang="en-GB">The Body Tracking is Busy</MultiLanguageText>
+          </Title>
+          <Action Qualifier="N">
+            <Token Text="&quot;NotUsedBool&quot;" />
+            <Token Text="&#xA;" />
+          </Action>
+          <Action />
+        </Actions>
+        <Supervisions>
+          <Supervision ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="SvCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Supervision>
+        </Supervisions>
+        <Interlocks>
+          <Interlock ProgrammingLanguage="FBD">
+            <Title>
+              <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+            </Title>
+            <FlgNet>
+              <Parts>
+                <Part Name="IlCoil" UId="21" />
+              </Parts>
+              <Wires>
+                <Wire UId="23">
+                  <OpenCon UId="22" />
+                  <NameCon UId="21" Name="in" />
+                </Wire>
+              </Wires>
+            </FlgNet>
+          </Interlock>
+        </Interlocks>
+      </Step>
+    </Steps>
+    <Transitions>
+      <Transition IsMissing="false" Name="T1-Init" Number="2" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01ReadBegin" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01Busy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-StartRead" Number="3" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01Busy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="22">
+              <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+            </Part>
+            <Part Name="TrCoil" UId="23" />
+          </Parts>
+          <Wires>
+            <Wire UId="24">
+              <IdentCon UId="21" />
+              <NameCon UId="22" Name="in1" />
+            </Wire>
+            <Wire UId="25">
+              <NameCon UId="22" Name="out" />
+              <NameCon UId="23" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-ReadDone" Number="41" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01ReadOK" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01Busy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T2-ReadError" Number="42" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01ReadNOK" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01Busy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-ReadOK" Number="51" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01ReadOK" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01Busy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T2-ReadNOK" Number="52" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01ReadOK" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01Busy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-End" Number="1" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01ReadBegin" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="22">
+              <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+              <Negated Name="in1" />
+            </Part>
+            <Part Name="TrCoil" UId="23" />
+          </Parts>
+          <Wires>
+            <Wire UId="24">
+              <IdentCon UId="21" />
+              <NameCon UId="22" Name="in1" />
+            </Wire>
+            <Wire UId="25">
+              <NameCon UId="22" Name="out" />
+              <NameCon UId="23" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-DataCheck" Number="6" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMData" />
+                <Component Name="Identification" />
+              </Symbol>
+            </Access>
+            <Access Scope="LiteralConstant" UId="22">
+              <Constant>
+                <ConstantType>UDInt</ConstantType>
+                <ConstantValue>0</ConstantValue>
+              </Constant>
+            </Access>
+            <Access Scope="GlobalVariable" UId="23">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMData" />
+                <Component Name="BodyTypeMatrix" />
+              </Symbol>
+            </Access>
+            <Access Scope="LiteralConstant" UId="24">
+              <Constant>
+                <ConstantType>UDInt</ConstantType>
+                <ConstantValue>0</ConstantValue>
+              </Constant>
+            </Access>
+            <Access Scope="GlobalVariable" UId="25">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMData" />
+                <Component Name="BodyID" />
+              </Symbol>
+            </Access>
+            <Access Scope="LiteralConstant" UId="26">
+              <Constant>
+                <ConstantType>UDInt</ConstantType>
+                <ConstantValue>0</ConstantValue>
+              </Constant>
+            </Access>
+            <Access Scope="GlobalVariable" UId="27">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMData" />
+                <Component Name="BodyID" />
+              </Symbol>
+            </Access>
+            <Access Scope="LiteralConstant" UId="28">
+              <Constant>
+                <ConstantType>UDInt</ConstantType>
+                <ConstantValue>9999999</ConstantValue>
+              </Constant>
+            </Access>
+            <Access Scope="GlobalVariable" UId="29">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMDataValid" />
+              </Symbol>
+            </Access>
+            <Part Name="Gt" UId="30">
+              <TemplateValue Name="SrcType" Type="Type">UDInt</TemplateValue>
+            </Part>
+            <Part Name="Gt" UId="31">
+              <TemplateValue Name="SrcType" Type="Type">UDInt</TemplateValue>
+            </Part>
+            <Part Name="Gt" UId="32">
+              <TemplateValue Name="SrcType" Type="Type">UDInt</TemplateValue>
+            </Part>
+            <Part Name="Le" UId="33">
+              <TemplateValue Name="SrcType" Type="Type">UDInt</TemplateValue>
+            </Part>
+            <Part Name="A" UId="34">
+              <TemplateValue Name="Card" Type="Cardinality">5</TemplateValue>
+            </Part>
+            <Part Name="TrCoil" UId="35" />
+          </Parts>
+          <Wires>
+            <Wire UId="36">
+              <IdentCon UId="21" />
+              <NameCon UId="30" Name="in1" />
+            </Wire>
+            <Wire UId="37">
+              <IdentCon UId="22" />
+              <NameCon UId="30" Name="in2" />
+            </Wire>
+            <Wire UId="38">
+              <NameCon UId="30" Name="out" />
+              <NameCon UId="34" Name="in1" />
+            </Wire>
+            <Wire UId="39">
+              <IdentCon UId="23" />
+              <NameCon UId="31" Name="in1" />
+            </Wire>
+            <Wire UId="40">
+              <IdentCon UId="24" />
+              <NameCon UId="31" Name="in2" />
+            </Wire>
+            <Wire UId="41">
+              <NameCon UId="31" Name="out" />
+              <NameCon UId="34" Name="in2" />
+            </Wire>
+            <Wire UId="42">
+              <IdentCon UId="25" />
+              <NameCon UId="32" Name="in1" />
+            </Wire>
+            <Wire UId="43">
+              <IdentCon UId="26" />
+              <NameCon UId="32" Name="in2" />
+            </Wire>
+            <Wire UId="44">
+              <NameCon UId="32" Name="out" />
+              <NameCon UId="34" Name="in3" />
+            </Wire>
+            <Wire UId="45">
+              <IdentCon UId="27" />
+              <NameCon UId="33" Name="in1" />
+            </Wire>
+            <Wire UId="46">
+              <IdentCon UId="28" />
+              <NameCon UId="33" Name="in2" />
+            </Wire>
+            <Wire UId="47">
+              <NameCon UId="33" Name="out" />
+              <NameCon UId="34" Name="in4" />
+            </Wire>
+            <Wire UId="48">
+              <IdentCon UId="29" />
+              <NameCon UId="34" Name="in5" />
+            </Wire>
+            <Wire UId="49">
+              <NameCon UId="34" Name="out" />
+              <NameCon UId="35" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-BodyData" Number="7" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01BodyData" />
+                <Component Name="Identification" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMData" />
+                <Component Name="Identification" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="23">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01BodyData" />
+                <Component Name="BodyTypeMatrix" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="24">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMData" />
+                <Component Name="BodyTypeMatrix" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="25">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01BodyData" />
+                <Component Name="BodyID" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="26">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMData" />
+                <Component Name="BodyID" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="27">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01BodyData" />
+                <Component Name="Routing" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="28">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01VEMData" />
+                <Component Name="Routing" />
+              </Symbol>
+            </Access>
+            <Part Name="Eq" UId="29">
+              <TemplateValue Name="SrcType" Type="Type">UDInt</TemplateValue>
+            </Part>
+            <Part Name="Eq" UId="30">
+              <TemplateValue Name="SrcType" Type="Type">UDInt</TemplateValue>
+            </Part>
+            <Part Name="Eq" UId="31">
+              <TemplateValue Name="SrcType" Type="Type">UDInt</TemplateValue>
+            </Part>
+            <Part Name="Eq" UId="32">
+              <TemplateValue Name="SrcType" Type="Type">UDInt</TemplateValue>
+            </Part>
+            <Part Name="A" UId="33">
+              <TemplateValue Name="Card" Type="Cardinality">4</TemplateValue>
+            </Part>
+            <Part Name="TrCoil" UId="34" />
+          </Parts>
+          <Wires>
+            <Wire UId="35">
+              <IdentCon UId="21" />
+              <NameCon UId="29" Name="in1" />
+            </Wire>
+            <Wire UId="36">
+              <IdentCon UId="22" />
+              <NameCon UId="29" Name="in2" />
+            </Wire>
+            <Wire UId="37">
+              <NameCon UId="29" Name="out" />
+              <NameCon UId="33" Name="in1" />
+            </Wire>
+            <Wire UId="38">
+              <IdentCon UId="23" />
+              <NameCon UId="30" Name="in1" />
+            </Wire>
+            <Wire UId="39">
+              <IdentCon UId="24" />
+              <NameCon UId="30" Name="in2" />
+            </Wire>
+            <Wire UId="40">
+              <NameCon UId="30" Name="out" />
+              <NameCon UId="33" Name="in2" />
+            </Wire>
+            <Wire UId="41">
+              <IdentCon UId="25" />
+              <NameCon UId="31" Name="in1" />
+            </Wire>
+            <Wire UId="42">
+              <IdentCon UId="26" />
+              <NameCon UId="31" Name="in2" />
+            </Wire>
+            <Wire UId="43">
+              <NameCon UId="31" Name="out" />
+              <NameCon UId="33" Name="in3" />
+            </Wire>
+            <Wire UId="44">
+              <IdentCon UId="27" />
+              <NameCon UId="32" Name="in1" />
+            </Wire>
+            <Wire UId="45">
+              <IdentCon UId="28" />
+              <NameCon UId="32" Name="in2" />
+            </Wire>
+            <Wire UId="46">
+              <NameCon UId="32" Name="out" />
+              <NameCon UId="33" Name="in4" />
+            </Wire>
+            <Wire UId="47">
+              <NameCon UId="33" Name="out" />
+              <NameCon UId="34" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-StartTrack" Number="8" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackBusy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="22">
+              <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+            </Part>
+            <Part Name="TrCoil" UId="23" />
+          </Parts>
+          <Wires>
+            <Wire UId="24">
+              <IdentCon UId="21" />
+              <NameCon UId="22" Name="in1" />
+            </Wire>
+            <Wire UId="25">
+              <NameCon UId="22" Name="out" />
+              <NameCon UId="23" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-TrackDone" Number="91" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackOK" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackBusy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T1-TrackOK" Number="101" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackOK" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackBusy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T2-TrackError" Number="92" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackNOK" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackBusy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+      <Transition IsMissing="false" Name="T2-TrackNOK" Number="102" ProgrammingLanguage="FBD">
+        <FlgNet>
+          <Parts>
+            <Access Scope="GlobalVariable" UId="21">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackOK" />
+              </Symbol>
+            </Access>
+            <Access Scope="GlobalVariable" UId="22">
+              <Symbol>
+                <Component Name="_209220ZM01DataHandling" />
+                <Component Name="209220NCB01TrackBusy" />
+              </Symbol>
+            </Access>
+            <Part Name="A" UId="23">
+              <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+              <Negated Name="in2" />
+            </Part>
+            <Part Name="TrCoil" UId="24" />
+          </Parts>
+          <Wires>
+            <Wire UId="25">
+              <IdentCon UId="21" />
+              <NameCon UId="23" Name="in1" />
+            </Wire>
+            <Wire UId="26">
+              <IdentCon UId="22" />
+              <NameCon UId="23" Name="in2" />
+            </Wire>
+            <Wire UId="27">
+              <NameCon UId="23" Name="out" />
+              <NameCon UId="24" Name="in" />
+            </Wire>
+          </Wires>
+        </FlgNet>
+      </Transition>
+    </Transitions>
+    <Branches>
+      <Branch Number="2" Type="AltBegin" Cardinality="2" />
+      <Branch Number="3" Type="AltEnd" Cardinality="2" />
+      <Branch Number="10" Type="AltBegin" Cardinality="2" />
+      <Branch Number="11" Type="AltEnd" Cardinality="2" />
+    </Branches>
+    <Connections>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="1" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="2" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="2" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="3" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="2" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="2" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="3" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="3" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="3" />
+        </NodeFrom>
+        <NodeTo>
+          <BranchRef Number="2" In="0" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <BranchRef Number="2" Out="0" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="41" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <BranchRef Number="2" Out="1" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="42" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="41" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="41" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="42" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="42" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="41" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="51" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="42" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="52" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="51" />
+        </NodeFrom>
+        <NodeTo>
+          <BranchRef Number="3" In="0" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="52" />
+        </NodeFrom>
+        <NodeTo>
+          <BranchRef Number="3" In="1" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="10" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="1" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="5" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="6" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <BranchRef Number="3" Out="0" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="5" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="6" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="7" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="6" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="6" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="7" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="8" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="7" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="7" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="91" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="101" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="91" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="91" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <BranchRef Number="10" Out="0" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="91" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <BranchRef Number="10" Out="1" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="92" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="92" />
+        </NodeFrom>
+        <NodeTo>
+          <TransitionRef Number="102" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="92" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="92" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <StepRef Number="8" />
+        </NodeFrom>
+        <NodeTo>
+          <BranchRef Number="10" In="0" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="8" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="8" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="101" />
+        </NodeFrom>
+        <NodeTo>
+          <BranchRef Number="11" In="0" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <BranchRef Number="11" Out="0" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="10" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="102" />
+        </NodeFrom>
+        <NodeTo>
+          <BranchRef Number="11" In="1" />
+        </NodeTo>
+        <LinkType>Direct</LinkType>
+      </Connection>
+      <Connection>
+        <NodeFrom>
+          <TransitionRef Number="1" />
+        </NodeFrom>
+        <NodeTo>
+          <StepRef Number="1" />
+        </NodeTo>
+        <LinkType>Jump</LinkType>
+      </Connection>
+    </Connections>
+  </Sequence>
+  <PostOperations>
+    <Title>
+      <MultiLanguageText Lang="en-GB">Not Used</MultiLanguageText>
+    </Title>
+    <PermanentOperation ProgrammingLanguage="FBD" />
+  </PostOperations>
+  <AlarmsSettings>
+    <AlarmSupervisionCategories>
+      <AlarmSupervisionCategory Id="1" DisplayClass="0" />
+      <AlarmSupervisionCategory Id="2" DisplayClass="0" />
+      <AlarmSupervisionCategory Id="3" DisplayClass="0" />
+      <AlarmSupervisionCategory Id="4" DisplayClass="0" />
+      <AlarmSupervisionCategory Id="5" DisplayClass="0" />
+      <AlarmSupervisionCategory Id="6" DisplayClass="0" />
+      <AlarmSupervisionCategory Id="7" DisplayClass="0" />
+      <AlarmSupervisionCategory Id="8" DisplayClass="0" />
+    </AlarmSupervisionCategories>
+    <AlarmInterlockCategory Id="1" />
+    <AlarmSubcategory1Interlock Id="0" />
+    <AlarmSubcategory2Interlock Id="0" />
+    <AlarmCategorySupervision Id="1" />
+    <AlarmSubcategory1Supervision Id="0" />
+    <AlarmSubcategory2Supervision Id="0" />
+    <AlarmWarningCategory Id="2" />
+    <AlarmSubcategory1Warning Id="0" />
+    <AlarmSubcategory2Warning Id="0" />
+  </AlarmsSettings>
+</Graph></NetworkSource>
+          <ProgrammingLanguage>GRAPH</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="19" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1A" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

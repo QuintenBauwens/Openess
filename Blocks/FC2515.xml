@@ -1,0 +1,1484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V15.1" />
+  <DocumentInfo>
+    <Created>2024-05-17T05:38:27.3172297Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>SINAMICS Startdrive Advanced</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>G130, G150, S120, S150, SINAMICS MV, S210</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>G110M, G120, G120C, G120D, G120P</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Professional</DisplayName>
+        <DisplayVersion>V15.1 Update 5</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>SIMATIC Visualization Architect</DisplayName>
+        <DisplayVersion>V15.1</DisplayVersion>
+      </OptionPackage>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v3">
+  <Section Name="Input" />
+  <Section Name="Output">
+    <Member Name="O_WeekNumber" Datatype="Int" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="zh-CN">Week number for PLC clock (ISO8601)</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Week number for PLC clock (ISO8601)</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Week number for PLC clock (ISO8601)</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Week number for PLC clock (ISO8601)</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="iDate" Datatype="DTL" Version="1.0">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Current date</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Current date</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Current date</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Current date</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Current date</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="SysReturn" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Return code from RD_SYS_T</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Return code from RD_SYS_T</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Return code from RD_SYS_T</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Return code from RD_SYS_T</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Return code from RD_SYS_T</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="oDate" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Current date (as days since 1990-01-01)</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Current date (as days since 1990-01-01)</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Current date (as days since 1990-01-01)</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Current date (as days since 1990-01-01)</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Current date (as days since 1990-01-01)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="jan1cy" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="en-US">January 1 current year</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">January 1 current year</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">January 1 current year</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">January 1 current year</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">January 1 current year</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="wd1jan" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Weekday of Jan 1</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Weekday of Jan 1</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Weekday of Jan 1</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Weekday of Jan 1</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Weekday of Jan 1</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="daycorr" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Day correction factor</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Day correction factor</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Day correction factor</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Day correction factor</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Day correction factor</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="yyyy" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Current year</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Current year</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Current year</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Current year</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Current year</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="wd31dec" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Weekday of Dec 31</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Weekday of Dec 31</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Weekday of Dec 31</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Weekday of Dec 31</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Weekday of Dec 31</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="maxweeks" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Total number of weeks of current year</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Total number of weeks of current year</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Total number of weeks of current year</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Total number of weeks of current year</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Total number of weeks of current year</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Leap_Year" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Leap year</MultiLanguageText>
+        <MultiLanguageText Lang="zh-CN">Leap year</MultiLanguageText>
+        <MultiLanguageText Lang="en-GB">Leap year</MultiLanguageText>
+        <MultiLanguageText Lang="sv-SE">Leap year</MultiLanguageText>
+        <MultiLanguageText Lang="nl-BE">Leap year</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>LWeekNumberS7-1500</Name>
+      <Number>2515</Number>
+      <ProgrammingLanguage>SCL</ProgrammingLanguage>
+      <SetENOAutomatically>False</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="7" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v2">
+  <LineComment Inserted="true" NoClosingBracket="false" UId="21">
+    <Text UId="22">*************************************************************************
+**  This function calculates the calendar week for the current CPU date  **
+**  -------------------------------------------------------------------  **
+**  The calendar week is the return value of the function.               **
+**  The week number is calculated according to DIN 1355 / ISO 8601.      **
+**  "Week no. 1 is the first week, which includes at least four days     **
+**  of the new year. The beginning of a week is always a Monday."        **
+**                                                                       **
+**  The function can be used from year 1991 to 2089.                     **
+**                                                                       **
+*************************************************************************</Text>
+  </LineComment>
+  <NewLine Num="2" UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="SysReturn" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="27" />
+  <Token Text=":=" UId="28" />
+  <Blank Num="1" UId="29" />
+  <Access Scope="Call" UId="30">
+    <Instruction Name="RD_LOC_T" UId="31">
+      <Token Text="(" UId="32" />
+      <NamelessParameter UId="33">
+        <Access Scope="LocalVariable" UId="34">
+          <Symbol UId="35">
+            <Component Name="iDate" UId="36" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="38" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="39" />
+  <Blank Num="1" UId="40" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="41">
+    <Text UId="42"> Get actual date</Text>
+  </LineComment>
+  <NewLine Num="1" UId="43" />
+  <Access Scope="LocalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="oDate" UId="46" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="47" />
+  <Token Text=":=" UId="48" />
+  <Blank Num="1" UId="49" />
+  <Access Scope="Call" UId="50">
+    <Instruction Name="DATE_TO_DINT" UId="51">
+      <Token Text="(" UId="52" />
+      <NamelessParameter UId="53">
+        <Access Scope="Call" UId="54">
+          <Instruction Name="DTL_TO_DATE" UId="55">
+            <Token Text="(" UId="56" />
+            <NamelessParameter UId="57">
+              <Access Scope="LocalVariable" UId="58">
+                <Symbol UId="59">
+                  <Component Name="iDate" UId="60" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="62" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="64" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="65" />
+  <Blank Num="2" UId="66" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="67">
+    <Text UId="68"> Convert to days since Jan 1 1990</Text>
+  </LineComment>
+  <NewLine Num="2" UId="69" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="70">
+    <Text UId="71"> Calculate year including century and days passed since Jan 1 1990 upto Jan 1 current year </Text>
+  </LineComment>
+  <NewLine Num="1" UId="72" />
+  <Access Scope="LocalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="yyyy" UId="75" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="76" />
+  <Token Text=":=" UId="77" />
+  <Blank Num="1" UId="78" />
+  <Access Scope="Call" UId="79">
+    <Instruction Name="DINT_TO_INT" UId="80">
+      <Token Text="(" UId="81" />
+      <NamelessParameter UId="82">
+        <Token Text="(" UId="83" />
+        <Token Text="(" UId="84" />
+        <Access Scope="LiteralConstant" UId="85">
+          <Constant UId="86">
+            <ConstantValue UId="88">100</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="89" />
+        <Token Text="*" UId="90" />
+        <Blank Num="1" UId="91" />
+        <Access Scope="LocalVariable" UId="92">
+          <Symbol UId="93">
+            <Component Name="oDate" UId="94" />
+          </Symbol>
+        </Access>
+        <Token Text=")" UId="95" />
+        <Blank Num="1" UId="96" />
+        <Token Text="+" UId="97" />
+        <Blank Num="1" UId="98" />
+        <Access Scope="LiteralConstant" UId="99">
+          <Constant UId="100">
+            <ConstantValue UId="102">50</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="103" />
+        <Blank Num="1" UId="104" />
+        <Token Text="/" UId="105" />
+        <Blank Num="1" UId="106" />
+        <Access Scope="LiteralConstant" UId="107">
+          <Constant UId="108">
+            <ConstantValue UId="110">36525</ConstantValue>
+          </Constant>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="112" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="113" />
+  <Token Text="+" UId="114" />
+  <Blank Num="1" UId="115" />
+  <Access Scope="LiteralConstant" UId="116">
+    <Constant UId="117">
+      <ConstantValue UId="119">1990</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="120" />
+  <NewLine Num="1" UId="121" />
+  <Access Scope="LocalVariable" UId="122">
+    <Symbol UId="123">
+      <Component Name="jan1cy" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="125" />
+  <Token Text=":=" UId="126" />
+  <Blank Num="1" UId="127" />
+  <Token Text="(" UId="128" />
+  <Token Text="(" UId="129" />
+  <Access Scope="Call" UId="130">
+    <Instruction Name="INT_TO_DINT" UId="131">
+      <Token Text="(" UId="132" />
+      <NamelessParameter UId="133">
+        <Access Scope="LocalVariable" UId="134">
+          <Symbol UId="135">
+            <Component Name="yyyy" UId="136" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="138" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="139" />
+  <Token Text="*" UId="140" />
+  <Blank Num="1" UId="141" />
+  <Access Scope="LiteralConstant" UId="142">
+    <Constant UId="143">
+      <ConstantValue UId="145">1461</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="146" />
+  <Token Text="-" UId="147" />
+  <Blank Num="1" UId="148" />
+  <Access Scope="LiteralConstant" UId="149">
+    <Constant UId="150">
+      <ConstantValue UId="152">2907389</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="153" />
+  <Blank Num="1" UId="154" />
+  <Token Text="/" UId="155" />
+  <Blank Num="1" UId="156" />
+  <Access Scope="LiteralConstant" UId="157">
+    <Constant UId="158">
+      <ConstantValue UId="160">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="161" />
+  <Token Text=";" UId="162" />
+  <NewLine Num="2" UId="163" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="164">
+    <Text UId="165"> Calculate which day of the week current year started on </Text>
+  </LineComment>
+  <NewLine Num="1" UId="166" />
+  <Access Scope="LocalVariable" UId="167">
+    <Symbol UId="168">
+      <Component Name="wd1jan" UId="169" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="170" />
+  <Token Text=":=" UId="171" />
+  <Blank Num="1" UId="172" />
+  <Access Scope="Call" UId="173">
+    <Instruction Name="DINT_TO_INT" UId="174">
+      <Token Text="(" UId="175" />
+      <NamelessParameter UId="176">
+        <Token Text="(" UId="177" />
+        <Access Scope="LocalVariable" UId="178">
+          <Symbol UId="179">
+            <Component Name="jan1cy" UId="180" />
+          </Symbol>
+        </Access>
+        <Token Text=")" UId="181" />
+        <Blank Num="1" UId="182" />
+        <Token Text="MOD" UId="183" />
+        <Blank Num="1" UId="184" />
+        <Access Scope="LiteralConstant" UId="185">
+          <Constant UId="186">
+            <ConstantValue UId="188">7</ConstantValue>
+          </Constant>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="190" />
+    </Instruction>
+  </Access>
+  <Blank Num="1" UId="191" />
+  <Token Text="+" UId="192" />
+  <Blank Num="1" UId="193" />
+  <Access Scope="LiteralConstant" UId="194">
+    <Constant UId="195">
+      <ConstantValue UId="197">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="198" />
+  <NewLine Num="2" UId="199" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="200">
+    <Text UId="201"> Correction for weekday of Jan 1 </Text>
+  </LineComment>
+  <NewLine Num="1" UId="202" />
+  <Token Text="IF" UId="203" />
+  <Blank Num="1" UId="204" />
+  <Access Scope="LocalVariable" UId="205">
+    <Symbol UId="206">
+      <Component Name="wd1jan" UId="207" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="208" />
+  <Token Text="&lt;" UId="209" />
+  <Blank Num="1" UId="210" />
+  <Access Scope="LiteralConstant" UId="211">
+    <Constant UId="212">
+      <ConstantValue UId="214">5</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="215" />
+  <Token Text="THEN" UId="216" />
+  <NewLine Num="1" UId="217" />
+  <Blank Num="4" UId="218" />
+  <Access Scope="LocalVariable" UId="219">
+    <Symbol UId="220">
+      <Component Name="daycorr" UId="221" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="222" />
+  <Token Text=":=" UId="223" />
+  <Blank Num="1" UId="224" />
+  <Access Scope="LocalVariable" UId="225">
+    <Symbol UId="226">
+      <Component Name="jan1cy" UId="227" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="228" />
+  <Token Text="-" UId="229" />
+  <Blank Num="1" UId="230" />
+  <Token Text="(" UId="231" />
+  <Access Scope="LocalVariable" UId="232">
+    <Symbol UId="233">
+      <Component Name="wd1jan" UId="234" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="235" />
+  <Token Text="+" UId="236" />
+  <Blank Num="1" UId="237" />
+  <Access Scope="LiteralConstant" UId="238">
+    <Constant UId="239">
+      <ConstantValue UId="241">6</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="242" />
+  <Token Text=";" UId="243" />
+  <NewLine Num="1" UId="244" />
+  <Token Text="ELSE" UId="245" />
+  <NewLine Num="1" UId="246" />
+  <Blank Num="4" UId="247" />
+  <Access Scope="LocalVariable" UId="248">
+    <Symbol UId="249">
+      <Component Name="daycorr" UId="250" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="251" />
+  <Token Text=":=" UId="252" />
+  <Blank Num="1" UId="253" />
+  <Access Scope="LocalVariable" UId="254">
+    <Symbol UId="255">
+      <Component Name="jan1cy" UId="256" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="257" />
+  <Token Text="-" UId="258" />
+  <Blank Num="1" UId="259" />
+  <Token Text="(" UId="260" />
+  <Access Scope="LocalVariable" UId="261">
+    <Symbol UId="262">
+      <Component Name="wd1jan" UId="263" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="264" />
+  <Token Text="-" UId="265" />
+  <Blank Num="1" UId="266" />
+  <Access Scope="LiteralConstant" UId="267">
+    <Constant UId="268">
+      <ConstantValue UId="270">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="271" />
+  <Token Text=";" UId="272" />
+  <NewLine Num="1" UId="273" />
+  <Token Text="END_IF" UId="274" />
+  <Token Text=";" UId="275" />
+  <NewLine Num="2" UId="276" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="277">
+    <Text UId="278"> Week number of current date </Text>
+  </LineComment>
+  <NewLine Num="1" UId="279" />
+  <Access Scope="LocalVariable" UId="280">
+    <Symbol UId="281">
+      <Component Name="O_WeekNumber" UId="282" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="283" />
+  <Token Text=":=" UId="284" />
+  <Blank Num="1" UId="285" />
+  <Access Scope="Call" UId="286">
+    <Instruction Name="DINT_TO_INT" UId="287">
+      <Token Text="(" UId="288" />
+      <NamelessParameter UId="289">
+        <Token Text="(" UId="290" />
+        <Access Scope="LocalVariable" UId="291">
+          <Symbol UId="292">
+            <Component Name="oDate" UId="293" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="294" />
+        <Token Text="-" UId="295" />
+        <Blank Num="1" UId="296" />
+        <Access Scope="LocalVariable" UId="297">
+          <Symbol UId="298">
+            <Component Name="daycorr" UId="299" />
+          </Symbol>
+        </Access>
+        <Token Text=")" UId="300" />
+        <Blank Num="1" UId="301" />
+        <Token Text="/" UId="302" />
+        <Blank Num="1" UId="303" />
+        <Access Scope="LiteralConstant" UId="304">
+          <Constant UId="305">
+            <ConstantValue UId="307">7</ConstantValue>
+          </Constant>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="309" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="310" />
+  <NewLine Num="2" UId="311" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="312">
+    <Text UId="313"> Correction when week number equals 0 - Check which week was the last in previous year. </Text>
+  </LineComment>
+  <NewLine Num="1" UId="314" />
+  <Token Text="IF" UId="315" />
+  <Blank Num="1" UId="316" />
+  <Access Scope="LocalVariable" UId="317">
+    <Symbol UId="318">
+      <Component Name="O_WeekNumber" UId="319" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="320" />
+  <Token Text="=" UId="321" />
+  <Blank Num="1" UId="322" />
+  <Access Scope="LiteralConstant" UId="323">
+    <Constant UId="324">
+      <ConstantValue UId="326">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="327" />
+  <Token Text="THEN" UId="328" />
+  <NewLine Num="1" UId="329" />
+  <Blank Num="4" UId="330" />
+  <Token Text="IF" UId="331" />
+  <Blank Num="1" UId="332" />
+  <Access Scope="LocalVariable" UId="333">
+    <Symbol UId="334">
+      <Component Name="wd1jan" UId="335" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="336" />
+  <Token Text="&gt;" UId="337" />
+  <Blank Num="1" UId="338" />
+  <Access Scope="LiteralConstant" UId="339">
+    <Constant UId="340">
+      <ConstantValue UId="342">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="343" />
+  <Token Text="THEN" UId="344" />
+  <NewLine Num="1" UId="345" />
+  <Blank Num="8" UId="346" />
+  <Access Scope="LocalVariable" UId="347">
+    <Symbol UId="348">
+      <Component Name="wd31dec" UId="349" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="350" />
+  <Token Text=":=" UId="351" />
+  <Blank Num="1" UId="352" />
+  <Access Scope="LocalVariable" UId="353">
+    <Symbol UId="354">
+      <Component Name="wd1jan" UId="355" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="356" />
+  <Token Text="-" UId="357" />
+  <Blank Num="1" UId="358" />
+  <Access Scope="LiteralConstant" UId="359">
+    <Constant UId="360">
+      <ConstantValue UId="362">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="363" />
+  <NewLine Num="1" UId="364" />
+  <Blank Num="4" UId="365" />
+  <Token Text="ELSE" UId="366" />
+  <NewLine Num="1" UId="367" />
+  <Blank Num="8" UId="368" />
+  <Access Scope="LocalVariable" UId="369">
+    <Symbol UId="370">
+      <Component Name="wd31dec" UId="371" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="372" />
+  <Token Text=":=" UId="373" />
+  <Blank Num="1" UId="374" />
+  <Access Scope="LiteralConstant" UId="375">
+    <Constant UId="376">
+      <ConstantValue UId="378">7</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="379" />
+  <NewLine Num="1" UId="380" />
+  <Blank Num="4" UId="381" />
+  <Token Text="END_IF" UId="382" />
+  <Token Text=";" UId="383" />
+  <NewLine Num="1" UId="384" />
+  <Blank Num="4" UId="385" />
+  <Token Text="IF" UId="386" />
+  <Blank Num="1" UId="387" />
+  <Access Scope="LocalVariable" UId="388">
+    <Symbol UId="389">
+      <Component Name="yyyy" UId="390" />
+    </Symbol>
+  </Access>
+  <Token Text="-" UId="391" />
+  <Access Scope="LiteralConstant" UId="392">
+    <Constant UId="393">
+      <ConstantValue UId="395">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="396" />
+  <Token Text="MOD" UId="397" />
+  <Blank Num="1" UId="398" />
+  <Access Scope="LiteralConstant" UId="399">
+    <Constant UId="400">
+      <ConstantValue UId="402">400</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="403" />
+  <Token Text="=" UId="404" />
+  <Blank Num="1" UId="405" />
+  <Access Scope="LiteralConstant" UId="406">
+    <Constant UId="407">
+      <ConstantValue UId="409">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="410" />
+  <Token Text="THEN" UId="411" />
+  <NewLine Num="1" UId="412" />
+  <Blank Num="8" UId="413" />
+  <Access Scope="LocalVariable" UId="414">
+    <Symbol UId="415">
+      <Component Name="Leap_Year" UId="416" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="417" />
+  <Token Text=":=" UId="418" />
+  <Blank Num="1" UId="419" />
+  <Access Scope="LiteralConstant" UId="420">
+    <Constant UId="421">
+      <ConstantValue UId="423">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="424" />
+  <NewLine Num="1" UId="425" />
+  <Blank Num="4" UId="426" />
+  <Token Text="ELSIF" UId="427" />
+  <Blank Num="1" UId="428" />
+  <Access Scope="LocalVariable" UId="429">
+    <Symbol UId="430">
+      <Component Name="yyyy" UId="431" />
+    </Symbol>
+  </Access>
+  <Token Text="-" UId="432" />
+  <Access Scope="LiteralConstant" UId="433">
+    <Constant UId="434">
+      <ConstantValue UId="436">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="437" />
+  <Token Text="MOD" UId="438" />
+  <Blank Num="1" UId="439" />
+  <Access Scope="LiteralConstant" UId="440">
+    <Constant UId="441">
+      <ConstantValue UId="443">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="444" />
+  <Token Text="=" UId="445" />
+  <Blank Num="1" UId="446" />
+  <Access Scope="LiteralConstant" UId="447">
+    <Constant UId="448">
+      <ConstantValue UId="450">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="451" />
+  <Token Text="THEN" UId="452" />
+  <NewLine Num="1" UId="453" />
+  <Blank Num="8" UId="454" />
+  <Access Scope="LocalVariable" UId="455">
+    <Symbol UId="456">
+      <Component Name="Leap_Year" UId="457" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="458" />
+  <Token Text=":=" UId="459" />
+  <Blank Num="1" UId="460" />
+  <Access Scope="LiteralConstant" UId="461">
+    <Constant UId="462">
+      <ConstantValue UId="464">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="465" />
+  <NewLine Num="1" UId="466" />
+  <Blank Num="4" UId="467" />
+  <Token Text="ELSIF" UId="468" />
+  <Blank Num="1" UId="469" />
+  <Access Scope="LocalVariable" UId="470">
+    <Symbol UId="471">
+      <Component Name="yyyy" UId="472" />
+    </Symbol>
+  </Access>
+  <Token Text="-" UId="473" />
+  <Access Scope="LiteralConstant" UId="474">
+    <Constant UId="475">
+      <ConstantValue UId="477">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="478" />
+  <Token Text="MOD" UId="479" />
+  <Blank Num="1" UId="480" />
+  <Access Scope="LiteralConstant" UId="481">
+    <Constant UId="482">
+      <ConstantValue UId="484">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="485" />
+  <Token Text="=" UId="486" />
+  <Blank Num="1" UId="487" />
+  <Access Scope="LiteralConstant" UId="488">
+    <Constant UId="489">
+      <ConstantValue UId="491">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="492" />
+  <Token Text="THEN" UId="493" />
+  <NewLine Num="1" UId="494" />
+  <Blank Num="8" UId="495" />
+  <Access Scope="LocalVariable" UId="496">
+    <Symbol UId="497">
+      <Component Name="Leap_Year" UId="498" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="499" />
+  <Token Text=":=" UId="500" />
+  <Blank Num="1" UId="501" />
+  <Access Scope="LiteralConstant" UId="502">
+    <Constant UId="503">
+      <ConstantValue UId="505">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="506" />
+  <NewLine Num="1" UId="507" />
+  <Blank Num="4" UId="508" />
+  <Token Text="ELSE" UId="509" />
+  <NewLine Num="1" UId="510" />
+  <Blank Num="8" UId="511" />
+  <Access Scope="LocalVariable" UId="512">
+    <Symbol UId="513">
+      <Component Name="Leap_Year" UId="514" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="515" />
+  <Token Text=":=" UId="516" />
+  <Blank Num="1" UId="517" />
+  <Access Scope="LiteralConstant" UId="518">
+    <Constant UId="519">
+      <ConstantValue UId="521">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="522" />
+  <NewLine Num="1" UId="523" />
+  <Blank Num="4" UId="524" />
+  <Token Text="END_IF" UId="525" />
+  <Token Text=";" UId="526" />
+  <NewLine Num="1" UId="527" />
+  <Blank Num="4" UId="528" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="529">
+    <Text UId="530"> A year usually start and ends on the same weekday, but not on leap years. </Text>
+  </LineComment>
+  <NewLine Num="1" UId="531" />
+  <Blank Num="4" UId="532" />
+  <Token Text="IF" UId="533" />
+  <Blank Num="1" UId="534" />
+  <Access Scope="LocalVariable" UId="535">
+    <Symbol UId="536">
+      <Component Name="Leap_Year" UId="537" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="538" />
+  <Token Text="AND" UId="539" />
+  <Blank Num="1" UId="540" />
+  <Access Scope="LocalVariable" UId="541">
+    <Symbol UId="542">
+      <Component Name="wd31dec" UId="543" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="544" />
+  <Token Text="&gt;" UId="545" />
+  <Blank Num="1" UId="546" />
+  <Access Scope="LiteralConstant" UId="547">
+    <Constant UId="548">
+      <ConstantValue UId="550">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="551" />
+  <Token Text="THEN" UId="552" />
+  <NewLine Num="1" UId="553" />
+  <Blank Num="8" UId="554" />
+  <Access Scope="LocalVariable" UId="555">
+    <Symbol UId="556">
+      <Component Name="wd1jan" UId="557" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="558" />
+  <Token Text=":=" UId="559" />
+  <Blank Num="1" UId="560" />
+  <Access Scope="LocalVariable" UId="561">
+    <Symbol UId="562">
+      <Component Name="wd31dec" UId="563" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="564" />
+  <Token Text="-" UId="565" />
+  <Blank Num="1" UId="566" />
+  <Access Scope="LiteralConstant" UId="567">
+    <Constant UId="568">
+      <ConstantValue UId="570">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="571" />
+  <NewLine Num="1" UId="572" />
+  <Blank Num="4" UId="573" />
+  <Token Text="ELSE" UId="574" />
+  <NewLine Num="1" UId="575" />
+  <Blank Num="8" UId="576" />
+  <Access Scope="LocalVariable" UId="577">
+    <Symbol UId="578">
+      <Component Name="wd1jan" UId="579" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="580" />
+  <Token Text=":=" UId="581" />
+  <Blank Num="1" UId="582" />
+  <Access Scope="LiteralConstant" UId="583">
+    <Constant UId="584">
+      <ConstantValue UId="586">7</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="587" />
+  <NewLine Num="1" UId="588" />
+  <Blank Num="4" UId="589" />
+  <Token Text="END_IF" UId="590" />
+  <Token Text=";" UId="591" />
+  <NewLine Num="1" UId="592" />
+  <Blank Num="4" UId="593" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="594">
+    <Text UId="595"> If the previous year starts or ends on a Thursday it has 53 weeks. </Text>
+  </LineComment>
+  <NewLine Num="1" UId="596" />
+  <Blank Num="4" UId="597" />
+  <Access Scope="LocalVariable" UId="598">
+    <Symbol UId="599">
+      <Component Name="O_WeekNumber" UId="600" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="601" />
+  <Token Text=":=" UId="602" />
+  <Blank Num="1" UId="603" />
+  <Access Scope="LiteralConstant" UId="604">
+    <Constant UId="605">
+      <ConstantValue UId="607">52</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="608" />
+  <Token Text="+" UId="609" />
+  <Blank Num="1" UId="610" />
+  <Access Scope="Call" UId="611">
+    <Instruction Name="BOOL_TO_INT" UId="612">
+      <Token Text="(" UId="613" />
+      <NamelessParameter UId="614">
+        <Access Scope="LocalVariable" UId="615">
+          <Symbol UId="616">
+            <Component Name="wd31dec" UId="617" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="618" />
+        <Token Text="=" UId="619" />
+        <Blank Num="1" UId="620" />
+        <Access Scope="LiteralConstant" UId="621">
+          <Constant UId="622">
+            <ConstantValue UId="624">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="625" />
+        <Token Text="OR" UId="626" />
+        <Blank Num="1" UId="627" />
+        <Access Scope="LocalVariable" UId="628">
+          <Symbol UId="629">
+            <Component Name="wd1jan" UId="630" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="631" />
+        <Token Text="=" UId="632" />
+        <Blank Num="1" UId="633" />
+        <Access Scope="LiteralConstant" UId="634">
+          <Constant UId="635">
+            <ConstantValue UId="637">4</ConstantValue>
+          </Constant>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="639" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="640" />
+  <NewLine Num="1" UId="641" />
+  <Token Text="ELSE" UId="642" />
+  <NewLine Num="1" UId="643" />
+  <Blank Num="4" UId="644" />
+  <Token Text="IF" UId="645" />
+  <Blank Num="1" UId="646" />
+  <Access Scope="LocalVariable" UId="647">
+    <Symbol UId="648">
+      <Component Name="yyyy" UId="649" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="650" />
+  <Token Text="MOD" UId="651" />
+  <Blank Num="1" UId="652" />
+  <Access Scope="LiteralConstant" UId="653">
+    <Constant UId="654">
+      <ConstantValue UId="656">400</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="657" />
+  <Token Text="=" UId="658" />
+  <Blank Num="1" UId="659" />
+  <Access Scope="LiteralConstant" UId="660">
+    <Constant UId="661">
+      <ConstantValue UId="663">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="664" />
+  <Token Text="THEN" UId="665" />
+  <NewLine Num="1" UId="666" />
+  <Blank Num="8" UId="667" />
+  <Access Scope="LocalVariable" UId="668">
+    <Symbol UId="669">
+      <Component Name="Leap_Year" UId="670" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="671" />
+  <Token Text=":=" UId="672" />
+  <Blank Num="1" UId="673" />
+  <Access Scope="LiteralConstant" UId="674">
+    <Constant UId="675">
+      <ConstantValue UId="677">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="678" />
+  <NewLine Num="1" UId="679" />
+  <Blank Num="4" UId="680" />
+  <Token Text="ELSIF" UId="681" />
+  <Blank Num="1" UId="682" />
+  <Access Scope="LocalVariable" UId="683">
+    <Symbol UId="684">
+      <Component Name="yyyy" UId="685" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="686" />
+  <Token Text="MOD" UId="687" />
+  <Blank Num="1" UId="688" />
+  <Access Scope="LiteralConstant" UId="689">
+    <Constant UId="690">
+      <ConstantValue UId="692">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="693" />
+  <Token Text="=" UId="694" />
+  <Blank Num="1" UId="695" />
+  <Access Scope="LiteralConstant" UId="696">
+    <Constant UId="697">
+      <ConstantValue UId="699">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="700" />
+  <Token Text="THEN" UId="701" />
+  <NewLine Num="1" UId="702" />
+  <Blank Num="8" UId="703" />
+  <Access Scope="LocalVariable" UId="704">
+    <Symbol UId="705">
+      <Component Name="Leap_Year" UId="706" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="707" />
+  <Token Text=":=" UId="708" />
+  <Blank Num="1" UId="709" />
+  <Access Scope="LiteralConstant" UId="710">
+    <Constant UId="711">
+      <ConstantValue UId="713">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="714" />
+  <NewLine Num="1" UId="715" />
+  <Blank Num="4" UId="716" />
+  <Token Text="ELSIF" UId="717" />
+  <Blank Num="1" UId="718" />
+  <Access Scope="LocalVariable" UId="719">
+    <Symbol UId="720">
+      <Component Name="yyyy" UId="721" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="722" />
+  <Token Text="MOD" UId="723" />
+  <Blank Num="1" UId="724" />
+  <Access Scope="LiteralConstant" UId="725">
+    <Constant UId="726">
+      <ConstantValue UId="728">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="729" />
+  <Token Text="=" UId="730" />
+  <Blank Num="1" UId="731" />
+  <Access Scope="LiteralConstant" UId="732">
+    <Constant UId="733">
+      <ConstantValue UId="735">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="736" />
+  <Token Text="THEN" UId="737" />
+  <NewLine Num="1" UId="738" />
+  <Blank Num="8" UId="739" />
+  <Access Scope="LocalVariable" UId="740">
+    <Symbol UId="741">
+      <Component Name="Leap_Year" UId="742" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="743" />
+  <Token Text=":=" UId="744" />
+  <Blank Num="1" UId="745" />
+  <Access Scope="LiteralConstant" UId="746">
+    <Constant UId="747">
+      <ConstantValue UId="749">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="750" />
+  <NewLine Num="1" UId="751" />
+  <Blank Num="4" UId="752" />
+  <Token Text="ELSE" UId="753" />
+  <NewLine Num="1" UId="754" />
+  <Blank Num="8" UId="755" />
+  <Access Scope="LocalVariable" UId="756">
+    <Symbol UId="757">
+      <Component Name="Leap_Year" UId="758" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="759" />
+  <Token Text=":=" UId="760" />
+  <Blank Num="1" UId="761" />
+  <Access Scope="LiteralConstant" UId="762">
+    <Constant UId="763">
+      <ConstantValue UId="765">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="766" />
+  <NewLine Num="1" UId="767" />
+  <Blank Num="4" UId="768" />
+  <Token Text="END_IF" UId="769" />
+  <Token Text=";" UId="770" />
+  <NewLine Num="1" UId="771" />
+  <Blank Num="4" UId="772" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="773">
+    <Text UId="774"> A year usually start and ends on the same weekday, but not on leap years. </Text>
+  </LineComment>
+  <NewLine Num="1" UId="775" />
+  <Blank Num="4" UId="776" />
+  <Token Text="IF" UId="777" />
+  <Blank Num="1" UId="778" />
+  <Access Scope="LocalVariable" UId="779">
+    <Symbol UId="780">
+      <Component Name="Leap_Year" UId="781" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="782" />
+  <Token Text="THEN" UId="783" />
+  <NewLine Num="1" UId="784" />
+  <Blank Num="8" UId="785" />
+  <Token Text="IF" UId="786" />
+  <Blank Num="1" UId="787" />
+  <Access Scope="LocalVariable" UId="788">
+    <Symbol UId="789">
+      <Component Name="wd1jan" UId="790" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="791" />
+  <Token Text="&lt;" UId="792" />
+  <Blank Num="1" UId="793" />
+  <Access Scope="LiteralConstant" UId="794">
+    <Constant UId="795">
+      <ConstantValue UId="797">7</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="798" />
+  <Token Text="THEN" UId="799" />
+  <NewLine Num="1" UId="800" />
+  <Blank Num="12" UId="801" />
+  <Access Scope="LocalVariable" UId="802">
+    <Symbol UId="803">
+      <Component Name="wd31dec" UId="804" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="805" />
+  <Token Text=":=" UId="806" />
+  <Blank Num="1" UId="807" />
+  <Access Scope="LocalVariable" UId="808">
+    <Symbol UId="809">
+      <Component Name="wd1jan" UId="810" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="811" />
+  <Token Text="+" UId="812" />
+  <Blank Num="1" UId="813" />
+  <Access Scope="LiteralConstant" UId="814">
+    <Constant UId="815">
+      <ConstantValue UId="817">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="818" />
+  <NewLine Num="1" UId="819" />
+  <Blank Num="8" UId="820" />
+  <Token Text="ELSE" UId="821" />
+  <NewLine Num="1" UId="822" />
+  <Blank Num="12" UId="823" />
+  <Access Scope="LocalVariable" UId="824">
+    <Symbol UId="825">
+      <Component Name="wd31dec" UId="826" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="827" />
+  <Token Text=":=" UId="828" />
+  <Blank Num="1" UId="829" />
+  <Access Scope="LiteralConstant" UId="830">
+    <Constant UId="831">
+      <ConstantValue UId="833">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="834" />
+  <NewLine Num="1" UId="835" />
+  <Blank Num="8" UId="836" />
+  <Token Text="END_IF" UId="837" />
+  <Token Text=";" UId="838" />
+  <NewLine Num="1" UId="839" />
+  <Blank Num="4" UId="840" />
+  <Token Text="ELSE" UId="841" />
+  <NewLine Num="1" UId="842" />
+  <Blank Num="8" UId="843" />
+  <Access Scope="LocalVariable" UId="844">
+    <Symbol UId="845">
+      <Component Name="wd31dec" UId="846" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="847" />
+  <Token Text=":=" UId="848" />
+  <Blank Num="1" UId="849" />
+  <Access Scope="LocalVariable" UId="850">
+    <Symbol UId="851">
+      <Component Name="wd1jan" UId="852" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="853" />
+  <NewLine Num="1" UId="854" />
+  <Blank Num="4" UId="855" />
+  <Token Text="END_IF" UId="856" />
+  <Token Text=";" UId="857" />
+  <NewLine Num="1" UId="858" />
+  <Blank Num="4" UId="859" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="860">
+    <Text UId="861"> Number of weeks current year; if first or last day is thursday then the year has 53 weeks otherwise only 52 </Text>
+  </LineComment>
+  <NewLine Num="1" UId="862" />
+  <Blank Num="4" UId="863" />
+  <Access Scope="LocalVariable" UId="864">
+    <Symbol UId="865">
+      <Component Name="maxweeks" UId="866" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="867" />
+  <Token Text=":=" UId="868" />
+  <Blank Num="1" UId="869" />
+  <Access Scope="LiteralConstant" UId="870">
+    <Constant UId="871">
+      <ConstantValue UId="873">52</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="874" />
+  <Token Text="+" UId="875" />
+  <Blank Num="1" UId="876" />
+  <Access Scope="Call" UId="877">
+    <Instruction Name="BOOL_TO_INT" UId="878">
+      <Token Text="(" UId="879" />
+      <NamelessParameter UId="880">
+        <Access Scope="LocalVariable" UId="881">
+          <Symbol UId="882">
+            <Component Name="wd31dec" UId="883" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="884" />
+        <Token Text="=" UId="885" />
+        <Blank Num="1" UId="886" />
+        <Access Scope="LiteralConstant" UId="887">
+          <Constant UId="888">
+            <ConstantValue UId="890">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Blank Num="1" UId="891" />
+        <Token Text="OR" UId="892" />
+        <Blank Num="1" UId="893" />
+        <Access Scope="LocalVariable" UId="894">
+          <Symbol UId="895">
+            <Component Name="wd1jan" UId="896" />
+          </Symbol>
+        </Access>
+        <Blank Num="1" UId="897" />
+        <Token Text="=" UId="898" />
+        <Blank Num="1" UId="899" />
+        <Access Scope="LiteralConstant" UId="900">
+          <Constant UId="901">
+            <ConstantValue UId="903">4</ConstantValue>
+          </Constant>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="905" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="906" />
+  <NewLine Num="1" UId="907" />
+  <Blank Num="4" UId="908" />
+  <LineComment Inserted="true" NoClosingBracket="false" UId="909">
+    <Text UId="910"> If estimated week number is greater than maximum of current year, it must be the first week of next year </Text>
+  </LineComment>
+  <NewLine Num="1" UId="911" />
+  <Blank Num="4" UId="912" />
+  <Token Text="IF" UId="913" />
+  <Blank Num="1" UId="914" />
+  <Access Scope="LocalVariable" UId="915">
+    <Symbol UId="916">
+      <Component Name="O_WeekNumber" UId="917" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="918" />
+  <Token Text="&gt;" UId="919" />
+  <Blank Num="1" UId="920" />
+  <Access Scope="LocalVariable" UId="921">
+    <Symbol UId="922">
+      <Component Name="maxweeks" UId="923" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="924" />
+  <Token Text="THEN" UId="925" />
+  <NewLine Num="1" UId="926" />
+  <Blank Num="8" UId="927" />
+  <Access Scope="LocalVariable" UId="928">
+    <Symbol UId="929">
+      <Component Name="O_WeekNumber" UId="930" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="931" />
+  <Token Text=":=" UId="932" />
+  <Blank Num="1" UId="933" />
+  <Access Scope="LiteralConstant" UId="934">
+    <Constant UId="935">
+      <ConstantValue UId="937">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="938" />
+  <NewLine Num="1" UId="939" />
+  <Blank Num="4" UId="940" />
+  <Token Text="END_IF" UId="941" />
+  <Token Text=";" UId="942" />
+  <NewLine Num="1" UId="943" />
+  <Token Text="END_IF" UId="944" />
+  <Token Text=";" UId="945" />
+  <NewLine Num="2" UId="946" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="12" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sv-SE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="13" CompositionName="Items">
+                <AttributeList>
+                  <Culture>nl-BE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-GB</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-HK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>zh-CN</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="19" CompositionName="Items">
+            <AttributeList>
+              <Culture>sv-SE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1A" CompositionName="Items">
+            <AttributeList>
+              <Culture>nl-BE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-GB</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1C" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-HK</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>zh-CN</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>
