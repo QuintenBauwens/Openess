@@ -2,19 +2,18 @@
 # Description: This script is a demo for the P301 project. It will open a TIA project and print the name of the project.
 
 import clr
+import os
 
-def open_project(interface = False):
-    project_path = input("Enter the path to the project: ")
-    ddl_path = input("Enter the path to the Siemens.Engineering.dll: ")
-
+def open_project(interface = False, project_path=None):
     # Refference to the Openness library
-    clr.AddReference(ddl_path)
+    dll_path = "C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll"
+    clr.AddReference(dll_path)
 
-    listPathItems = ddl_path.split("\\")[:-3]
+    listPathItems = dll_path.split("\\")[:-3]
     listPathItems.append('Bin\\PublicAPI\\Siemens.Engineering.Contract.dll')
-    ddl_path2 = "\\".join(listPathItems)
+    dll_path2 = "\\".join(listPathItems)
 
-    clr.AddReference(ddl_path2)
+    clr.AddReference(dll_path2)
 
     import Siemens.Engineering as tia 
 
