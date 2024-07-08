@@ -6,7 +6,7 @@ Description:
 # that starts with 'tab', it creates a menu sub-item under the module head-item.
 
 Author: Quinten Bauwens
-Last updated: 
+Last updated: 08/07/2024
 """
 
 import sys
@@ -20,8 +20,8 @@ import os
 from ..core.hardware import Hardware
 from ..core.nodes import Nodes
 from ..utils import InitTia as Init
-from ..utils import TabUI
-from ..utils.TooltipUI import StatusCircle
+from ..utils.tabUI import Tab
+from ..utils.tooltipUI import StatusCircle
 
 
 
@@ -67,7 +67,7 @@ class mainApp:
 
 		# sticky to allign the elements of the same column
 		# for the labels you want to change the text later on, you need to store them in a variable, and use the grid method on the next line
-		self.status_icon = StatusCircle(self.permanent_frame, "#FFA500", "no project opened, some features may not be available.")
+		self.status_icon = StatusCircle(self.permanent_frame, "#FFFF00", "no project opened, some features may not be available.")
 		self.status_icon.canvas.grid(row=0, column=10, pady=10, padx=10)
 
 		self.project_path_label = ttk.Label(self.permanent_frame, text="project path:").grid(row=0, column=0, sticky="w" ,padx=5, pady=5)
@@ -83,16 +83,6 @@ class mainApp:
 		self.current_project_label = ttk.Label(self.permanent_frame, text="current project:").grid(row=1, column=0, sticky="w" ,padx=5, pady=5)
 		self.current_name_label = ttk.Label(self.permanent_frame, text="no project opened")
 		self.current_name_label.grid(row=1, column=1, sticky="w" ,padx=5, pady=5)
-
-
-	def update_status_icon(self, status_color, tooltip_text):
-		'''update the status icon with the given color and tooltip text'''
-
-		if self.status_icon:
-			self.status_icon.change_status_color(status_color)
-		else:
-			self.status_icon = StatusCircle(self.permanent_frame, status_color, tooltip_text)
-		
 
 
 	def import_modules(self):
@@ -122,7 +112,7 @@ class mainApp:
 					module = importlib.import_module(f"src.gui.apps.{module_name}")
 
 					# get all classes that are subclasses of base_tab.Tab
-					module_classes = inspect.getmembers(module, lambda x: inspect.isclass(x) and issubclass(x, TabUI.Tab) and x != TabUI.Tab)
+					module_classes = inspect.getmembers(module, lambda x: inspect.isclass(x) and issubclass(x, Tab) and x != Tab)
 					
 					if not module_classes:
 						print(f"no tab classes found in {module_name}") # type: debug
@@ -141,7 +131,7 @@ class mainApp:
 					if hasattr(module, main_class_name):
 						main_class = getattr(module, main_class_name)
 						print(f'module {module} heeft {main_class}') # type: debug
-						main_class_instance = main_class(self.master, self.myproject, self.myinterface)
+						main_class_instance = main_class(self.master, self.myproject, self.myinterface, self.status_icon)
 						print(f'module {module} maakt {main_class_instance}') # type: debug
 						self.modules[module_name] = main_class_instance
 
@@ -157,13 +147,15 @@ class mainApp:
 						)
 				
 				except Exception as e:
-					print(f"WARNING: error processing {module_name} module. {e}")
+					message = f"ERROR: error processing {module_name} module. {e}"
+					self.status_icon.change_icon_status("#FF0000", message)
+					print(message)
 			
 		if apps:
-			messagebox.showinfo("imported", f'Tabs imported successfully: {", ".join(apps)}') # type: debug
+			self.status_icon.change_icon_status("#39FF14", f'Tabs imported successfully: {", ".join(apps)}')
 		else:
 			message = "no tabs were imported. Please make sure that the apps folder contains at least one module with a subclass of TabUI.Tab."
-			self.status_icon.change_status_color("#FFFF00", message)
+			self.status_icon.change_icon_status("#FFFF00", message)
 			messagebox.showwarning("WARNING", message)
 
 
@@ -178,10 +170,9 @@ class mainApp:
 
 		# execute the new tab
 		tab.execute(self.tab_content_frame, self.myproject, self.myinterface)
-		
 			
 
-	def stop_siemens_processes(self):
+	def stop_siemens_processes(self): # NEEDS TO BE UPDATED
 		'''
 		force stop all Siemens processes running on the machine
 		NEEDS TO BE UPDATED! This is a temporary solution
@@ -216,14 +207,13 @@ class mainApp:
 
 			project_name = project_path.split("\\")[-1]
 
-			self.status_icon.change_status_color("#39FF14")
+			self.status_icon.change_icon_status("#39FF14")
 			self.update_name_label(project_name)
 
 		except Exception as e:
 			message = f"ERROR: project could not be opened. {e}"
-
 			self.update_action_label("")
-			self.status_icon.change_status_color("#FF0000", message)
+			self.status_icon.change_icon_status("#FF0000", message)
 			messagebox.showerror("ERROR", message)
 
 
@@ -236,14 +226,28 @@ class mainApp:
 				self.myproject, self.myinterface = None, None
 				self.update_action_label("Project closed successfully!")
 				self.update_name_label("no project opened")
+
+				# update the project in all modules
+				for module_name, module_instance in self.modules.items():
+					if hasattr(module_instance, 'update_project'):
+						module_instance.update_project(self.myproject, self.myinterface)
+					else:
+						# If update_project method doesn't exist, recreate the instance
+						main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
+						self.modules[module_name] = main_class(self.myproject, self.myinterface)
+				
+				self.status_icon.change_icon_status("#39FF14")
 			else:
 				response = messagebox.askyesno("force closing project", "Would you like to force close any project opened in a previous session?")
 				if response:
 					self.stop_siemens_processes()
 				else:
 					self.update_action_label("operation cancelled by user.")
+
 		except Exception as e:
-				self.update_action_label("ERROR: project could not be closed. No project is opened.")
+			message = f"ERROR: project could not be closed. {e}"
+			self.update_action_label(message)
+			self.status_icon.change_icon_status("#FF0000", message)
 
 
 	def update_action_label(self, text):

@@ -1,11 +1,11 @@
 """
 Description: 
-# base class for the tabs in the main.py file to dynamically import the tabs from the apps folder
-# the menu head-item is created by
-# it contains the execute method that is called when the tab is selected in the main menu
+base class for the tabs in the main.py file to dynamically import the tabs from the apps folder
+the menu head-item is created by
+it contains the execute method that is called when the tab is selected in the main menu
 
 Author: Quinten Bauwens
-Last updated: 
+Last updated: 08/07/2024
 """
 
 from tkinter import ttk
