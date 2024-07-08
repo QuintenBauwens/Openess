@@ -1,5 +1,12 @@
 ### Author: Quinten Bauwens ###
 # Description: This script is a demo for the P301 project. It will open a TIA project and print the name of the project.
+"""
+Description: 
+# 
+
+Author: Quinten Bauwens
+Last updated:
+"""
 
 __package__ = "src.utils"
 import clr

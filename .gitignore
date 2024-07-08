@@ -1,3 +1,8 @@
+# when using git, ignore these files
+# https://git-scm.com/docs/gitignore
+# if you want to ignore a file that is already tracked by git, you need to remove it from the cache -> git rm -r --cached .vs
+# secondly git commit -m "Stop tracking .vscode and .vs directories"
+
 .venv/
 .vscode/
 .vs/
