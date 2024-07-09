@@ -1,8 +1,8 @@
 """
 Description: 
-# class to handle the nodes within the TIA-portal project
-# it contains the functionality to get the node list, find nodes based on PLC and device name and check if an address exists
-# it also contains the menu sub-items for the nodes head-item in the main menu
+class to handle the nodes within the TIA-portal project
+it contains the functionality to get the node list, find nodes based on PLC and device name and check if an address exists
+it also contains the menu sub-items for the nodes head-item in the main menu
 
 Author: Quinten Bauwens
 Last updated: 08/07/2024
@@ -19,10 +19,9 @@ class TabNodes(Tab):
     '''class to create the menu sub-items for the nodes head-item in the main menu'''
 
     def __init__(self, master, main_class_instance, project=None, interface=None):
-        super().__init__("Node List", master, main_class_instance, project, interface) #mainclass is nodesUI
+        super().__init__("Node List", master, main_class_instance, project, interface) #mainclass is nodesUI 
 
     def create_tab_content(self):
-        self.masterTitle = self.master.title(f'{self.masterTitle} - {self.name}')
         self.tab_content = self.main_class_instance.create_node_list_tab()
 
 class TabFindDevice(Tab):
@@ -32,7 +31,6 @@ class TabFindDevice(Tab):
         super().__init__("Find device", master, main_class_instance, project, interface)
 
     def create_tab_content(self):
-        self.masterTitle = self.master.title(f'{self.masterTitle} - {self.name}')
         self.tab_content = self.main_class_instance.create_find_device_tab()
 
 class TabAddressCheck(Tab):
@@ -42,7 +40,6 @@ class TabAddressCheck(Tab):
         super().__init__("Address check", master, main_class_instance, project, interface)
 
     def create_tab_content(self):
-        self.masterTitle = self.master.title(f'{self.masterTitle} - {self.name}')
         self.tab_content = self.main_class_instance.create_check_address_tab()
 
 
@@ -52,23 +49,21 @@ class NodesUI:
 
     def __init__(self, master, myproject, myinterface, status_icon=None):
         self.master = master
-        self.notebook = ttk.Notebook(master)
-        self.notebook.pack(expand=True, fill="both")
-        
         self.myproject = myproject
         self.myinterface = myinterface
         self.status_icon = status_icon
+        self.frame = None # Frame for the nodes UI set in the mainApp
+
         self.node = None
 
         self.output_node_list = None
         self.output_find_device = None
         self.output_check_address = None
 
-        self.tab_node_list = None
-        self.tab_find_device = None
-        self.tab_check_address = None
-
+        self.btn_get_node_list = None
         self.btn_export_node_list = None
+        self.btn_find_device = None
+        self.btn_check_address = None
 
         self.initialize_node()
 
@@ -89,13 +84,7 @@ class NodesUI:
             self.myinterface = myinterface
             self.initialize_node()
 
-            if not self.tab_node_list is None:
-                if self.myproject is None:
-                    self.btn_export_node_list.config(state=tk.DISABLED)
-                else:
-                    self.btn_export_node_list.config(state=tk.NORMAL)
-
-            self.status_icon.change_icon_status("#39FF14", f'updated project and interface to {myproject} and {myinterface}')
+            self.status_icon.change_icon_status("#39FF14", f"Updated project and interface to {myproject} and {myinterface}")
 
 
     def initialize_node(self):
@@ -121,7 +110,7 @@ class NodesUI:
 
         except Exception as e:
             self.node = None
-            message = f'failed to initialize node object: {str(e)}'
+            message = f"Failed to initialize node object: {str(e)}"
             messagebox.showerror("ERROR", message)
             self.status_icon.change_icon_status("#FF0000", message)
 
@@ -136,19 +125,15 @@ class NodesUI:
         Returns:
             None
         '''
-        if not self.tab_node_list is None:
-            if not self.myproject is None:
-                self.btn_export_node_list.config(state=tk.NORMAL)
+        if self.frame is None:
+            self.frame = ttk.Frame(self.master)
 
-            self.notebook.select(self.tab_node_list)
-            return
+        # Clear existing widgets
+        for widget in self.frame.winfo_children():
+            widget.destroy()
 
-        tab = ttk.Frame(self.master)
-        self.notebook.add(tab, text="Node List")
-        self.tab_node_list = tab
-
-        self.btn_get_node_list = ttk.Button(tab, text="Get Node List", command=self.show_node_list)
-        self.btn_export_node_list = ttk.Button(tab, text="Export", command=self.export_node_list, state=tk.NORMAL)
+        self.btn_get_node_list = ttk.Button(self.frame, text="Get Node List", command=self.show_node_list)
+        self.btn_export_node_list = ttk.Button(self.frame, text="Export", command=self.export_node_list, state=tk.NORMAL)
 
         self.btn_get_node_list.grid(row=0, column=0, padx=10, pady=10)
         self.btn_export_node_list.grid(row=0, column=1, padx=10, pady=10)
@@ -156,16 +141,11 @@ class NodesUI:
         if self.myproject is None:
             self.btn_export_node_list.config(state=tk.DISABLED)
 
-        # Center the button frame in the tab frame
-        tab.grid_columnconfigure(0, weight=1)
-        self.btn_get_node_list.grid_columnconfigure(0, weight=1)  # This ensures the buttons stay in the middle
-        self.btn_export_node_list.grid_columnconfigure(2, weight=1)  # Add an extra column on the right for equal weighting
-
-        self.output_node_list = scrolledtext.ScrolledText(tab, wrap=tk.WORD, width=100, height=20)
+        self.output_node_list = scrolledtext.ScrolledText(self.frame, wrap=tk.WORD, width=100, height=20)
         self.output_node_list.grid(row=1, padx=10, pady=10, sticky="ew")
-        tab.grid_columnconfigure(0, weight=1)
+        self.frame.grid_columnconfigure(0, weight=1)
 
-        self.notebook.select(self.tab_node_list)
+        return self.frame
 
 
     def create_find_device_tab(self):
@@ -175,29 +155,28 @@ class NodesUI:
             None
         '''
 
-        if not self.tab_find_device is None:
-            self.notebook.select(self.tab_find_device)
-            return 
-        
-        tab = ttk.Frame(self.master)
-        self.notebook.add(tab, text="Find Device Nodes")
-        self.tab_find_device = tab
+        if self.frame is None:
+            self.frame = ttk.Frame(self.master)
 
-        ttk.Label(tab, text="PLC Name:").pack(pady=5)
-        self.entry_plc_name = ttk.Entry(tab)
+        # Clear existing widgets
+        for widget in self.frame.winfo_children():
+            widget.destroy()
+
+        ttk.Label(self.frame, text="PLC Name:").pack(pady=5)
+        self.entry_plc_name = ttk.Entry(self.frame)
         self.entry_plc_name.pack(pady=5)
         
-        ttk.Label(tab, text="Device Name:").pack(pady=5)
-        self.entry_device_name = ttk.Entry(tab)
+        ttk.Label(self.frame, text="Device Name:").pack(pady=5)
+        self.entry_device_name = ttk.Entry(self.frame)
         self.entry_device_name.pack(pady=5)
 
-        self.btn_find_device = ttk.Button(tab, text="Find Device", command=self.find_nodes)
+        self.btn_find_device = ttk.Button(self.frame, text="Find Device", command=self.find_nodes)
         self.btn_find_device.pack(pady=10)
 
-        self.output_find_device = scrolledtext.ScrolledText(tab, wrap=tk.WORD, width=70, height=10)
+        self.output_find_device = scrolledtext.ScrolledText(self.frame, wrap=tk.WORD, width=70, height=10)
         self.output_find_device.pack(padx=10, pady=10)
 
-        self.notebook.select(self.tab_find_device)
+        return self.frame
 
 
     def create_check_address_tab(self):
@@ -210,25 +189,25 @@ class NodesUI:
         Returns:
             None
         '''
-        if not self.tab_check_address is None:
-            self.notebook.select(self.tab_check_address)
-            return
-        
-        tab = ttk.Frame(self.notebook)
-        self.notebook.add(tab, text="Check Address")
-        self.tab_check_address = tab
 
-        ttk.Label(tab, text="IP Address:").pack(pady=5)
-        self.entry_address = ttk.Entry(tab)
+        if self.frame is None:
+            self.frame = ttk.Frame(self.master)
+
+        # Clear existing widgets
+        for widget in self.frame.winfo_children():
+            widget.destroy()
+
+        ttk.Label(self.frame, text="IP Address:").pack(pady=5)
+        self.entry_address = ttk.Entry(self.frame)
         self.entry_address.pack(pady=5)
 
-        self.btn_check_address = ttk.Button(tab, text="Check Address", command=self.check_address)
+        self.btn_check_address = ttk.Button(self.frame, text="Check Address", command=self.check_address)
         self.btn_check_address.pack(pady=10)
 
-        self.output_check_address = scrolledtext.ScrolledText(tab, wrap=tk.WORD, width=70, height=10)
+        self.output_check_address = scrolledtext.ScrolledText(self.frame, wrap=tk.WORD, width=70, height=10)
         self.output_check_address.pack(padx=10, pady=10)
 
-        self.notebook.select(self.tab_check_address)
+        return self.frame
 
 
     def show_node_list(self):
@@ -246,7 +225,6 @@ class NodesUI:
             try:
                 content = self.node.show_node_table()
                 self.status_icon.change_icon_status("#39FF14", "Node list retrieved successfully")
-
             except Exception as e:
                 content = f"An error occurred: {str(e)}"
                 self.status_icon.change_icon_status("#FF0000", content)
@@ -257,18 +235,22 @@ class NodesUI:
 
     def export_node_list(self):
         '''method that is linked to the button in the node list tab, to export the function output of Nodes logic to a file'''
-    
-        dialog = RadioSelectDialog(self.master, "Choose export option", ["*.csv", "*.xlsx", "*.json"])
 
-        try:
-            content = self.node.export_node_list(dialog.filename, dialog.selection)
-            messagebox.showinfo("Export successful", content)
-            self.status_icon.change_icon_status("#39FF14", content)
-
-        except ValueError as e:
-            message = f"Export failed: {str(e)}"
-            messagebox.showwarning("WARNING", message)
-            self.status_icon.change_icon_status("#FF0000", message)
+        if self.myproject and self.myinterface:
+            dialog = RadioSelectDialog(self.master, "Choose export option", ["*.csv", "*.xlsx", "*.json"])
+            try:
+                content = self.node.export_node_list(dialog.filename, dialog.selection)
+                messagebox.showinfo("Export successful", content)
+                self.status_icon.change_icon_status("#39FF14", content)
+            except ValueError as e:
+                content = f"Export failed: {str(e)}"
+                messagebox.showwarning("WARNING", content)
+                self.status_icon.change_icon_status("#FF0000", content)
+        else:
+            self.btn_export_node_list.config(state=tk.DISABLED)
+            content = "Please open a project to view the node list."
+            self.status_icon.change_icon_status("#FFFF00", content)
+            messagebox.showwarning("WARNING", content)
 
 
     def find_nodes(self):

@@ -1,9 +1,15 @@
 """
 Description: 
-# This is the main fundamental file that runs the app.
-# It imports all modules dynamically as long as they are in the apps folder, and creates a menu for each module.
-# For each module, it creates a menu head-item with the name of the module, and for each function of a class in the module
-# that starts with 'tab', it creates a menu sub-item under the module head-item.
+This is the main fundamental file that runs the app.
+It imports all modules dynamically as long as they are in the apps folder, and creates a menu for each module.
+For each module, it creates a menu head-item with the name of the module, and for each function of a class in the module
+
+conditions for dynamic import:
+- the module should be in the apps folder
+- the module should not be in the directory_exceptions list
+- the module-name should end with *UI.py, if not it takes the whole name as a menu-item
+- the module should have a subclass of TabUI.Tab to create a menu sub-item for each subclass of TabUI.Tab
+- the module should have a class with the same name as the module to create an instance of the main class of the module
 
 Author: Quinten Bauwens
 Last updated: 08/07/2024
@@ -23,7 +29,7 @@ from ..utils import InitTia as Init
 from ..utils.tabUI import Tab
 from ..utils.tooltipUI import StatusCircle
 
-
+# FEATURE LOG LATER ON 
 
 
 class mainApp:
@@ -40,7 +46,8 @@ class mainApp:
 		self.myproject = None
 		self.myinterface = None
 		self.master = master
-		master.title("TIA openess demo")
+		self.base_title = "TIA openess demo"
+		master.title(self.base_title)
 		master.geometry("1000x500")
 		master.iconbitmap("resources\\img\\tia.ico")
 
@@ -56,6 +63,8 @@ class mainApp:
 		self.tab_content_frame.pack(side="bottom", expand=True, fill="both")
 		self.menubar = tk.Menu(master)
 
+		self.current_tab = None
+		self.module_frames = {}
 		self.modules = {}
 		self.import_modules()
 
@@ -100,11 +109,11 @@ class mainApp:
 		directory = os.listdir('src\\gui\\apps')
 		directory_exceptions = ['__pycache__', '__init__.py', 'main.py']
 
-		print(f"contents of 'apps' directory: {directory}") # type: debug
+		print(f"Contents of 'apps' directory: {directory}") # type: debug
 
 		for file in directory:
 			if file.endswith('.py') and file not in directory_exceptions:
-				print(f"processing file: {file}") # type: debug
+				print(f"Processing file: {file}") # type: debug
 				module_name = file[:-3]
 
 				try:
@@ -115,30 +124,35 @@ class mainApp:
 					module_classes = inspect.getmembers(module, lambda x: inspect.isclass(x) and issubclass(x, Tab) and x != Tab)
 					
 					if not module_classes:
-						print(f"no tab classes found in {module_name}") # type: debug
+						print(f"No tab classes found in {module_name}") # type: debug
 						continue
 					
 					apps.append(module_name) # type: debug
 
 					# create a menu head-item for each module
+					# adjust module_name index if the module names in apps folder dont end with UI
 					module_menu = tk.Menu(self.menubar, tearoff=0)
-					self.menubar.add_cascade(label=module_name, menu=module_menu)
+					self.menubar.add_cascade(label=module_name[:-2], menu=module_menu)
 					
 					# initializing main class instance of module (class same name as module), storing it in the modules dictionary
 					main_class_name = mainApp.capitalize_first_letter(module_name)
-					print(f'module {module_name} heeft {main_class_name}')
+					print(f'Module {module_name} has {main_class_name}')
 					main_class_instance = None
 					if hasattr(module, main_class_name):
 						main_class = getattr(module, main_class_name)
-						print(f'module {module} heeft {main_class}') # type: debug
+						print(f'Module {module} has {main_class}') # type: debug
 						main_class_instance = main_class(self.master, self.myproject, self.myinterface, self.status_icon)
-						print(f'module {module} maakt {main_class_instance}') # type: debug
+						print(f'Module {module} makes {main_class_instance}') # type: debug
 						self.modules[module_name] = main_class_instance
+
+					frame = ttk.Frame(self.tab_content_frame)
+					self.module_frames[module_name] = frame
+					main_class_instance.frame = frame  # Assign the frame to the module instance
 
 					# creating a menu sub-item for each subclass of TabUI.Tab, and linking it to the execute method
 					# create an instance of every subclass of TabUI.Tab in module_classes
 					for class_name, class_obj in module_classes:
-						print(f"processing class: {class_name}") # type: debug
+						print(f"Processing class: {class_name}") # type: debug
 						tab_instance = class_obj(self.master, main_class_instance, self.myproject, self.myinterface)
 
 						module_menu.add_command(
@@ -147,14 +161,14 @@ class mainApp:
 						)
 				
 				except Exception as e:
-					message = f"ERROR: error processing {module_name} module. {e}"
+					message = f"ERROR: Error processing {module_name} module. {e}"
 					self.status_icon.change_icon_status("#FF0000", message)
 					print(message)
 			
 		if apps:
 			self.status_icon.change_icon_status("#39FF14", f'Tabs imported successfully: {", ".join(apps)}')
 		else:
-			message = "no tabs were imported. Please make sure that the apps folder contains at least one module with a subclass of TabUI.Tab."
+			message = "No tabs were imported. Please make sure that the apps folder contains at least one module with a subclass of TabUI.Tab."
 			self.status_icon.change_icon_status("#FFFF00", message)
 			messagebox.showwarning("WARNING", message)
 
@@ -165,11 +179,20 @@ class mainApp:
 		removing all widgets from the previous tab content frame and executing the new tab
 		'''
 		# hide the previous tab content, but dont destroy it
-		for widget in self.tab_content_frame.winfo_children():
-			widget.pack_forget()
+		for frame in self.module_frames.values():
+			for widget in frame.winfo_children():
+				widget.destroy()
+			frame.pack_forget()
 
-		# execute the new tab
-		tab.execute(self.tab_content_frame, self.myproject, self.myinterface)
+		# Show the frame for the current module
+		module_name = tab.__class__.__module__.split('.')[-1]
+		self.current_tab = module_name
+		current_frame = self.module_frames[module_name]
+		current_frame.pack(fill='both', expand=True)
+
+		# Execute the new tab
+		tab.execute(current_frame, self.myproject, self.myinterface)
+		self.update_frame_title(tab.name)
 			
 
 	def stop_siemens_processes(self): # NEEDS TO BE UPDATED
@@ -177,10 +200,11 @@ class mainApp:
 		force stop all Siemens processes running on the machine
 		NEEDS TO BE UPDATED! This is a temporary solution
 		'''
+
 		command = 'Get-Process | Where-Object {$_.ProcessName -like "Siemens*"} | Stop-Process -Force'
 		try:
 			subprocess.run(["powershell", "-Command", command], check=True)
-			self.update_action_label("siemens processes stopped successfully.")
+			self.update_action_label("Siemens processes stopped successfully.")
 		except subprocess.CalledProcessError as e:
 			self.update_action_label(f"ERROR: An error occurred while stopping Siemens processes: {e}")
 
@@ -189,7 +213,7 @@ class mainApp:
 		'''open the project and initialize the Hardware and Nodes classes'''
 
 		try:
-			self.update_action_label("project is opening, please wait...")
+			self.update_action_label("Project is opening, please wait...")
 			project_path = self.project_path_entry.get()
 			self.myproject, self.myinterface = Init.open_project(False, project_path)
 			
@@ -202,7 +226,7 @@ class mainApp:
 					main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
 					self.modules[module_name] = main_class(self.myproject, self.myinterface)
 
-			self.update_action_label("project opened successfully!")
+			self.update_action_label("Project opened successfully!")
 			self.project_path_entry.delete(0, tk.END)
 
 			project_name = project_path.split("\\")[-1]
@@ -211,7 +235,7 @@ class mainApp:
 			self.update_name_label(project_name)
 
 		except Exception as e:
-			message = f"ERROR: project could not be opened. {e}"
+			message = f"ERROR: Project could not be opened. {e}"
 			self.update_action_label("")
 			self.status_icon.change_icon_status("#FF0000", message)
 			messagebox.showerror("ERROR", message)
@@ -225,7 +249,7 @@ class mainApp:
 				Init.close_project(self.myproject, self.myinterface)
 				self.myproject, self.myinterface = None, None
 				self.update_action_label("Project closed successfully!")
-				self.update_name_label("no project opened")
+				self.update_name_label("No project opened")
 
 				# update the project in all modules
 				for module_name, module_instance in self.modules.items():
@@ -238,14 +262,14 @@ class mainApp:
 				
 				self.status_icon.change_icon_status("#39FF14")
 			else:
-				response = messagebox.askyesno("force closing project", "Would you like to force close any project opened in a previous session?")
+				response = messagebox.askyesno("Force closing project", "Would you like to force close any project opened in a previous session?")
 				if response:
 					self.stop_siemens_processes()
 				else:
-					self.update_action_label("operation cancelled by user.")
+					self.update_action_label("Operation cancelled by user.")
 
 		except Exception as e:
-			message = f"ERROR: project could not be closed. {e}"
+			message = f"ERROR: Project could not be closed. {e}"
 			self.update_action_label(message)
 			self.status_icon.change_icon_status("#FF0000", message)
 
@@ -261,6 +285,11 @@ class mainApp:
 
 		self.current_name_label.config(text=text)
 		self.master.update_idletasks()
+
+	def update_frame_title(self, screen_name):
+		"""Update the frame title with the base title and current screen name."""
+		
+		self.master.title(f"{self.base_title} - {screen_name}")
 
 
 

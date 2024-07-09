@@ -18,9 +18,12 @@ class Tab:
 		self.main_class_instance = main_class_instance
 		self.myproject = project
 		self.myinterface = interface
-
 		self.content_frame = None
-		self.masterTitle = master.title()
+		self.tab_content = None
+
+
+		self.create_tab_content()
+
 
 	def execute(self, parent_frame, project, interface):
 		'''
@@ -28,12 +31,17 @@ class Tab:
 		if the content already exists, it will be shown, otherwise it will be created
 		
 		'''
-		self.content_frame = ttk.Frame(parent_frame)
-		self.create_tab_content()
-		
-		self.content_frame.pack(fill="both", expand=True)
+		self.project = project
+		self.interface = interface
+		if self.content_frame is None:
+			self.create_tab_content()
+		if self.content_frame:
+			self.content_frame.pack(fill="both", expand=True)
 	
 	def create_tab_content(self):
-		# Implement in subclasses
-		pass
-	
+		if self.content_frame is None:
+			self.content_frame = ttk.Frame(self.master)
+		if self.tab_content is None:
+			self.tab_content = self.main_class_instance.create_tab_content()
+			if self.tab_content:
+				self.tab_content.pack(in_=self.content_frame, fill="both", expand=True)
