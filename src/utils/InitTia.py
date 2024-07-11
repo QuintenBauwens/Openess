@@ -1,16 +1,14 @@
 """
 Description: 
-# 
-
 Author: Quinten Bauwens
-Last updated: 08/07/2024
+Last updated: 09/07/2024
 """
 
 __package__ = "src.utils"
 import clr
 import os
 
-def open_project(interface = False, project_path=None):
+def open_project(interface=False, project_path=None):
     # Refference to the Openness library
     dll_path = "C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll"
     clr.AddReference(dll_path)

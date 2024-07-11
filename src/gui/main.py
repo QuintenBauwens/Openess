@@ -12,14 +12,15 @@ conditions for dynamic import:
 - the module should have a class with the same name as the module to create an instance of the main class of the module
 
 Author: Quinten Bauwens
-Last updated: 08/07/2024
+Last updated: 09/07/2024
+ToDo: FEATURE LOG LATER ON, SIEMENS FORCE STOP NEEDS TO BE REPLACED, COMPLETE THE DOCSTRINGS
 """
 
 import sys
 import importlib
 import inspect
 import tkinter as tk
-from  tkinter import ttk, messagebox
+from  tkinter import BooleanVar, ttk, messagebox
 import subprocess
 import os
 
@@ -29,9 +30,8 @@ from ..utils import InitTia as Init
 from ..utils.tabUI import Tab
 from ..utils.tooltipUI import StatusCircle
 
-# FEATURE LOG LATER ON 
 
-
+# TODO : Add logging to the app
 class mainApp:
 	'''the main class object for visualizing the main window of the app'''
 
@@ -41,7 +41,7 @@ class mainApp:
 			return s
 		return s[0].upper() + s[1:]
 
-	def __init__(self, master):
+	def __init__(self, master): # FIXME: debug
 		print("initializing mainApp")  # type: debug
 		self.myproject = None
 		self.myinterface = None
@@ -77,24 +77,33 @@ class mainApp:
 		# sticky to allign the elements of the same column
 		# for the labels you want to change the text later on, you need to store them in a variable, and use the grid method on the next line
 		self.status_icon = StatusCircle(self.permanent_frame, "#FFFF00", "no project opened, some features may not be available.")
-		self.status_icon.canvas.grid(row=0, column=10, pady=10, padx=10)
+		self.status_icon.canvas.grid(row=0, column=7, sticky="e", pady=10, padx=10)
 
-		self.project_path_label = ttk.Label(self.permanent_frame, text="project path:").grid(row=0, column=0, sticky="w" ,padx=5, pady=5)
+		self.project_path_label = ttk.Label(self.permanent_frame, text="project path:").grid(row=0, column=0, sticky="w" ,padx=5, pady=(5, 0))
 		self.project_path_entry = ttk.Entry(self.permanent_frame, width=40)
-		self.project_path_entry.grid(row=0, column=1, sticky="w" ,padx=5, pady=5)
+		self.project_path_entry.grid(row=0, column=1, sticky="w" ,padx=5, pady=(5, 0))
 
-		ttk.Button(self.permanent_frame, text="open project", command=self.open_project).grid(row=0, column=2, padx=5, pady=5)
-		ttk.Button(self.permanent_frame, text="close Project", command=self.close_project).grid(row=0, column=3, padx=5, pady=5)
+		self.action_label = ttk.Label(self.permanent_frame, text="", foreground="#FF0000")
+		self.action_label.grid(row=0, column=5, sticky="ew", padx=5, pady=(5, 0))
 
-		self.action_label = ttk.Label(self.permanent_frame, text="")
-		self.action_label.grid(row=0, column=4, columnspan=4, padx=5, pady=5)
-
-		self.current_project_label = ttk.Label(self.permanent_frame, text="current project:").grid(row=1, column=0, sticky="w" ,padx=5, pady=5)
+		ttk.Button(self.permanent_frame, text="open project", command=self.open_project).grid(row=0, column=2, sticky="w", padx=5, pady=(5, 0))
+		self.checkbox_interface = BooleanVar(value=False)
+		ttk.Checkbutton(self.permanent_frame, text="open with interface", variable=self.checkbox_interface).grid(row=0, column=3, sticky="w", padx=5, pady=(5, 0))
+		
+		# row 1
+		self.current_project_label = ttk.Label(self.permanent_frame, text="current project:").grid(row=1, column=0, sticky="w", padx=5)
 		self.current_name_label = ttk.Label(self.permanent_frame, text="no project opened")
-		self.current_name_label.grid(row=1, column=1, sticky="w" ,padx=5, pady=5)
+		self.current_name_label.grid(row=1, column=1, sticky="w" ,padx=5)
+		ttk.Button(self.permanent_frame, text="close Project", command=self.close_project).grid(row=1, column=2, sticky="w", padx=5)
+
+		seperator = ttk.Separator(self.permanent_frame, orient="horizontal")
+		seperator.grid(row=2, column=0, columnspan=11 ,sticky="ew", pady=(10))
+
+		self.permanent_frame.grid_columnconfigure(4, weight=1) # make the column of the status icon expandable
+		self.permanent_frame.grid_columnconfigure(6, weight=1) # make the column of the action label expandable
 
 
-	def import_modules(self):
+	def import_modules(self): # FIXME: debug
 		'''
 		import all the apps within the apps folder
 		each app is a module that could contain classes that are subclasses of base_tab.Tab,
@@ -178,7 +187,7 @@ class mainApp:
 		switch the tab content to the selected tab content frame by
 		removing all widgets from the previous tab content frame and executing the new tab
 		'''
-		# hide the previous tab content, but dont destroy it
+		# hide the previous tab content
 		for frame in self.module_frames.values():
 			for widget in frame.winfo_children():
 				widget.destroy()
@@ -193,9 +202,10 @@ class mainApp:
 		# Execute the new tab
 		tab.execute(current_frame, self.myproject, self.myinterface)
 		self.update_frame_title(tab.name)
-			
 
-	def stop_siemens_processes(self): # NEEDS TO BE UPDATED
+
+	# TODO : This method needs to be updated 
+	def stop_siemens_processes(self): 
 		'''
 		force stop all Siemens processes running on the machine
 		NEEDS TO BE UPDATED! This is a temporary solution
@@ -204,18 +214,19 @@ class mainApp:
 		command = 'Get-Process | Where-Object {$_.ProcessName -like "Siemens*"} | Stop-Process -Force'
 		try:
 			subprocess.run(["powershell", "-Command", command], check=True)
-			self.update_action_label("Siemens processes stopped successfully.")
+			self.update_action_label("siemens processes stopped successfully.")
 		except subprocess.CalledProcessError as e:
-			self.update_action_label(f"ERROR: An error occurred while stopping Siemens processes: {e}")
+			self.update_action_label(f"ERROR: an error occurred while stopping Siemens processes: {e}")
 
 
 	def open_project(self):
 		'''open the project and initialize the Hardware and Nodes classes'''
 
 		try:
-			self.update_action_label("Project is opening, please wait...")
+			importlib.reload(Init)
+			self.update_action_label("project is opening, please wait...")
 			project_path = self.project_path_entry.get()
-			self.myproject, self.myinterface = Init.open_project(False, project_path)
+			self.myproject, self.myinterface = Init.open_project(self.checkbox_interface.get(), project_path)
 			
 			# update the project in all modules
 			for module_name, module_instance in self.modules.items():
@@ -226,7 +237,7 @@ class mainApp:
 					main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
 					self.modules[module_name] = main_class(self.myproject, self.myinterface)
 
-			self.update_action_label("Project opened successfully!")
+			self.update_action_label("project opened successfully!")
 			self.project_path_entry.delete(0, tk.END)
 
 			project_name = project_path.split("\\")[-1]
@@ -248,8 +259,8 @@ class mainApp:
 			if self.myproject and self.myinterface:
 				Init.close_project(self.myproject, self.myinterface)
 				self.myproject, self.myinterface = None, None
-				self.update_action_label("Project closed successfully!")
-				self.update_name_label("No project opened")
+				self.update_action_label("project closed successfully!")
+				self.update_name_label("no project opened")
 
 				# update the project in all modules
 				for module_name, module_instance in self.modules.items():
@@ -266,8 +277,7 @@ class mainApp:
 				if response:
 					self.stop_siemens_processes()
 				else:
-					self.update_action_label("Operation cancelled by user.")
-
+					self.update_action_label("peration cancelled by user.")
 		except Exception as e:
 			message = f"ERROR: Project could not be closed. {e}"
 			self.update_action_label(message)
@@ -279,27 +289,16 @@ class mainApp:
 
 		self.action_label.config(text=text)
 		self.master.update_idletasks()
-	
+
+
 	def update_name_label(self, text):
 		'''update the current project name label with the given text'''
-
+		
 		self.current_name_label.config(text=text)
 		self.master.update_idletasks()
+
 
 	def update_frame_title(self, screen_name):
 		"""Update the frame title with the base title and current screen name."""
 		
-		self.master.title(f"{self.base_title} - {screen_name}")
-
-
-
-
-
-
-
-
-	
-
-
-
-	
+		self.master.title(f"{self.base_title} - {screen_name}")		
