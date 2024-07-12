@@ -7,8 +7,8 @@ Last updated: 09/07/2024
 import tkinter as tk
 from  tkinter import ttk, scrolledtext, messagebox
 from matplotlib import pyplot as plt
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from plotly.subplots import make_subplots
+from tkhtmlview import HTMLLabel
 import pandas as pd
 
 from utils.tabUI import Tab
@@ -305,17 +305,14 @@ class NodesUI:
 		'''
 
 		self.clear_widgets()
-
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
 
 		self.btn_export_graph = tk.Button(self.frame, text="Export", command=lambda: self.export_content("connections"), state=tk.NORMAL)
 		self.btn_export_graph.pack(pady=10)
 
-		self.figure = Figure(dpi=100)
-		self.canvas = FigureCanvasTkAgg(self.figure, self.frame)
-		self.canvas_widget = self.canvas.get_tk_widget()
-		self.canvas_widget.pack(padx=5, pady=5, fill=tk.BOTH, expand=True)
+		self.graph_widget = HTMLLabel(self.frame, html="")
+		self.graph_widget.pack(padx=5, pady=5, fill=tk.BOTH, expand=True)
 
 		# Only call display_connections if a project is open
 		if self.myproject is None and self.myinterface is None:
@@ -422,9 +419,19 @@ class NodesUI:
 			return
 		else:
 			try:
-				self.figure.clf()
-				content, graph, _ = self.node.display_connections(self.figure)
-				self.canvas.draw()
+				content, graph, _ = self.node.display_connections()
+				
+				# Update the layout to fit in your application
+				graph.update_layout(
+					autosize=True,
+					margin=dict(l=0, r=0, t=0, b=0),
+					plot_bgcolor='rgba(0,0,0,0)',
+					paper_bgcolor='rgba(0,0,0,0)',
+				)
+				# Convert Plotly figure to HTML and display it in the HTMLLabel widget
+				html = graph.to_html(include_plotlyjs="cdn", full_html=False)
+				self.graph_widget.set_html(html)
+
 				self.status_icon.change_icon_status("#39FF14", "display_connections retrieved successfully")
 			except Exception as e:
 				content = f"An error occurred: {str(e)}"
@@ -441,13 +448,22 @@ class NodesUI:
 		- message (str): The message to be displayed. Defaults to "Please open a project to display the connections."
 		"""
 
-		if self.figure:
-			self.figure.clear()
-			ax = self.figure.add_subplot(111)
-			ax.text(0.5, 0.5, message, horizontalalignment='center', verticalalignment='center', fontsize=12)
-			ax.axis('off')
-			if self.canvas:
-				self.canvas.draw()
+		fig = make_subplots(rows=1, cols=1)
+		fig.add_annotation(
+			x=0.5, y=0.5,
+			text=message,
+			showarrow=False,
+			font=dict(size=16),
+		)
+		fig.update_layout(
+			autosize=True,
+			margin=dict(l=0, r=0, t=0, b=0),
+			plot_bgcolor='rgba(0,0,0,0)',
+			paper_bgcolor='rgba(0,0,0,0)',
+		)
+		# Convert Plotly figure to HTML and display it in the HTMLLabel widget
+		html = fig.to_html(include_plotlyjs="cdn", full_html=False)
+		self.graph_widget.set_html(html)
 
 
 	# TODO : add more file types

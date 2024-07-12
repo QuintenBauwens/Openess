@@ -10,7 +10,7 @@ import re
 import pandas as pd
 import datetime
 import networkx as nx
-import plotly.graph_objects as plt
+import plotly.graph_objects as go
 
 import clr
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll")
@@ -193,18 +193,97 @@ class Nodes:
 						
 						G.add_edge(source_node, target_node, length=cable_length)  # add the connection to the graph
 		
-		try:
+		# Create an interactive Plotly figure
+		pos = nx.spring_layout(G, seed=42)
+		edge_x = []
+		edge_y = []
+		for edge in G.edges():
+			x0, y0 = pos[edge[0]]
+			x1, y1 = pos[edge[1]]
+			edge_x.extend([x0, x1, None])
+			edge_y.extend([y0, y1, None])
+
+		edge_trace = go.Scatter(
+			x=edge_x, y=edge_y,
+			line=dict(width=0.5, color='#888'),
+			hoverinfo='none',
+			mode='lines')
+
+		node_x = []
+		node_y = []
+		for node in G.nodes():
+			x, y = pos[node]
+			node_x.append(x)
+			node_y.append(y)
+
+		node_trace = go.Scatter(
+			x=node_x, y=node_y,
+			mode='markers',
+			hoverinfo='text',
+			marker=dict(
+				showscale=True,
+				colorscale='YlGnBu',
+				size=10,
+				colorbar=dict(
+					thickness=15,
+					title='Node Connections',
+					xanchor='left',
+					titleside='right'
+				)
+			)
+		)
+
+		# Add node text and color
+		node_adjacencies = []
+		node_text = []
+		for node, adjacencies in G.adjacency():
+			node_adjacencies.append(len(adjacencies))
+			node_text.append(f'Device: {node}<br># of connections: {len(adjacencies)}')
+
+		node_trace.marker.color = node_adjacencies
+		node_trace.text = node_text
+
+		# Add edge text
+		edge_text = []
+		for edge in G.edges(data=True):
+			source, target, data = edge
+			length = data.get('length', 'N/A')
+			edge_text.append(f'Connection: {source} - {target}<br>Cable Length: {length}')
+
+		edge_trace.text = edge_text
+		edge_trace.hoverinfo = 'text'
+
+		# Create the figure
+		fig = go.Figure(data=[edge_trace, node_trace],
+						layout=go.Layout(
+							title='Network Connections',
+							titlefont_size=16,
+							showlegend=False,
+							hovermode='closest',
+							margin=dict(b=20,l=5,r=5,t=40),
+							annotations=[ dict(
+								text="Python code: <a href='https://plotly.com/ipython-notebooks/network-graphs/'> https://plotly.com/ipython-notebooks/network-graphs/</a>",
+								showarrow=False,
+								xref="paper", yref="paper",
+								x=0.005, y=-0.002 ) ],
+							xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+							yaxis=dict(showgrid=False, zeroline=False, showticklabels=False))
+						)
+
+		return 'Connections displayed in the interactive graph.', fig, G
+
+		# try:
 			
 
-			self.figure = figure
-			ax = figure.add_subplot(111)  # create an axis for the figure
-			pos = nx.spring_layout(G, seed=42)  # positions for all nodes, gives every time the same layout
-			nx.draw(G, pos, ax=ax, with_labels=True, node_color='gold', edge_color='slategray')  # draw the graph in the figure
-			nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+		# 	self.figure = figure
+		# 	ax = figure.add_subplot(111)  # create an axis for the figure
+		# 	pos = nx.spring_layout(G, seed=42)  # positions for all nodes, gives every time the same layout
+		# 	nx.draw(G, pos, ax=ax, with_labels=True, node_color='gold', edge_color='slategray')  # draw the graph in the figure
+		# 	nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
 
-			return f'Connections displayed in the graph.', figure, G
-		except Exception as e:
-			return f'An error occurred trying to display connections graph: {str(e)}', figure, G
+		# 	return f'Connections displayed in the graph.', figure, G
+		# except Exception as e:
+		# 	return f'An error occurred trying to display connections graph: {str(e)}', figure, G
 
 
 	def find_device_nodes(self, plcName, deviceName):
