@@ -4,11 +4,14 @@ Author: Quinten Bauwens
 Last updated: 09/07/2024
 """
 
+import tempfile
 import tkinter as tk
 from  tkinter import ttk, scrolledtext, messagebox
-from matplotlib import pyplot as plt
-from plotly.subplots import make_subplots
+import traceback
+import threading
+import webview
 from tkhtmlview import HTMLLabel
+from tkinterweb import HtmlFrame
 import pandas as pd
 
 from utils.tabUI import Tab
@@ -114,8 +117,6 @@ class NodesUI:
 		self.myinterface = myinterface
 		self.status_icon = status_icon
 		self.frame = None # Frame for the nodes UI set in the mainApp
-		self.canvas = None
-		self.figure = None
 
 		self.node = None
 
@@ -138,9 +139,6 @@ class NodesUI:
 		if self.canvas:
 			self.canvas.get_tk_widget().destroy()
 			self.canvas = None
-		if self.figure:
-			plt.close(self.figure)
-			self.figure = None
 		if self.frame:
 			for widget in self.frame.winfo_children():
 				widget.destroy()
@@ -185,7 +183,7 @@ class NodesUI:
 			None
 		'''
 
-		self.clear_widgets()
+		# self.clear_widgets()
 		self.myproject = myproject
 		self.myinterface = myinterface
 		self.initialize_node()
@@ -303,19 +301,32 @@ class NodesUI:
 		Returns:
 			None
 		'''
-
-		self.clear_widgets()
+	
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
 
-		self.btn_export_graph = tk.Button(self.frame, text="Export", command=lambda: self.export_content("connections"), state=tk.NORMAL)
-		self.btn_export_graph.pack(pady=10)
+		for widget in self.frame.winfo_children():
+			widget.destroy()
 
-		self.graph_widget = HTMLLabel(self.frame, html="")
-		self.graph_widget.pack(padx=5, pady=5, fill=tk.BOTH, expand=True)
+		button_frame = ttk.Frame(self.frame)
+		button_frame.pack(pady=10)
 
-		# Only call display_connections if a project is open
+		self.btn_display_connections = ttk.Button(button_frame, text="Display Graph", command=self.display_connections)
+		self.btn_display_connections.pack(side=tk.LEFT, padx=5)
+
+		self.btn_export_graph = tk.Button(button_frame, text="Export", command=lambda: self.export_content("connections"), state=tk.NORMAL)
+		self.btn_export_graph.pack(side=tk.LEFT, padx=5)
+
+		# Create a frame to hold the webview
+		self.webview_frame = ttk.Frame(self.frame)
+		self.webview_frame.pack(fill=tk.BOTH, expand=True)
+
+		print("Parent frame size:", self.frame.winfo_width(), self.frame.winfo_height())
+		print("Parent frame visible:", self.frame.winfo_viewable())
+
+		# # Only call display_connections if a project is open
 		if self.myproject is None and self.myinterface is None:
+			self.btn_display_connections.config(state=tk.DISABLED)
 			self.btn_export_graph.config(state=tk.DISABLED)
 			self.display_no_project_message()
 		else:
@@ -405,13 +416,6 @@ class NodesUI:
 
 	# FIXME : when selecting connections tab before opening/closeing project raises ERROR: Project could not be closed. invalid comman name ".!fram2.!frame.!frame5.!frame.!scrollledtext"
 	def display_connections(self):
-		'''Method that is linked to the button in the display connections tab.
-		Retrieves the function output in the nodes logic to display the connections between devices.
-
-		Returns:
-			str: The result of displaying the connections between devices.
-		'''
-
 		if self.node is None:
 			content = "Please open a project to display connections."
 			self.status_icon.change_icon_status("#FFFF00", content)
@@ -419,25 +423,25 @@ class NodesUI:
 			return
 		else:
 			try:
-				content, graph, _ = self.node.display_connections()
+				content, fig, G = self.node.display_connections()
 				
-				# Update the layout to fit in your application
-				graph.update_layout(
-					autosize=True,
-					margin=dict(l=0, r=0, t=0, b=0),
-					plot_bgcolor='rgba(0,0,0,0)',
-					paper_bgcolor='rgba(0,0,0,0)',
-				)
-				# Convert Plotly figure to HTML and display it in the HTMLLabel widget
-				html = graph.to_html(include_plotlyjs="cdn", full_html=False)
-				self.graph_widget.set_html(html)
+				# Save the figure to a temporary HTML file
+				with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.html') as f:
+					fig.write_html(f, include_plotlyjs='cdn', full_html=True)
+					temp_path = f.name
+
+				# Create and start webview in a separate thread
+				def show_webview():
+					webview.create_window("Connections Graph", temp_path, width=800, height=600)
+					webview.start()
+
+				self.master.after(0, show_webview)
 
 				self.status_icon.change_icon_status("#39FF14", "display_connections retrieved successfully")
 			except Exception as e:
 				content = f"An error occurred: {str(e)}"
 				self.status_icon.change_icon_status("#FF0000", content)
 				self.display_no_project_message(content)
-				print(content)
 
 
 	def display_no_project_message(self, message="Please open a project to display the connections."):
@@ -447,23 +451,7 @@ class NodesUI:
 		Parameters:
 		- message (str): The message to be displayed. Defaults to "Please open a project to display the connections."
 		"""
-
-		fig = make_subplots(rows=1, cols=1)
-		fig.add_annotation(
-			x=0.5, y=0.5,
-			text=message,
-			showarrow=False,
-			font=dict(size=16),
-		)
-		fig.update_layout(
-			autosize=True,
-			margin=dict(l=0, r=0, t=0, b=0),
-			plot_bgcolor='rgba(0,0,0,0)',
-			paper_bgcolor='rgba(0,0,0,0)',
-		)
-		# Convert Plotly figure to HTML and display it in the HTMLLabel widget
-		html = fig.to_html(include_plotlyjs="cdn", full_html=False)
-		self.graph_widget.set_html(html)
+		ttk.Label(self.webview_frame, text=message).pack(expand=True)
 
 
 	# TODO : add more file types
@@ -503,3 +491,12 @@ class NodesUI:
 			self.status_icon.change_icon_status("#FFFF00", content)
 			messagebox.showwarning("WARNING", content)
 
+# # Create a sample Plotly figure (works)
+		# content, fig, G = self.node.display_connections()
+
+		# # Save the figure to a temporary HTML file
+		# with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmpfile:
+		# 	fig.write_html(tmpfile.name, include_plotlyjs='cdn')
+		# 	# Attempt to load the HTML file into the HtmlFrame
+		# 	self.graph_widget.load_html(tmpfile.name)
+		# 	webbrowser.open(tmpfile.name)

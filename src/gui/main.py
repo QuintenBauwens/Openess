@@ -238,8 +238,8 @@ class mainApp:
 			# update the project in all modules, try cath needed for the canvas
 			for module_name, module_instance in self.modules.items():
 				try:
-					if isinstance(module_instance, NodesUI):
-						module_instance.clear_widgets()
+					# if isinstance(module_instance, NodesUI):
+					# 	module_instance.clear_widgets()
 					if hasattr(module_instance, 'update_project'):
 						module_instance.update_project(self.myproject, self.myinterface)
 					else:
