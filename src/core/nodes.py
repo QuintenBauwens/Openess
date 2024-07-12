@@ -5,20 +5,18 @@ ToDo: NEED TO GET UPDATED, GET NODES OUT OF THE SUBNET SECTION
 """
 
 from collections import OrderedDict as od
-import json
 import os
 import re
 import pandas as pd
 import datetime
-import matplotlib.pyplot as plt
 import networkx as nx
+import plotly.graph_objects as plt
 
 import clr
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll")
 import Siemens.Engineering as tia
 import Siemens.Engineering.HW.Features as hwf
-import Siemens.Engineering.HW as hw
-from .hardware import Hardware
+from core.hardware import Hardware
 
 
 class Nodes:
@@ -69,7 +67,7 @@ class Nodes:
 		Returns:
 			dict: A dictionary containing all the nodes in the project.
 		"""
-
+	
 		PLC_List = self.hardware.get_plc_devices()
 		interface_devices = self.hardware.get_interface_devices(self.projectItems)
 	
@@ -126,11 +124,11 @@ class Nodes:
 			items (dict, optional): Additional items to include in the table. Defaults to an empty dictionary.
 
 		Returns:
-			str: A string representation of the table.
+			pandas.DataFrame: A table with all the nodes in the project.
 		"""
 		
 		nodesTable = pd.DataFrame()
-	
+
 		for plc_name, plc_info in self.nodeList.items():
 			for device in plc_info['devices']:
 				for device_name, device_info in device.items():
@@ -159,8 +157,14 @@ class Nodes:
 		This method creates a graph using the NetworkX library and displays the connections between network interfaces
 		as edges in the graph. The nodes in the graph represent the stations to which the network interfaces belong.
 
+		Parameters:
+			figure (matplotlib.figure.Figure): The figure object to display the graph.
+
 		Returns:
-			None
+			tuple: A tuple containing the following elements:
+				- str: A message indicating the result of the operation.
+				- matplotlib.figure.Figure: The updated figure object with the graph.
+				- networkx.Graph: The graph object representing the connections between network interfaces.
 		"""
 
 		G = nx.Graph()  # initialize the graph
@@ -171,7 +175,6 @@ class Nodes:
 			if type(network_service) == hwf.NetworkInterface:  # check whether the service exists
 
 				for source_port in network_service.Ports:  # get the ports from the interface
-
 					if source_port.ConnectedPorts.Count != 0:  # check whether the port is connected
 						source_node = str(deviceitem.Parent.GetAttribute('Name'))  # Name of the station of the interface to use as node in the graph
 
@@ -179,8 +182,7 @@ class Nodes:
 						target_node = target_port.Interface.GetAttribute('Name') # Get the name of the station of the connected interface
 
 						try:
-							cable_length = target_port.GetAttribute('CableLength') # get the cable length of the connectio
-
+							cable_length = target_port.GetAttribute('CableLength') # get the cable length of the connection
 							if cable_length:
 								cable_length = str(cable_length)
 							else:
@@ -190,10 +192,10 @@ class Nodes:
 							cable_length = None
 						
 						G.add_edge(source_node, target_node, length=cable_length)  # add the connection to the graph
-
-		edge_labels = nx.get_edge_attributes(G, 'length')  # get the edge labels
 		
 		try:
+			
+
 			self.figure = figure
 			ax = figure.add_subplot(111)  # create an axis for the figure
 			pos = nx.spring_layout(G, seed=42)  # positions for all nodes, gives every time the same layout
@@ -267,7 +269,7 @@ class Nodes:
 		"""
 		
 		extension = extension[1:]
-		cwd = os.getcwd() + f'\\TIA demo exports\\{self.myproject.Name}'
+		cwd = os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}'
 		directory = os.makedirs(cwd + f"\\{tab}", exist_ok=True) 
 		timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
 		

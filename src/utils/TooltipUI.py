@@ -27,6 +27,7 @@ class Tooltip:
 		self.id = None
 		self.x = self.y = 0
 
+
 	def showtip(self):
 		"Display text in tooltip window"
 		if self.tipwindow or not self.text:
@@ -47,11 +48,13 @@ class Tooltip:
 
 		tw.wm_geometry(f"+{x}+{y}")  # position the tooltip window
 
+
 	def hidetip(self):
 		tw = self.tipwindow
 		self.tipwindow = None
 		if tw:
 			tw.destroy()
+
 
 	def update_tooltip_text(self, new_text):
 		"""
@@ -60,6 +63,7 @@ class Tooltip:
 		Args:
 			new_text: The new text to be displayed in the tooltip.
 		"""
+
 		self.text = new_text
 
 		if not self.text:
@@ -104,17 +108,21 @@ class StatusCircle:
 		self.canvas.bind("<Enter>", self.on_enter)
 		self.canvas.bind("<Leave>", self.on_leave)
 
+
 	def change_icon_status(self, new_color, tooltip_text=None):
 		"""
 		Changes the color and tooltip text of the status circle.
+		Colors used in the status circle are: "#FF0000" (red), "#00FF00" (green), "#FFFF00" (yellow).
 
 		Args:
 			new_color (str): The new color of the status circle.
 			tooltip_text (str, optional): The new text to display in the tooltip. Defaults to None.
 		"""
+
 		self.status_color = new_color
 		self.canvas.itemconfig(self.circle, fill=self.status_color)
 		self.tooltip.update_tooltip_text(tooltip_text)
+
 
 	def on_enter(self, event=None):
 		"""
@@ -123,12 +131,14 @@ class StatusCircle:
 		"""
 		self.tooltip.showtip()
 
+
 	def on_leave(self, event=None):
 		"""
 		Event handler for mouse leave event.
 		Hides the tooltip.
 		"""
 		self.tooltip.hidetip()
+
 
 
 class RadioSelectDialog(simpledialog.Dialog):
@@ -146,12 +156,14 @@ class RadioSelectDialog(simpledialog.Dialog):
 		filename (str): The filename entered by the user.
 	"""
 
+
 	def __init__(self, parent, title, options):
 		self.options = options
 		self.selection = None
 		self.filename = None
 		parent.iconbitmap("resources\\img\\tia.ico")
 		super().__init__(parent, title)
+
 
 	def body(self, master):
 		"""
@@ -163,6 +175,7 @@ class RadioSelectDialog(simpledialog.Dialog):
 		Returns:
 			tkinter.Tk: The master widget.
 		"""
+
 		self.var = tk.StringVar(master)
 		self.var.set(self.options[0])  # standard value
 		self.label = tk.Label(master, text="filename:").pack(anchor=tk.W)
@@ -173,6 +186,7 @@ class RadioSelectDialog(simpledialog.Dialog):
 			tk.Radiobutton(master, text=option, variable=self.var, value=option).pack(anchor=tk.W)
 		return master
 
+
 	def apply(self):
 		"""
 		Apply the selected option and filename.
@@ -182,5 +196,6 @@ class RadioSelectDialog(simpledialog.Dialog):
 		Returns:
 			None
 		"""
+
 		self.selection = self.var.get()
 		self.filename = self.entry.get()

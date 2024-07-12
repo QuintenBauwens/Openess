@@ -16,7 +16,6 @@ Last updated: 09/07/2024
 ToDo: FEATURE LOG LATER ON, SIEMENS FORCE STOP NEEDS TO BE REPLACED, COMPLETE THE DOCSTRINGS
 """
 
-import sys
 import importlib
 import inspect
 import tkinter as tk
@@ -24,14 +23,13 @@ from  tkinter import BooleanVar, ttk, messagebox
 import subprocess
 import os
 
-from ..core.hardware import Hardware
-from ..core.nodes import Nodes
-from ..utils import InitTia as Init
-from ..utils.tabUI import Tab
-from ..utils.tooltipUI import StatusCircle
+from gui.apps.nodesUI import NodesUI
+from utils import InitTia as Init
+from utils.tabUI import Tab
+from utils.tooltipUI import StatusCircle
 
 
-# TODO : Add logging to the app
+# TODO : Add logging to the app, docstrings
 class mainApp:
 	'''the main class object for visualizing the main window of the app'''
 
@@ -41,7 +39,7 @@ class mainApp:
 			return s
 		return s[0].upper() + s[1:]
 
-	def __init__(self, master): # FIXME: debug
+	def __init__(self, master):
 		print("initializing mainApp")  # type: debug
 		self.myproject = None
 		self.myinterface = None
@@ -50,7 +48,7 @@ class mainApp:
 		master.title(self.base_title)
 		master.geometry("1000x500")
 		master.iconbitmap("resources\\img\\tia.ico")
-
+		# give me the path to resources folder
 		# permanent frame for the project section (header)
 		self.permanent_frame = ttk.Frame(master)
 		self.permanent_frame.pack(side="top", fill="x")
@@ -103,7 +101,7 @@ class mainApp:
 		self.permanent_frame.grid_columnconfigure(6, weight=1) # make the column of the action label expandable
 
 
-	def import_modules(self): # FIXME: debug
+	def import_modules(self): 
 		'''
 		import all the apps within the apps folder
 		each app is a module that could contain classes that are subclasses of base_tab.Tab,
@@ -115,7 +113,9 @@ class mainApp:
 		print("starting import_apps method") # type: debug
 
 		apps = [] # type: debug
-		directory = os.listdir('src\\gui\\apps')
+		current_dir = os.path.dirname(__file__)
+		apps_dir = os.path.join(current_dir, 'apps')
+		directory = os.listdir(apps_dir)
 		directory_exceptions = ['__pycache__', '__init__.py', 'main.py']
 
 		print(f"Contents of 'apps' directory: {directory}") # type: debug
@@ -127,7 +127,7 @@ class mainApp:
 
 				try:
 					# import the modules dynamically
-					module = importlib.import_module(f"src.gui.apps.{module_name}")
+					module = importlib.import_module(f"gui.apps.{module_name}")
 
 					# get all classes that are subclasses of base_tab.Tab
 					module_classes = inspect.getmembers(module, lambda x: inspect.isclass(x) and issubclass(x, Tab) and x != Tab)
@@ -203,6 +203,9 @@ class mainApp:
 		tab.execute(current_frame, self.myproject, self.myinterface)
 		self.update_frame_title(tab.name)
 
+		# if isinstance(self.modules[module_name], NodesUI) and tab.name == "connections":
+		# 	self.modules[module_name].create_display_connections_tab(tab)
+
 
 	# TODO : This method needs to be updated 
 	def stop_siemens_processes(self): 
@@ -214,9 +217,13 @@ class mainApp:
 		command = 'Get-Process | Where-Object {$_.ProcessName -like "Siemens*"} | Stop-Process -Force'
 		try:
 			subprocess.run(["powershell", "-Command", command], check=True)
-			self.update_action_label("siemens processes stopped successfully.")
+			message = "siemens processes stopped successfully."
+			self.update_action_label(message)
+			self.status_icon.change_icon_status("#39FF14", message)
 		except subprocess.CalledProcessError as e:
-			self.update_action_label(f"ERROR: an error occurred while stopping Siemens processes: {e}")
+			message = f"ERROR: an error occurred while stopping Siemens processes: {e}"
+			self.update_action_label(message)
+			self.status_icon.change_icon_status("#FF0000", message)
 
 
 	def open_project(self):
@@ -228,14 +235,26 @@ class mainApp:
 			project_path = self.project_path_entry.get()
 			self.myproject, self.myinterface = Init.open_project(self.checkbox_interface.get(), project_path)
 			
-			# update the project in all modules
+			# update the project in all modules, try cath needed for the canvas
 			for module_name, module_instance in self.modules.items():
-				if hasattr(module_instance, 'update_project'):
-					module_instance.update_project(self.myproject, self.myinterface)
-				else:
-					# If update_project method doesn't exist, recreate the instance
-					main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
-					self.modules[module_name] = main_class(self.myproject, self.myinterface)
+				try:
+					if isinstance(module_instance, NodesUI):
+						module_instance.clear_widgets()
+					if hasattr(module_instance, 'update_project'):
+						module_instance.update_project(self.myproject, self.myinterface)
+					else:
+						# If update_project method doesn't exist, recreate the instance
+						main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
+						self.modules[module_name] = main_class(self.myproject, self.myinterface)
+				except tk.TclError as e:
+						message = f"Warning: Updating canvas {module_name}: {e}"
+						self.update_action_label(message)
+						self.status_icon.change_icon_status("#FFFF00", message)
+						continue
+				except Exception as e:
+					message = f"Error: Error occurred while updating {module_name}: {e}"
+					self.update_action_label(message)
+					self.status_icon.change_icon_status("#FFFF00", message)
 
 			self.update_action_label("project opened successfully!")
 			self.project_path_entry.delete(0, tk.END)
@@ -259,25 +278,41 @@ class mainApp:
 			if self.myproject and self.myinterface:
 				Init.close_project(self.myproject, self.myinterface)
 				self.myproject, self.myinterface = None, None
-				self.update_action_label("project closed successfully!")
 				self.update_name_label("no project opened")
 
-				# update the project in all modules
+				# update the project in all modules, try cath needed for the canvas
 				for module_name, module_instance in self.modules.items():
-					if hasattr(module_instance, 'update_project'):
-						module_instance.update_project(self.myproject, self.myinterface)
-					else:
-						# If update_project method doesn't exist, recreate the instance
-						main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
-						self.modules[module_name] = main_class(self.myproject, self.myinterface)
+					try:
+						if isinstance(module_instance, NodesUI):
+							module_instance.clear_widgets()
+						if hasattr(module_instance, 'update_project'):
+							module_instance.update_project(None, None)
+						else:
+							main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
+							self.modules[module_name] = main_class(None, None)
+					except tk.TclError as e:
+						message = f"Warning: Updating canvas {module_name}: {e}"
+						self.update_action_label(message)
+						self.status_icon.change_icon_status("#FFFF00", message)
+						continue
+					except Exception as e:
+						message = f"Error: Error occurred while updating {module_name}: {e}"
+						self.update_action_label(message)
+						self.status_icon.change_icon_status("#FFFF00", message)
 				
+				# if self.current_tab == 'nodesUI':
+				# 	nodes_ui = self.modules['nodesUI']
+				# 	if isinstance(nodes_ui, NodesUI):
+				# 		nodes_ui.create_display_connections_tab(None)
+				
+				self.update_action_label("project closed successfully!")
 				self.status_icon.change_icon_status("#39FF14")
 			else:
 				response = messagebox.askyesno("Force closing project", "Would you like to force close any project opened in a previous session?")
 				if response:
 					self.stop_siemens_processes()
 				else:
-					self.update_action_label("peration cancelled by user.")
+					self.update_action_label("Operation cancelled by user.")
 		except Exception as e:
 			message = f"ERROR: Project could not be closed. {e}"
 			self.update_action_label(message)

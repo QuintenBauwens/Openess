@@ -9,9 +9,7 @@ import pandas as pd
 import datetime
 
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll")
-import Siemens.Engineering as tia
-import Siemens.Engineering.HW.Features as hwf
-from src.core.software import Software
+from core.software import Software
 
 class File:
 	"""
@@ -42,7 +40,7 @@ class File:
 		Returns:
 			str: The file summary.
 		"""
-
+		
 		self.name = self.myproject.Name
 		self.creation_time = self.myproject.CreationTime
 		self.last_modified = self.myproject.LastModified
@@ -128,8 +126,9 @@ class File:
 		Returns:
 			None
 		"""
+
 		extension = extension[1:]
-		cwd = os.getcwd() + f'\\TIA demo exports\\{self.myproject.Name}'
+		cwd = os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}'
 		directory = os.makedirs(cwd + f"\\{tab}", exist_ok=True)
 		timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
 		

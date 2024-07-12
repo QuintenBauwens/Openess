@@ -6,9 +6,8 @@ Last updated: 09/07/2024
 import clr
 # add the reference to the Siemens.Engineering.dll
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll") 
-import Siemens.Engineering as tia
 import Siemens.Engineering.HW.Features as hwf
-from .hardware import Hardware
+from core.hardware import Hardware
 
 class Software:
     """

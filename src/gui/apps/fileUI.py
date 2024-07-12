@@ -5,9 +5,9 @@ Last updated: 09/07/2024
 
 import tkinter as tk
 from  tkinter import ttk, scrolledtext, messagebox
-from src.utils.tabUI import Tab
-from src.utils.tooltipUI import RadioSelectDialog
-from ...core.file import File
+from utils.tabUI import Tab
+from utils.tooltipUI import RadioSelectDialog
+from core.file import File
 
 class TabSummary(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
@@ -37,7 +37,7 @@ class TabFindBlock(Tab):
 		self.tab_content = self.main_class_instance.create_tab(self)
 
 
-
+# TODO : DOCSTRINGS
 class FileUI:
 	def __init__(self, master, myproject, myinterface, status_icon=None):
 		self.master = master
@@ -135,6 +135,7 @@ class FileUI:
 
 	def show_content(self, tab):
 		if self.myproject is None:
+			self.btn_export_output.config(state=tk.DISABLED)
 			content = f'Please open a project to view the {tab.name}.'
 			self.status_icon.change_icon_status("#FFFF00", content)
 		else:
@@ -144,11 +145,12 @@ class FileUI:
 				elif tab.name == "project tree":
 					content, _ = self.file.projectTree()
 				elif tab.name == "find programblock":
-					if not self.myproject or not self.myinterface:
-						content = "please open a project"
-					else:
+					if self.entry_block_name.get():
 						block_name = self.entry_block_name.get()
 						content = self.file.find_block_group(block_name)
+					else:
+						content = "Please enter a block name to search for."
+						self.status_icon.change_icon_status("#FFFF00", content)
 				
 				self.status_icon.change_icon_status("#39FF14", f'{tab.name} retrieved successfully')
 			except Exception as e:

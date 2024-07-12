@@ -6,12 +6,14 @@ Last updated: 09/07/2024
 
 import tkinter as tk
 from  tkinter import ttk, scrolledtext, messagebox
+from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import pandas as pd
 
-from src.utils.tabUI import Tab
-from src.utils.tooltipUI import RadioSelectDialog
-from ...core.nodes import Nodes
+from utils.tabUI import Tab
+from utils.tooltipUI import RadioSelectDialog
+from core.nodes import Nodes
 
 # all the menu sub-items are defined here
 class TabNodes(Tab):
@@ -48,10 +50,9 @@ class TabDisplayConnections(Tab):
 		super().__init__("connections", master, main_class_instance, project, interface)
 
 	def create_tab_content(self):
-		self.tab_content = self.main_class_instance.create_display_connections_tab(self)
+		self.tab_content = self.main_class_instance.create_display_connections_tab()
 
 
-# logic behind the content of the menu sub-items
 # TODO : can be optimized more, see fileUI.py
 class NodesUI:
 	"""
@@ -113,6 +114,8 @@ class NodesUI:
 		self.myinterface = myinterface
 		self.status_icon = status_icon
 		self.frame = None # Frame for the nodes UI set in the mainApp
+		self.canvas = None
+		self.figure = None
 
 		self.node = None
 
@@ -127,6 +130,20 @@ class NodesUI:
 		self.btn_check_address = None
 
 		self.initialize_node()
+
+
+	def clear_widgets(self):
+		"""Safely destroy widgets and clear references."""
+
+		if self.canvas:
+			self.canvas.get_tk_widget().destroy()
+			self.canvas = None
+		if self.figure:
+			plt.close(self.figure)
+			self.figure = None
+		if self.frame:
+			for widget in self.frame.winfo_children():
+				widget.destroy()
 
 
 	def initialize_node(self):
@@ -168,19 +185,14 @@ class NodesUI:
 			None
 		'''
 
-		if self.myproject != myproject or self.myinterface != myinterface:
-			self.myproject = myproject
-			self.myinterface = myinterface
-			self.initialize_node()
-			self.figure.clf()
+		self.clear_widgets()
+		self.myproject = myproject
+		self.myinterface = myinterface
+		self.initialize_node()
 
-			# Refresh the display immediately after updating the project
-			if self.myproject and self.myinterface:
-				self.display_connections()
-			else:
-				self.display_no_project_message()
+		self.create_display_connections_tab()
 
-			self.status_icon.change_icon_status("#39FF14", f"Updated project and interface to {myproject} and {myinterface}")
+		self.status_icon.change_icon_status("#39FF14", f"Updated project and interface to {myproject} and {myinterface}")
 
 
 
@@ -203,7 +215,7 @@ class NodesUI:
 			widget.destroy()
 
 		self.btn_get_node_list = ttk.Button(self.frame, text="Get Node List", command=self.show_node_list)
-		self.btn_export_node_list = ttk.Button(self.frame, text="Export", command=lambda: self.export_content(tab), state=tk.NORMAL)
+		self.btn_export_node_list = ttk.Button(self.frame, text="Export", command=lambda: self.export_content(tab.Name), state=tk.NORMAL)
 
 		self.btn_get_node_list.grid(row=0, column=0, padx=10, pady=10)
 		self.btn_export_node_list.grid(row=1, column=1, sticky="nw", padx=10, pady=10)
@@ -281,7 +293,7 @@ class NodesUI:
 		return self.frame
 
 
-	def create_display_connections_tab(self, tab):
+	def create_display_connections_tab(self):
 		'''Setup for the display connections tab-screen.
 
 		This method creates a tab in the GUI application for displaying the connections between devices. It adds a button to display the connections and an output area to display the results.
@@ -292,14 +304,12 @@ class NodesUI:
 			None
 		'''
 
+		self.clear_widgets()
+
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
 
-		# Clear existing widgets
-		for widget in self.frame.winfo_children():
-			widget.destroy()
-
-		self.btn_export_graph = tk.Button(self.frame, text="Export", command=lambda: self.export_content(tab), state=tk.NORMAL)
+		self.btn_export_graph = tk.Button(self.frame, text="Export", command=lambda: self.export_content("connections"), state=tk.NORMAL)
 		self.btn_export_graph.pack(pady=10)
 
 		self.figure = Figure(dpi=100)
@@ -307,15 +317,13 @@ class NodesUI:
 		self.canvas_widget = self.canvas.get_tk_widget()
 		self.canvas_widget.pack(padx=5, pady=5, fill=tk.BOTH, expand=True)
 
-		if self.myproject is None:
-			self.btn_export_graph.config(state=tk.DISABLED)
-
 		# Only call display_connections if a project is open
-		if self.myproject and self.myinterface:
+		if self.myproject is None and self.myinterface is None:
 			self.btn_export_graph.config(state=tk.DISABLED)
-			self.display_connections()
-		else:
 			self.display_no_project_message()
+		else:
+			self.display_connections()
+			
 		return self.frame
 
 
@@ -334,38 +342,14 @@ class NodesUI:
 			try:
 				content = self.node.show_node_table()
 				self.status_icon.change_icon_status("#39FF14", "Node list retrieved successfully")
+				self.output_node_list.insert(tk.END, content.to_string())
 			except Exception as e:
 				content = f"An error occurred: {str(e)}"
 				self.status_icon.change_icon_status("#FF0000", content)
 		self.output_node_list.delete(1.0, tk.END)
-		self.output_node_list.insert(tk.END, content.to_string())
-
-	# TODO : add more file types
-	def export_content(self, tab):
-		'''method that is linked to the button in the node list tab, to export the function output of Nodes logic to a file'''
-
-		extensions = ["*.csv", "*.xlsx", "*.json"]
-
-		if self.myproject and self.myinterface:
-			if tab.name == "connections":
-				extensions.append("*.png")
-
-			dialog = RadioSelectDialog(self.master, "Choose export option", extensions)
-			
-			try:
-				content = self.node.export_data(dialog.filename, dialog.selection, tab.name)
-				messagebox.showinfo("Export successful", content)
-				self.status_icon.change_icon_status("#39FF14", content)
-			except ValueError as e:
-				content = f"Export failed: {str(e)}"
-				messagebox.showwarning("WARNING", content)
-				self.status_icon.change_icon_status("#FF0000", content)
-		else:
-			self.btn_export_node_list.config(state=tk.DISABLED)
-			self.btn_export_graph.config(state=tk.DISABLED)
-			content = f"Please open a project to view the {tab.name}."
-			self.status_icon.change_icon_status("#FFFF00", content)
-			messagebox.showwarning("WARNING", content)
+		if isinstance(content, pd.DataFrame):
+			self.output_node_list.insert(tk.END, content.to_string())
+		self.output_node_list.insert(tk.END, content)
 
 
 	def find_nodes(self):
@@ -380,6 +364,9 @@ class NodesUI:
 
 		if self.node is None:
 			content = "Please open a project to find nodes."
+			self.status_icon.change_icon_status("#FFFF00", content)
+		elif self.entry_plc_name.get() or self.entry_device_name.get():
+			content = "Please enter both the PLC name and device name."
 			self.status_icon.change_icon_status("#FFFF00", content)
 		else:
 			try:
@@ -404,6 +391,9 @@ class NodesUI:
 
 		if self.node is None:
 			content = "Please open a project to check addresses."
+			self.status_icon.change_icon_status("#FFFF00", content)
+		elif self.entry_address.get():
+			content = "Please enter an address to check."
 			self.status_icon.change_icon_status("#FFFF00", content)
 		else: 
 			try:
@@ -444,9 +434,56 @@ class NodesUI:
 
 
 	def display_no_project_message(self, message="Please open a project to display the connections."):
-		self.figure.clf()
-		ax = self.figure.add_subplot(111)
-		ax.text(0.5, 0.5, message, horizontalalignment='center', verticalalignment='center', fontsize=12)
-		ax.axis('off')
-		self.canvas.draw()
+		"""
+		Display a message on the canvas when no project is open.
+
+		Parameters:
+		- message (str): The message to be displayed. Defaults to "Please open a project to display the connections."
+		"""
+
+		if self.figure:
+			self.figure.clear()
+			ax = self.figure.add_subplot(111)
+			ax.text(0.5, 0.5, message, horizontalalignment='center', verticalalignment='center', fontsize=12)
+			ax.axis('off')
+			if self.canvas:
+				self.canvas.draw()
+
+
+	# TODO : add more file types
+	def export_content(self, tab_name):
+		'''Method that is linked to the button in the node list tab, to export the function output of Nodes logic to a file.
+
+		Args:
+			tab_name (str): The name of the tab where the export button is clicked.
+
+		Returns:
+			None
+
+		Raises:
+			ValueError: If the export fails due to an error.
+		'''
+
+		extensions = ["*.csv", "*.xlsx", "*.json"]
+
+		if self.myproject and self.myinterface:
+			if tab_name == "connections":
+				extensions.append("*.png")
+
+			dialog = RadioSelectDialog(self.master, "Choose export option", extensions)
+			
+			try:
+				content = self.node.export_data(dialog.filename, dialog.selection, tab_name)
+				messagebox.showinfo("Export successful", content)
+				self.status_icon.change_icon_status("#39FF14", content)
+			except ValueError as e:
+				content = f"Export failed: {str(e)}"
+				messagebox.showwarning("WARNING", content)
+				self.status_icon.change_icon_status("#FF0000", content)
+		else:
+			self.btn_export_node_list.config(state=tk.DISABLED)
+			self.btn_export_graph.config(state=tk.DISABLED)
+			content = f"Please open a project to view the {tab_name}."
+			self.status_icon.change_icon_status("#FFFF00", content)
+			messagebox.showwarning("WARNING", content)
 

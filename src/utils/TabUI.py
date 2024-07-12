@@ -10,7 +10,7 @@ Last updated: 08/07/2024
 
 from tkinter import ttk
 
-
+# TODO : DOCSTRING
 class Tab:
 	def __init__(self, name, master, main_class_instance, project=None, interface=None):
 		self.name = name

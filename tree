@@ -1,0 +1,31 @@
+root//
+
+       src//
+
+           gui//
+
+                apps//
+
+                    nodesUI.py
+
+                    fileUI.py
+
+                main.py
+
+           utils//
+
+                tabUI.py
+
+                tooltipUI.py
+
+           core
+
+                file.py
+
+                node.py
+
+           main.py
+
+      resources//
+
+      TIA_Openess_Demo.spec
