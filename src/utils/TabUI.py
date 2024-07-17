@@ -12,7 +12,7 @@ from tkinter import ttk
 
 # TODO : DOCSTRING
 class Tab:
-	def __init__(self, name, master, main_class_instance, project=None, interface=None):
+	def __init__(self, name, master, main_class_instance, menubar, project=None, interface=None):
 		self.name = name
 		self.master = master
 		self.main_class_instance = main_class_instance
@@ -20,6 +20,7 @@ class Tab:
 		self.myinterface = interface
 		self.content_frame = None
 		self.tab_content = None
+		self.menubar = menubar
 
 
 		self.create_tab_content()

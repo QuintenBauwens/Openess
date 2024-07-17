@@ -12,8 +12,8 @@ from core.file import File
 class TabSummary(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, project=None, interface=None):
-		super().__init__("summary", master, main_class_instance, project, interface) #mainclass is instance of FileUI
+	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("summary", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -21,8 +21,8 @@ class TabSummary(Tab):
 class TabProjectTree(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, project=None, interface=None):
-		super().__init__("project tree", master, main_class_instance, project, interface) #mainclass is instance of FileUI
+	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("project tree", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -30,8 +30,8 @@ class TabProjectTree(Tab):
 class TabFindBlock(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, project=None, interface=None):
-		super().__init__("find programblock", master, main_class_instance, project, interface) #mainclass is instance of FileUI
+	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("find programblock", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)

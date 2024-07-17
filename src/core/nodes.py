@@ -5,8 +5,12 @@ ToDo: NEED TO GET UPDATED, GET NODES OUT OF THE SUBNET SECTION
 """
 
 from collections import OrderedDict as od
+import logging
 import os
 import re
+import random as rd
+import traceback
+from matplotlib import pyplot as plt
 import pandas as pd
 import datetime
 import networkx as nx
@@ -146,127 +150,235 @@ class Nodes:
 					
 					# Concatenate all network_segments to nodesTable
 					nodesTable = pd.concat([nodesTable, device_df], ignore_index=True)
-			
+		
 		return nodesTable
+	
+
+	def getDeviceTypeColor(self, typeIdentifier):
+		types = {
+		'PLC': {'identifiers': ['S7'], 'color': 'red'},
+		'module': {'identifiers': ['SP', 'ECO', 'PRO'], 'color': 'blue'},
+		'scalance': {'identifiers': 'scalance', 'color': 'green'},
+		'drive': {'identifiers': ['SEW', 'DFS'], 'color': 'yellow'},
+		'other': {'identifiers': [''], 'color': 'gray'}
+		}
+	
+		for deviceType, identifierColor in types.items():
+			if any(identifier in typeIdentifier for identifier in identifierColor['identifiers']):
+				return deviceType, identifierColor['color']
 
 #TODO : verdergaan, labels worden nog niet weergegeven
-	def display_connections(self):
-			"""
-			Display the connections between network interfaces in a graph.
+	def graph_data(self):
+		"""
+		Display the connections between network interfaces in a graph.
 
-			This method creates a graph using the NetworkX library and displays the connections between network interfaces
-			as edges in the graph. The nodes in the graph represent the stations to which the network interfaces belong.
+		This method creates a graph using the NetworkX library and displays the connections between network interfaces
+		as edges in the graph. The nodes in the graph represent the stations to which the network interfaces belong.
 
-			Parameters:
-				None
+		Parameters:
+			None
 
-			Returns:
-				tuple: A tuple containing the following elements:
-					- str: A message indicating the result of the operation.
-					- plotly.graph_objects.Figure: The updated figure object with the graph.
-					- networkx.Graph: The graph object representing the connections between network interfaces.
-			"""
+		Returns:
+			tuple: A tuple containing the following elements:
+				- str: A message indicating the result of the operation.
+				- plotly.graph_objects.Figure: The updated figure object with the graph.
+				- networkx.Graph: The graph object representing the connections between network interfaces.
+		"""
 
-			G = nx.Graph()  # initialize the graph
-			items = self.hardware.GetAllItems()
+		G = nx.Graph()  # initialize the graph
+		items = self.hardware.GetAllItems()
 
-			for deviceitem in items:  # for all items and device items in project
-				network_service = tia.IEngineeringServiceProvider(deviceitem).GetService[hwf.NetworkInterface]()  # get the interface service
-				if isinstance(network_service, hwf.NetworkInterface):  # check whether the service exists
-					for source_port in network_service.Ports:  # get the ports from the interface
-						if source_port.ConnectedPorts.Count != 0:  # check whether the port is connected
-							source_node = str(deviceitem.Parent.GetAttribute('Name'))  # Name of the station of the interface to use as node in the graph
-							target_port = source_port.ConnectedPorts[0]
-							target_node = target_port.Interface.GetAttribute('Name') # Get the name of the station of the connected interface
+		for deviceitem in items:  # for all items and device items in project
+			network_service = tia.IEngineeringServiceProvider(deviceitem).GetService[hwf.NetworkInterface]()  # get the interface service
+			if isinstance(network_service, hwf.NetworkInterface):  # check whether the service exists
+				for source_port in network_service.Ports:  # get the ports from the interface
+					if source_port.ConnectedPorts.Count != 0:  # check whether the port is connected
+						source_node = str(deviceitem.Parent.GetAttribute('Name'))  # Name of the station of the interface to use as node in the graph
+						target_port = source_port.ConnectedPorts[0]
+						target_node = target_port.Interface.GetAttribute('Name') # Get the name of the station of the connected interface
 
-							try:
-								cable_length = target_port.GetAttribute('CableLength') # get the cable length of the connection
-								if cable_length:
-									extract_lenght_digits = re.findall(r'\d+', cable_length)
-									cable_length = int(extract_lenght_digits[0]) if extract_lenght_digits else 50	
-							except:
-								cable_length = 'N/A'
-							
-							G.add_edge(source_node, target_node, length=cable_length)  # add the connection to the graph
-			
-			# Create an interactive Plotly figure
-			pos = nx.spring_layout(G, seed=42)
-			edge_x = []
-			edge_y = []
-			for edge in G.edges():
-				x0, y0 = pos[edge[0]]
-				x1, y1 = pos[edge[1]]
-				edge_x.extend([x0, x1, None])
-				edge_y.extend([y0, y1, None])
+						# get device type
+						source_device_type = deviceitem.Parent.Parent.GetAttribute('TypeIdentifier')
+						target_device_type = target_port.Interface.Parent.Parent.GetAttribute('TypeIdentifier')
+						G.add_node(source_node, deviceType=source_device_type)
+						G.add_node(target_node, deviceType=target_device_type)
+
+						# get the cable length of the connection
+						try:
+							cable_length = target_port.GetAttribute('CableLength') 
+							if cable_length:
+								cable_length = str(cable_length)
+								extract_lenght_digits = re.findall(r'\d+', cable_length)
+								cable_length = int(extract_lenght_digits[0]) if extract_lenght_digits else 50	
+						except: 
+							cable_length = 'N/A'
+						# convert the cable length back to string and add "m" for meters
+						cable_length = str(cable_length) + "m" if cable_length != 'N/A' else cable_length
+
+						G.add_edge(source_node, target_node, length=cable_length)  # add the connection to the graph
+		self.G = G
+		return G
+	
+	# TODO: change legende to device type instead of # of connections
+	def display_graph_interactive(self):
+		"""
+		Displays the graph in an interactive plotly figure with device type-based coloring and improved labels.
+
+		Returns:
+			A tuple containing:
+			- A string indicating the result of the operation.
+			- The plotly figure object or None if an error occurred.
+			- The graph object or None if an error occurred.
+		"""
+
+		G = self.G
+		pos = nx.spring_layout(G, iterations=50, seed=42)
+		
+		edge_traces = []
+		for edge in G.edges():
+			x0, y0 = pos[edge[0]]
+			x1, y1 = pos[edge[1]]
+			# midpoint
+			x_mid, y_mid = (x0 + x1) / 2, (y0 + y1) / 2
 
 			edge_trace = go.Scatter(
-				x=edge_x, y=edge_y,
+				x=[x0, x1, None], y=[y0, y1, None],
 				line=dict(width=0.5, color='#888'),
 				hoverinfo='none',
-				mode='lines')
+				mode='lines',
+				showlegend=False
+				)
+			edge_traces.append(edge_trace)
+    
+			# Hover trace for the midpoint
+			hover_trace = go.Scatter(
+				x=[x_mid], y=[y_mid],
+				text=f"Source: {edge[0]}<br>Target: {edge[1]}<br>Length: {G.edges[edge].get('length', 'N/A')}",
+				mode='markers',
+				hoverinfo='text',
+				marker=dict(size=1, color='rgba(0,0,0,0)'),  # Make the marker invisible
+				showlegend=False
+			)
+			edge_traces.append(hover_trace)
 
+		node_traces = []
+		device_types = nx.get_node_attributes(G, 'deviceType')
+		unique_device_types = list(set(device_types.values()))
+		color_map = {dev_type: f'rgb({int(255*i/len(unique_device_types))},0,255)' 
+						for i, dev_type in enumerate(unique_device_types)}
+		
+		for device_type in unique_device_types:
 			node_x = []
 			node_y = []
-			for node in G.nodes():
-				x, y = pos[node]
-				node_x.append(x)
-				node_y.append(y)
+			node_text = []
+			node_hovertext = []
+			for node, attrs in G.nodes(data=True):
+				if attrs.get('deviceType') == device_type:
+					x, y = pos[node]
+					node_x.append(x)
+					node_y.append(y)
+					short_name = node[:10] + '...' if len(node) > 10 else node
+					node_text.append(short_name)
+					node_hovertext.append(f"Name: {node}<br>Device Type: {attrs['deviceType']}")
 
 			node_trace = go.Scatter(
 				x=node_x, y=node_y,
-				mode='markers',
+				mode='markers+text',
 				hoverinfo='text',
+				text=node_text,
+				textposition="top center",
+				hovertext=node_hovertext,
 				marker=dict(
-					showscale=True,
-					colorscale='YlGnBu',
+					color=color_map[device_type],
 					size=10,
-					colorbar=dict(
-						thickness=15,
-						title='Node Connections',
-						xanchor='left',
-						titleside='right'
-					)
-				)
+					line_width=2
+				),
+				name=device_type,
+				showlegend=True
 			)
+			node_traces.append(node_trace)
 
-			# Add node text and color
-			node_adjacencies = []
-			node_text = []
-			for node, adjacencies in G.adjacency():
-				node_adjacencies.append(len(adjacencies))
-				node_text.append(f'Device: {node}<br># of connections: {len(adjacencies)}')
 
-			node_trace.marker.color = node_adjacencies
-			node_trace.text = node_text
+		layout = go.Layout(
+            title='Network graph',
+            titlefont_size=16,
+            showlegend=True,
+            hovermode='closest',
+            margin=dict(b=20,l=5,r=5,t=40),
+            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+            legend=dict(
+                x=1.05,
+                y=0.5,
+                traceorder="normal",
+                font=dict(family="sans-serif", size=12, color="black"),
+                bgcolor="LightSteelBlue",
+                bordercolor="Black",
+                borderwidth=2
+            )
+        )
 
-			# Add edge text
-			edge_text = []
-			for edge in G.edges(data=True):
-				source, target, data = edge
-				length = data.get('length', 'N/A')
-				edge_text.append(f'Connection: {source} - {target}<br>Cable Length: {length}')
+		fig = go.Figure(data=edge_traces + node_traces, layout=layout)
 
-			edge_trace.text = edge_text
-			edge_trace.hoverinfo = 'text'
+		return "Interactive graph created successfully", fig, G
 
-			# Create the figure
-			fig = go.Figure(data=[edge_trace, node_trace],
-							layout=go.Layout(
-								title='Network Connections',
-								titlefont_size=16,
-								showlegend=False,
-								hovermode='closest',
-								margin=dict(b=20,l=5,r=5,t=40),
-								annotations=[ dict(
-									text="Python code: <a href='https://plotly.com/ipython-notebooks/network-graphs/'> https://plotly.com/ipython-notebooks/network-graphs/</a>",
-									showarrow=False,
-									xref="paper", yref="paper",
-									x=0.005, y=-0.002 ) ],
-								xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-								yaxis=dict(showgrid=False, zeroline=False, showticklabels=False))
-							)
 
-			return 'Connections displayed in the interactive graph.', fig, G
+	def display_graph_rendered(self):
+		"""
+		Display the rendered graph with nodes colored based on their zones.
+
+		Returns:
+			tuple: A tuple containing the following elements:
+				- str: A message indicating that the connections are displayed in the rendered graph.
+				- matplotlib.figure.Figure: The rendered graph figure.
+				- networkx.Graph: The graph object used for rendering.
+		"""
+		
+		if not hasattr(self, 'G'):
+			self.graph_data()
+		
+		colors = ['gold', 'lightblue', 'lightcoral', 'lightgreen', 'mediumblue', 'orange', 'pink', 'saddlebrown', 'skyblue', 'turquoise', 'violet']
+		# define the search pattern for the device name
+		regex = r'(?P<location>\d{6})'
+		G = self.G
+
+		fig, ax = plt.subplots(figsize=(18, 12))
+		pos = nx.spring_layout(G, seed=42)
+
+		# map each zone to a unique color
+		zone_colors = {}
+		default_color = 'gray'
+		for node in G.nodes():
+			match = re.match(regex, node)
+			if not match:
+				continue
+			
+			location = match.group('location')
+			if location not in zone_colors:
+				color = rd.choice(colors)
+				while color in zone_colors.values():
+					color = rd.choice(colors)
+				zone_colors[location] = color
+		
+		# assign the color to each node based on their zone
+		color = [zone_colors.get(re.match(regex, node).group('location') if re.match(regex, node) else None, default_color) for node in G.nodes()]
+
+		nx.draw_networkx_nodes(G, pos, ax=ax, node_size=350, node_color=color)
+		nx.draw_networkx_edges(G, pos, ax=ax, width=1, edge_color='gray', alpha=0.5)
+
+		# show the node names on the graph without the location part
+		node_labels = {node: re.sub(regex, '', node) if re.match(regex, node) else node for node in G.nodes() }
+		nx.draw_networkx_labels(G, pos, ax=ax, labels=node_labels, font_size=8, font_family='sans-serif')
+
+		edge_labels = nx.get_edge_attributes(G, 'length')
+		nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
+
+		# reverse the dictionary to get the color as key and the zone as value
+		legend_labels = {color: zone for zone, color in zone_colors.items()}  
+		plt.legend([plt.Line2D([0], [0], marker='o', color='w', label=k, 
+			markerfacecolor=v, markersize=10) for v, k in legend_labels.items()], legend_labels.values(), title='zones', title_fontsize='large', fontsize='medium', loc='upper right')
+		
+		return 'Connections displayed in the rendered graph.', fig, G
 
 
 	def find_device_nodes(self, plcName, deviceName):
@@ -323,51 +435,60 @@ class Nodes:
 
 
 	def export_data(self, filename, extension, tab):
-		"""
-		Exports data from certain functions.
+			"""
+			Exports data from certain functions.
 
-		Returns:
-			None
-		"""
-		
-		extension = extension[1:]
-		cwd = os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}'
-		directory = os.makedirs(cwd + f"\\{tab}", exist_ok=True) 
-		timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
-		
-		if not filename:
-			filename = timestamp
-		
-		if tab == "node list":
-			_, content = self.getNodeList()
-			df = content
-		elif tab == "connections":
-			_, graph, G = self.display_connections()
+			Args:
+				filename (str): The name of the exported file. If not provided, a timestamp will be used as the filename.
+				extension (str): The file extension of the exported file. Supported extensions are .csv, .xlsx, .json, and .png.
+				tab (str): The tab or category of data to export. Supported tabs are "node list" and "connections".
 
-			if graph:  
-				graph.set_size_inches(18, 12)  
+			Returns:
+				str: A message indicating the success of the export operation.
+
+			Raises:
+				ValueError: If there is no data to export or if the provided extension is not supported.
+			"""
 			
-			nodes_list = list(G.nodes(data=True))
-			nodes_df = pd.DataFrame(nodes_list, columns=['Node', 'Attributes'])
+			extension = extension[1:]
+			cwd = os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}'
+			directory = os.makedirs(cwd + f"\\{tab}", exist_ok=True) 
+			timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+			
+			if not filename:
+				filename = timestamp
+			
+			if tab == "node list":
+				_, content = self.getNodeList()
+				df = content
+			elif tab == "connections":
+				G = self.graph_data()
+				
+				nodes_list = list(G.nodes(data=True))
+				nodes_df = pd.DataFrame(nodes_list, columns=['Node', 'Attributes'])
 
-			edges_list = list(G.edges(data=True))
-			edges_df = pd.DataFrame(edges_list, columns=['Source', 'Target', 'Attributes'])
+				edges_list = list(G.edges(data=True))
+				edges_df = pd.DataFrame(edges_list, columns=['Source', 'Target', 'Attributes'])
 
-			df = pd.concat([nodes_df.assign(Type='Node'), edges_df.assign(Type='Edge')], ignore_index=True)
+				df = pd.concat([nodes_df.assign(Type='Node'), edges_df.assign(Type='Edge')], ignore_index=True)
 
-		export_path = os.path.join(cwd, tab, filename + extension)
-		if extension == ".csv":
-			df.to_csv(export_path, index=False)
-		elif extension == ".xlsx":
-			df.to_excel(export_path, index=False)
-		elif extension == ".json":
-			df.to_json(export_path, orient='records')
-		elif extension == ".png":
-			graph.savefig(export_path)
-		elif df is None or graph is None:
-			raise ValueError("No data to export")
-		else:
-			raise ValueError("Extension not supported. Please use .csv, .xlsx or .json")
-		
-		return f"{tab} exported to {export_path}"
+			export_path = os.path.join(cwd, tab, filename + extension)
+			if extension == ".csv":
+				df.to_csv(export_path, index=False)
+			elif extension == ".xlsx":
+				df.to_excel(export_path, index=False)
+			elif extension == ".json":
+				df.to_json(export_path, orient='records')
+			elif extension == ".png":
+				_, graph, _ = self.display_graph_rendered()
+				
+				if graph:  
+					graph.set_size_inches(18, 12)  
+				graph.savefig(export_path)
+			elif df is None or graph is None:
+				raise ValueError("No data to export")
+			else:
+				raise ValueError("Extension not supported. Please use .csv, .xlsx or .json")
+			
+			return f"{tab} exported to {export_path}"
 

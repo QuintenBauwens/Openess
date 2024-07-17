@@ -9,10 +9,15 @@ import tkinter as tk
 from  tkinter import ttk, scrolledtext, messagebox
 import traceback
 import threading
+from matplotlib import pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+import mpld3
+import streamlit.components.v1 as components
 import webview
 from tkhtmlview import HTMLLabel
 from tkinterweb import HtmlFrame
 import pandas as pd
+import networkx as nx
 
 from utils.tabUI import Tab
 from utils.tooltipUI import RadioSelectDialog
@@ -22,8 +27,8 @@ from core.nodes import Nodes
 class TabNodes(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, project=None, interface=None):
-		super().__init__("node list", master, main_class_instance, project, interface) #mainclass is nodesUI 
+	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("node list", master, main_class_instance, menubar, project, interface) #mainclass is nodesUI 
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_node_list_tab(self)
@@ -31,8 +36,8 @@ class TabNodes(Tab):
 class TabFindDevice(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, project=None, interface=None):
-		super().__init__("find device", master, main_class_instance, project, interface)
+	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("find device", master, main_class_instance, menubar, project, interface)
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_find_device_tab()
@@ -40,8 +45,8 @@ class TabFindDevice(Tab):
 class TabAddressCheck(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, project=None, interface=None):
-		super().__init__("address check", master, main_class_instance, project, interface)
+	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("address check", master, main_class_instance, menubar, project, interface)
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_check_address_tab()
@@ -49,8 +54,8 @@ class TabAddressCheck(Tab):
 class TabDisplayConnections(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, project=None, interface=None):
-		super().__init__("connections", master, main_class_instance, project, interface)
+	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("connections", master, main_class_instance, menubar, project, interface)
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_display_connections_tab()
@@ -112,12 +117,13 @@ class NodesUI:
 			myinterface (object): The interface object.
 			status_icon (object, optional): The status icon object. Defaults to None.
 		"""
+
 		self.master = master
 		self.myproject = myproject
 		self.myinterface = myinterface
 		self.status_icon = status_icon
 		self.frame = None # Frame for the nodes UI set in the mainApp
-
+		self.canvas = None
 		self.node = None
 
 		self.output_node_list = None
@@ -183,7 +189,7 @@ class NodesUI:
 			None
 		'''
 
-		# self.clear_widgets()
+		self.clear_widgets()
 		self.myproject = myproject
 		self.myinterface = myinterface
 		self.initialize_node()
@@ -191,7 +197,6 @@ class NodesUI:
 		self.create_display_connections_tab()
 
 		self.status_icon.change_icon_status("#39FF14", f"Updated project and interface to {myproject} and {myinterface}")
-
 
 
 	def create_node_list_tab(self, tab):
@@ -208,12 +213,11 @@ class NodesUI:
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
 
-		# Clear existing widgets
 		for widget in self.frame.winfo_children():
 			widget.destroy()
 
 		self.btn_get_node_list = ttk.Button(self.frame, text="Get Node List", command=self.show_node_list)
-		self.btn_export_node_list = ttk.Button(self.frame, text="Export", command=lambda: self.export_content(tab.Name), state=tk.NORMAL)
+		self.btn_export_node_list = ttk.Button(self.frame, text="Export", command=lambda: self.export_content(tab.name), state=tk.NORMAL)
 
 		self.btn_get_node_list.grid(row=0, column=0, padx=10, pady=10)
 		self.btn_export_node_list.grid(row=1, column=1, sticky="nw", padx=10, pady=10)
@@ -307,30 +311,27 @@ class NodesUI:
 
 		for widget in self.frame.winfo_children():
 			widget.destroy()
+		
+		self.button_frame = ttk.Frame(self.frame)
+		self.button_frame.pack(side=tk.TOP, pady=10, padx=10)
 
-		button_frame = ttk.Frame(self.frame)
-		button_frame.pack(pady=10)
-
-		self.btn_display_connections = ttk.Button(button_frame, text="Display Graph", command=self.display_connections)
+		self.btn_display_connections = ttk.Button(self.button_frame, text="Open interactive graph", command=self.display_connections_interactive)
 		self.btn_display_connections.pack(side=tk.LEFT, padx=5)
 
-		self.btn_export_graph = tk.Button(button_frame, text="Export", command=lambda: self.export_content("connections"), state=tk.NORMAL)
+		self.btn_export_graph = ttk.Button(self.button_frame, text="Export", command=lambda: self.export_content("connections"), state=tk.NORMAL)
 		self.btn_export_graph.pack(side=tk.LEFT, padx=5)
 
-		# Create a frame to hold the webview
-		self.webview_frame = ttk.Frame(self.frame)
-		self.webview_frame.pack(fill=tk.BOTH, expand=True)
+		# Create a frame to hold the matplotlib graph
+		self.graph_frame = ttk.Frame(self.frame)
+		self.graph_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
-		print("Parent frame size:", self.frame.winfo_width(), self.frame.winfo_height())
-		print("Parent frame visible:", self.frame.winfo_viewable())
-
-		# # Only call display_connections if a project is open
+		# Only call display_connections if a project is open
 		if self.myproject is None and self.myinterface is None:
 			self.btn_display_connections.config(state=tk.DISABLED)
 			self.btn_export_graph.config(state=tk.DISABLED)
 			self.display_no_project_message()
 		else:
-			self.display_connections()
+			self.display_connections_rendered()
 			
 		return self.frame
 
@@ -350,13 +351,10 @@ class NodesUI:
 			try:
 				content = self.node.show_node_table()
 				self.status_icon.change_icon_status("#39FF14", "Node list retrieved successfully")
-				self.output_node_list.insert(tk.END, content.to_string())
 			except Exception as e:
 				content = f"An error occurred: {str(e)}"
 				self.status_icon.change_icon_status("#FF0000", content)
 		self.output_node_list.delete(1.0, tk.END)
-		if isinstance(content, pd.DataFrame):
-			self.output_node_list.insert(tk.END, content.to_string())
 		self.output_node_list.insert(tk.END, content)
 
 
@@ -415,44 +413,60 @@ class NodesUI:
 		self.output_check_address.insert(tk.END, content)
 
 	# FIXME : when selecting connections tab before opening/closeing project raises ERROR: Project could not be closed. invalid comman name ".!fram2.!frame.!frame5.!frame.!scrollledtext"
-	def display_connections(self):
+	def display_connections_rendered(self):
 		if self.node is None:
 			content = "Please open a project to display connections."
 			self.status_icon.change_icon_status("#FFFF00", content)
 			self.display_no_project_message(content)
 			return
-		else:
-			try:
-				content, fig, G = self.node.display_connections()
-				
-				# Save the figure to a temporary HTML file
-				with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.html') as f:
-					fig.write_html(f, include_plotlyjs='cdn', full_html=True)
-					temp_path = f.name
+		try:
+			content, fig, G = self.node.display_graph_rendered()
 
-				# Create and start webview in a separate thread
-				def show_webview():
-					webview.create_window("Connections Graph", temp_path, width=800, height=600)
-					webview.start()
-
-				self.master.after(0, show_webview)
-
-				self.status_icon.change_icon_status("#39FF14", "display_connections retrieved successfully")
-			except Exception as e:
-				content = f"An error occurred: {str(e)}"
-				self.status_icon.change_icon_status("#FF0000", content)
-				self.display_no_project_message(content)
+			if hasattr(self, 'canvas') and self.canvas:
+				self.canvas.get_tk_widget().destroy()
+			
+			self.canvas = FigureCanvasTkAgg(fig, master=self.graph_frame)
+			self.canvas.draw()
+			
+			self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+			self.status_icon.change_icon_status("#39FF14", "display_connections retrieved successfully")
+		except Exception as e:
+			content = f"An error occurred: {str(e)}"
+			self.status_icon.change_icon_status("#FF0000", content)
+			print(content)
 
 
-	def display_no_project_message(self, message="Please open a project to display the connections."):
-		"""
-		Display a message on the canvas when no project is open.
+	def display_connections_interactive(self):
+		self.webview_frame = ttk.Frame(self.frame)
+		self.webview_frame.pack(fill=tk.BOTH, expand=True)
+		
+		try:
+			content, fig, G = self.node.display_graph_interactive()
+			# Save the figure to a temporary HTML file
+			with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.html') as f:
+				fig.write_html(f, include_plotlyjs='cdn', full_html=True)
+				temp_path = f.name
 
-		Parameters:
-		- message (str): The message to be displayed. Defaults to "Please open a project to display the connections."
-		"""
-		ttk.Label(self.webview_frame, text=message).pack(expand=True)
+			# Create and start webview in a separate thread
+			def show_webview():
+				webview.create_window("Connections Graph", temp_path, width=800, height=600)
+				webview.start()
 
+			self.master.after(0, show_webview)
+			self.status_icon.change_icon_status("#39FF14", "display_connections_interactive retrieved successfully")
+		except Exception as e:
+			content = f"An error occurred: {str(e)}"
+			self.status_icon.change_icon_status("#FF0000", content)
+
+
+	def display_no_project_message(self, message="Please open a project to display the connections graph."):
+		"""Method to display a message when no project is open."""
+
+		for widget in self.graph_frame.winfo_children():
+			widget.destroy()
+	
+		ttk.Label(self.frame, text=message).pack(pady=10, padx=10)
+		self.status_icon.change_icon_status("#FFFF00", message)
 
 	# TODO : add more file types
 	def export_content(self, tab_name):
@@ -490,13 +504,3 @@ class NodesUI:
 			content = f"Please open a project to view the {tab_name}."
 			self.status_icon.change_icon_status("#FFFF00", content)
 			messagebox.showwarning("WARNING", content)
-
-# # Create a sample Plotly figure (works)
-		# content, fig, G = self.node.display_connections()
-
-		# # Save the figure to a temporary HTML file
-		# with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmpfile:
-		# 	fig.write_html(tmpfile.name, include_plotlyjs='cdn')
-		# 	# Attempt to load the HTML file into the HtmlFrame
-		# 	self.graph_widget.load_html(tmpfile.name)
-		# 	webbrowser.open(tmpfile.name)

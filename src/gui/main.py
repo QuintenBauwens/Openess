@@ -162,7 +162,7 @@ class mainApp:
 					# create an instance of every subclass of TabUI.Tab in module_classes
 					for class_name, class_obj in module_classes:
 						print(f"Processing class: {class_name}") # type: debug
-						tab_instance = class_obj(self.master, main_class_instance, self.myproject, self.myinterface)
+						tab_instance = class_obj(self.master, main_class_instance, self.menubar, self.myproject, self.myinterface)
 
 						module_menu.add_command(
 							label=tab_instance.name, 
