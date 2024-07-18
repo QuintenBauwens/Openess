@@ -5,11 +5,9 @@ ToDo: NEED TO GET UPDATED, GET NODES OUT OF THE SUBNET SECTION
 """
 
 from collections import OrderedDict as od
-import logging
 import os
 import re
 import random as rd
-import traceback
 from matplotlib import pyplot as plt
 import pandas as pd
 import datetime
@@ -152,22 +150,9 @@ class Nodes:
 					nodesTable = pd.concat([nodesTable, device_df], ignore_index=True)
 		
 		return nodesTable
-	
 
-	def getDeviceTypeColor(self, typeIdentifier):
-		types = {
-		'PLC': {'identifiers': ['S7'], 'color': 'red'},
-		'module': {'identifiers': ['SP', 'ECO', 'PRO'], 'color': 'blue'},
-		'scalance': {'identifiers': 'scalance', 'color': 'green'},
-		'drive': {'identifiers': ['SEW', 'DFS'], 'color': 'yellow'},
-		'other': {'identifiers': [''], 'color': 'gray'}
-		}
-	
-		for deviceType, identifierColor in types.items():
-			if any(identifier in typeIdentifier for identifier in identifierColor['identifiers']):
-				return deviceType, identifierColor['color']
 
-#TODO : verdergaan, labels worden nog niet weergegeven
+#TODO : add more data to the nodes (isProfinet, isProfibus, redundancyRole etc..)
 	def graph_data(self):
 		"""
 		Display the connections between network interfaces in a graph.
@@ -193,13 +178,15 @@ class Nodes:
 			if isinstance(network_service, hwf.NetworkInterface):  # check whether the service exists
 				for source_port in network_service.Ports:  # get the ports from the interface
 					if source_port.ConnectedPorts.Count != 0:  # check whether the port is connected
-						source_node = str(deviceitem.Parent.GetAttribute('Name'))  # Name of the station of the interface to use as node in the graph
+						source_node = deviceitem.Parent.Parent.GetAttribute('Name')  # Name of the station of the interface to use as node in the graph
 						target_port = source_port.ConnectedPorts[0]
 						target_node = target_port.Interface.GetAttribute('Name') # Get the name of the station of the connected interface
 
 						# get device type
-						source_device_type = deviceitem.Parent.Parent.GetAttribute('TypeIdentifier')
-						target_device_type = target_port.Interface.Parent.Parent.GetAttribute('TypeIdentifier')
+						source_device_type = source_port.Interface.Parent.Parent.Parent.GetAttribute('TypeIdentifier')
+						target_container = target_port.Interface.Parent.GetAttribute('Container')
+						target_device_type = target_container.Parent.GetAttribute('TypeIdentifier')
+
 						G.add_node(source_node, deviceType=source_device_type)
 						G.add_node(target_node, deviceType=target_device_type)
 
@@ -218,109 +205,128 @@ class Nodes:
 						G.add_edge(source_node, target_node, length=cable_length)  # add the connection to the graph
 		self.G = G
 		return G
+
+
+	def getDeviceType(self, device_name):
+		types = {
+		'PLC': {'identifiers': ['JC'], 'color': 'red'},
+		'module': {'identifiers': ['JW'], 'color': 'blue'},
+		'scalance': {'identifiers': ['JX'], 'color': 'green'},
+		'drive': {'identifiers': ['UE'], 'color': 'yellow'}
+		}
 	
+		for deviceType, identifier in types.items():
+			if any(identifier in device_name for identifier in identifier['identifiers']):
+				return deviceType, identifier['color']
+		return 'other', 'gray'
+
+
 	# TODO: change legende to device type instead of # of connections
 	def display_graph_interactive(self):
-		"""
-		Displays the graph in an interactive plotly figure with device type-based coloring and improved labels.
+			"""
+			Displays the graph in an interactive plotly figure with device type-based coloring and improved labels.
 
-		Returns:
-			A tuple containing:
-			- A string indicating the result of the operation.
-			- The plotly figure object or None if an error occurred.
-			- The graph object or None if an error occurred.
-		"""
-
-		G = self.G
-		pos = nx.spring_layout(G, iterations=50, seed=42)
+			Returns:
+				A tuple containing:
+				- A string indicating the result of the operation.
+				- The plotly figure object or None if an error occurred.
+				- The graph object or None if an error occurred.
+			"""
+			G = self.G
+			pos = nx.spring_layout(G, iterations=50, seed=42)
+			
+			# Generate edge traces
+			edge_traces = []
+			for edge in G.edges():
+				x0, y0 = pos[edge[0]]
+				x1, y1 = pos[edge[1]]
+				# midpoint
+				x_mid, y_mid = (x0 + x1) / 2, (y0 + y1) / 2
+				# draw the connection
+				edge_trace = go.Scatter(
+					x=[x0, x1, None], y=[y0, y1, None],
+					line=dict(width=0.5, color='#888'),
+					hoverinfo='none',
+					mode='lines',
+					showlegend=False
+					)
+				edge_traces.append(edge_trace)
 		
-		edge_traces = []
-		for edge in G.edges():
-			x0, y0 = pos[edge[0]]
-			x1, y1 = pos[edge[1]]
-			# midpoint
-			x_mid, y_mid = (x0 + x1) / 2, (y0 + y1) / 2
-
-			edge_trace = go.Scatter(
-				x=[x0, x1, None], y=[y0, y1, None],
-				line=dict(width=0.5, color='#888'),
-				hoverinfo='none',
-				mode='lines',
-				showlegend=False
+				# place marker in the middle of the connection for hover information
+				hover_trace = go.Scatter(
+					x=[x_mid], y=[y_mid],
+					text=f"Source: {edge[0]}<br>Target: {edge[1]}<br>Length: {G.edges[edge].get('length', 'N/A')}",
+					mode='markers',
+					hoverinfo='text',
+					marker=dict(size=1, color='rgba(0,0,0,0)'),  # Make the marker invisible
+					showlegend=False
 				)
-			edge_traces.append(edge_trace)
-    
-			# Hover trace for the midpoint
-			hover_trace = go.Scatter(
-				x=[x_mid], y=[y_mid],
-				text=f"Source: {edge[0]}<br>Target: {edge[1]}<br>Length: {G.edges[edge].get('length', 'N/A')}",
-				mode='markers',
-				hoverinfo='text',
-				marker=dict(size=1, color='rgba(0,0,0,0)'),  # Make the marker invisible
-				showlegend=False
-			)
-			edge_traces.append(hover_trace)
+				edge_traces.append(hover_trace)
 
-		node_traces = []
-		device_types = nx.get_node_attributes(G, 'deviceType')
-		unique_device_types = list(set(device_types.values()))
-		color_map = {dev_type: f'rgb({int(255*i/len(unique_device_types))},0,255)' 
-						for i, dev_type in enumerate(unique_device_types)}
-		
-		for device_type in unique_device_types:
-			node_x = []
-			node_y = []
-			node_text = []
-			node_hovertext = []
+			# Generate node traces
+			node_traces = {}
 			for node, attrs in G.nodes(data=True):
-				if attrs.get('deviceType') == device_type:
-					x, y = pos[node]
-					node_x.append(x)
-					node_y.append(y)
-					short_name = node[:10] + '...' if len(node) > 10 else node
-					node_text.append(short_name)
-					node_hovertext.append(f"Name: {node}<br>Device Type: {attrs['deviceType']}")
+				print(node)
+				device_type, color = self.getDeviceType(node)
+				print(device_type, color)
+				if device_type not in node_traces:
+					node_traces[device_type] = {
+						'x': [], 'y': [], 'text': [], 'hovertext': [], 'color': color
+					}
 
-			node_trace = go.Scatter(
-				x=node_x, y=node_y,
-				mode='markers+text',
-				hoverinfo='text',
-				text=node_text,
-				textposition="top center",
-				hovertext=node_hovertext,
-				marker=dict(
-					color=color_map[device_type],
-					size=10,
-					line_width=2
-				),
-				name=device_type,
-				showlegend=True
+				x, y = pos[node]
+				node_traces[device_type]['x'].append(x)
+				node_traces[device_type]['y'].append(y)
+				short_name = node[:10] + '...' if len(node) > 10 else node
+				node_traces[device_type]['text'].append(short_name)
+				node_traces[device_type]['hovertext'].append(
+					f"Name: {node}<br>Device Type: {attrs.get('deviceType', 'N/A')}<br>")
+					
+			# Combine edge and node traces
+			traces = edge_traces
+			for device_type, trace_data in node_traces.items():
+				trace = go.Scatter(
+					x=trace_data['x'], 
+					y=trace_data['y'],
+					mode='markers+text',
+					hoverinfo='text',
+					text=trace_data['text'],
+					textposition="top center",
+					hovertext=trace_data['hovertext'],
+					marker=dict(
+						color=trace_data['color'],
+						size=10,
+						line_width=2
+					),
+					name=device_type,
+					showlegend=True
+				)
+				traces.append(trace)
+
+			# Configure layout
+			layout = go.Layout(
+				title='Network graph',
+				titlefont_size=16,
+				showlegend=True,
+				hovermode='closest',
+				margin=dict(b=20,l=5,r=5,t=40),
+				xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+				yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+				legend=dict(
+					x=1.05,
+					y=0.5,
+					traceorder="normal",
+					font=dict(family="sans-serif", size=12, color="black"),
+					bgcolor="LightSteelBlue",
+					bordercolor="Black",
+					borderwidth=2
+				)
 			)
-			node_traces.append(node_trace)
 
+			# Create plotly figure
+			fig = go.Figure(data=traces, layout=layout)
 
-		layout = go.Layout(
-            title='Network graph',
-            titlefont_size=16,
-            showlegend=True,
-            hovermode='closest',
-            margin=dict(b=20,l=5,r=5,t=40),
-            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-            legend=dict(
-                x=1.05,
-                y=0.5,
-                traceorder="normal",
-                font=dict(family="sans-serif", size=12, color="black"),
-                bgcolor="LightSteelBlue",
-                bordercolor="Black",
-                borderwidth=2
-            )
-        )
-
-		fig = go.Figure(data=edge_traces + node_traces, layout=layout)
-
-		return "Interactive graph created successfully", fig, G
+			return "Interactive graph created successfully", fig, G
 
 
 	def display_graph_rendered(self):
@@ -363,7 +369,7 @@ class Nodes:
 		# assign the color to each node based on their zone
 		color = [zone_colors.get(re.match(regex, node).group('location') if re.match(regex, node) else None, default_color) for node in G.nodes()]
 
-		nx.draw_networkx_nodes(G, pos, ax=ax, node_size=350, node_color=color)
+		nx.draw_networkx_nodes(G, pos, ax=ax, node_size=100, node_color=color)
 		nx.draw_networkx_edges(G, pos, ax=ax, width=1, edge_color='gray', alpha=0.5)
 
 		# show the node names on the graph without the location part
@@ -429,7 +435,7 @@ class Nodes:
 					nodes = device_info[0]['nodes']  # gives the dictionary with the nodes key
 					if address in nodes.values():  # checking if a value of a node is equal to the input address
 						node_name = [name for name, ip in nodes.items() if ip == address]  # Vind de node_name
-						return f"Address \'{address}\' is already in use by {node_name} in device \'{device_name}\' in plc \'{plc_name}\'"
+						return f"Address \'{address}\' is already in use by \'{device_name}\' on port {node_name} connected to plc \'{plc_name}\'"
 					
 		return f"Address \'{address}\' is not in use"
 

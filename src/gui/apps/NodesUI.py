@@ -1,5 +1,4 @@
 """
-
 Author: Quinten Bauwens
 Last updated: 09/07/2024
 """
@@ -16,8 +15,7 @@ import streamlit.components.v1 as components
 import webview
 from tkhtmlview import HTMLLabel
 from tkinterweb import HtmlFrame
-import pandas as pd
-import networkx as nx
+
 
 from utils.tabUI import Tab
 from utils.tooltipUI import RadioSelectDialog
@@ -398,7 +396,7 @@ class NodesUI:
 		if self.node is None:
 			content = "Please open a project to check addresses."
 			self.status_icon.change_icon_status("#FFFF00", content)
-		elif self.entry_address.get():
+		elif not self.entry_address.get():
 			content = "Please enter an address to check."
 			self.status_icon.change_icon_status("#FFFF00", content)
 		else: 
@@ -412,7 +410,7 @@ class NodesUI:
 		self.output_check_address.delete(1.0, tk.END)
 		self.output_check_address.insert(tk.END, content)
 
-	# FIXME : when selecting connections tab before opening/closeing project raises ERROR: Project could not be closed. invalid comman name ".!fram2.!frame.!frame5.!frame.!scrollledtext"
+
 	def display_connections_rendered(self):
 		if self.node is None:
 			content = "Please open a project to display connections."

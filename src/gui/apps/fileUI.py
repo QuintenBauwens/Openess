@@ -5,6 +5,8 @@ Last updated: 09/07/2024
 
 import tkinter as tk
 from  tkinter import ttk, scrolledtext, messagebox
+
+import pandas as pd
 from utils.tabUI import Tab
 from utils.tooltipUI import RadioSelectDialog
 from core.file import File
@@ -32,6 +34,15 @@ class TabFindBlock(Tab):
 
 	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
 		super().__init__("find programblock", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+
+	def create_tab_content(self):
+		self.tab_content = self.main_class_instance.create_tab(self)
+
+class TabTags(Tab):
+	'''class to create the menu sub-items for the file head-item in the main menu'''
+
+	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("project tags", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -82,7 +93,6 @@ class FileUI:
 			self.status_icon.change_icon_status("#39FF14", f'Updated project and interface to {myproject} and {myinterface}')
 
 
-
 	def create_tab(self, tab):
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
@@ -123,7 +133,6 @@ class FileUI:
 		section2.grid(row=0, padx=10, pady=10)
 
 		self.output_tab.config(height=5)
-		self.btn_export_output.config(state=tk.DISABLED)
 		ttk.Label(section2, text="block name").grid(row=0, column=0, pady=5, padx=5)
 		self.entry_block_name = ttk.Entry(section2)
 		self.entry_block_name.grid(row=0, column=1, pady=5, padx=5)
@@ -147,27 +156,42 @@ class FileUI:
 				elif tab.name == "find programblock":
 					if self.entry_block_name.get():
 						block_name = self.entry_block_name.get()
-						content = self.file.find_block_group(block_name)
+						bool, content = self.file.find_block_location(block_name)
+						if not bool:
+							self.btn_export_output.config(state=tk.DISABLED)
+						else:
+							self.btn_export_output.config(state=tk.NORMAL)
 					else:
 						content = "Please enter a block name to search for."
 						self.status_icon.change_icon_status("#FFFF00", content)
+						self.btn_export_output.config(state=tk.DISABLED)
+				elif tab.name == "project tags":
+					content = self.file.show_tagTables()
 				
 				self.status_icon.change_icon_status("#39FF14", f'{tab.name} retrieved successfully')
 			except Exception as e:
 				content = f"An error occurred: {str(e)}"
 				self.status_icon.change_icon_status("#FF0000", content)
 		self.output_tab.delete(1.0, tk.END)
-		self.output_tab.insert(tk.END, content)
+		if not isinstance(content, pd.DataFrame):
+			self.output_tab.insert(tk.END, content)
+		else:
+			self.output_tab.insert(tk.END, content.to_string())
 
 
 	def export_content(self, tab):
 		'''method that is linked to the button in the node list tab, to export the function output of Nodes logic to a file'''
 
 		if self.myproject and self.myinterface:
-			dialog = RadioSelectDialog(self.master, "Choose export option", ["*.csv", "*.xlsx", "*.json"])
+			dialog_options = ["*.csv", "*.xlsx", "*.json"]
+			
+			if tab.name == "find programblock":
+				dialog_options = ["*.xlm"]
+
+			dialog = RadioSelectDialog(self.master, "Choose export option", dialog_options)
 			try:
 				selected_tab = tab.name
-				content = self.file.export_data(dialog.filename, dialog.selection, selected_tab)
+				content = self.file.export_data(dialog.filename, dialog.selection, selected_tab, self)
 				messagebox.showinfo("Export successful", content)
 				self.status_icon.change_icon_status("#39FF14", content)
 			except ValueError as e:

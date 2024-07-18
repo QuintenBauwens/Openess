@@ -42,8 +42,8 @@ class Software:
         """
 
         PLC_List = self.hardware.get_plc_devices()
-        software_container = PLC_List[0].GetService[hwf.SoftwareContainer]() # Get the plc software of the first plc in the list
-        return software_container.Software # Get the software of the plc out of the software container
+        self.software_container = PLC_List[0].GetService[hwf.SoftwareContainer]().Software # Get the plc software of the first plc in the list
+        return self.software_container # Get the software of the plc out of the software container
 
 
     def get_software_blocks(self, group, blocks={}):
@@ -66,3 +66,41 @@ class Software:
             for sub_group in group.Groups:
                 self.get_software_blocks(sub_group, blocks)
         return blocks
+    
+
+    def get_block(self, group, block_name):
+        """
+        Retrieves a software block with the given name.
+
+        Parameters:
+        - block_name (str): The name of the software block to retrieve.
+
+        Returns:
+        - block: The software block with the given name, or None if not found.
+        """
+
+        blocks = self.get_software_blocks(group)
+        for blockgroup in blocks:
+            for block in blocks[blockgroup]:
+                if block.Name.upper() == block_name.upper():
+                    return block
+
+
+    def get_tags(self, group):
+        """
+        Retrieves all the tags in a given tag table.
+
+        Args:
+            tag_table: The tag table to retrieve the tags from.
+
+        Returns:
+            list: A list containing the tags in the tag table.
+        """
+
+        # Get all the Tags within a group
+        Tags = set() # set to store all the Tags
+        for table in group.TagTables: # all the tagtables directly in the folder
+            Tags.update(table.Tags) # add all the tags of the tagtables to the set
+        for sub_group in group.Groups: # for all the subgroups in the folder
+            Tags.update(self.get_Tags(sub_group)) # get all the tags of the subgroup
+        return Tags # returns the set of all the tags
