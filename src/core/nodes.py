@@ -40,6 +40,9 @@ class Nodes:
 		export_node_list(self, filename, extension): Exports the node list to a file.
 		find_device_nodes(self, plcName, deviceName): Returns the nodes of a device.
 		address_exists(self, address): Checks if an address is already in use.
+		graph_data(self): Display the connections between network interfaces in a graph.
+		getDeviceType(self, device_name): Returns the device type based on the device name.
+		display_graph_interactive(self): Displays the graph in an interactive plotly figure with device type-based coloring and improved labels.
 	"""
 
 	def __init__(self, myproject, myinterface):
@@ -148,26 +151,16 @@ class Nodes:
 					
 					# Concatenate all network_segments to nodesTable
 					nodesTable = pd.concat([nodesTable, device_df], ignore_index=True)
-		
 		return nodesTable
 
 
-#TODO : add more data to the nodes (isProfinet, isProfibus, redundancyRole etc..)
+	#TODO : add more data to the nodes (isProfinet, isProfibus, redundancyRole etc..)
 	def graph_data(self):
 		"""
-		Display the connections between network interfaces in a graph.
-
-		This method creates a graph using the NetworkX library and displays the connections between network interfaces
-		as edges in the graph. The nodes in the graph represent the stations to which the network interfaces belong.
-
-		Parameters:
-			None
+		Generates a graph representation of the network connections between devices.
 
 		Returns:
-			tuple: A tuple containing the following elements:
-				- str: A message indicating the result of the operation.
-				- plotly.graph_objects.Figure: The updated figure object with the graph.
-				- networkx.Graph: The graph object representing the connections between network interfaces.
+			nx.Graph: The generated graph object representing the network connections.
 		"""
 
 		G = nx.Graph()  # initialize the graph
@@ -196,7 +189,7 @@ class Nodes:
 							if cable_length:
 								cable_length = str(cable_length)
 								extract_lenght_digits = re.findall(r'\d+', cable_length)
-								cable_length = int(extract_lenght_digits[0]) if extract_lenght_digits else 50	
+								cable_length = int(extract_lenght_digits[0]) if extract_lenght_digits else 50    
 						except: 
 							cable_length = 'N/A'
 						# convert the cable length back to string and add "m" for meters
@@ -206,15 +199,27 @@ class Nodes:
 		self.G = G
 		return G
 
-
+	# FIXME: scalance and module needs to be fixed they both get called JW sometimes
 	def getDeviceType(self, device_name):
+		"""
+		Returns the device type and color based on the given device name.
+
+		Parameters:
+		- device_name (str): The name of the device.
+
+		Returns:
+		- device_type (str): The type of the device.
+		- color (str): The color associated with the device type.
+
+		"""
+
 		types = {
-		'PLC': {'identifiers': ['JC'], 'color': 'red'},
-		'module': {'identifiers': ['JW'], 'color': 'blue'},
-		'scalance': {'identifiers': ['JX'], 'color': 'green'},
-		'drive': {'identifiers': ['UE'], 'color': 'yellow'}
+			'PLC': {'identifiers': ['JC'], 'color': 'red'},
+			'module': {'identifiers': ['JW'], 'color': 'blue'},
+			'scalance': {'identifiers': ['JX'], 'color': 'green'},
+			'drive': {'identifiers': ['UE'], 'color': 'yellow'}
 		}
-	
+
 		for deviceType, identifier in types.items():
 			if any(identifier in device_name for identifier in identifier['identifiers']):
 				return deviceType, identifier['color']
@@ -266,9 +271,7 @@ class Nodes:
 			# Generate node traces
 			node_traces = {}
 			for node, attrs in G.nodes(data=True):
-				print(node)
 				device_type, color = self.getDeviceType(node)
-				print(device_type, color)
 				if device_type not in node_traces:
 					node_traces[device_type] = {
 						'x': [], 'y': [], 'text': [], 'hovertext': [], 'color': color

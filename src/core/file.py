@@ -12,6 +12,7 @@ from System.IO import FileInfo
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll")
 import Siemens.Engineering as tia
 from core.software import Software
+from core.hardware import Hardware
 
 class File:
 	"""
@@ -90,7 +91,8 @@ class File:
 			str: The location of the block in the TIA.
 		"""
 
-		blocks_dict = self.software_instance.get_software_blocks(self.software_container.BlockGroup)
+		main_plc = self.software_instance.PLC_list[0]
+		blocks_dict = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup)
 
 		for group, block_list in blocks_dict.items():
 			for block in block_list:
@@ -107,7 +109,8 @@ class File:
 			str: The project tree.
 		"""
 
-		blocks = self.software_instance.get_software_blocks(self.software_container.BlockGroup)
+		main_plc = self.software_instance.PLC_list[0]
+		blocks = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup)
 		blocks_list = []
 		text = ""
 
@@ -117,33 +120,8 @@ class File:
 				text += f"\t{block.Name}\n"
 				blocks_list.append({"Group Name": group_name.Name, "Block Name": block.Name})
 		return text, blocks_list
-	
 
-	def get_project_tags(self):
-		"""
-		Generates a list of the project tags.
-
-		Returns:
-			dict: A dictionary containing all the project tags. The keys are the table names and the values are sets of tags.
-		"""
-		
-		group = self.software_container.TagTableGroup
-		Tags = {}  
-		# all the tagtables directly in the folder
-		for table in group.TagTables:  
-			Tags[table] = set(table.Tags)
-		# get all the tags of the subgroup
-		for sub_group in group.Groups: 
-			sub_group_tags = self.project_tags(sub_group)  
-			
-			for table, tags in sub_group_tags.items():
-				if table in Tags:
-					Tags[table].update(tags)  # Merge tags if table already exists
-				else:
-					Tags[table] = tags  # Add new table and its tags
-		return Tags
-
-
+	# FIXME - This method is not working as expected in gui scrollfield
 	def show_tagTables(self):
 		"""
 		Retrieves the project tags and creates a DataFrame with the tag tables and tags.
@@ -152,17 +130,28 @@ class File:
 			df (pandas.DataFrame): DataFrame containing the tag tables and tags.
 		"""
 
-		tags = self.get_project_tags()
-		df = pd.DataFrame(columns=['tag-table', 'tag'])
+		IO_type_dict = {'I':'Input', 'Q': 'Output', 'M':'Other'}
+		tags = self.software_instance.get_project_tags()
+		df = pd.DataFrame()
 
 		for table in tags.keys():
+			plc_name = table.Parent.Parent.GetAttribute("Name")
 			for tag in tags[table]:
-				dff = pd.DataFrame({
-					'tag-table': [table.Name],  
-					'tag': [tag.Name],
-				}, index=[0])
+				comment = ''.join(s.Text for s in tag.Comment.Items)
+
+				add_data_df = pd.DataFrame({
+					'plc' : [plc_name],
+					'Table': [table.Name],  
+					'Tag': [tag.Name],
+					'LogAddr': [tag.LogicalAddress],
+					'Address': [float(''.join(s for s in tag.LogicalAddress if s.isdigit()))/10],
+					'comment': [comment],
+					'DataType': [tag.DataTypeName],
+					'IO': [IO_type_dict[tag.LogicalAddress[1]]]
+				})
 				
-				df = pd.concat([df, dff], ignore_index=True)
+				df = pd.concat([df, add_data_df], ignore_index=True)
+
 		return df
 
 

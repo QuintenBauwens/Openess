@@ -7,100 +7,116 @@ import clr
 # add the reference to the Siemens.Engineering.dll
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll") 
 import Siemens.Engineering.HW.Features as hwf
+import Siemens.Engineering as tia
 from core.hardware import Hardware
 
 class Software:
-    """
-    Represents the extraction of software components in the system/plc by useing the PLC-software container.
+	"""
+	Represents the extraction of software components in the system/plc by using the PLC-software container.
 
-    Args:
-        myproject (str): The project associated with the software.
-        myinterface (str): The interface used by the software.
+	Args:
+		myproject (str): The project associated with the software.
+		myinterface (str): The interface used by the software.
 
-    Attributes:
-        myproject (str): The project associated with the software.
-        myinterface (str): The interface used by the software.
-        hardware (Hardware): The hardware component associated with the software.
+	Attributes:
+		myproject (str): The project associated with the software.
+		myinterface (str): The interface used by the software.
+		hardware (Hardware): The hardware component associated with the software.
 
-    Methods:
-        get_software_container: Retrieves the software container of the first PLC device.
-        get_software_blocks: Retrieves all the blocks in a given group recursively.
-    """
+	Methods:
+		get_software_container: Retrieves the software container of the first PLC device.
+		get_software_blocks: Retrieves all the blocks in a given group recursively.
+	"""
 
-    def __init__(self, myproject, myinterface) -> None:
-        self.myproject = myproject
-        self.myinterface = myinterface
-        self.hardware = Hardware(self.myproject, self.myinterface)
+	def __init__(self, myproject, myinterface) -> None:
+		self.myproject = myproject
+		self.myinterface = myinterface
+		self.hardware = Hardware(self.myproject, self.myinterface)
+		self.software_container = {}
+		self.PLC_list = self.hardware.get_plc_devices()
 
+	def get_software_container(self):
+		"""
+		Retrieves the software container of all PLC devices.
 
-    def get_software_container(self):
-        """
-        Retrieves the software container of the first PLC device.
+		Returns:
+			SoftwareContainer: List of the software container of all PLC devices.
+		"""
+		
+		for plc in self.PLC_list:
+			self.software_container[plc.Name] = tia.IEngineeringServiceProvider(plc).GetService[hwf.SoftwareContainer]().Software
+		return self.software_container
 
-        Returns:
-            SoftwareContainer: The software container of the first PLC device.
-        """
+	def get_software_blocks(self, group, blocks={}):
+		"""
+		Retrieves all the blocks in a given group recursively.
 
-        PLC_List = self.hardware.get_plc_devices()
-        self.software_container = PLC_List[0].GetService[hwf.SoftwareContainer]().Software # Get the plc software of the first plc in the list
-        return self.software_container # Get the software of the plc out of the software container
+		Args:
+			group: The group to retrieve the blocks from.
+			blocks (dict): A dictionary to store the blocks. (default: {})
 
+		Returns:
+			dict: A dictionary containing the blocks in the group.
+		"""
 
-    def get_software_blocks(self, group, blocks={}):
-        """
-        Retrieves all the blocks in a given group recursively.
+		if blocks is None:
+			blocks = {}
+		if group not in blocks:
+			blocks[group] = []
+			blocks[group].extend([block for block in group.Blocks])
+			for sub_group in group.Groups:
+				self.get_software_blocks(sub_group, blocks)
+		return blocks
 
-        Args:
-            group: The group to retrieve the blocks from.
-            blocks (dict): A dictionary to store the blocks. (default: {})
+	def get_block(self, group, block_name):
+		"""
+		Retrieves a software block with the given name.
 
-        Returns:
-            dict: A dictionary containing the blocks in the group.
-        """
+		Parameters:
+		- block_name (str): The name of the software block to retrieve.
 
-        if blocks is None:
-            blocks = {}
-        if group not in blocks: # Instance group is in more than one group, so we need to check if the group is already in the dictionary
-            blocks[group] = []
-            blocks[group].extend([block for block in group.Blocks])
-            for sub_group in group.Groups:
-                self.get_software_blocks(sub_group, blocks)
-        return blocks
-    
+		Returns:
+		- block: The software block with the given name, or None if not found.
+		"""
 
-    def get_block(self, group, block_name):
-        """
-        Retrieves a software block with the given name.
+		blocks = self.get_software_blocks(group)
+		for blockgroup in blocks:
+			for block in blocks[blockgroup]:
+				if block.Name.upper() == block_name.upper():
+					return block
 
-        Parameters:
-        - block_name (str): The name of the software block to retrieve.
+	def get_project_tags(self, group=None):
+		"""
+		Generates a list of the project tags.
 
-        Returns:
-        - block: The software block with the given name, or None if not found.
-        """
+		Args:
+			group: The tag table group to retrieve the tags from. Defaults to None.
 
-        blocks = self.get_software_blocks(group)
-        for blockgroup in blocks:
-            for block in blocks[blockgroup]:
-                if block.Name.upper() == block_name.upper():
-                    return block
+		Returns:
+			dict: A dictionary containing all the project tags. The keys are the table names and the values are sets of tags.
+		"""
 
-
-    def get_tags(self, group):
-        """
-        Retrieves all the tags in a given tag table.
-
-        Args:
-            tag_table: The tag table to retrieve the tags from.
-
-        Returns:
-            list: A list containing the tags in the tag table.
-        """
-
-        # Get all the Tags within a group
-        Tags = set() # set to store all the Tags
-        for table in group.TagTables: # all the tagtables directly in the folder
-            Tags.update(table.Tags) # add all the tags of the tagtables to the set
-        for sub_group in group.Groups: # for all the subgroups in the folder
-            Tags.update(self.get_Tags(sub_group)) # get all the tags of the subgroup
-        return Tags # returns the set of all the tags
+		Tags = {}
+		if group is None:
+			for plc in self.PLC_list:
+				group = self.software_container[plc.Name].TagTableGroup
+				for table in group.TagTables:
+					Tags[table] = set(table.Tags)
+				for sub_group in group.Groups:
+					sub_group_tags = self.get_project_tags(sub_group)
+					for table, tags in sub_group_tags.items():
+						if table in Tags:
+							Tags[table].update(tags)
+						else:
+							Tags[table] = tags
+		else:
+			for table in group.TagTables:
+				Tags[table] = set(table.Tags)
+			for sub_group in group.Groups:
+				sub_group_tags = self.get_project_tags(sub_group)
+				for table, tags in sub_group_tags.items():
+					if table in Tags:
+						Tags[table].update(tags)
+					else:
+						Tags[table] = tags
+		return Tags

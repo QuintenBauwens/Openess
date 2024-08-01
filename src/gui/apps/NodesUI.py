@@ -123,6 +123,8 @@ class NodesUI:
 		self.frame = None # Frame for the nodes UI set in the mainApp
 		self.canvas = None
 		self.node = None
+		self.webview_window = None
+		self.temp_path = None
 
 		self.output_node_list = None
 		self.output_find_device = None
@@ -369,7 +371,7 @@ class NodesUI:
 		if self.node is None:
 			content = "Please open a project to find nodes."
 			self.status_icon.change_icon_status("#FFFF00", content)
-		elif self.entry_plc_name.get() or self.entry_device_name.get():
+		elif not self.entry_plc_name.get() or not self.entry_device_name.get():
 			content = "Please enter both the PLC name and device name."
 			self.status_icon.change_icon_status("#FFFF00", content)
 		else:
@@ -412,6 +414,16 @@ class NodesUI:
 
 
 	def display_connections_rendered(self):
+		"""
+		Display the rendered connections graph on the GUI canvas.
+
+		If no project is open, a message will be displayed indicating that a project needs to be opened.
+		If an error occurs during the rendering process, an error message will be displayed.
+
+		Returns:
+			None
+		"""
+
 		if self.node is None:
 			content = "Please open a project to display connections."
 			self.status_icon.change_icon_status("#FFFF00", content)
@@ -422,10 +434,10 @@ class NodesUI:
 
 			if hasattr(self, 'canvas') and self.canvas:
 				self.canvas.get_tk_widget().destroy()
-			
+
 			self.canvas = FigureCanvasTkAgg(fig, master=self.graph_frame)
 			self.canvas.draw()
-			
+
 			self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 			self.status_icon.change_icon_status("#39FF14", "display_connections retrieved successfully")
 		except Exception as e:
@@ -435,26 +447,71 @@ class NodesUI:
 
 
 	def display_connections_interactive(self):
+		"""
+		Displays the connections interactively.
+
+		If the webview window is already open, it will be shown.
+		Otherwise, a new webview window will be created and displayed.
+
+		Returns:
+			None
+		"""
+
+		if self.webview_window is not None:
+			self.webview_window.show()
+			return
+
 		self.webview_frame = ttk.Frame(self.frame)
 		self.webview_frame.pack(fill=tk.BOTH, expand=True)
 		
 		try:
 			content, fig, G = self.node.display_graph_interactive()
-			# Save the figure to a temporary HTML file
+			# save the figure to a temporary HTML file
 			with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.html') as f:
 				fig.write_html(f, include_plotlyjs='cdn', full_html=True)
-				temp_path = f.name
+				self.temp_path = f.name
 
-			# Create and start webview in a separate thread
-			def show_webview():
-				webview.create_window("Connections Graph", temp_path, width=800, height=600)
-				webview.start()
-
-			self.master.after(0, show_webview)
+			self.master.after(0, self.create_webview)
 			self.status_icon.change_icon_status("#39FF14", "display_connections_interactive retrieved successfully")
 		except Exception as e:
 			content = f"An error occurred: {str(e)}"
 			self.status_icon.change_icon_status("#FF0000", content)
+
+
+	def create_webview(self):
+			"""
+			Create a webview window to display the connections graph.
+
+			This method creates a webview window using the `webview.create_window` function
+			and displays the connections graph using the specified `temp_path` file.
+			The window is set to a width of 800 pixels and a height of 600 pixels.
+			The `webview.start` function is called to start the webview event loop.
+
+			Note: The `temp_path` attribute must be set before calling this method.
+
+			"""
+
+			if self.webview_window is None and self.temp_path:
+				self.webview_window = webview.create_window("Connections Graph", self.temp_path, width=800, height=600)
+				webview.start()
+
+
+	def on_closing(self):
+		"""
+		Callback method called when the window is being closed.
+		It closes the webview window if it exists and cleans up any temporary files.
+		"""
+		
+		# close the webview window if it exists
+		if self.webview_window:
+			self.webview_window.destroy()
+		# clean up temporary file
+		if self.temp_path:
+			import os
+			try:
+				os.remove(self.temp_path)
+			except:
+				pass
 
 
 	def display_no_project_message(self, message="Please open a project to display the connections graph."):

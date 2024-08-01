@@ -18,6 +18,7 @@ ToDo: FEATURE LOG LATER ON, SIEMENS FORCE STOP NEEDS TO BE REPLACED, COMPLETE TH
 
 import importlib
 import inspect
+import threading
 import tkinter as tk
 from  tkinter import BooleanVar, ttk, messagebox
 import subprocess
@@ -44,11 +45,12 @@ class mainApp:
 		self.myproject = None
 		self.myinterface = None
 		self.master = master
+		self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
 		self.base_title = "TIA openess demo"
 		master.title(self.base_title)
 		master.geometry("1000x500")
 		master.iconbitmap("resources\\img\\tia.ico")
-		# give me the path to resources folder
+		
 		# permanent frame for the project section (header)
 		self.permanent_frame = ttk.Frame(master)
 		self.permanent_frame.pack(side="top", fill="x")
@@ -318,6 +320,20 @@ class mainApp:
 			self.update_action_label(message)
 			self.status_icon.change_icon_status("#FF0000", message)
 
+
+	# close instances that need to be closed before closing the main window
+	def on_closing(self):
+		if messagebox.askokcancel("Quit", "Do you want to quit?"):
+			# close NodesUI instance
+			for module_name, module_instance in self.modules.items():
+				if isinstance(module_instance, NodesUI):
+					module_instance.on_closing()
+			
+			# close the Tkinter window
+			self.master.destroy()
+
+			# force exit the program
+			os._exit(0)
 
 	def update_action_label(self, text):
 		'''update the action label with the given text'''

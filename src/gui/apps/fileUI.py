@@ -7,6 +7,7 @@ import tkinter as tk
 from  tkinter import ttk, scrolledtext, messagebox
 
 import pandas as pd
+from pandastable import Table, TableModel
 from utils.tabUI import Tab
 from utils.tooltipUI import RadioSelectDialog
 from core.file import File
@@ -58,6 +59,7 @@ class FileUI:
 		self.myinterface = myinterface
 		self.status_icon = status_icon
 		self.frame = None # Frame for the file UI set in the mainApp
+		self.table_frame = None
 		self.tabs = {}
 
 		self.output_tab = None
@@ -96,30 +98,38 @@ class FileUI:
 	def create_tab(self, tab):
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
-		# Clear existing widgets
+		# clear existing widgets
 		for widget in self.frame.winfo_children():
 			widget.destroy()
 
-		# Configure the frame to expand in both directions
+		# configure the frame to expand in both directions
 		self.frame.grid_columnconfigure(0, weight=1)
 		self.frame.grid_rowconfigure(1, weight=1)
 
-		# Section 1 for output_tab (all tabs have this section)
-		section1 = ttk.Frame(self.frame)
-		section1.grid(row=1, padx=5, pady=5, sticky="nsew")
-		section1.columnconfigure(0, weight=1)
-		section1.rowconfigure(0, weight=1)
+		# section 1 for content 
+		self.section1 = ttk.Frame(self.frame)
+		self.section1.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
+		self.section1.columnconfigure(0, weight=1)
+		self.section1.rowconfigure(0, weight=1)
 
-		self.output_tab = scrolledtext.ScrolledText(section1, wrap=tk.WORD)
-		self.btn_export_output = ttk.Button(self.frame, text="Export", command=lambda: self.export_content(tab), state=tk.NORMAL)
+		self.output_tab = scrolledtext.ScrolledText(self.section1, wrap=tk.WORD)
 		self.output_tab.grid(row=0, padx=5, pady=5, sticky="nsew")
-		self.btn_export_output.grid(row=1, column=1, sticky="nw", padx=10, pady=5)
+
+		# section 2 for general buttons
+		self.section2 = ttk.Frame(self.frame)
+		self.section2.grid(row=1, column=5, padx=5, pady=5, sticky="nw")
+
+		self.btn_export_output = ttk.Button(self.section2, text="Export", command=lambda: self.export_content(tab), state=tk.NORMAL)
+		self.btn_export_output.grid(row=0, column=0, sticky="nw", padx=10, pady=5)
 		
 		if self.myproject is None:
 			self.btn_export_output.config(state=tk.DISABLED)
 
 		if tab.name == "find programblock":
 			self.created_tab_find_block(tab)
+		
+		if tab.name == "project tags" and self.myproject is not None:
+			self.created_tab_tags(tab)
 
 		if tab.name not in self.tabs.keys():
 			self.tabs[tab.name] = tab
@@ -128,19 +138,27 @@ class FileUI:
 
 
 	def created_tab_find_block(self, tab):
-		# Section 2 for components specific to the tab
-		section2 = ttk.Frame(self.frame)
-		section2.grid(row=0, padx=10, pady=10)
+		# section 3 for components specific to the tab
+		section3 = ttk.Frame(self.frame)
+		section3.grid(row=0, padx=10, pady=10)
 
 		self.output_tab.config(height=5)
-		ttk.Label(section2, text="block name").grid(row=0, column=0, pady=5, padx=5)
-		self.entry_block_name = ttk.Entry(section2)
+		ttk.Label(section3, text="block name").grid(row=0, column=0, pady=5, padx=5)
+		self.entry_block_name = ttk.Entry(section3)
 		self.entry_block_name.grid(row=0, column=1, pady=5, padx=5)
-		section2.columnconfigure(1, weight=1)
+		section3.columnconfigure(1, weight=1)
 
-		self.btn_find_block = ttk.Button(section2, text="Find", command=lambda: self.show_content(tab))
+		self.btn_find_block = ttk.Button(section3, text="Find", command=lambda: self.show_content(tab))
 		self.btn_find_block.grid(row=0, column=2, pady=5, padx=5)
 
+	def created_tab_tags(self, tab):
+		# clear existing widgets in section1
+		for widget in self.section1.winfo_children():
+			widget.destroy()
+
+		# configure the grid for section1 to allow the table to expand
+		self.table_frame = ttk.Frame(self.section1)
+		self.table_frame.grid(row=0, column=0, sticky="nsew")
 
 	def show_content(self, tab):
 		if self.myproject is None:
@@ -167,6 +185,13 @@ class FileUI:
 						self.btn_export_output.config(state=tk.DISABLED)
 				elif tab.name == "project tags":
 					content = self.file.show_tagTables()
+					if isinstance(content, pd.DataFrame):
+						# Create the table, allowing it to expand to fill all available space
+						self.btn_export_output.config(state=tk.NORMAL)
+						self.pt = Table(self.table_frame, dataframe=content, showtoolbar=True, showstatusbar=True)
+						self.pt.grid(row=0, column=0, sticky="nsew")
+						self.pt.show()
+						return 
 				
 				self.status_icon.change_icon_status("#39FF14", f'{tab.name} retrieved successfully')
 			except Exception as e:
