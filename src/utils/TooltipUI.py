@@ -157,10 +157,12 @@ class RadioSelectDialog(simpledialog.Dialog):
 	"""
 
 
-	def __init__(self, parent, title, options):
+	def __init__(self, parent, title, options=None, label_name="", window_info=None):
 		self.options = options
 		self.selection = None
-		self.filename = None
+		self.label_name = label_name
+		self.entryInput = None
+		self.window_info = window_info
 		parent.iconbitmap("resources\\img\\tia.ico")
 		super().__init__(parent, title)
 
@@ -175,11 +177,13 @@ class RadioSelectDialog(simpledialog.Dialog):
 		Returns:
 			tkinter.Tk: The master widget.
 		"""
+		if self.window_info is not None:
+			self.label_info = tk.Label(master, text=self.window_info).pack(anchor=tk.W)
 
 		self.var = tk.StringVar(master)
 		self.var.set(self.options[0])  # standard value
-		self.label = tk.Label(master, text="filename:").pack(anchor=tk.W)
-		self.entry = tk.Entry(master, textvariable=self.filename)
+		self.label = tk.Label(master, text=self.label_name + ':').pack(anchor=tk.W)
+		self.entry = tk.Entry(master, textvariable=self.label_name)
 		self.entry.pack(anchor=tk.W)
 
 		for option in self.options:
@@ -198,4 +202,51 @@ class RadioSelectDialog(simpledialog.Dialog):
 		"""
 
 		self.selection = self.var.get()
-		self.filename = self.entry.get()
+		self.entryInput = self.entry.get()
+
+
+class UserInputDialog(simpledialog.Dialog):
+	def __init__(self, master, title, popup_info=None, components={'button': ['add group'], 'label': [], 'entry': ['input group']}):
+		self.window_info = popup_info
+		self.components = components
+
+		self.info_frame = None
+		self.components_frame = None
+
+		# components in dict for config possibilities
+		self.entries = {}
+		self.buttons = {}
+		self.labels = {}
+
+		master.iconbitmap("resources\\img\\tia.ico")
+		super().__init__(master, title)
+
+	def body(self, master):
+		if self.window_info is not None:
+			self.info_frame = tk.Frame(master)
+			self.info_frame.grid(row=0)
+			self.label_info = tk.Label(self.info_frame, text=self.window_info, font=("Arial", 10, "italic")).grid(row=0, column=0)
+			self.white_space = tk.Label(self.info_frame, text="").grid(row=1, column=0, columnspan=2, pady=10)
+		
+		self.components_frame = tk.Frame(master)
+		self.components_frame.grid(row=2)
+
+		if 'button' in self.components.keys():
+			for button_name in self.components['button']:
+				button = tk.Button(self.components_frame, text=button_name)
+				self.buttons[button_name] = button
+
+		if 'entry' in self.components.keys():
+			for entry_name in self.components['entry']:
+				entry = tk.Entry(self.components_frame, textvariable=entry_name)
+				entry.grid(row=0, column=2)
+				self.entries[entry_name] = entry
+
+		if 'label' in self.components.keys():
+			for label_name in self.components['label']:
+				label = tk.Label(self.components_frame, text=label_name)
+				self.labels[label_name] = label
+		return master
+
+	def apply(self):
+		pass

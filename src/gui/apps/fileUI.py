@@ -7,7 +7,7 @@ import tkinter as tk
 from  tkinter import ttk, scrolledtext, messagebox
 
 import pandas as pd
-from pandastable import Table, TableModel
+from pandastable import Table
 from utils.tabUI import Tab
 from utils.tooltipUI import RadioSelectDialog
 from core.file import File
@@ -138,18 +138,20 @@ class FileUI:
 
 
 	def created_tab_find_block(self, tab):
+		self.output_tab.config(height=5)
 		# section 3 for components specific to the tab
 		section3 = ttk.Frame(self.frame)
 		section3.grid(row=0, padx=10, pady=10)
 
-		self.output_tab.config(height=5)
 		ttk.Label(section3, text="block name").grid(row=0, column=0, pady=5, padx=5)
+
 		self.entry_block_name = ttk.Entry(section3)
 		self.entry_block_name.grid(row=0, column=1, pady=5, padx=5)
-		section3.columnconfigure(1, weight=1)
 
 		self.btn_find_block = ttk.Button(section3, text="Find", command=lambda: self.show_content(tab))
 		self.btn_find_block.grid(row=0, column=2, pady=5, padx=5)
+
+		section3.columnconfigure(1, weight=1)
 
 	def created_tab_tags(self, tab):
 		# clear existing widgets in section1
@@ -163,14 +165,14 @@ class FileUI:
 	def show_content(self, tab):
 		if self.myproject is None:
 			self.btn_export_output.config(state=tk.DISABLED)
-			content = f'Please open a project to view the {tab.name}.'
+			content = f'Please open a project to view the content in {tab.name}.'
 			self.status_icon.change_icon_status("#FFFF00", content)
 		else:
 			try:
 				if tab.name == "summary":
 					content, _ = self.file.file_summary()
 				elif tab.name == "project tree":
-					content, _ = self.file.projectTree()
+					content = self.file.projectTree()
 				elif tab.name == "find programblock":
 					if self.entry_block_name.get():
 						block_name = self.entry_block_name.get()
@@ -195,7 +197,7 @@ class FileUI:
 				
 				self.status_icon.change_icon_status("#39FF14", f'{tab.name} retrieved successfully')
 			except Exception as e:
-				content = f"An error occurred: {str(e)}"
+				content = f"Failed to show content in {tab.name}: {str(e)}"
 				self.status_icon.change_icon_status("#FF0000", content)
 		self.output_tab.delete(1.0, tk.END)
 		if not isinstance(content, pd.DataFrame):
@@ -213,10 +215,10 @@ class FileUI:
 			if tab.name == "find programblock":
 				dialog_options = ["*.xlm"]
 
-			dialog = RadioSelectDialog(self.master, "Choose export option", dialog_options)
+			dialog = RadioSelectDialog(self.master, "Choose export option", dialog_options, label_name="file name")
 			try:
 				selected_tab = tab.name
-				content = self.file.export_data(dialog.filename, dialog.selection, selected_tab, self)
+				content = self.file.export_data(dialog.entryInput, dialog.selection, selected_tab, self)
 				messagebox.showinfo("Export successful", content)
 				self.status_icon.change_icon_status("#39FF14", content)
 			except ValueError as e:

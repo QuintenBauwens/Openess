@@ -21,12 +21,11 @@ class Tab:
 		self.content_frame = None
 		self.tab_content = None
 		self.menubar = menubar
-
-
+		
 		self.create_tab_content()
 
 
-	def execute(self, parent_frame, project, interface):
+	def execute(self, project, interface):
 		'''
 		method to execute the tab content when the tab is selected in the main menu
 		if the content already exists, it will be shown, otherwise it will be created
@@ -40,9 +39,10 @@ class Tab:
 			self.content_frame.pack(fill="both", expand=True)
 	
 	def create_tab_content(self):
-		if self.content_frame is None:
-			self.content_frame = ttk.Frame(self.master)
-		if self.tab_content is None:
-			self.tab_content = self.main_class_instance.create_tab_content()
-			if self.tab_content:
-				self.tab_content.pack(in_=self.content_frame, fill="both", expand=True)
+		pass
+		# if self.content_frame is None:
+		# 	self.content_frame = ttk.Frame(self.master)
+		# if self.tab_content is None:
+		# 	self.tab_content = self.main_class_instance.create_tab_content()
+		# 	if self.tab_content:
+		# 		self.tab_content.pack(in_=self.content_frame, fill="both", expand=True)

@@ -61,7 +61,7 @@ class Nodes:
 		self.nodeList = self.getNodeList()
 		self.items = {}
 
-
+	# TODO: NEEDS TO BE UPDATED (INCORRECT) : get the nodes from subnet section directly instead of looping through all devices
 	def getNodeList(self, items={}):
 		"""
 		Returns a dictionary with all the nodes in the project.

@@ -9,12 +9,8 @@ from  tkinter import ttk, scrolledtext, messagebox
 import traceback
 import threading
 from matplotlib import pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
-import mpld3
-import streamlit.components.v1 as components
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import webview
-from tkhtmlview import HTMLLabel
-from tkinterweb import HtmlFrame
 
 
 from utils.tabUI import Tab
@@ -543,10 +539,10 @@ class NodesUI:
 			if tab_name == "connections":
 				extensions.append("*.png")
 
-			dialog = RadioSelectDialog(self.master, "Choose export option", extensions)
+			dialog = RadioSelectDialog(self.master, "Choose export option", extensions, label_name="file name")
 			
 			try:
-				content = self.node.export_data(dialog.filename, dialog.selection, tab_name)
+				content = self.node.export_data(dialog.entryInput, dialog.selection, tab_name)
 				messagebox.showinfo("Export successful", content)
 				self.status_icon.change_icon_status("#39FF14", content)
 			except ValueError as e:

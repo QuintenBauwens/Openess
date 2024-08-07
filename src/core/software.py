@@ -1,6 +1,6 @@
 """
 Author: Quinten Bauwens
-Last updated: 09/07/2024
+Last updated: 05/08/2024
 """
 
 import clr
@@ -47,25 +47,39 @@ class Software:
 			self.software_container[plc.Name] = tia.IEngineeringServiceProvider(plc).GetService[hwf.SoftwareContainer]().Software
 		return self.software_container
 
-	def get_software_blocks(self, group, blocks={}):
+	def get_software_blocks(self, group, blocks=None, group_included=True):
 		"""
-		Retrieves all the blocks in a given group recursively.
-
-		Args:
-			group: The group to retrieve the blocks from.
-			blocks (dict): A dictionary to store the blocks. (default: {})
-
+		Retrieves the software blocks from the given group and its subgroups.
+		Parameters:
+			group (object): The group object from which to retrieve the software blocks.
+			blocks (dict or list, optional): The dictionary or list to store the retrieved blocks. If not provided, a new dictionary will be created if group_included is True, otherwise a new list will be created. Defaults to None.
+			group_included (bool, optional): Specifies whether the group itself should be included in the blocks. Defaults to True.
 		Returns:
-			dict: A dictionary containing the blocks in the group.
+			dict or list: The dictionary or list containing the retrieved software blocks.
+		Raises:
+			Exception: If there is an error retrieving the software blocks.
 		"""
-
+		
 		if blocks is None:
-			blocks = {}
-		if group not in blocks:
-			blocks[group] = []
-			blocks[group].extend([block for block in group.Blocks])
+			blocks = {} if group_included else [] # create new dict if not provided
+		
+		if not group_included:
+			blocks.extend([block for block in group.Blocks])
 			for sub_group in group.Groups:
-				self.get_software_blocks(sub_group, blocks)
+				self.get_software_blocks(sub_group, blocks, group_included=False)
+			return blocks
+
+		try:
+			if group not in blocks:
+				# if group contains blocks -> add them as a list to the dict, else add an empty list
+				blocks[group] = ([block for block in group.Blocks] if hasattr(group, 'Blocks') else [])
+				# if group contains a subgroup (.Groups) -> add the group as a dict inside the list of blocks, wich then contains the subgroup and its blocks
+				if hasattr(group, 'Groups'):
+					for sub_group in group.Groups:
+						sub_blocks = self.get_software_blocks(sub_group)
+						blocks[group].append({sub_group: sub_blocks[sub_group]})
+		except Exception as e:
+			print(f'Failed to retrieve software blocks with its group: {str(e)}')
 		return blocks
 
 	def get_block(self, group, block_name):
@@ -79,11 +93,10 @@ class Software:
 		- block: The software block with the given name, or None if not found.
 		"""
 
-		blocks = self.get_software_blocks(group)
-		for blockgroup in blocks:
-			for block in blocks[blockgroup]:
-				if block.Name.upper() == block_name.upper():
-					return block
+		blocks = self.get_software_blocks(group, group_included=False)
+		for block in blocks:
+			if block.Name.upper() == block_name.upper():
+				return block
 
 	def get_project_tags(self, group=None):
 		"""

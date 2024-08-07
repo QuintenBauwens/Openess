@@ -1,6 +1,6 @@
 """
 Author: Quinten Bauwens
-Last updated: 09/07/2024
+Last updated: 05/08/2024
 """
 
 import os
@@ -12,8 +12,9 @@ from System.IO import FileInfo
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll")
 import Siemens.Engineering as tia
 from core.software import Software
-from core.hardware import Hardware
+from core.library import Library
 
+# TODO: DOCSTRINGS & documentation
 class File:
 	"""
 	Represents the project file.
@@ -42,26 +43,28 @@ class File:
 
 		Returns:
 			str: The file summary.
+			list: Extraction of the project information and history entries for future use.
 		"""
 		
-		self.name = self.myproject.Name
-		self.creation_time = self.myproject.CreationTime
-		self.last_modified = self.myproject.LastModified
-		self.author = self.myproject.Author
-		self.last_modified_by = self.myproject.LastModifiedBy
-		self.history_entries = self.myproject.HistoryEntries
-		head_dateTime = "DateTime"
-		head_event = "Event"
+		project_name = self.myproject.Name
+		project_creationTime = self.myproject.CreationTime
+		project_lastModifiedDate = self.myproject.LastModified
+		project_author = self.myproject.Author
+		project_lastModifiedBy = self.myproject.LastModifiedBy
+		project_historyEntries = self.myproject.HistoryEntries
+		header_dateTime = "DateTime"
+		header_event = "Event"
+
 		text = f'Project Information\n' + \
-				f'Name:                 {self.name}\n' + \
-				f'Creation time:        {self.creation_time}\n' + \
-				f'Last Change:          {self.last_modified}\n' + \
-				f'Author:               {self.author}\n' + \
-				f'Last modified by:     {self.last_modified_by}\n\n' + \
+				f'Name:                 {project_name}\n' + \
+				f'Creation time:        {project_creationTime}\n' + \
+				f'Last Change:          {project_lastModifiedDate}\n' + \
+				f'Author:               {project_author}\n' + \
+				f'Last modified by:     {project_lastModifiedBy}\n\n' + \
 				f'Project history\n' + \
-				f'{head_dateTime:<25}{head_event:<30}\n'
+				f'{header_dateTime:<25}{header_event:<30}\n'
 		
-		for event in self.history_entries:
+		for event in project_historyEntries:
 			text += f'{event.DateTime.ToString():<25}{event.Text:<30}\n'
 		
 		project_info = {
@@ -77,27 +80,55 @@ class File:
 			'Event': event.Text
 		} for event in self.myproject.HistoryEntries]
 
-		return text, {'ProjectInfo': project_info, 'HistoryEntries': history_entries}
+		info = [project_info, history_entries]
+
+		return text, info
 
 
 	def find_block_location(self, block_name):
 		"""
-		Finds the block group/location that contains the specified program block.
-
+		Finds the location of a block in the software.
 		Args:
 			block_name (str): The name of the block to find.
-
 		Returns:
-			str: The location of the block in the TIA.
+			tuple: A tuple containing a boolean value indicating whether the block was found or not, and a string with the block information if found.
+		Raises:
+			None
+		Example:
+			>>> find_block_location("my_block")
+			(True, "The block 'my_block' has been found:\nPath: /path/to/block\nType: BlockType\nNumber: 123\nHeaderAuthor: Author\nModifiedDate: 2022-01-01\nProgramming Language: Python")
 		"""
-
+		
+		library_instance = Library(self.myproject, self.myinterface)
 		main_plc = self.software_instance.PLC_list[0]
-		blocks_dict = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup)
+		blocks_list = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup, group_included=False)
 
-		for group, block_list in blocks_dict.items():
-			for block in block_list:
-				if str(block.Name.lower()) == block_name.lower():
-					return True, f'the location of {block_name} in tia-project "{self.myproject.Name}" : {group.Parent.Parent.GetAttribute("Name")}\\{group.Parent.GetAttribute("Name")}\\{group.Name}\\{block_name}'
+		for block in blocks_list:
+			if str(block.Name.lower()) == block_name.lower():
+				reversed_path = library_instance.get_map_structure(block)
+				path = reversed(reversed_path)
+				path = '/'.join(folder for folder in path)
+
+				block_type = block.GetType().Name
+				block_number = block.Number
+				block_author = block.HeaderAuthor
+				block_modified = block.ModifiedDate
+				block_language = block.ProgrammingLanguage
+
+				result = f'The block \'{block_name}\' has been found:\n' \
+						f'Path: {path}\n' \
+						f'Type: {block_type}\n' \
+						f'Number: {block_number}\n' \
+						f'HeaderAuthor: {block_author}\n' \
+						f'ModdifiedDate: {block_modified}\n' \
+						f'Programming Language: {block_language}\n'
+				
+				if block_type == 'InstanceDB':
+					result += f'InstanceOfName: {block.InstanceOfName}\n' \
+							f'InstanceOfNumber: {block.GetAttribute("InstanceOfNumber")}\n' \
+							f'IsConsistent: {block.IsConsistent}\n'
+					
+				return True, result
 		return False, f'{block_name} has not been found'
 
 
@@ -110,18 +141,27 @@ class File:
 		"""
 
 		main_plc = self.software_instance.PLC_list[0]
-		blocks = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup)
-		blocks_list = []
+		# returns dict with headgroups as key, and value as list of blocks or a dict with subgroups and blocks
+		blocks = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup) 
 		text = ""
 
-		for group_name, block_name in blocks.items():
-			text += f'\n{group_name.Name}\n'
-			for block in block_name:
-				text += f"\t{block.Name}\n"
-				blocks_list.append({"Group Name": group_name.Name, "Block Name": block.Name})
-		return text, blocks_list
+		def process_group(group_items, group_name, indent=""):
+			nonlocal text
+			text += f"{indent}{group_name}\n"
+			for item in group_items:
+				if isinstance(item, dict):
+					# This is a subgroup
+					for sub_group, sub_items in item.items():
+						process_group(sub_items, sub_group.Name, indent + "    ")
+				else:
+					# This is a block
+					text += f"{indent}    {item.Name}\n"
 
-	# FIXME - This method is not working as expected in gui scrollfield
+		for group, items in blocks.items():
+			process_group(items, group.Name)
+		return text
+
+	
 	def show_tagTables(self):
 		"""
 		Retrieves the project tags and creates a DataFrame with the tag tables and tags.
