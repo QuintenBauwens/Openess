@@ -47,11 +47,12 @@ class Software:
 			self.software_container[plc.Name] = tia.IEngineeringServiceProvider(plc).GetService[hwf.SoftwareContainer]().Software
 		return self.software_container
 
-	def get_software_blocks(self, group, blocks=None, group_included=True):
+
+	def get_software_blocks(self, group, blocks=None, include_group=True, include_safety_blocks=False):
 		"""
 		Retrieves the software blocks from the given group and its subgroups.
 		Parameters:
-			group (object): The group object from which to retrieve the software blocks.
+			group (object): The group/folder object from which to retrieve the software blocks.
 			blocks (dict or list, optional): The dictionary or list to store the retrieved blocks. If not provided, a new dictionary will be created if group_included is True, otherwise a new list will be created. Defaults to None.
 			group_included (bool, optional): Specifies whether the group itself should be included in the blocks. Defaults to True.
 		Returns:
@@ -61,12 +62,18 @@ class Software:
 		"""
 		
 		if blocks is None:
-			blocks = {} if group_included else [] # create new dict if not provided
+			blocks = {} if include_group else [] # create new dict if not provided
 		
-		if not group_included:
+		if not include_group:
 			blocks.extend([block for block in group.Blocks])
-			for sub_group in group.Groups:
-				self.get_software_blocks(sub_group, blocks, group_included=False)
+
+			if hasattr(group, 'Groups'):
+				for sub_group in group.Groups:
+					self.get_software_blocks(sub_group, blocks, include_group)
+
+			if include_safety_blocks:
+				self.get_software_blocks(group.SystemBlockGroups[0], blocks, include_group)
+
 			return blocks
 
 		try:
@@ -78,9 +85,31 @@ class Software:
 					for sub_group in group.Groups:
 						sub_blocks = self.get_software_blocks(sub_group)
 						blocks[group].append({sub_group: sub_blocks[sub_group]})
+				if hasattr(group, 'SystemBlockGroups'):
+					for sub_group in group.SystemBlockGroups:
+						sub_blocks = self.get_software_blocks(sub_group)
+						blocks[group].append({sub_group: sub_blocks[sub_group]})
 		except Exception as e:
 			print(f'Failed to retrieve software blocks with its group: {str(e)}')
+			
 		return blocks
+
+
+	def get_software_types(self, group, types=None, include_system_types=False):
+		if types is None:
+			types = []
+		
+		types.extend([type for type in group.Types])
+
+		if hasattr(group, 'Groups'):
+			for sub_group in group.Groups:
+				self.get_software_types(sub_group, types)
+		
+		if include_system_types:
+			self.get_software_types(group.SystemTypeGroups[0], types)
+
+		return types
+
 
 	def get_block(self, group, block_name):
 		"""
@@ -93,10 +122,11 @@ class Software:
 		- block: The software block with the given name, or None if not found.
 		"""
 
-		blocks = self.get_software_blocks(group, group_included=False)
+		blocks = self.get_software_blocks(group, include_group=False)
 		for block in blocks:
 			if block.Name.upper() == block_name.upper():
 				return block
+
 
 	def get_project_tags(self, group=None):
 		"""

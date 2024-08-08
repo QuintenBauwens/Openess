@@ -101,7 +101,7 @@ class File:
 		
 		library_instance = Library(self.myproject, self.myinterface)
 		main_plc = self.software_instance.PLC_list[0]
-		blocks_list = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup, group_included=False)
+		blocks_list = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup, include_group=False, include_safety_blocks=True)
 
 		for block in blocks_list:
 			if str(block.Name.lower()) == block_name.lower():
@@ -134,32 +134,37 @@ class File:
 
 	def projectTree(self):
 		"""
-		Generates a tree-like representation of the project blocks.
-
+		Generates a project tree representation of the software blocks in the current project.
 		Returns:
-			str: The project tree.
+			text (str): The project tree representation as a string.
+			df_data (list): A list of dictionaries containing the name and indentation level of each block.
 		"""
 
 		main_plc = self.software_instance.PLC_list[0]
 		# returns dict with headgroups as key, and value as list of blocks or a dict with subgroups and blocks
 		blocks = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup) 
 		text = ""
+		space = "  " 
+		df_data = []
 
-		def process_group(group_items, group_name, indent=""):
-			nonlocal text
-			text += f"{indent}{group_name}\n"
+		def process_group(group_items, group_name, indent=1):
+			nonlocal text, space
+			text += f"{space * indent}{group_name}\n"
+			df_data.append({"Name": group_name, "LocationLevel": indent})
 			for item in group_items:
 				if isinstance(item, dict):
 					# This is a subgroup
 					for sub_group, sub_items in item.items():
-						process_group(sub_items, sub_group.Name, indent + "    ")
+						process_group(sub_items, sub_group.Name, indent + 1)
 				else:
 					# This is a block
-					text += f"{indent}    {item.Name}\n"
+					text += f"{space * (indent + 1)}{item.Name}\n"
+					df_data.append({"Name": item.Name, "Indent": indent + 1})
 
 		for group, items in blocks.items():
 			process_group(items, group.Name)
-		return text
+
+		return text, df_data
 
 	
 	def show_tagTables(self):
@@ -191,7 +196,6 @@ class File:
 				})
 				
 				df = pd.concat([df, add_data_df], ignore_index=True)
-
 		return df
 
 
@@ -218,8 +222,8 @@ class File:
 			_, content = self.file_summary()
 			df = pd.DataFrame(content['HistoryEntries'])
 		elif tab == "project tree":
-			_, content = self.projectTree()
-			df = pd.DataFrame(content)
+			_, df_data = self.projectTree()
+			df = pd.DataFrame(df_data)
 		elif tab == "project tags":
 			df = self.show_tagTables()
 		elif tab == "find programblock":

@@ -126,7 +126,7 @@ class mainApp:
 		current_dir = os.path.dirname(__file__)
 		apps_dir = os.path.join(current_dir, 'apps')
 		directory = os.listdir(apps_dir)
-		directory_exceptions = ['__pycache__', '__init__.py', 'main.py', 'fileUI.py', 'nodesUI.py']
+		directory_exceptions = ['__pycache__', '__init__.py', 'main.py', 'nodesUI.py']
 
 		print(f"Contents of 'apps' directory: {directory}") # type: debug
 

@@ -172,7 +172,7 @@ class FileUI:
 				if tab.name == "summary":
 					content, _ = self.file.file_summary()
 				elif tab.name == "project tree":
-					content = self.file.projectTree()
+					content, _ = self.file.projectTree()
 				elif tab.name == "find programblock":
 					if self.entry_block_name.get():
 						block_name = self.entry_block_name.get()

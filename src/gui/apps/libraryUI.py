@@ -149,7 +149,7 @@ class LibraryUI:
 					
 					messagebox.showinfo("Library Connection", info)
 					return
-				#TODO: PATH
+				#TODO: add path, include safety, types as settings
 				elif tab.name == "validate project blocks":
 					used_lib_blocks_df, used_lib_blocks_info = self.library.validate_used_blocks()
 
@@ -159,7 +159,7 @@ class LibraryUI:
 						self.pt.grid(row=0, column=0, sticky="nsew")
 						self.pt.show()
 
-					info = f'Found {used_lib_blocks_info["total"]} used project blocks of which are:\n\n' \
+					info = f'Found a total of {used_lib_blocks_info["total"]} used blocks in the project, of which {used_lib_blocks_info["instanceDB"]} are instanceDB:\n\n' \
 							f'\tofficial blocks: {used_lib_blocks_info["connected"]}\n' \
 							f'\tnon-official blocks: {used_lib_blocks_info["disconnected"]}\n\n' \
 							f'*official blocks are blocks that are connected to the library.'
@@ -198,12 +198,13 @@ class LibraryUI:
 		
 		self.master.deiconify()
 		if self.groups:
-				self.update_library_df(self.groups)
+			self.update_library_df(self.groups)
 
 
 	def update_library_df(self, groups):
 		try:
-			Library_df, library_info = self.library.check_library_connection(groups, reload=True)
+			self.library.set_software_library_groups(groups)
+			Library_df, library_info = self.library.check_library_connection(reload=True)
 			if isinstance(Library_df, pd.DataFrame):
 				self.pt.clearTable()
 				self.pt.updateModel(TableModel(Library_df))
