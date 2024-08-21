@@ -28,7 +28,7 @@ import webbrowser
 from gui.apps.nodesUI import NodesUI
 from utils import InitTia as Init
 from utils.tabUI import Tab
-from utils.tooltipUI import StatusCircle
+from utils.statusCircleUI import StatusCircle
 
 
 # TODO : Add logging to the app, docstrings

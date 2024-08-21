@@ -14,7 +14,7 @@ import webview
 
 
 from utils.tabUI import Tab
-from utils.tooltipUI import RadioSelectDialog
+from utils.dialogsUI import RadioSelectDialog
 from core.nodes import Nodes
 
 # all the menu sub-items are defined here

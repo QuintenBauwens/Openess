@@ -9,7 +9,7 @@ from  tkinter import ttk, scrolledtext, messagebox
 import pandas as pd
 from pandastable import Table
 from utils.tabUI import Tab
-from utils.tooltipUI import RadioSelectDialog
+from utils.dialogsUI import RadioSelectDialog
 from core.file import File
 
 class TabSummary(Tab):

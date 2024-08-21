@@ -4,6 +4,8 @@ Last updated: 05/08/2024
 """
 
 import clr
+import gc
+import System
 # add the reference to the Siemens.Engineering.dll
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll") 
 import Siemens.Engineering.HW.Features as hwf
@@ -91,7 +93,6 @@ class Software:
 						blocks[group].append({sub_group: sub_blocks[sub_group]})
 		except Exception as e:
 			print(f'Failed to retrieve software blocks with its group: {str(e)}')
-			
 		return blocks
 
 
@@ -111,7 +112,7 @@ class Software:
 		return types
 
 
-	def get_block(self, group, block_name):
+	def find_block(self, group, block_name, block_number):
 		"""
 		Retrieves a software block with the given name.
 
@@ -122,10 +123,25 @@ class Software:
 		- block: The software block with the given name, or None if not found.
 		"""
 
-		blocks = self.get_software_blocks(group, include_group=False)
-		for block in blocks:
-			if block.Name.upper() == block_name.upper():
-				return block
+		try:
+			search_result = group.Blocks.Find(block_name)
+
+			if search_result is not None:
+				if search_result.Number != block_number:
+					print(f'Block number does not match: {search_result.Number} != {block_number}')
+					return None
+				return search_result
+			
+			for subgroup in group.Groups:
+				search_result = self.find_block(subgroup, block_name, block_number)
+				if search_result is not None:
+					return search_result
+		except Exception as e:
+			print(f'Failed to retrieve software block: {str(e)}')
+		finally:
+			if isinstance(group, System.IDisposable):
+				group.Dispose()
+		return search_result
 
 
 	def get_project_tags(self, group=None):
