@@ -9,6 +9,9 @@ clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAP
 import Siemens.Engineering as tia
 import Siemens.Engineering.HW.Features as hwf
 
+from utils.logger_config import get_logger
+
+logger = get_logger(__name__)
 
 class Hardware:
 	"""
@@ -20,8 +23,10 @@ class Hardware:
 	"""
 
 	def __init__(self, myproject, myinterface):
+		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
 		self.myproject = myproject
 		self.myinterface = myinterface
+		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
 
 
 	def give_items(self, device, Items=[]):
@@ -57,48 +62,7 @@ class Hardware:
 		for device in group.Devices:
 			Items = self.give_items(device, Items)
 		return Items
-
-
-	def get_interface_devices(self, projectItems, Items=None):
-		"""
-		Retrieves all the devices with an interface service.
-
-		Args:
-			projectItems (list): The list of project items.
-			Items (list, optional): The list to store the retrieved devices. Defaults to None.
-
-		Returns:
-			list: The list of retrieved devices with an interface service.
-		"""
-
-		if Items is None:
-			Items = []
-		for deviceitem in projectItems:
-			network_service = tia.IEngineeringServiceProvider(deviceitem).GetService[hwf.NetworkInterface]()
-			if isinstance(network_service, hwf.NetworkInterface):
-				Items.append(deviceitem)
-		return Items
-
-
-	def get_plc_devices(self, Items=None):
-		"""
-		Retrieves all the devices with a PLC service.
-
-		Args:
-			Items (list, optional): The list to store the retrieved devices. Defaults to None.
-
-		Returns:
-			list: The list of retrieved devices with a PLC service.
-		"""
-
-		projectItems = self.GetAllItems()
-		if Items is None:
-			Items = []
-		for deviceitem in projectItems:
-			if str(deviceitem.Classification) == 'CPU':
-				Items.append(deviceitem)
-		return Items
-
+	
 
 	def get_groups(self, group_composition, Items=[]):
 		"""
@@ -118,6 +82,28 @@ class Hardware:
 		return Items
 
 
+	def get_interface_devices(self, projectItems, Items=None):
+		"""
+		Retrieves all the devices with an interface service.
+
+		Args:
+			projectItems (list): The list of project items.
+			Items (list, optional): The list to store the retrieved devices. Defaults to None.
+
+		Returns:
+			list: The list of retrieved devices with an interface service.
+		"""
+
+		if Items is None:
+			Items = []
+		logger.debug(f"Filtering for interface-devices out of all the ({len(projectItems)}) project items")
+		for deviceitem in projectItems:
+			network_service = tia.IEngineeringServiceProvider(deviceitem).GetService[hwf.NetworkInterface]()
+			if isinstance(network_service, hwf.NetworkInterface):
+				Items.append(deviceitem)
+		return Items
+
+
 	def GetAllItems(self):
 		"""
 		Retrieves a list of all the device items such as PLCs, interfaces, ports, etc. Does not include the stations.
@@ -127,11 +113,36 @@ class Hardware:
 		"""
 
 		Items = []
+		logger.debug(f"Retrieving all devices recursively starting from 'devices group'")
 		Items.extend(self.get_devices(self.myproject))
+		logger.debug(f"Retrieving all devices recursively starting from group 'UngroupedDevicesGroup'")
 		Items.extend(self.get_devices(self.myproject.UngroupedDevicesGroup))
+		logger.debug(f"Retrieving all devices recursively starting from group 'DeviceGroups'")
 		Items.extend(self.get_groups(self.myproject.DeviceGroups))
 
 		# Removes all the duplicates
 		Items = list(set(Items))
+		logger.debug(f"Returning combined list {type(Items)} of all the items in the project: {len(Items)}")
+		return Items
 
+
+	def get_plc_devices(self, Items=None):
+		"""
+		Retrieves all the devices with a PLC service.
+
+		Args:
+			Items (list, optional): The list to store the retrieved devices. Defaults to None.
+
+		Returns:
+			list: The list of retrieved devices with a PLC service.
+		"""
+
+		projectItems = self.GetAllItems()
+		logger.debug(f"Filtering for PLC-devices out of all {len(projectItems)} the project items")
+		if Items is None:
+			Items = []
+		for deviceitem in projectItems:
+			if str(deviceitem.Classification) == 'CPU':
+				Items.append(deviceitem)
+		logger.debug(f'Returning filtered list {type(Items)} of all the PLC devices out of the project-items, there have been {len(Items)} PLC-items found')
 		return Items

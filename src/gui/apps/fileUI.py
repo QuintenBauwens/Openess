@@ -4,19 +4,22 @@ Last updated: 09/07/2024
 """
 
 import tkinter as tk
-from  tkinter import ttk, scrolledtext, messagebox
-
 import pandas as pd
+from tkinter import ttk, scrolledtext, messagebox
 from pandastable import Table
+
+from utils.logger_config import get_logger
 from utils.tabUI import Tab
-from utils.dialogsUI import RadioSelectDialog
+from utils.dialogsUI import ExportDataDialog
 from core.file import File
+
+logger = get_logger(__name__)
 
 class TabSummary(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("summary", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("summary", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -24,8 +27,8 @@ class TabSummary(Tab):
 class TabProjectTree(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("project tree", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("project tree", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -33,8 +36,8 @@ class TabProjectTree(Tab):
 class TabFindBlock(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("find programblock", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("find programblock", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -42,8 +45,8 @@ class TabFindBlock(Tab):
 class TabTags(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("project tags", master, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("project tags", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -52,6 +55,7 @@ class TabTags(Tab):
 # TODO : DOCSTRINGS
 class FileUI:
 	def __init__(self, master, myproject, myinterface, status_icon=None):
+		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
 		self.master = master
 		self.project = myproject
 		self.interface = myinterface
@@ -67,6 +71,7 @@ class FileUI:
 		self.tab_summary = None
 
 		self.initialize_file()
+		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
 
 
 	def initialize_file(self):
@@ -77,9 +82,10 @@ class FileUI:
 			self.file = File(self.myproject, self.myinterface)
 		except Exception as e:
 			self.file = None
-			message = f'Failed to initialize file object: {str(e)}'
+			message = f'Failed to initialize file object:'
 			messagebox.showerror("ERROR", message)
-			self.status_icon.change_icon_status("#FF0000", message)
+			logger.critical(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
 	def update_project(self, myproject, myinterface):
@@ -92,10 +98,12 @@ class FileUI:
 			for tab_name, tab_instance in self.tabs.items():
 				self.show_content(tab_instance)
 			
-			self.status_icon.change_icon_status("#39FF14", f'Updated project and interface to {myproject} and {myinterface}')
+			self.status_icon.change_icon_status("#00FF00", f'Updated project and interface to {myproject} and {myinterface}')
 
 
 	def create_tab(self, tab):
+		logger.info(f"Retrieving menu-tab '{tab.name}' and its content...")
+		
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
 		# clear existing widgets
@@ -133,11 +141,15 @@ class FileUI:
 
 		if tab.name not in self.tabs.keys():
 			self.tabs[tab.name] = tab
+		
 		self.show_content(tab)
+		logger.info(f"Menu-tab '{tab.name}' loaded successfully")
 		return self.frame
 
 
 	def created_tab_find_block(self, tab):
+		logger.debug(f"Adding unique UI elements to tab '{tab.name}'")
+
 		self.output_tab.config(height=5)
 		# section 3 for components specific to the tab
 		section3 = ttk.Frame(self.frame)
@@ -153,7 +165,10 @@ class FileUI:
 
 		section3.columnconfigure(1, weight=1)
 
+
 	def created_tab_tags(self, tab):
+		logger.debug(f"Adding unique UI elements to tab '{tab.name}'")
+
 		# clear existing widgets in section1
 		for widget in self.section1.winfo_children():
 			widget.destroy()
@@ -163,10 +178,13 @@ class FileUI:
 		self.table_frame.grid(row=0, column=0, sticky="nsew")
 
 	def show_content(self, tab):
+		logger.debug(f"Setting content of tab '{tab.name}'...")
+
 		if self.myproject is None:
 			self.btn_export_output.config(state=tk.DISABLED)
-			content = f'Please open a project to view the content in {tab.name}.'
-			self.status_icon.change_icon_status("#FFFF00", content)
+			message = f'Please open a project to view the content in {tab.name}.'
+			logger.warning(message)
+			self.status_icon.change_icon_status("#FFFF00", message)
 		else:
 			try:
 				if tab.name == "summary":
@@ -176,57 +194,64 @@ class FileUI:
 				elif tab.name == "find programblock":
 					if self.entry_block_name.get():
 						block_name = self.entry_block_name.get()
-						bool, content = self.file.find_block_location(block_name)
-						if not bool:
-							self.btn_export_output.config(state=tk.DISABLED)
-						else:
+						content = self.file.find_block_location(block_name)
+						if isinstance(content, object):
 							self.btn_export_output.config(state=tk.NORMAL)
+						else:
+							self.btn_export_output.config(state=tk.DISABLED)
 					else:
-						content = "Please enter a block name to search for."
-						self.status_icon.change_icon_status("#FFFF00", content)
+						message = "Please enter a block name to search for."
+						logger.warning(message)
+						self.status_icon.change_icon_status("#FFFF00", message)
 						self.btn_export_output.config(state=tk.DISABLED)
 				elif tab.name == "project tags":
 					content = self.file.show_tagTables()
+					logger.debug(f"Inserting tags into table if there has been a dataframe retrieved: {isinstance(content, pd.DataFrame)}")
 					if isinstance(content, pd.DataFrame):
-						# Create the table, allowing it to expand to fill all available space
+						# create the table, allowing it to expand to fill all available space
 						self.btn_export_output.config(state=tk.NORMAL)
 						self.pt = Table(self.table_frame, dataframe=content, showtoolbar=True, showstatusbar=True)
 						self.pt.grid(row=0, column=0, sticky="nsew")
 						self.pt.show()
-						return 
-				
-				self.status_icon.change_icon_status("#39FF14", f'{tab.name} retrieved successfully')
+						self.pt.redraw() # redraw the table to ensure the table isnt empty
+					else:
+						raise Exception(f"Failed to show content in {tab.name} due to retrieved content not being a dataframe: {type(content)}")
+				logger.debug(f"Content {type(content)} for tab '{tab.name}' has been set successfully")
+				self.status_icon.change_icon_status("#00FF00", f'{tab.name} has been set successfully')
 			except Exception as e:
-				content = f"Failed to show content in {tab.name}: {str(e)}"
-				self.status_icon.change_icon_status("#FF0000", content)
-		self.output_tab.delete(1.0, tk.END)
-		if not isinstance(content, pd.DataFrame):
-			self.output_tab.insert(tk.END, content)
-		else:
-			self.output_tab.insert(tk.END, content.to_string())
+				message = f"Failed to show content in {tab.name}:"
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+
+		if not tab.name == "project tags":
+			self.output_tab.delete(1.0, tk.END)
+			self.output_tab.insert(tk.END, message)
 
 
 	def export_content(self, tab):
 		'''method that is linked to the button in the node list tab, to export the function output of Nodes logic to a file'''
+		logger.debug(f"Exporting content from tab '{tab.name}'...")
+		
+		extensions = ["*.csv", "*.xlsx", "*.json"]
 
-		if self.myproject and self.myinterface:
-			dialog_options = ["*.csv", "*.xlsx", "*.json"]
-			
+		if self.myproject is None:
+			self.btn_export_output.config(state=tk.DISABLED)
+			message = f"Please open a project to view the {tab.name}."
+			messagebox.showwarning("WARNING", message)
+			self.status_icon.change_icon_status("#FFFF00", message)
+		else:
 			if tab.name == "find programblock":
-				dialog_options = ["*.xlm"]
+				extensions = ["*.xlm"]
+			dialog = ExportDataDialog(self.master, "Choose export option", extensions, label_name="file name")
 
-			dialog = RadioSelectDialog(self.master, "Choose export option", dialog_options, label_name="file name")
 			try:
 				selected_tab = tab.name
-				content = self.file.export_data(dialog.entryInput, dialog.selection, selected_tab, self)
-				messagebox.showinfo("Export successful", content)
-				self.status_icon.change_icon_status("#39FF14", content)
-			except ValueError as e:
-				content = f"Export failed: {str(e)}"
-				messagebox.showwarning("WARNING", content)
-				self.status_icon.change_icon_status("#FF0000", content)
-		else:
-			self.btn_export_output.config(state=tk.DISABLED)
-			content = f"Please open a project to view the {tab.name}."
-			self.status_icon.change_icon_status("#FFFF00", content)
-			messagebox.showwarning("WARNING", content)
+				message = self.file.export_data(dialog.entryInput, dialog.selection, selected_tab, self)
+				messagebox.showinfo("Export successful", message)
+				logger.info(f"Export successful: {message}")
+				self.status_icon.change_icon_status("#00FF00", message)
+			except Exception as e:
+				message = f"Export failed:"
+				messagebox.showwarning("WARNING", f'{message} {str(e)}')
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')

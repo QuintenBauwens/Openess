@@ -1,0 +1,50 @@
+23/08/2024 20:57:00 - main             INFO      Starting the application
+23/08/2024 20:57:00 - main             INFO      Initializing 'gui.main' instance
+23/08/2024 20:57:00 - main             DEBUG     Creating master app frame
+23/08/2024 20:57:00 - statusCircleUI   DEBUG     Initializing 'utils.statusCircleUI' instance
+23/08/2024 20:57:00 - statusCircleUI   DEBUG     Initialized 'utils.statusCircleUI' instance successfully
+23/08/2024 20:57:00 - main             INFO      Importing modules
+23/08/2024 20:57:00 - main             DEBUG     Contents of 'apps' directory: ['fileUI.py', 'libraryUI.py', 'nodesUI.py', '__init__.py', '__pycache__']
+23/08/2024 20:57:00 - main             DEBUG     Processing file: fileUI.py
+23/08/2024 20:57:00 - main             DEBUG     Creating menu head-item 'fileUI'
+23/08/2024 20:57:00 - main             DEBUG     Module 'fileUI' has 'FileUI'
+23/08/2024 20:57:00 - main             DEBUG     Module 'gui.apps.fileUI' has mainclass '<class 'gui.apps.fileUI.FileUI'>'
+23/08/2024 20:57:00 - fileUI           DEBUG     Initializing 'fileUI' instance
+23/08/2024 20:57:00 - fileUI           DEBUG     Initialized 'gui' instance successfully
+23/08/2024 20:57:00 - main             DEBUG     Initializing main class instance of 'fileUI'
+23/08/2024 20:57:00 - main             DEBUG     Creating menu sub-items for 'fileUI'
+23/08/2024 20:57:00 - tabUI            DEBUG     Initializing 'utils.tabUI' instance 'find programblock'
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initializing 'utils.loadingScreenUI' instance
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initialized 'utils.loadingScreenUI' instance successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initialized 'utils.tabUI' instance find programblock successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initializing 'utils.tabUI' instance 'project tree'
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initializing 'utils.loadingScreenUI' instance
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initialized 'utils.loadingScreenUI' instance successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initialized 'utils.tabUI' instance project tree successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initializing 'utils.tabUI' instance 'summary'
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initializing 'utils.loadingScreenUI' instance
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initialized 'utils.loadingScreenUI' instance successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initialized 'utils.tabUI' instance summary successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initializing 'utils.tabUI' instance 'project tags'
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initializing 'utils.loadingScreenUI' instance
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initialized 'utils.loadingScreenUI' instance successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initialized 'utils.tabUI' instance project tags successfully
+23/08/2024 20:57:00 - main             DEBUG     Processing file: libraryUI.py
+23/08/2024 20:57:00 - main             DEBUG     Creating menu head-item 'libraryUI'
+23/08/2024 20:57:00 - main             DEBUG     Module 'libraryUI' has 'LibraryUI'
+23/08/2024 20:57:00 - main             DEBUG     Module 'gui.apps.libraryUI' has mainclass '<class 'gui.apps.libraryUI.LibraryUI'>'
+23/08/2024 20:57:00 - libraryUI        DEBUG     Initializing 'gui.apps.libraryUI' instance
+23/08/2024 20:57:00 - libraryUI        DEBUG     Initialized 'gui.apps.libraryUI' instance successfully
+23/08/2024 20:57:00 - main             DEBUG     Initializing main class instance of 'libraryUI'
+23/08/2024 20:57:00 - main             DEBUG     Creating menu sub-items for 'libraryUI'
+23/08/2024 20:57:00 - tabUI            DEBUG     Initializing 'utils.tabUI' instance 'content'
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initializing 'utils.loadingScreenUI' instance
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initialized 'utils.loadingScreenUI' instance successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initialized 'utils.tabUI' instance content successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initializing 'utils.tabUI' instance 'validate project blocks'
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initializing 'utils.loadingScreenUI' instance
+23/08/2024 20:57:00 - loadingScreenUI  DEBUG     Initialized 'utils.loadingScreenUI' instance successfully
+23/08/2024 20:57:00 - tabUI            DEBUG     Initialized 'utils.tabUI' instance validate project blocks successfully
+23/08/2024 20:57:00 - statusCircleUI   DEBUG     Changing status circle color to #00FF00 and tooltip text to Modules imported successfully: fileUI, libraryUI
+23/08/2024 20:57:00 - main             INFO      Modules imported successfully: fileUI, libraryUI
+23/08/2024 20:57:00 - main             DEBUG     Initialized 'gui.main' instance successfully

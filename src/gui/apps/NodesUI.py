@@ -4,25 +4,26 @@ Last updated: 09/07/2024
 """
 
 import tempfile
-import tkinter as tk
-from  tkinter import ttk, scrolledtext, messagebox
-import traceback
-import threading
-from matplotlib import pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import webview
+import tkinter as tk
+import os
 
+from tkinter import ttk, scrolledtext, messagebox
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from utils.tabUI import Tab
-from utils.dialogsUI import RadioSelectDialog
+from utils.dialogsUI import ExportDataDialog
+from utils.logger_config import get_logger
 from core.nodes import Nodes
+
+logger = get_logger(__name__)
 
 # all the menu sub-items are defined here
 class TabNodes(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("node list", master, main_class_instance, menubar, project, interface) #mainclass is nodesUI 
+	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("node list", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is nodesUI 
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_node_list_tab(self)
@@ -30,32 +31,32 @@ class TabNodes(Tab):
 class TabFindDevice(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("find device", master, main_class_instance, menubar, project, interface)
+	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("find device", master, content_frame, main_class_instance, menubar, project, interface)
 
 	def create_tab_content(self):
-		self.tab_content = self.main_class_instance.create_find_device_tab()
+		self.tab_content = self.main_class_instance.create_find_device_tab(self)
 
 class TabAddressCheck(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("address check", master, main_class_instance, menubar, project, interface)
+	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("address check", master, content_frame, main_class_instance, menubar, project, interface)
 
 	def create_tab_content(self):
-		self.tab_content = self.main_class_instance.create_check_address_tab()
+		self.tab_content = self.main_class_instance.create_check_address_tab(self)
 
 class TabDisplayConnections(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("connections", master, main_class_instance, menubar, project, interface)
+	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+		super().__init__("connections", master, content_frame, main_class_instance, menubar, project, interface)
 
 	def create_tab_content(self):
-		self.tab_content = self.main_class_instance.create_display_connections_tab()
+		self.tab_content = self.main_class_instance.create_display_connections_tab(self)
 
 
-# TODO : can be optimized more, see fileUI.py
+# TODO : tab creating has to be optimezed, refer to fileUI.py/libraryUI.py
 class NodesUI:
 	"""
 	The NodesUI class represents the user interface for managing nodes in a project.
@@ -112,11 +113,13 @@ class NodesUI:
 			status_icon (object, optional): The status icon object. Defaults to None.
 		"""
 
+		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
 		self.master = master
 		self.myproject = myproject
 		self.myinterface = myinterface
 		self.status_icon = status_icon
-		self.frame = None # Frame for the nodes UI set in the mainApp
+
+		self.frame = None # frame for the nodesUI, is being set in the mainApp
 		self.canvas = None
 		self.node = None
 		self.webview_window = None
@@ -133,10 +136,13 @@ class NodesUI:
 		self.btn_check_address = None
 
 		self.initialize_node()
+		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
 
 
 	def clear_widgets(self):
 		"""Safely destroy widgets and clear references."""
+
+		logger.debug("Clearing widgets in NodesUI frame from previous project")
 
 		if self.canvas:
 			self.canvas.get_tk_widget().destroy()
@@ -169,9 +175,10 @@ class NodesUI:
 
 		except Exception as e:
 			self.node = None
-			message = f"Failed to initialize node object: {str(e)}"
+			message = f"Failed to initialize node object:"
 			messagebox.showerror("ERROR", message)
-			self.status_icon.change_icon_status("#FF0000", message)
+			logger.critical(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
 	def update_project(self, myproject, myinterface):
@@ -192,7 +199,7 @@ class NodesUI:
 
 		self.create_display_connections_tab()
 
-		self.status_icon.change_icon_status("#39FF14", f"Updated project and interface to {myproject} and {myinterface}")
+		self.status_icon.change_icon_status("#00FF00", f"Updated project and interface to {myproject} and {myinterface}")
 
 
 	def create_node_list_tab(self, tab):
@@ -205,6 +212,7 @@ class NodesUI:
 		Returns:
 			None
 		'''
+		logger.info(f"Retrieving menu-tab '{tab.name}' and its content...")
 
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
@@ -226,15 +234,17 @@ class NodesUI:
 		self.frame.grid_columnconfigure(0, weight=1)
 		self.frame.grid_rowconfigure(1, weight=1)
 
+		logger.info(f"Menu-tab '{tab.name}' loaded successfully")
 		return self.frame
 
 
-	def create_find_device_tab(self):
+	def create_find_device_tab(self, tab):
 		'''Setup for the find device tab-screen, with entries for the PLC and device name and a button to find the nodes based on the input.
 
 		Returns:
 			None
 		'''
+		logger.info(f"Retrieving menu-tab '{tab.name}' and its content...")
 
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
@@ -257,10 +267,11 @@ class NodesUI:
 		self.output_find_device = scrolledtext.ScrolledText(self.frame, wrap=tk.WORD, width=70, height=10)
 		self.output_find_device.pack(padx=10, pady=10)
 
+		logger.info(f"Menu-tab '{tab.name}' loaded successfully")
 		return self.frame
 
 
-	def create_check_address_tab(self):
+	def create_check_address_tab(self, tab):
 		'''Setup for the check address tab-screen.
 
 		This method creates a tab in the GUI application for checking an IP address. It adds a label, an entry field for the address, a button to check the address, and an output area to display the results.
@@ -270,6 +281,7 @@ class NodesUI:
 		Returns:
 			None
 		'''
+		logger.info(f"Retrieving menu-tab '{tab.name}' and its content...")
 
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
@@ -288,10 +300,11 @@ class NodesUI:
 		self.output_check_address = scrolledtext.ScrolledText(self.frame, wrap=tk.WORD, width=70, height=10)
 		self.output_check_address.pack(padx=10, pady=10)
 
+		logger.info(f"Menu-tab '{tab.name}' loaded successfully")
 		return self.frame
 
 
-	def create_display_connections_tab(self):
+	def create_display_connections_tab(self, tab):
 		'''Setup for the display connections tab-screen.
 
 		This method creates a tab in the GUI application for displaying the connections between devices. It adds a button to display the connections and an output area to display the results.
@@ -301,6 +314,7 @@ class NodesUI:
 		Returns:
 			None
 		'''
+		logger.info(f"Retrieving menu-tab '{tab.name}' and its content...")
 	
 		if self.frame is None:
 			self.frame = ttk.Frame(self.master)
@@ -328,7 +342,8 @@ class NodesUI:
 			self.display_no_project_message()
 		else:
 			self.display_connections_rendered()
-			
+		
+		logger.info(f"Menu-tab '{tab.name}' loaded successfully")
 		return self.frame
 
 
@@ -339,17 +354,21 @@ class NodesUI:
 		If no project is open, it displays a message indicating that a project needs to be opened.
 		If an error occurs during the retrieval of the node list, it displays the error message.
 		'''
+		logger.info("Retrieving node list...")
 
 		if self.node is None:
-			content = "Please open a project to view the node list."
-			self.status_icon.change_icon_status("#FFFF00", content)
+			message = "Please open a project to view the node list."
+			logger.warning(message)
+			self.status_icon.change_icon_status("#FFFF00", message)
 		else:
 			try:
 				content = self.node.show_node_table()
-				self.status_icon.change_icon_status("#39FF14", "Node list retrieved successfully")
+				logger.info("Node list retrieved successfully")
+				self.status_icon.change_icon_status("#00FF00", "Node list retrieved successfully")
 			except Exception as e:
-				content = f"An error occurred: {str(e)}"
-				self.status_icon.change_icon_status("#FF0000", content)
+				message = f"Error occurred while trying to retrieve node list:"
+				logger.error(message)
+				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 		self.output_node_list.delete(1.0, tk.END)
 		self.output_node_list.insert(tk.END, content)
 
@@ -363,22 +382,28 @@ class NodesUI:
 		Raises:
 			Exception: If an error occurs during the execution of the find_device_nodes function.
 		'''
+		logger.info("Searching project for node...")
 
 		if self.node is None:
-			content = "Please open a project to find nodes."
-			self.status_icon.change_icon_status("#FFFF00", content)
+			message = "Please open a project to find nodes."
+			logger.warning(message)
+			self.status_icon.change_icon_status("#FFFF00", message)
 		elif not self.entry_plc_name.get() or not self.entry_device_name.get():
-			content = "Please enter both the PLC name and device name."
-			self.status_icon.change_icon_status("#FFFF00", content)
+			message = "Please enter both the PLC name and device name."
+			logger.warning(message)
+			self.status_icon.change_icon_status("#FFFF00", message)
 		else:
 			try:
 				plc_name = self.entry_plc_name.get()
 				device_name = self.entry_device_name.get()
+				logger.debug(f"Searching project for node {self.entry_device_name.get()} in plc {self.entry_plc_name.get()}...")
 				content = self.node.find_device_nodes(plc_name.upper(), device_name.upper())
-				self.status_icon.change_icon_status("#39FF14", "find_nodes retrieved successfully")
+				logger.info("Retrieved search result successfully")
+				self.status_icon.change_icon_status("#00FF00", "find_nodes retrieved successfully")
 			except Exception as e:
-				content = f"An error occurred: {str(e)}"
-				self.status_icon.change_icon_status("#FF0000", content)
+				message = f"Error occurred trying to retrieve search result:"
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 		self.output_find_device.delete(1.0, tk.END)
 		self.output_find_device.insert(tk.END, content)
 
@@ -390,21 +415,26 @@ class NodesUI:
 		Returns:
 			str: The result of checking if the address exists in the project.
 		'''
+		logger.info("Searching project for node-address...")
 
 		if self.node is None:
-			content = "Please open a project to check addresses."
-			self.status_icon.change_icon_status("#FFFF00", content)
+			message = "Please open a project to check addresses."
+			logger.warning(message)
+			self.status_icon.change_icon_status("#FFFF00", message)
 		elif not self.entry_address.get():
-			content = "Please enter an address to check."
-			self.status_icon.change_icon_status("#FFFF00", content)
+			message = "Please enter an address to check."
+			logger.warning(message)
+			self.status_icon.change_icon_status("#FFFF00", message)
 		else: 
 			try:
 				address = self.entry_address.get()
 				content = self.node.address_exists(address)
-				self.status_icon.change_icon_status("#39FF14", "check_address retrieved successfully")
+				logger.info("Retrieved search result successfully")
+				self.status_icon.change_icon_status("#00FF00", "Retrieved search result successfully")
 			except Exception as e:
-				content = f"An error occurred: {str(e)}"
-				self.status_icon.change_icon_status("#FF0000", content)
+				message = f"Error occurred while trying retrieve search result:"
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 		self.output_check_address.delete(1.0, tk.END)
 		self.output_check_address.insert(tk.END, content)
 
@@ -419,14 +449,16 @@ class NodesUI:
 		Returns:
 			None
 		"""
+		logger.info("Displaying the static connections graph...")
 
 		if self.node is None:
-			content = "Please open a project to display connections."
-			self.status_icon.change_icon_status("#FFFF00", content)
-			self.display_no_project_message(content)
+			message = "Please open a project to display connections."
+			logger.warning(message)
+			self.status_icon.change_icon_status("#FFFF00", message)
+			self.display_no_project_message(message)
 			return
 		try:
-			content, fig, G = self.node.display_graph_rendered()
+			fig, G = self.node.display_graph_rendered()
 
 			if hasattr(self, 'canvas') and self.canvas:
 				self.canvas.get_tk_widget().destroy()
@@ -435,11 +467,12 @@ class NodesUI:
 			self.canvas.draw()
 
 			self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
-			self.status_icon.change_icon_status("#39FF14", "display_connections retrieved successfully")
+			logger.info("Connections graph displayed successfully")
+			self.status_icon.change_icon_status("#00FF00", "display_connections retrieved successfully")
 		except Exception as e:
-			content = f"An error occurred: {str(e)}"
-			self.status_icon.change_icon_status("#FF0000", content)
-			print(content)
+			message = f"Error occurred while trying to display connections graph:"
+			logger.error(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
 	def display_connections_interactive(self):
@@ -452,26 +485,34 @@ class NodesUI:
 		Returns:
 			None
 		"""
+		logger.info("Displaying the interactive connections graph...")
 
 		if self.webview_window is not None:
+			logger.debug("Webview window already open")
 			self.webview_window.show()
 			return
 
 		self.webview_frame = ttk.Frame(self.frame)
 		self.webview_frame.pack(fill=tk.BOTH, expand=True)
+
+		self.info_label = ttk.Label(self.webview_frame, text=f'Close the graph window to return to the main window.')
+		self.info_label.pack(pady=10, padx=10, anchor=tk.N)
 		
 		try:
-			content, fig, G = self.node.display_graph_interactive()
+			fig, G = self.node.display_graph_interactive()
 			# save the figure to a temporary HTML file
 			with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.html') as f:
 				fig.write_html(f, include_plotlyjs='cdn', full_html=True)
 				self.temp_path = f.name
+				logger.debug(f"Temporary file created under: {self.temp_path}")
 
 			self.master.after(0, self.create_webview)
-			self.status_icon.change_icon_status("#39FF14", "display_connections_interactive retrieved successfully")
+			logger.info("Interactive connections graph displayed successfully")
+			self.status_icon.change_icon_status("#00FF00", "display_connections_interactive retrieved successfully")
 		except Exception as e:
-			content = f"An error occurred: {str(e)}"
-			self.status_icon.change_icon_status("#FF0000", content)
+			message = f"Error occurred while trying to display interactive connections graph:"
+			logger.error(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
 	def create_webview(self):
@@ -486,7 +527,9 @@ class NodesUI:
 			Note: The `temp_path` attribute must be set before calling this method.
 
 			"""
+			logger.debug("Starting webview window for interactive connections graph...")
 
+			self.master.withdraw()
 			if self.webview_window is None and self.temp_path:
 				self.webview_window = webview.create_window("Connections Graph", self.temp_path, width=800, height=600)
 				webview.start()
@@ -503,11 +546,14 @@ class NodesUI:
 			self.webview_window.destroy()
 		# clean up temporary file
 		if self.temp_path:
-			import os
 			try:
 				os.remove(self.temp_path)
-			except:
-				pass
+			except Exception:
+				message = f"Closed the webview windows succesfully but failed to remove the temporary file at: {self.temp_path}"
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status(message)
+		logger.debug("Closed the webview window and cleaned up the temporary file successfully")
+		self.master.deiconify()
 
 
 	def display_no_project_message(self, message="Please open a project to display the connections graph."):
@@ -518,6 +564,7 @@ class NodesUI:
 	
 		ttk.Label(self.frame, text=message).pack(pady=10, padx=10)
 		self.status_icon.change_icon_status("#FFFF00", message)
+
 
 	# TODO : add more file types
 	def export_content(self, tab_name):
@@ -532,26 +579,25 @@ class NodesUI:
 		Raises:
 			ValueError: If the export fails due to an error.
 		'''
+		logger.debug(f"Exporting content from tab '{tab_name}'...")
 
 		extensions = ["*.csv", "*.xlsx", "*.json"]
 
-		if self.myproject and self.myinterface:
-			if tab_name == "connections":
-				extensions.append("*.png")
-
-			dialog = RadioSelectDialog(self.master, "Choose export option", extensions, label_name="file name")
-			
-			try:
-				content = self.node.export_data(dialog.entryInput, dialog.selection, tab_name)
-				messagebox.showinfo("Export successful", content)
-				self.status_icon.change_icon_status("#39FF14", content)
-			except ValueError as e:
-				content = f"Export failed: {str(e)}"
-				messagebox.showwarning("WARNING", content)
-				self.status_icon.change_icon_status("#FF0000", content)
-		else:
+		if self.myproject is None:
 			self.btn_export_node_list.config(state=tk.DISABLED)
 			self.btn_export_graph.config(state=tk.DISABLED)
-			content = f"Please open a project to view the {tab_name}."
-			self.status_icon.change_icon_status("#FFFF00", content)
-			messagebox.showwarning("WARNING", content)
+		else:
+			if tab_name == "connections":
+				extensions.append("*.png")
+			dialog = ExportDataDialog(self.master, "Choose export option", extensions, label_name="file name")
+			
+			try:
+				message = self.node.export_data(dialog.entryInput, dialog.selection, tab_name)
+				messagebox.showinfo(f"Export successful: {message}")
+				logger.info(f"Export successful: {message}")
+				self.status_icon.change_icon_status("#00FF00", message)
+			except Exception as e:
+				message = f"Export failed: "
+				messagebox.showwarning("WARNING", f"{message} {str(e)}")
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status("#FF0000", f"{message} {str(e)}")

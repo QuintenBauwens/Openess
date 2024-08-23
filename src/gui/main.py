@@ -18,18 +18,20 @@ ToDo: FEATURE LOG LATER ON, SIEMENS FORCE STOP NEEDS TO BE REPLACED, COMPLETE TH
 
 import importlib
 import inspect
-import threading
 import tkinter as tk
-from  tkinter import BooleanVar, ttk, messagebox, font as tkfont
 import subprocess
 import os
 import webbrowser
 
+from  tkinter import BooleanVar, ttk, messagebox, font as tkfont
 from gui.apps.nodesUI import NodesUI
 from utils import InitTia as Init
 from utils.tabUI import Tab
 from utils.statusCircleUI import StatusCircle
+from utils.logger_config import get_logger
+from core.project import Project
 
+logger = get_logger(__name__)
 
 # TODO : Add logging to the app, docstrings
 class mainApp:
@@ -42,7 +44,7 @@ class mainApp:
 		return s[0].upper() + s[1:]
 
 	def __init__(self, master):
-		print("initializing mainApp")  # type: debug
+		logger.info(f"Initializing '{__name__}' instance")
 		self.myproject = None
 		self.myinterface = None
 		self.master = master
@@ -77,13 +79,14 @@ class mainApp:
 
 		self.style = self.setup_styles()
 		self.show_description()
-
+		logger.debug(f"Initialized '{__name__}' instance successfully")
 
 	def create_project_section(self):
 		'''create the project section of the main window'''
 
 		# sticky to allign the elements of the same column
 		# for the labels you want to change the text later on, you need to store them in a variable, and use the grid method on the next line
+		logger.debug("Creating master app frame")
 		self.status_icon = StatusCircle(self.permanent_frame, "#FFFF00", "no project opened, some features may not be available.")
 		self.status_icon.canvas.grid(row=0, column=7, sticky="e", pady=10, padx=10)
 
@@ -120,76 +123,79 @@ class mainApp:
 
 		this is done dynamically, so that new tabs can be added by simply adding a new module in the apps folder.
 		'''
-		print("starting import_apps method") # type: debug
+		logger.info("Importing modules")
 
-		apps = [] # type: debug
+		apps = [] 
 		current_dir = os.path.dirname(__file__)
 		apps_dir = os.path.join(current_dir, 'apps')
 		directory = os.listdir(apps_dir)
 		directory_exceptions = ['__pycache__', '__init__.py', 'main.py', 'nodesUI.py']
-
-		print(f"Contents of 'apps' directory: {directory}") # type: debug
+		logger.debug(f"Contents of 'apps' directory: {directory}")
 
 		for file in directory:
 			if file.endswith('.py') and file not in directory_exceptions:
-				print(f"Processing file: {file}") # type: debug
-				module_name = file[:-3]
+				logger.debug(f"Processing file: {file}")
+
+				module_name = file.split('.')[0]
 
 				try:
 					# import the modules dynamically
 					module = importlib.import_module(f"gui.apps.{module_name}")
-
 					# get all classes that are subclasses of base_tab.Tab
 					module_classes = inspect.getmembers(module, lambda x: inspect.isclass(x) and issubclass(x, Tab) and x != Tab)
 					
 					if not module_classes:
-						print(f"No tab classes found in {module_name}") # type: debug
+						logger.critical(f"No tab classes found in '{module_name}'") 
 						continue
 					
-					apps.append(module_name) # type: debug
+					apps.append(module_name)
 
 					# create a menu head-item for each module
 					# adjust module_name index if the module names in apps folder dont end with UI
 					module_menu = tk.Menu(self.menubar, tearoff=0)
+					logger.debug(f"Creating menu head-item '{module_name}'")
 					self.menubar.add_cascade(label=module_name[:-2], menu=module_menu)
 					
 					# initializing main class instance of module (class same name as module), storing it in the modules dictionary
 					main_class_name = mainApp.capitalize_first_letter(module_name)
-					print(f'Module {module_name} has {main_class_name}')
 					main_class_instance = None
+					logger.debug(f"Module '{module_name}' has '{main_class_name}'")
+
 					if hasattr(module, main_class_name):
 						main_class = getattr(module, main_class_name)
-						print(f'Module {module} has {main_class}') # type: debug
+						logger.debug(f"Module '{module.__name__}' has mainclass '{main_class}'")
 						main_class_instance = main_class(self.master, self.myproject, self.myinterface, self.status_icon)
-						print(f'Module {module} makes {main_class_instance}') # type: debug
+						logger.debug(f"Initializing main class instance of '{module_name}'") 
 						self.modules[module_name] = main_class_instance
 
 					frame = ttk.Frame(self.tab_content_frame)
 					self.module_frames[module_name] = frame
-					main_class_instance.frame = frame  # Assign the frame to the module instance
+					main_class_instance.frame = frame  # assign the frame to the module instance for its content
 
 					# creating a menu sub-item for each subclass of TabUI.Tab, and linking it to the execute method
 					# create an instance of every subclass of TabUI.Tab in module_classes
+					logger.debug(f"Creating menu sub-items for '{module_name}'")
 					for class_name, class_obj in module_classes:
-						print(f"Processing class: {class_name}") # type: debug
-						tab_instance = class_obj(self.master, main_class_instance, self.menubar, self.myproject, self.myinterface)
+						tab_instance = class_obj(self.master, self.tab_content_frame, main_class_instance, self.menubar, self.myproject, self.myinterface)
 
 						module_menu.add_command(
 							label=tab_instance.name, 
 							command=lambda tab=tab_instance: self.switch_tab(tab)
 						)
-				
 				except Exception as e:
-					message = f"ERROR: Error processing {module_name} module. {e}"
-					self.status_icon.change_icon_status("#FF0000", message)
-					print(message)
+					message = f"ERROR: Error processing {module_name} module."
+					self.status_icon.change_icon_status("#FF0000", f"{message} {str(e)}")
+					logger.error(message, exc_info=True)
 			
 		if apps:
-			self.status_icon.change_icon_status("#39FF14", f'Tabs imported successfully: {", ".join(apps)}')
+			message = f"Modules imported successfully: {', '.join(apps)}"
+			self.status_icon.change_icon_status("#00FF00", message)
+			logger.info(message)
 		else:
 			message = "No tabs were imported. Please make sure that the apps folder contains at least one module with a subclass of TabUI.Tab."
-			self.status_icon.change_icon_status("#FFFF00", message)
 			messagebox.showwarning("WARNING", message)
+			logger.warning(message)
+			self.status_icon.change_icon_status("#FFFF00", message)
 
 
 	def switch_tab(self, tab):
@@ -197,6 +203,7 @@ class mainApp:
 		switch the tab content to the selected tab content frame by
 		removing all widgets from the previous tab content frame and executing the new tab
 		'''
+		logger.debug('Switching from tab %s to tab %s', self.current_tab, tab.name)
 		# hide the previous tab content
 		for frame in self.module_frames.values():
 			for widget in frame.winfo_children():
@@ -214,46 +221,27 @@ class mainApp:
 		current_frame.pack(fill='both', expand=True)
 
 		# Execute the new tab
+		logger.debug('Executing tab %s', tab.name)
 		tab.execute(self.myproject, self.myinterface)
 		self.update_frame_title(tab.name)
-
-		# if isinstance(self.modules[module_name], NodesUI) and tab.name == "connections":
-		# 	self.modules[module_name].create_display_connections_tab(tab)
-
-
-	# TODO : This method needs to be updated 
-	def stop_siemens_processes(self): 
-		'''
-		force stop all Siemens processes running on the machine
-		NEEDS TO BE UPDATED! This is a temporary solution
-		'''
-
-		command = 'Get-Process | Where-Object {$_.ProcessName -like "Siemens*"} | Stop-Process -Force'
-		try:
-			subprocess.run(["powershell", "-Command", command], check=True)
-			message = "siemens processes stopped successfully."
-			self.update_action_label(message)
-			self.status_icon.change_icon_status("#39FF14", message)
-		except subprocess.CalledProcessError as e:
-			message = f"ERROR: an error occurred while stopping Siemens processes: {e}"
-			self.update_action_label(message)
-			self.status_icon.change_icon_status("#FF0000", message)
 
 
 	def open_project(self):
 		'''open the project and initialize the Hardware and Nodes classes'''
 
 		try:
+			logger.info("Opening project, please wait...")
 			importlib.reload(Init)
-			self.update_action_label("project is opening, please wait...")
+			self.update_action_label("Project is opening, please wait...")
 			project_path = self.project_path_entry.get()
 			self.myproject, self.myinterface = Init.open_project(self.checkbox_interface.get(), project_path)
-			
+			logger.info(f"Project opened succesfully: {project_path}")
+			self.update_action_label("Project opened successfully!")
+
 			# update the project in all modules, try cath needed for the canvas
+			logger.debug(f"Updating 'myproject' to {self.myproject.Name} in all modules: {self.modules.keys()}")
 			for module_name, module_instance in self.modules.items():
 				try:
-					# if isinstance(module_instance, NodesUI):
-					# 	module_instance.clear_widgets()
 					if hasattr(module_instance, 'update_project'):
 						module_instance.update_project(self.myproject, self.myinterface)
 					else:
@@ -261,28 +249,29 @@ class mainApp:
 						main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
 						self.modules[module_name] = main_class(self.myproject, self.myinterface)
 				except tk.TclError as e:
-						message = f"Warning: Updating canvas {module_name}: {e}"
-						self.update_action_label(message)
-						self.status_icon.change_icon_status("#FFFF00", message)
+						message = f"Warning: Updating canvas {module_name}:"
+						self.update_action_label(f"{message} {str(e)}")
+						logger.warning(message, exc_info=True)
+						self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
 						continue
 				except Exception as e:
-					message = f"Error: Error occurred while updating {module_name}: {e}"
-					self.update_action_label(message)
-					self.status_icon.change_icon_status("#FFFF00", message)
+					message = f"Error: Error occurred while updating {module_name}:"
+					self.update_action_label(f"{message} {str(e)}")
+					logger.error(message, exc_info=True)
+					self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
+			logger.debug(f"All modules updated succesfully: {self.modules.keys()}")
 
-			self.update_action_label("project opened successfully!")
 			self.project_path_entry.delete(0, tk.END)
-
 			project_name = project_path.split("\\")[-1]
-
-			self.status_icon.change_icon_status("#39FF14")
+			self.status_icon.change_icon_status("#00FF00")
 			self.update_name_label(project_name)
-
 		except Exception as e:
-			message = f"ERROR: Project could not be opened. {e}"
 			self.update_action_label("")
-			self.status_icon.change_icon_status("#FF0000", message)
-			messagebox.showerror("ERROR", message)
+			message = f"ERROR: Project could not be opened."
+			messagebox.showerror("ERROR", f"{message} {str(e)}")
+			logger.error(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f"{message} {str(e)}")
+			
 
 
 	def close_project(self):
@@ -290,11 +279,15 @@ class mainApp:
 
 		try:
 			if self.myproject and self.myinterface:
+				logger.info("Closing project")
 				Init.close_project(self.myproject, self.myinterface)
 				self.myproject, self.myinterface = None, None
-				self.update_name_label("no project opened")
+				logger.info("Project closed successfully")
+				self.update_name_label("No project opened")
+				self.update_action_label("Project closed successfully!")
 
 				# update the project in all modules, try cath needed for the canvas
+				logger.debug(f"Updating parameters 'myproject, myinterface' to {self.myproject, self.myinterface} in all modules: {self.modules}")
 				for module_name, module_instance in self.modules.items():
 					try:
 						if isinstance(module_instance, NodesUI):
@@ -305,47 +298,72 @@ class mainApp:
 							main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
 							self.modules[module_name] = main_class(None, None)
 					except tk.TclError as e:
-						message = f"Warning: Updating canvas {module_name}: {e}"
-						self.update_action_label(message)
-						self.status_icon.change_icon_status("#FFFF00", message)
+						message = f"Warning: Updating canvas {module_name}:"
+						self.update_action_label(f"{message} {str(e)}")
+						logger.warning(message, exc_info=True)
+						self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
 						continue
 					except Exception as e:
-						message = f"Error: Error occurred while updating {module_name}: {e}"
-						self.update_action_label(message)
-						self.status_icon.change_icon_status("#FFFF00", message)
-				
-				# if self.current_tab == 'nodesUI':
-				# 	nodes_ui = self.modules['nodesUI']
-				# 	if isinstance(nodes_ui, NodesUI):
-				# 		nodes_ui.create_display_connections_tab(None)
-				
-				self.update_action_label("project closed successfully!")
-				self.status_icon.change_icon_status("#39FF14")
+						message = f"Error: Error occurred while updating {module_name}:"
+						self.update_action_label(f"{message} {str(e)}")
+						logger.error(message, exc_info=True)
+						self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
+				logger.debug(f"All modules updated succesfully: {self.modules}")
+
+				self.status_icon.change_icon_status("#00FF00")
 			else:
 				response = messagebox.askyesno("Force closing project", "Would you like to force close any project opened in a previous session?")
 				if response:
 					self.stop_siemens_processes()
 				else:
 					self.update_action_label("Operation cancelled by user.")
+					logger.info("Operation 'stopping Siemens processes' cancelled by user.")
 		except Exception as e:
-			message = f"ERROR: Project could not be closed. {e}"
+			message = f"ERROR: Project could not be closed."
+			self.update_action_label(f"{message} {str(e)}")
+			logger.error(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f"{message} {str(e)}")
+
+
+	# TODO : This method needs to be updated 
+	def stop_siemens_processes(self): 
+		'''
+		force stop all Siemens processes running on the machine
+		NEEDS TO BE UPDATED! This is a temporary solution
+		'''
+		logger.info("Stopping Siemens processes")
+		command = 'Get-Process | Where-Object {$_.ProcessName -like "Siemens*"} | Stop-Process -Force'
+		try:
+			subprocess.run(["powershell", "-Command", command], check=True)
+			message = "Siemens processes stopped successfully."
 			self.update_action_label(message)
-			self.status_icon.change_icon_status("#FF0000", message)
+			logger.info(message)
+			self.status_icon.change_icon_status("#00FF00", message)
+		except subprocess.CalledProcessError as e:
+			message = f"ERROR: an error occurred while stopping Siemens processes:"
+			self.update_action_label(f"{message} {str(e)}")
+			logger.error(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f"{message} {str(e)}")
 
 
 	# close instances that need to be closed before closing the main window, otherwise the program will hang
 	def on_closing(self):
 		if messagebox.askokcancel("Quit", "Do you want to quit?"):
-			# close NodesUI instance
-			for module_name, module_instance in self.modules.items():
-				if isinstance(module_instance, NodesUI):
-					module_instance.on_closing()
-			
-			# close the Tkinter window
-			self.master.destroy()
+			try:
+				# close NodesUI instance
+				for module_name, module_instance in self.modules.items():
+					if isinstance(module_instance, NodesUI):
+						module_instance.on_closing()
+				
+				# close the Tkinter window
+				self.master.destroy()
 
-			# force exit the program
-			os._exit(0)
+				# force exit the program
+				logger.info("Application closed by user")
+				os._exit(0)
+			except Exception as e:
+				logger.error("Error occurred while trying to close the application", exc_info=True)
+				os._exit(1)
 
 
 	def update_action_label(self, text):
@@ -428,6 +446,8 @@ class mainApp:
 		# Add a custom button
 		custom_button = ttk.Button(self.description_frame, text="More Info", command=self.show_more_info)
 		custom_button.grid(row=2, column=1, sticky="se", padx=(5,2), pady=(5,2))
+		# TODO: to be implemented
+		custom_button.config(state=tk.DISABLED)
 
 
 	def show_more_info(self):
@@ -467,7 +487,6 @@ class mainApp:
 		style.configure("Custom.TLabelframe", font=custom_font)
 		style.configure("Custom.TLabelframe.Label", font=custom_font)
 		style.configure("Custom.TLabel", font=("Helvetica", 11), background="#f0f0f0", padding=(5, 5))
-
 		return style
 
 	def open_link(self, url):

@@ -1,11 +1,14 @@
-import tkinter as tk
-from pandastable import Table, TableModel
+from utils.logger_config import get_logger
+
+logger = get_logger(__name__)
 
 class DesignTable():
 	def __init__(self, table, df):
+		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance for table: {table} and dataframe: {df}")
 		self.pt = table
 		self.df = df
 		self.conditionSet = []
+		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
 
 	def add_color_condition(self, condition: tuple, apply_on: str):
 		"""
@@ -20,11 +23,15 @@ class DesignTable():
 		Example:
 		add_color_condition(('label', 'medium', 'lightgreen'), apply_on='row')
 		"""
+		logger.debug(f"Adding color condition: {condition} for table {self.pt}")
+
 		if apply_on not in ['row', 'col']:
 			raise ValueError("assign where to apply the color condition: row or col")
 		elif len(condition) != 3:
 			raise ValueError(f"Condition must be a tuple with three items: (column_name, value, color) {len(condition)}")
+		
 		self.conditionSet.append((condition, apply_on))
+		logger.debug(f"Added color condition: {condition} to the table {self.pt}")
 
 	def add_color_conditions(self, conditions: list, apply_on: str):
 		"""
@@ -53,34 +60,40 @@ class DesignTable():
 		specified column and applies the color to the corresponding cells that do not meet the condition.
 		After applying the color conditions, the method redraws the table and returns the updated table.
 		"""
-
-		for (condition, apply_on) in self.conditionSet:
-			column, value, color = condition
-			if apply_on == 'row':
-				for row_idx in range(len(self.df)):
-					if self.df.iloc[row_idx][column] == value:
-						for col_idx in range(len(self.df.columns)):
-							col_name = self.df.columns[col_idx]
-							self.pt.setColorByMask(
-								col_name, 
-								self.pt.model.df.index == row_idx, 
-								color
-							)
-			if apply_on == 'col':
-				for col_idx in range(len(self.df.columns)):
-					col_name = self.df.columns[col_idx]
-					if col_name == column:
-						for row_idx in range(len(self.df)):
-							if self.df.iloc[row_idx][column] != value:
+		logger.debug(f"Applying color conditions {self.conditionSet} to the table {self.pt}")
+		try:
+			for (condition, apply_on) in self.conditionSet:
+				column, value, color = condition
+				if apply_on == 'row':
+					for row_idx in range(len(self.df)):
+						if self.df.iloc[row_idx][column] == value:
+							for col_idx in range(len(self.df.columns)):
+								col_name = self.df.columns[col_idx]
 								self.pt.setColorByMask(
 									col_name, 
 									self.pt.model.df.index == row_idx, 
 									color
 								)
+				if apply_on == 'col':
+					for col_idx in range(len(self.df.columns)):
+						col_name = self.df.columns[col_idx]
+						if col_name == column:
+							for row_idx in range(len(self.df)):
+								if self.df.iloc[row_idx][column] != value:
+									self.pt.setColorByMask(
+										col_name, 
+										self.pt.model.df.index == row_idx, 
+										color
+									)
+				logger.debug(f"Applied color condition: {condition} to the table {self.pt}")
+		except Exception:
+			logger.error(f"Error while applying color conditions to the table {self.pt}", exc_info=True)
 		self.pt.redraw()
 		return self.pt
 	
 	def redesign_table(self, table):
+		logger.debug(f"Redesigning table {self.pt} with new table {table}")
 		self.pt = table
 		self.apply_color_conditions()
+		logger.debug(f"Redesigned table {self.pt} successfully")
 		return self.pt

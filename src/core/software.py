@@ -4,13 +4,16 @@ Last updated: 05/08/2024
 """
 
 import clr
-import gc
 import System
 # add the reference to the Siemens.Engineering.dll
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll") 
 import Siemens.Engineering.HW.Features as hwf
 import Siemens.Engineering as tia
+
 from core.hardware import Hardware
+from utils.logger_config import get_logger
+
+logger = get_logger(__name__)
 
 class Software:
 	"""
@@ -31,26 +34,30 @@ class Software:
 	"""
 
 	def __init__(self, myproject, myinterface) -> None:
+		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
 		self.myproject = myproject
 		self.myinterface = myinterface
 		self.hardware = Hardware(self.myproject, self.myinterface)
 		self.software_container = {}
 		self.PLC_list = self.hardware.get_plc_devices()
+		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
 
-	def get_software_container(self):
+
+	def get_software_container(self) -> dict:
 		"""
 		Retrieves the software container of all PLC devices.
 
 		Returns:
 			SoftwareContainer: List of the software container of all PLC devices.
 		"""
-		
+		logger.debug(f"Retrieving software container of all PLC devices: {[plc.Name for plc in self.PLC_list]}")
 		for plc in self.PLC_list:
 			self.software_container[plc.Name] = tia.IEngineeringServiceProvider(plc).GetService[hwf.SoftwareContainer]().Software
+		logger.debug(f"Returning {type(self.software_container)} of software containers of all PLC devices: {len(self.software_container)}")
 		return self.software_container
 
 
-	def get_software_blocks(self, group, blocks=None, include_group=True, include_safety_blocks=False):
+	def get_software_blocks(self, group, blocks=None, include_group=True, include_safety_blocks=False) -> dict | list:
 		"""
 		Retrieves the software blocks from the given group and its subgroups.
 		Parameters:
@@ -75,7 +82,6 @@ class Software:
 
 			if include_safety_blocks:
 				self.get_software_blocks(group.SystemBlockGroups[0], blocks, include_group)
-
 			return blocks
 
 		try:
@@ -92,11 +98,11 @@ class Software:
 						sub_blocks = self.get_software_blocks(sub_group)
 						blocks[group].append({sub_group: sub_blocks[sub_group]})
 		except Exception as e:
-			print(f'Failed to retrieve software blocks with its group: {str(e)}')
+			raise Exception(f'Failed to retrieve software blocks with its group: {str(e)}')
 		return blocks
 
 
-	def get_software_types(self, group, types=None, include_system_types=False):
+	def get_software_types(self, group, types=None, include_system_types=False) -> list:
 		if types is None:
 			types = []
 		
@@ -108,11 +114,10 @@ class Software:
 		
 		if include_system_types:
 			self.get_software_types(group.SystemTypeGroups[0], types)
-
 		return types
 
 
-	def find_block(self, group, block_name, block_number):
+	def find_block(self, group, block_name, block_number=None) -> object:
 		"""
 		Retrieves a software block with the given name.
 
@@ -127,8 +132,8 @@ class Software:
 			search_result = group.Blocks.Find(block_name)
 
 			if search_result is not None:
-				if search_result.Number != block_number:
-					print(f'Block number does not match: {search_result.Number} != {block_number}')
+				if block_number and search_result.Number != block_number:
+					logger.debug(f'Block number does not match: {search_result.Number} != {block_number}')
 					return None
 				return search_result
 			
@@ -137,14 +142,15 @@ class Software:
 				if search_result is not None:
 					return search_result
 		except Exception as e:
-			print(f'Failed to retrieve software block: {str(e)}')
+			raise Exception(f'Failed to retrieve software block: {str(e)}')
 		finally:
 			if isinstance(group, System.IDisposable):
 				group.Dispose()
+		logger.debug(f'Returning the found software block-object {type(search_result)}: {search_result.Name}')
 		return search_result
 
 
-	def get_project_tags(self, group=None):
+	def get_project_tags(self, group=None) -> dict:
 		"""
 		Generates a list of the project tags.
 
@@ -178,4 +184,5 @@ class Software:
 						Tags[table].update(tags)
 					else:
 						Tags[table] = tags
+		logger.debug(f"Returning list {type(Tags)} of all the tags in the project, total of: {len(Tags)} tags")
 		return Tags

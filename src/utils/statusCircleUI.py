@@ -1,7 +1,10 @@
 from utils.tooltipUI import Tooltip
+from utils.logger_config import get_logger
 import tkinter as tk
 
+logger = get_logger(__name__)
 
+# TODO: optimimalization possible, created statuscircle.error, statuscircle.success, statuscircle.warning instead of change_icon_status
 class StatusCircle:
 	"""
 	A class representing a status circle widget with a tooltip.
@@ -26,6 +29,7 @@ class StatusCircle:
 	"""
 
 	def __init__(self, master, status_color="#FF0000", tooltip_text="Status description"):
+		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
 		self.master = master
 		self.canvas = tk.Canvas(master, width=25, height=25)
 		self.status_color = status_color
@@ -35,6 +39,7 @@ class StatusCircle:
 		self.tooltip = Tooltip(self.canvas, self.tooltip_text)
 		self.canvas.bind("<Enter>", self.on_enter)
 		self.canvas.bind("<Leave>", self.on_leave)
+		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
 
 
 	def change_icon_status(self, new_color, tooltip_text=None):
@@ -46,7 +51,8 @@ class StatusCircle:
 			new_color (str): The new color of the status circle.
 			tooltip_text (str, optional): The new text to display in the tooltip. Defaults to None.
 		"""
-
+		# colors = ["#FF0000", "#00FF00", "#FFFF00"]
+		logger.debug(f"Changing status circle color to {new_color} and tooltip text to {tooltip_text}")
 		self.status_color = new_color
 		self.canvas.itemconfig(self.circle, fill=self.status_color)
 		self.tooltip.update_tooltip_text(tooltip_text)
