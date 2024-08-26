@@ -5,8 +5,10 @@ Last updated: 09/07/2024
 """
 
 from utils.logger_config import get_logger
-import Siemens.Engineering as tia 
+__package__ = "utils"
 import clr
+clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll")
+import Siemens.Engineering as tia 
 
 logger = get_logger(__name__)
 
@@ -44,5 +46,5 @@ def close_project(myproject, mytia):
     logger.debug(f"Closing TIA project: {myproject.Name}")
     myproject.Close()
     mytia.Dispose()
-    logger.debug(f"Closed TIA project succesfully: {myproject.Name}")
+    logger.debug(f"Closed TIA project succesfully")
     

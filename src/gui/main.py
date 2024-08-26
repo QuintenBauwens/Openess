@@ -18,9 +18,11 @@ ToDo: FEATURE LOG LATER ON, SIEMENS FORCE STOP NEEDS TO BE REPLACED, COMPLETE TH
 
 import importlib
 import inspect
+import threading
 import tkinter as tk
 import subprocess
 import os
+import traceback
 import webbrowser
 
 from  tkinter import BooleanVar, ttk, messagebox, font as tkfont
@@ -55,25 +57,32 @@ class mainApp:
 		master.iconbitmap("resources\\img\\tia.ico")
 		
 		# permanent frame for the project section (header)
-		self.permanent_frame = ttk.Frame(master)
-		self.permanent_frame.pack(side="top", fill="x")
+		self.header_frame = ttk.Frame(master)
+		self.header_frame.pack(side="top", fill="x")
 
+		# permanent frame for the description section
 		self.description_frame = ttk.Frame(master)
 		self.description_frame.pack(expand=True, fill="both")
-
-		# insert the elements in the permanent frame
-		self.create_project_section()
 
 		# frame for the tab content
 		self.tab_content_frame = ttk.Frame(master)
 		self.tab_content_frame.pack(side="bottom", expand=True, fill="both")
+
+		logger.debug(f"Initializing 'Project' instance for shared module resources in later modules/classes")
+		self.projectInstance = Project(self.master, self.tab_content_frame, self.myproject, self.myinterface)
+		self.loading_screen = self.projectInstance.loading_screen
+		self.loading_thread = None
+
+		# insert the elements in the permanent frame
+		self.create_project_section()
 
 		self.menubar = tk.Menu(master)
 
 		self.current_tab = None
 		self.module_frames = {}
 		self.modules = {}
-		self.import_modules()
+		self.module_exceptions = ['__pycache__', '__init__.py', 'project.py', 'main.py', 'nodesUI.py']
+		self.import_UI_modules()
 
 		master.config(menu=self.menubar)
 
@@ -86,35 +95,37 @@ class mainApp:
 
 		# sticky to allign the elements of the same column
 		# for the labels you want to change the text later on, you need to store them in a variable, and use the grid method on the next line
-		logger.debug("Creating master app frame")
-		self.status_icon = StatusCircle(self.permanent_frame, "#FFFF00", "no project opened, some features may not be available.")
+		logger.debug("Creating master app frame and its UI")
+		self.status_icon = self.projectInstance.set_statusIcon(self.header_frame)
+		self.status_icon.change_icon_status("#FFFF00", "no project opened, some features may not be available.")
 		self.status_icon.canvas.grid(row=0, column=7, sticky="e", pady=10, padx=10)
 
-		self.project_path_label = ttk.Label(self.permanent_frame, text="project path:").grid(row=0, column=0, sticky="w" ,padx=5, pady=(5, 0))
-		self.project_path_entry = ttk.Entry(self.permanent_frame, width=40)
+		self.project_path_label = ttk.Label(self.header_frame, text="project path:").grid(row=0, column=0, sticky="w" ,padx=5, pady=(5, 0))
+		self.project_path_entry = ttk.Entry(self.header_frame, width=40)
 		self.project_path_entry.grid(row=0, column=1, sticky="w" ,padx=5, pady=(5, 0))
 
-		self.action_label = ttk.Label(self.permanent_frame, text="", foreground="#FF0000")
+		self.action_label = ttk.Label(self.header_frame, text="", foreground="#FF0000")
 		self.action_label.grid(row=0, column=5, sticky="ew", padx=5, pady=(5, 0))
 
-		ttk.Button(self.permanent_frame, text="open project", command=self.open_project).grid(row=0, column=2, sticky="w", padx=5, pady=(5, 0))
+		ttk.Button(self.header_frame, text="open project", command=self._start_thread).grid(row=0, column=2, sticky="w", padx=5, pady=(5, 0))
 		self.checkbox_interface = BooleanVar(value=False)
-		ttk.Checkbutton(self.permanent_frame, text="open with interface", variable=self.checkbox_interface).grid(row=0, column=3, sticky="w", padx=5, pady=(5, 0))
+		ttk.Checkbutton(self.header_frame, text="open with interface", variable=self.checkbox_interface).grid(row=0, column=3, sticky="w", padx=5, pady=(5, 0))
 		
 		# row 1
-		self.current_project_label = ttk.Label(self.permanent_frame, text="current project:").grid(row=1, column=0, sticky="w", padx=5)
-		self.current_name_label = ttk.Label(self.permanent_frame, text="no project opened")
+		self.current_project_label = ttk.Label(self.header_frame, text="current project:").grid(row=1, column=0, sticky="w", padx=5)
+		self.current_name_label = ttk.Label(self.header_frame, text="no project opened")
 		self.current_name_label.grid(row=1, column=1, sticky="w" ,padx=5)
-		ttk.Button(self.permanent_frame, text="close Project", command=self.close_project).grid(row=1, column=2, sticky="w", padx=5)
+		ttk.Button(self.header_frame, text="close Project", command=self.close_project).grid(row=1, column=2, sticky="w", padx=5)
 
-		seperator = ttk.Separator(self.permanent_frame, orient="horizontal")
+		seperator = ttk.Separator(self.header_frame, orient="horizontal")
 		seperator.grid(row=2, column=0, columnspan=11 ,sticky="ew", pady=(10))
 
-		self.permanent_frame.grid_columnconfigure(4, weight=1) # make the column of the status icon expandable
-		self.permanent_frame.grid_columnconfigure(6, weight=1) # make the column of the action label expandable
+		self.header_frame.grid_columnconfigure(4, weight=1) # make the column of the status icon expandable
+		self.header_frame.grid_columnconfigure(6, weight=1) # make the column of the action label expandable
+		logger.debug("Created master app frame and its UI successfully")
 
 	# TODO: popup if the user wants to run the app with all the features, or select the features he wants to use
-	def import_modules(self): 
+	def import_UI_modules(self): 
 		'''
 		import all the apps within the apps folder
 		each app is a module that could contain classes that are subclasses of base_tab.Tab,
@@ -123,21 +134,21 @@ class mainApp:
 
 		this is done dynamically, so that new tabs can be added by simply adding a new module in the apps folder.
 		'''
-		logger.info("Importing modules")
+		logger.info("Importing UI modules...")
 
-		apps = [] 
+		# dynamically import all modules in the apps folder
+		apps = []
 		current_dir = os.path.dirname(__file__)
 		apps_dir = os.path.join(current_dir, 'apps')
-		directory = os.listdir(apps_dir)
-		directory_exceptions = ['__pycache__', '__init__.py', 'main.py', 'nodesUI.py']
-		logger.debug(f"Contents of 'apps' directory: {directory}")
+		modules = os.listdir(apps_dir)
+		logger.debug(f"Contents of 'apps' directory: {modules}")
 
-		for file in directory:
-			if file.endswith('.py') and file not in directory_exceptions:
+		for file in modules:
+			if file.endswith('.py') and file not in self.module_exceptions:
 				logger.debug(f"Processing file: {file}")
 
-				module_name = file.split('.')[0]
-
+				# handle UI modules
+				module_name = file.split('.')[0] 
 				try:
 					# import the modules dynamically
 					module = importlib.import_module(f"gui.apps.{module_name}")
@@ -159,13 +170,11 @@ class mainApp:
 					# initializing main class instance of module (class same name as module), storing it in the modules dictionary
 					main_class_name = mainApp.capitalize_first_letter(module_name)
 					main_class_instance = None
-					logger.debug(f"Module '{module_name}' has '{main_class_name}'")
 
 					if hasattr(module, main_class_name):
 						main_class = getattr(module, main_class_name)
 						logger.debug(f"Module '{module.__name__}' has mainclass '{main_class}'")
-						main_class_instance = main_class(self.master, self.myproject, self.myinterface, self.status_icon)
-						logger.debug(f"Initializing main class instance of '{module_name}'") 
+						main_class_instance = main_class(self.projectInstance)
 						self.modules[module_name] = main_class_instance
 
 					frame = ttk.Frame(self.tab_content_frame)
@@ -176,7 +185,7 @@ class mainApp:
 					# create an instance of every subclass of TabUI.Tab in module_classes
 					logger.debug(f"Creating menu sub-items for '{module_name}'")
 					for class_name, class_obj in module_classes:
-						tab_instance = class_obj(self.master, self.tab_content_frame, main_class_instance, self.menubar, self.myproject, self.myinterface)
+						tab_instance = class_obj(self.projectInstance, main_class_instance)
 
 						module_menu.add_command(
 							label=tab_instance.name, 
@@ -186,7 +195,6 @@ class mainApp:
 					message = f"ERROR: Error processing {module_name} module."
 					self.status_icon.change_icon_status("#FF0000", f"{message} {str(e)}")
 					logger.error(message, exc_info=True)
-			
 		if apps:
 			message = f"Modules imported successfully: {', '.join(apps)}"
 			self.status_icon.change_icon_status("#00FF00", message)
@@ -197,13 +205,29 @@ class mainApp:
 			logger.warning(message)
 			self.status_icon.change_icon_status("#FFFF00", message)
 
+	
+	def import_core_modules(self):
+		logger.debug("Importing core-modules...")
+		current_dir = os.path.dirname(__file__)
+		parent_dir = os.path.dirname(current_dir)
+		core_dir = os.path.join(parent_dir, 'core')
+		modules = os.listdir(core_dir)
+		logger.debug(f"Contents of 'core' directory: {modules}")
+
+		try:
+			self.projectInstance.set_module_map({file_name: importlib.import_module(f"core.{file_name.split('.')[0]}") for file_name in modules if file_name.endswith('.py') and file_name not in self.module_exceptions})
+		except Exception as e:
+			message = f"ERROR: Failed import/initialize the core-modules:"
+			logger.error(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+
 
 	def switch_tab(self, tab):
 		'''
 		switch the tab content to the selected tab content frame by
 		removing all widgets from the previous tab content frame and executing the new tab
 		'''
-		logger.debug('Switching from tab %s to tab %s', self.current_tab, tab.name)
+		logger.debug("Switching from tab '%s' to tab '%s'", self.current_tab, tab.name)
 		# hide the previous tab content
 		for frame in self.module_frames.values():
 			for widget in frame.winfo_children():
@@ -216,14 +240,53 @@ class mainApp:
 		
 		# Show the frame for the current module
 		module_name = tab.__class__.__module__.split('.')[-1]
-		self.current_tab = module_name
+		self.current_tab = tab.name
 		current_frame = self.module_frames[module_name]
 		current_frame.pack(fill='both', expand=True)
 
 		# Execute the new tab
-		logger.debug('Executing tab %s', tab.name)
 		tab.execute(self.myproject, self.myinterface)
 		self.update_frame_title(tab.name)
+
+
+	def _start_thread(self):
+		'''
+		method to create a thread for the tab content
+		'''
+		logger.debug(f"Starting thread for project loading...")
+		if self.loading_thread and self.loading_thread.is_alive():
+			logger.debug(f'Thread for Tab {self.name} is already running', exc_info=True)
+			return
+		
+		try:
+			self.description_frame.pack_forget() # hide the description frame
+			
+			self.loading_screen.show_loading(f"Opening project, please wait")
+			self.status_icon.change_icon_status("#00FF00", "Opening project, please wait...")
+			self.loading_thread = threading.Thread(target=self.open_project, daemon=True)
+			self.loading_thread.start()
+
+			logger.debug("Checking thread status...")
+			self.master.after(250, self._check_thread)
+		except Exception as e:
+			message = f'Error with starting the thread for opening the project'
+			logger.critical(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+
+
+	def _check_thread(self):
+		logger.debug("Thread is alive, checking status...")
+		if self.loading_thread and self.loading_thread.is_alive():
+			self.master.after(250, self._check_thread)
+		else:
+			self.on_thread_finished()
+
+
+	def on_thread_finished(self):
+		logger.debug('Opening project thread finished')
+		self.loading_screen.hide_loading()
+		self.description_frame.pack(expand=True, fill="both") # show the description frame
+		self.master.update_idletasks()
 
 
 	def open_project(self):
@@ -232,22 +295,22 @@ class mainApp:
 		try:
 			logger.info("Opening project, please wait...")
 			importlib.reload(Init)
-			self.update_action_label("Project is opening, please wait...")
 			project_path = self.project_path_entry.get()
 			self.myproject, self.myinterface = Init.open_project(self.checkbox_interface.get(), project_path)
 			logger.info(f"Project opened succesfully: {project_path}")
-			self.update_action_label("Project opened successfully!")
 
+			self.loading_screen.set_loading_text("Opened project successfully,\n importing core modules and updating the UI-modules")
+			self.projectInstance.update_project(self.myproject, self.myinterface)
+			self.import_core_modules()
+			
 			# update the project in all modules, try cath needed for the canvas
 			logger.debug(f"Updating 'myproject' to {self.myproject.Name} in all modules: {self.modules.keys()}")
 			for module_name, module_instance in self.modules.items():
 				try:
 					if hasattr(module_instance, 'update_project'):
-						module_instance.update_project(self.myproject, self.myinterface)
+						module_instance.update_project()
 					else:
-						# If update_project method doesn't exist, recreate the instance
-						main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
-						self.modules[module_name] = main_class(self.myproject, self.myinterface)
+						raise AttributeError(f"Module '{module_name}' does not have an 'update_project' method. Please add the method to the module.")
 				except tk.TclError as e:
 						message = f"Warning: Updating canvas {module_name}:"
 						self.update_action_label(f"{message} {str(e)}")
@@ -256,17 +319,15 @@ class mainApp:
 						continue
 				except Exception as e:
 					message = f"Error: Error occurred while updating {module_name}:"
-					self.update_action_label(f"{message} {str(e)}")
 					logger.error(message, exc_info=True)
 					self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
-			logger.debug(f"All modules updated succesfully: {self.modules.keys()}")
 
+			logger.debug(f"All modules updated succesfully: {self.modules.keys()}")
 			self.project_path_entry.delete(0, tk.END)
 			project_name = project_path.split("\\")[-1]
-			self.status_icon.change_icon_status("#00FF00")
-			self.update_name_label(project_name)
+			self.status_icon.change_icon_status("#00FF00", f"Project '{project_name}' opened successfully")
+			self.update_project_label(project_name)
 		except Exception as e:
-			self.update_action_label("")
 			message = f"ERROR: Project could not be opened."
 			messagebox.showerror("ERROR", f"{message} {str(e)}")
 			logger.error(message, exc_info=True)
@@ -283,11 +344,12 @@ class mainApp:
 				Init.close_project(self.myproject, self.myinterface)
 				self.myproject, self.myinterface = None, None
 				logger.info("Project closed successfully")
-				self.update_name_label("No project opened")
-				self.update_action_label("Project closed successfully!")
+				self.update_project_label("No project opened")
 
 				# update the project in all modules, try cath needed for the canvas
 				logger.debug(f"Updating parameters 'myproject, myinterface' to {self.myproject, self.myinterface} in all modules: {self.modules}")
+				self.projectInstance.update_project(self.myproject, self.myinterface)
+
 				for module_name, module_instance in self.modules.items():
 					try:
 						if isinstance(module_instance, NodesUI):
@@ -316,8 +378,9 @@ class mainApp:
 				if response:
 					self.stop_siemens_processes()
 				else:
-					self.update_action_label("Operation cancelled by user.")
-					logger.info("Operation 'stopping Siemens processes' cancelled by user.")
+					message = "Operation 'stopping Siemens processes' cancelled by user."
+					logger.info(message)
+					self.status_icon.change_icon_status("#FFFF00", message)
 		except Exception as e:
 			message = f"ERROR: Project could not be closed."
 			self.update_action_label(f"{message} {str(e)}")
@@ -373,7 +436,7 @@ class mainApp:
 		self.master.update_idletasks()
 
 
-	def update_name_label(self, text):
+	def update_project_label(self, text):
 		'''update the current project name label with the given text'''
 		
 		self.current_name_label.config(text=text)

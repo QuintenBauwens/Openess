@@ -28,14 +28,14 @@ class StatusCircle:
 		on_leave: Event handler for mouse leave event.
 	"""
 
-	def __init__(self, master, status_color="#FF0000", tooltip_text="Status description"):
+	def __init__(self, master):
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
 		self.master = master
 		self.canvas = tk.Canvas(master, width=25, height=25)
-		self.status_color = status_color
+		self.status_color = None
 		self.circle = self.canvas.create_oval(7, 7, 22, 22, fill=self.status_color)
 		self.canvas.grid(row=0, column=0, pady=10)  # Adjust row and column as needed
-		self.tooltip_text = tooltip_text
+		self.tooltip_text = None
 		self.tooltip = Tooltip(self.canvas, self.tooltip_text)
 		self.canvas.bind("<Enter>", self.on_enter)
 		self.canvas.bind("<Leave>", self.on_leave)
@@ -52,7 +52,7 @@ class StatusCircle:
 			tooltip_text (str, optional): The new text to display in the tooltip. Defaults to None.
 		"""
 		# colors = ["#FF0000", "#00FF00", "#FFFF00"]
-		logger.debug(f"Changing status circle color to {new_color} and tooltip text to {tooltip_text}")
+		logger.debug(f"Changing status circle color to {new_color} and tooltip text to '{tooltip_text}'")
 		self.status_color = new_color
 		self.canvas.itemconfig(self.circle, fill=self.status_color)
 		self.tooltip.update_tooltip_text(tooltip_text)

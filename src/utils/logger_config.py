@@ -17,12 +17,12 @@ def get_logger(name: str) -> logging.Logger:
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
 
-    file_handler = logging.FileHandler(f"appLog.log")
-    file_handler.setFormatter(CustomFormatter(LOG_FORMAT, datefmt=DATE_FORMAT))
-    logger.addHandler(file_handler)
+    if not logger.hasHandlers():
+        file_handler = logging.FileHandler(f"appLog.log")
+        file_handler.setFormatter(CustomFormatter(LOG_FORMAT, datefmt=DATE_FORMAT))
+        logger.addHandler(file_handler)
 
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(CustomFormatter(LOG_FORMAT, datefmt=DATE_FORMAT))
-    logger.addHandler(console_handler)
-
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(CustomFormatter(LOG_FORMAT, datefmt=DATE_FORMAT))
+        logger.addHandler(console_handler)
     return logger

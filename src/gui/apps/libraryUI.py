@@ -7,36 +7,34 @@ from pandastable import Table, TableModel
 
 from utils.tabUI import Tab
 from utils.tableDesignUI import DesignTable
-from utils.loadingScreenUI import LoadScreen
 from utils.dialogsUI import LibrarySettingsDialog
 from utils.logger_config import get_logger
-from core.hardware import Hardware
-from core.library import Library
 
 logger = get_logger(__name__)
 
 class TabConnection(Tab):
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("content", master, content_frame, main_class_instance, menubar, project, interface)
+	def __init__(self, project, main_class_instance):
+		super().__init__("content", project, main_class_instance)
 	
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
 
 class TabValidate(Tab):
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("validate project blocks", master, content_frame, main_class_instance, menubar, project, interface)
+	def __init__(self, project, main_class_instance):
+		super().__init__("validate project blocks", project, main_class_instance)
 	
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
 
 
 class LibraryUI:
-	def __init__(self, master, myproject, myinterface, status_icon=None):
+	def __init__(self, project):
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
-		self.master = master
-		self.myproject = myproject
-		self.myinterface = myinterface
-		self.status_icon = status_icon
+		self.project = project
+		self.master = project.master
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
+		self.status_icon = project.statusIcon
 
 		self.frame = None
 		self.table_frame = None
@@ -52,28 +50,24 @@ class LibraryUI:
 
 	def initialize_library(self):
 		if self.myproject is None or self.myproject is None:
-			self.library = None
-			self.hardware = None
-			self.plc_list = None
 			return
-		try:
-			self.hardware = Hardware(self.myproject, self.myinterface)
-			self.plc_list = self.hardware.get_plc_devices()
-			self.library = Library(self.myproject, self.myinterface, self.plc_list)
-		except Exception as e:
-			self.library = None
-			message = f'Failed to initialize library object:'
-			messagebox.showerror("ERROR", f'{message} {str(e)}')
-			logger.critical(message, exc_info=True)
-			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+		
+		self.hardware = self.project.hardware
+		self.plc_list = self.project.hardware.get_plc_devices()
+		self.library = self.project.library
 
 
-	def update_project(self, myproject, myinterface):
+	def update_project(self):
+		myproject = self.project.myproject
+		myinterface = self.project.myinterface
+
 		if self.myproject != myproject or self.myinterface != myinterface:
 			self.myproject = myproject
 			self.myinterface = myinterface
-
 			self.initialize_library()
+			
+			for tab_name, tab_instance in self.tabs.items():
+				self.show_content(tab_instance)
 			self.status_icon.change_icon_status("#00FF00", f'Updated project and interface to {myproject} and {myinterface}')
 
 
@@ -322,29 +316,28 @@ class LibraryUI:
 
 		try:
 			self.tab = tab
-			self.loading_screen = LoadScreen(self.master, self.frame)
-			self.loading_screen.show_loading(f"Applying table settings, please wait")
+			tab.loading_screen.show_loading(f"Applying table settings, please wait")
 
 			self.loading_thread = threading.Thread(target=self._load_content, args=(tab, reload))
 			self.loading_thread.start()
 
 			logger.debug('Checking status of the settings thread...')
-			self.master.after(100, self._check_settings_thread)
+			self.master.after(100, self._check_settings_thread(tab))
 		except Exception as e:
 			message = f'Something went wrong while starting the settings thread:'
 			logger.error(message, exc_info=True)
 			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
-	def _check_settings_thread(self):
+	def _check_settings_thread(self, tab):
 		logger.debug("Thread is alive, checking status...")
 		if self.loading_thread and self.loading_thread.is_alive():
-			self.master.after(100, self._check_settings_thread)
+			self.master.after(100, lambda: self._check_settings_thread(tab))
 		else:
-			self.on_settings_thread_finished()
+			self.on_settings_thread_finished(tab)
 
 
-	def on_settings_thread_finished(self):
+	def on_settings_thread_finished(self, tab):
 		try:
 			logger.debug('Settings thread finished, applying new settings...')
 			self._set_content(self.tab)
@@ -353,5 +346,5 @@ class LibraryUI:
 			logger.error(message, exc_info=True)
 			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 		finally:
-			self.loading_screen.hide_loading()
+			tab.loading_screen.hide_loading()
 			self.master.update_idletasks()

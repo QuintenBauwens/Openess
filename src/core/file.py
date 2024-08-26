@@ -10,16 +10,12 @@ import Siemens.Engineering as tia
 import pandas as pd
 import datetime
 
-from System.IO import FileInfo
-from core.project import Project
-from core.software import Software
-from core.library import Library
 from utils.logger_config import get_logger
 
 logger = get_logger(__name__)
 
 # TODO: DOCSTRINGS & documentation
-class File(Project):
+class File():
 	"""
 	Represents the project file.
 
@@ -30,15 +26,29 @@ class File(Project):
 	Attributes:
 		myproject (Project): The project object.
 		myinterface (Interface): The interface object.
-		software_instance (Software): The software instance.
+		software (Software): The software instance.
 		software_container (SoftwareContainer): The software container.
 	"""
 
 	def __init__(self, project):
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
 		self.project = project
-		self.software_container = self.project.software.get_software_container()
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
 		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
+
+	def get_core_classes(self):
+		"""
+		Returns the project classes.
+
+		Returns:
+			list: A list of the project classes.
+		"""
+		self.software = self.project.software
+		self.library = self.project.library
+
+	def get_core_functions(self):
+		self.software_container = self.software.get_software_container()
 
 	def file_summary(self):
 		"""
@@ -103,15 +113,14 @@ class File(Project):
 			(True, "The block 'my_block' has been found:\nPath: /path/to/block\nType: BlockType\nNumber: 123\nHeaderAuthor: Author\nModifiedDate: 2022-01-01\nProgramming Language: Python")
 		"""
 
-		library_instance = Library(self.myproject, self.myinterface)
-		main_plc = self.software_instance.PLC_list[0]
-		blocks_list = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup, include_group=False, include_safety_blocks=True)
+		main_plc = self.software.PLC_list[0]
+		blocks_list = self.software.get_software_blocks(self.software_container[main_plc.Name].BlockGroup, include_group=False, include_safety_blocks=True)
 
 		logger.debug(f"Filtering for block {block_name} out of all the blocks in the project: {len(blocks_list)} blocks")
 		logger.debug(f"Returning block information of {block_name} if it has been found")
 		for block in blocks_list:
 			if str(block.Name.lower()) == block_name.lower():
-				reversed_path = library_instance.get_map_structure(block)
+				reversed_path = self.library.get_map_structure(block)
 				path = reversed(reversed_path)
 				path = '/'.join(folder for folder in path)
 
@@ -146,9 +155,9 @@ class File(Project):
 			df_data (list): A list of dictionaries containing the name and indentation level of each block.
 		"""
 		logger.debug(f"Extracting project structure of project '{self.myproject.Name}'")
-		main_plc = self.software_instance.PLC_list[0]
+		main_plc = self.software.PLC_list[0]
 		# returns dict with headgroups as key, and value as list of blocks or a dict with subgroups and blocks
-		blocks = self.software_instance.get_software_blocks(self.software_container[main_plc.Name].BlockGroup) 
+		blocks = self.software.get_software_blocks(self.software_container[main_plc.Name].BlockGroup) 
 		text = ""
 		space = "  " 
 		df_data = []
@@ -182,7 +191,7 @@ class File(Project):
 		"""
 
 		IO_type_dict = {'I':'Input', 'Q': 'Output', 'M':'Other'}
-		tags = self.software_instance.get_project_tags()
+		tags = self.software.get_project_tags()
 		logger.debug(f"Inserting the retrieved {len(tags)} tags into a DataFrame")
 		df = pd.DataFrame()
 
@@ -258,7 +267,9 @@ class File(Project):
 
 
 	def export_block_data(self, block_name, tab):
-		block = self.software_instance.find_block(self.software_container.BlockGroup, block_name)
+		from System.IO import FileInfo
+		
+		block = self.software.find_block(self.software_container.BlockGroup, block_name)
 		block_instance = str(block).split('.')[-1] # fb, fc, db, etc.
 		block_number = str(block.Number)
 

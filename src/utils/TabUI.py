@@ -16,19 +16,19 @@ logger = get_logger(__name__)
 
 # TODO : DOCSTRING
 class Tab:
-	def __init__(self, name, master, content_frame, main_class_instance, menubar, project=None, interface=None):
+	def __init__(self, name, project, main_class_instance):
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance, name: '{name}'")
 		self.name = name
-		self.master = master
-		self.content_frame = content_frame
+		self.master = project.master
+		self.content_frame = project.content_frame
 		self.main_class_instance = main_class_instance
-		self.myproject = project
-		self.myinterface = interface
+		self.project = project
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
+		self.loading_screen = project.loading_screen
 		self.tab_content = None
-		self.menubar = menubar
 		self.thread = None
-		self.loading_screen = LoadScreen(self.master, self.content_frame)
-		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance {name} successfully")
+		logger.debug(f"Initialized '{name}' successfully")
 
 	def execute(self, myproject, myinterface):
 		logger.debug(f"Executing Tab '{self.name}'")

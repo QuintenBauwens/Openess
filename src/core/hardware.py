@@ -22,10 +22,11 @@ class Hardware:
 		myinterface (Interface): The interface of the hardware.
 	"""
 
-	def __init__(self, myproject, myinterface):
+	def __init__(self, project):
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
-		self.myproject = myproject
-		self.myinterface = myinterface
+		self.project = project
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
 		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
 
 

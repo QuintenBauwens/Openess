@@ -11,15 +11,14 @@ from pandastable import Table
 from utils.logger_config import get_logger
 from utils.tabUI import Tab
 from utils.dialogsUI import ExportDataDialog
-from core.file import File
 
 logger = get_logger(__name__)
 
 class TabSummary(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("summary", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+	def __init__(self, project, main_class_instance):
+		super().__init__("summary", project, main_class_instance) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -27,8 +26,8 @@ class TabSummary(Tab):
 class TabProjectTree(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("project tree", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+	def __init__(self, project, main_class_instance):
+		super().__init__("project tree", project, main_class_instance) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -36,8 +35,8 @@ class TabProjectTree(Tab):
 class TabFindBlock(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("find programblock", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+	def __init__(self, project, main_class_instance):
+		super().__init__("find programblock", project, main_class_instance) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -45,8 +44,8 @@ class TabFindBlock(Tab):
 class TabTags(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
 
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("project tags", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is instance of FileUI
+	def __init__(self, project, main_class_instance):
+		super().__init__("project tags", project, main_class_instance) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_tab(self)
@@ -54,14 +53,14 @@ class TabTags(Tab):
 
 # TODO : DOCSTRINGS
 class FileUI:
-	def __init__(self, master, myproject, myinterface, status_icon=None):
+	def __init__(self, project):
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
-		self.master = master
-		self.project = myproject
-		self.interface = myinterface
-		self.myproject = myproject
-		self.myinterface = myinterface
-		self.status_icon = status_icon
+		self.project = project
+		self.master = project.master
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
+		self.status_icon = project.statusIcon
+
 		self.frame = None # Frame for the file UI set in the mainApp
 		self.table_frame = None
 		self.tabs = {}
@@ -76,19 +75,15 @@ class FileUI:
 
 	def initialize_file(self):
 		if self.myproject is None or self.myinterface is None:
-			self.file = None
 			return
-		try:
-			self.file = File(self.myproject, self.myinterface)
-		except Exception as e:
-			self.file = None
-			message = f'Failed to initialize file object:'
-			messagebox.showerror("ERROR", message)
-			logger.critical(message, exc_info=True)
-			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+		
+		self.file = self.project.file
 
 
-	def update_project(self, myproject, myinterface):
+	def update_project(self):
+		myproject = self.project.myproject
+		myinterface = self.project.myinterface
+
 		if self.myproject != myproject or self.myinterface != myinterface:
 			self.myproject = myproject
 			self.myinterface = myinterface
@@ -182,9 +177,9 @@ class FileUI:
 
 		if self.myproject is None:
 			self.btn_export_output.config(state=tk.DISABLED)
-			message = f'Please open a project to view the content in {tab.name}.'
-			logger.warning(message)
-			self.status_icon.change_icon_status("#FFFF00", message)
+			content = f'Please open a project to view the content in {tab.name}.'
+			logger.warning(content)
+			self.status_icon.change_icon_status("#FFFF00", content)
 		else:
 			try:
 				if tab.name == "summary":
@@ -195,14 +190,15 @@ class FileUI:
 					if self.entry_block_name.get():
 						block_name = self.entry_block_name.get()
 						content = self.file.find_block_location(block_name)
-						if isinstance(content, object):
+						if content is not None:
 							self.btn_export_output.config(state=tk.NORMAL)
 						else:
+							content = f"No block has been found with name '{block_name}'"
 							self.btn_export_output.config(state=tk.DISABLED)
 					else:
-						message = "Please enter a block name to search for."
-						logger.warning(message)
-						self.status_icon.change_icon_status("#FFFF00", message)
+						content = "Please enter a block name to search for."
+						logger.warning(content)
+						self.status_icon.change_icon_status("#FFFF00", content)
 						self.btn_export_output.config(state=tk.DISABLED)
 				elif tab.name == "project tags":
 					content = self.file.show_tagTables()
@@ -222,10 +218,10 @@ class FileUI:
 				message = f"Failed to show content in {tab.name}:"
 				logger.error(message, exc_info=True)
 				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
-
-		if not tab.name == "project tags":
-			self.output_tab.delete(1.0, tk.END)
-			self.output_tab.insert(tk.END, message)
+		if tab.name == "project tags" and self.myproject is not None:
+			return
+		self.output_tab.delete(1.0, tk.END)
+		self.output_tab.insert(tk.END, content)
 
 
 	def export_content(self, tab):
@@ -246,7 +242,7 @@ class FileUI:
 
 			try:
 				selected_tab = tab.name
-				message = self.file.export_data(dialog.entryInput, dialog.selection, selected_tab, self)
+				message = self.file.export_data(dialog.entryInput, dialog.selectionInput, selected_tab, self)
 				messagebox.showinfo("Export successful", message)
 				logger.info(f"Export successful: {message}")
 				self.status_icon.change_icon_status("#00FF00", message)

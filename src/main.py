@@ -9,15 +9,10 @@ if __name__ == "__main__":
 
 	root = tk.Tk()
 	screen_width = root.winfo_screenwidth()  # Get the width of the scree
-	
-	try:
-		gui = mainApp(root)
-		root.geometry(f'-{screen_width}+100')  # TODO : Position window on the second screen
-		root.mainloop()
-	except Exception:
-		logger.critical("An error occurred while running the application")
-		root.destroy()
-		raise
+	gui = mainApp(root)
+	root.geometry(f'-{screen_width}+100')  # TODO : Position window on the second screen
+	root.mainloop()
+
 
 	# C:\Temp\P712713A01\P712713A01.ap15_1
 	

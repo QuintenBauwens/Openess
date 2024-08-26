@@ -14,7 +14,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from utils.tabUI import Tab
 from utils.dialogsUI import ExportDataDialog
 from utils.logger_config import get_logger
-from core.nodes import Nodes
 
 logger = get_logger(__name__)
 
@@ -22,8 +21,8 @@ logger = get_logger(__name__)
 class TabNodes(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("node list", master, content_frame, main_class_instance, menubar, project, interface) #mainclass is nodesUI 
+	def __init__(self, project, main_class_instance):
+		super().__init__("node list", project, main_class_instance) #mainclass is nodesUI 
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_node_list_tab(self)
@@ -31,8 +30,8 @@ class TabNodes(Tab):
 class TabFindDevice(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("find device", master, content_frame, main_class_instance, menubar, project, interface)
+	def __init__(self, project, main_class_instance):
+		super().__init__("find device", project, main_class_instance)
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_find_device_tab(self)
@@ -40,8 +39,8 @@ class TabFindDevice(Tab):
 class TabAddressCheck(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("address check", master, content_frame, main_class_instance, menubar, project, interface)
+	def __init__(self, project, main_class_instance):
+		super().__init__("address check", project, main_class_instance)
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_check_address_tab(self)
@@ -49,8 +48,8 @@ class TabAddressCheck(Tab):
 class TabDisplayConnections(Tab):
 	'''class to create the menu sub-items for the nodes head-item in the main menu'''
 
-	def __init__(self, master, content_frame, main_class_instance, menubar, project=None, interface=None):
-		super().__init__("connections", master, content_frame, main_class_instance, menubar, project, interface)
+	def __init__(self, project, main_class_instance):
+		super().__init__("connections", project, main_class_instance)
 
 	def create_tab_content(self):
 		self.tab_content = self.main_class_instance.create_display_connections_tab(self)
@@ -102,7 +101,7 @@ class NodesUI:
 			Retrieves the function output in the nodes logic to check if an address exists in the project.
 	"""
 
-	def __init__(self, master, myproject, myinterface, status_icon=None):
+	def __init__(self, project):
 		"""
 		Initializes the NodesUI object.
 
@@ -114,10 +113,11 @@ class NodesUI:
 		"""
 
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
-		self.master = master
-		self.myproject = myproject
-		self.myinterface = myinterface
-		self.status_icon = status_icon
+		self.project = project
+		self.master = project.master
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
+		self.status_icon = project.status_icon
 
 		self.frame = None # frame for the nodesUI, is being set in the mainApp
 		self.canvas = None
@@ -167,21 +167,12 @@ class NodesUI:
 		'''
 
 		if self.myproject is None or self.myinterface is None:
-			self.node = None
 			return
 		
-		try:
-			self.node = Nodes(self.myproject, self.myinterface)
-
-		except Exception as e:
-			self.node = None
-			message = f"Failed to initialize node object:"
-			messagebox.showerror("ERROR", message)
-			logger.critical(message, exc_info=True)
-			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+		self.node = self.project.nodes
 
 
-	def update_project(self, myproject, myinterface):
+	def update_project(self):
 		'''Overwrites the previous project and interface with the new ones and reinitializes the node object.
 
 		Args:
@@ -192,14 +183,18 @@ class NodesUI:
 			None
 		'''
 
-		self.clear_widgets()
-		self.myproject = myproject
-		self.myinterface = myinterface
-		self.initialize_node()
+		myproject = self.project.myproject
+		myinterface = self.project.myinterface
 
-		self.create_display_connections_tab()
+		if self.myproject != myproject or self.myinterface != myinterface:
+			self.myproject = myproject
+			self.myinterface = myinterface
+			
+			self.clear_widgets()
+			self.initialize_node()
+			self.create_display_connections_tab()
 
-		self.status_icon.change_icon_status("#00FF00", f"Updated project and interface to {myproject} and {myinterface}")
+			self.status_icon.change_icon_status("#00FF00", f"Updated project and interface to {myproject} and {myinterface}")
 
 
 	def create_node_list_tab(self, tab):

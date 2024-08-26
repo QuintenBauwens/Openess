@@ -10,7 +10,6 @@ clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAP
 import Siemens.Engineering.HW.Features as hwf
 import Siemens.Engineering as tia
 
-from core.hardware import Hardware
 from utils.logger_config import get_logger
 
 logger = get_logger(__name__)
@@ -33,14 +32,20 @@ class Software:
 		get_software_blocks: Retrieves all the blocks in a given group recursively.
 	"""
 
-	def __init__(self, myproject, myinterface) -> None:
+	def __init__(self, project) -> None:
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
-		self.myproject = myproject
-		self.myinterface = myinterface
-		self.hardware = Hardware(self.myproject, self.myinterface)
+		self.project = project
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
+
 		self.software_container = {}
-		self.PLC_list = self.hardware.get_plc_devices()
 		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
+
+	def get_core_classes(self):
+		self.hardware = self.project.hardware
+
+	def get_core_functions(self):
+		logger.debug(f"Retrieved {len(self.PLC_list)} PLC devices from the hardware component {self.PLC_list}")
 
 
 	def get_software_container(self) -> dict:
@@ -50,6 +55,7 @@ class Software:
 		Returns:
 			SoftwareContainer: List of the software container of all PLC devices.
 		"""
+		self.PLC_list = self.hardware.get_plc_devices()
 		logger.debug(f"Retrieving software container of all PLC devices: {[plc.Name for plc in self.PLC_list]}")
 		for plc in self.PLC_list:
 			self.software_container[plc.Name] = tia.IEngineeringServiceProvider(plc).GetService[hwf.SoftwareContainer]().Software

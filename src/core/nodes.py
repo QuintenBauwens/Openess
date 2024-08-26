@@ -47,7 +47,7 @@ class Nodes:
 		display_graph_interactive(self): Displays the graph in an interactive plotly figure with device type-based coloring and improved labels.
 	"""
 
-	def __init__(self, myproject, myinterface):
+	def __init__(self, project):
 		"""
 		Initializes a Nodes object.
 
@@ -56,13 +56,19 @@ class Nodes:
 			myinterface (str): The name of the interface.
 		"""
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
-		self.myproject = myproject
-		self.myinterface = myinterface
-		self.hardware = Hardware(self.myproject, self.myinterface)
-		self.projectItems = self.hardware.GetAllItems()
+		self.project = project
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
+
 		self.nodeList = None
 		self.items = {}
 		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
+
+	def get_core_classes(self):
+		self.hardware = self.project.hardware
+
+	def get_core_functions(self):
+		self.projectItems = self.hardware.GetAllItems()
 
 	# TODO: NEEDS TO BE UPDATED (INCORRECT) : get the nodes from subnet section directly instead of looping through all devices
 	def getNodeList(self, items={}):

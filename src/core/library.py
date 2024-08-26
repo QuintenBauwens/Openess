@@ -38,14 +38,12 @@ class Library:
 		project_blocks_df (object): The project blocks dataframe.
 	"""
 
-	def __init__(self, myproject, myinterface, plc_list=None):
+	def __init__(self, project, plc_list=None):
 		logger.debug(f"Initializing {__name__.split('.')[-1]} instance")
-		self.myproject = myproject
-		self.myinterface = myinterface
+		self.project = project
+		self.myproject = project.myproject
+		self.myinterface = project.myinterface
 		self.plc_list = plc_list
-		
-		self.software = Software(self.myproject, self.myinterface)
-		self.software_container = self.software.get_software_container()
 
 		self.library_types = None
 		self.library_content = None
@@ -71,7 +69,13 @@ class Library:
 		}
 
 		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully with settings: {self.settings}")
+	
 
+	def get_core_classes(self):
+		self.software = self.project.software
+
+	def get_core_functions(self):
+		self.software_container = self.software.get_software_container()
 
 	def get_map_structure(self, item, group_path=None):
 		"""
