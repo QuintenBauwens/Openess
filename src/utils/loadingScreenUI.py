@@ -2,7 +2,7 @@ import time
 import tkinter as tk
 import threading
 
-from utils.logger_config import get_logger
+from utils.loggerConfig import get_logger
 
 logger = get_logger(__name__)
 
@@ -22,7 +22,7 @@ class LoadScreen():
         Parameters:
             message (str): The message to be displayed on the loading screen.
         """
-        logger.debug(f"Showing loading screen with message '{text}'")
+        logger.debug(f"Showing loading screen with message '{text}'...")
 
         self.text = text
 
@@ -32,12 +32,12 @@ class LoadScreen():
         self.loadLabel = tk.Label(self.content_frame, text=self.text, bg="white",font=("tkDefaultFont", 14))
         self.loadLabel.place(relx=0.5, rely=0.5, anchor="center")
 
-        logger.debug("Loading screen displayed, starting loading effect")
+        logger.debug("Loading screen displayed, starting loading effect...")
         threading.Thread(target=self.loading_effect, daemon=True).start()
 
     
     def set_loading_text(self, text: str):
-        logger.debug(f"Setting loading text from {self.text} to '{text}'")
+        logger.debug(f"Setting loading text from '{self.text}' to '{text}'")
         self.loadLabel.config(text=text)
 
 
@@ -48,7 +48,7 @@ class LoadScreen():
         Returns:
         None
         """
-        logger.debug("Hiding loading screen")
+        logger.debug("Hiding loading screen...")
 
         if self.loading_frame is None:
             return
@@ -75,10 +75,15 @@ class LoadScreen():
         """
 
         while self.loading_frame:
-            current_text = self.loadLabel.cget("text")
-            if current_text.endswith("..."):
-                current_text = current_text[:-3]
-            else:
-                current_text = current_text + "."
-            self.loadLabel.config(text=current_text)
-            time.sleep(0.5)
+            try:
+                current_text = self.loadLabel.cget("text")
+                if current_text.endswith("..."):
+                    current_text = current_text[:-3]
+                else:
+                    current_text = current_text + "."
+                self.loadLabel.config(text=current_text)
+                time.sleep(0.5)
+            except Exception as e:
+                if isinstance(e, tk.TclError):
+                    break
+                logger.error(f"Error with loading effect: {str(e)}", exc_info=True)

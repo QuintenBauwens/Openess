@@ -10,7 +10,7 @@ Last updated: 08/07/2024
 
 import threading
 from utils.loadingScreenUI import LoadScreen
-from utils.logger_config import get_logger
+from utils.loggerConfig import get_logger
 
 logger = get_logger(__name__)
 
@@ -26,6 +26,7 @@ class Tab:
 		self.myproject = project.myproject
 		self.myinterface = project.myinterface
 		self.loading_screen = project.loading_screen
+		self.status_icon = project.status_icon
 		self.tab_content = None
 		self.thread = None
 		logger.debug(f"Initialized '{name}' successfully")
@@ -41,24 +42,26 @@ class Tab:
 		'''
 		method to create a thread for the tab content
 		'''
-		logger.debug(f"Starting thread for Tab '{self.name}'...")
+		logger.thread(f"Starting thread for Tab '{self.name}'...")
 		if self.thread and self.thread.is_alive():
-			logger.debug(f'Thread for Tab {self.name} is already running', exc_info=True)
+			logger.thread(f"Thread for Tab '{self.name}' is already running", exc_info=True)
 			return
 		
 		try:
 			if self.myproject is not None:
-				self.loading_screen.show_loading(f"Loading {self.name} tab, please wait")
+				self.loading_screen.show_loading(f"Loading '{self.name}' tab, please wait")
 			self.thread = threading.Thread(target=self.create_tab_content, daemon=True)
 			self.thread.start()
-			logger.debug("Checking thread status...")
+			logger.thread("Checking thread status...")
 			self.master.after(100, self._check_thread)
-		except Exception:
-			logger.error(f'Error with starting the thread for Tab {self.name}', exc_info=True)
+		except Exception as e:
+			message = f"Error with starting the thread for Tab '{self.name}'"
+			logger.critical(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
 	def _check_thread(self):
-		logger.debug(f"Thread of '{self.name}' is alive, checking status...")
+		logger.thread(f"Thread of '{self.name}' is alive, checking status...")
 		if self.thread and self.thread.is_alive():
 			self.content_frame.after(100, self._check_thread)
 		else:
@@ -66,13 +69,16 @@ class Tab:
 
 
 	def on_thread_finished(self):
-		logger.debug(f"Thread of '{self.name}' finished")
+		message = f"Thread of '{self.name}' finished, displaying content..."
+		logger.thread(message)
 		try:
 			if self.tab_content:
 				self.tab_content.pack(fill="both", expand=True)
 				self.loading_screen.hide_loading()
 		except Exception as e:
-			logger.error(f"Error on thread finished for Tab '{self.name}'", exc_info=True)
+			message = f"Error with finishing the thread for Tab '{self.name}'"
+			logger.critical(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
 	def create_tab_content(self):

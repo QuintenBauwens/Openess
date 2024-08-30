@@ -2,7 +2,7 @@ import inspect
 import core
 import utils
 from utils.loadingScreenUI import LoadScreen
-from utils.logger_config import get_logger
+from utils.loggerConfig import get_logger
 from utils.statusCircleUI import StatusCircle
 import utils.statusCircleUI
 
@@ -18,15 +18,15 @@ class Project():
         logger.debug(f"Initializing loading screen for the '{__name__.split('.')[-1]}' instance")
         self.loading_screen = LoadScreen(self.master, self.content_frame)
         self.module_map = {}
-        self.statusIcon = None
+        self.status_icon = None
         logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
 
     
     def set_statusIcon(self, header_frame):
         logger.debug(f"Creating the global status icon in the '{__name__.split('.')[-1]}' instance")
         try:
-            self.statusIcon = StatusCircle(header_frame)
-            return self.statusIcon
+            self.status_icon = StatusCircle(header_frame)
+            return self.status_icon
         except Exception as e:
             logger.error(f"Error trying to create the global status icon: {str(e)}", exc_info=True)
 
@@ -36,7 +36,7 @@ class Project():
             return
         
         self.module_map = module_map
-        logger.debug(f"Initializing a total of {len(self.module_map)} core-modules in Project: {list(self.module_map.keys())}")
+        logger.debug(f"Initializing a total of '{len(self.module_map)}' core-modules in Project: {list(self.module_map.keys())}")
         self.init_classes()
 
 
@@ -48,7 +48,7 @@ class Project():
                     if class_name.lower() != module.__name__.split('.')[-1]:
                         continue
 
-                    logger.debug(f"Initializing class: '{class_name}', with object: {class_obj}")
+                    logger.debug(f"Initializing class: '{class_name}', with object: '{class_obj}'")
                     instance = class_obj(self)
                     setattr(self, class_name.lower(), instance)
             except Exception as e:
@@ -56,7 +56,7 @@ class Project():
         # has to be done after all classes are initialized to avoid missing attributes in Project
         self.init_class_function('get_core_classes')
         self.init_class_function('get_core_functions')
-        logger.debug(f"Initialized a total of {len(self.module_map)} classes in Project")
+        logger.debug(f"Initialized a total of '{len(self.module_map)}' classes in '{__name__.split('.')[-1]}' instance")
 
 
     def init_class_function(self, function_name):

@@ -8,7 +8,7 @@ import pandas as pd
 from tkinter import ttk, scrolledtext, messagebox
 from pandastable import Table
 
-from utils.logger_config import get_logger
+from utils.loggerConfig import get_logger
 from utils.tabUI import Tab
 from utils.dialogsUI import ExportDataDialog
 
@@ -59,7 +59,7 @@ class FileUI:
 		self.master = project.master
 		self.myproject = project.myproject
 		self.myinterface = project.myinterface
-		self.status_icon = project.statusIcon
+		self.status_icon = project.status_icon
 
 		self.frame = None # Frame for the file UI set in the mainApp
 		self.table_frame = None
@@ -83,7 +83,6 @@ class FileUI:
 	def update_project(self):
 		myproject = self.project.myproject
 		myinterface = self.project.myinterface
-
 		if self.myproject != myproject or self.myinterface != myinterface:
 			self.myproject = myproject
 			self.myinterface = myinterface
@@ -124,14 +123,15 @@ class FileUI:
 
 		self.btn_export_output = ttk.Button(self.section2, text="Export", command=lambda: self.export_content(tab), state=tk.NORMAL)
 		self.btn_export_output.grid(row=0, column=0, sticky="nw", padx=10, pady=5)
+		self.btn_refresh = ttk.Button(self.section2, text="Refresh", command=lambda: self.show_content(tab, reload=True))
+		self.btn_refresh.grid(row=1, column=0, sticky="nw", padx=10, pady=5)
 		
 		if self.myproject is None:
-			self.btn_export_output.config(state=tk.DISABLED)
+			self.disable_buttons()
 
 		if tab.name == "find programblock":
 			self.created_tab_find_block(tab)
-		
-		if tab.name == "project tags" and self.myproject is not None:
+		elif tab.name == "project tags" and self.myproject is not None:
 			self.created_tab_tags(tab)
 
 		if tab.name not in self.tabs.keys():
@@ -144,7 +144,6 @@ class FileUI:
 
 	def created_tab_find_block(self, tab):
 		logger.debug(f"Adding unique UI elements to tab '{tab.name}'")
-
 		self.output_tab.config(height=5)
 		# section 3 for components specific to the tab
 		section3 = ttk.Frame(self.frame)
@@ -172,50 +171,50 @@ class FileUI:
 		self.table_frame = ttk.Frame(self.section1)
 		self.table_frame.grid(row=0, column=0, sticky="nsew")
 
-	def show_content(self, tab):
+	def show_content(self, tab, reload=False):
 		logger.debug(f"Setting content of tab '{tab.name}'...")
 
 		if self.myproject is None:
-			self.btn_export_output.config(state=tk.DISABLED)
-			content = f'Please open a project to view the content in {tab.name}.'
+			self.disable_buttons()
+			content = f"Please open a project to view the content in '{tab.name}'."
 			logger.warning(content)
 			self.status_icon.change_icon_status("#FFFF00", content)
 		else:
 			try:
 				if tab.name == "summary":
-					content, _ = self.file.file_summary()
+					content, _ = self.file.file_summary(reload=reload)
 				elif tab.name == "project tree":
-					content, _ = self.file.projectTree()
+					content, _ = self.file.projectTree(reload=reload)
 				elif tab.name == "find programblock":
 					if self.entry_block_name.get():
 						block_name = self.entry_block_name.get()
-						content = self.file.find_block_location(block_name)
+						content = self.file.find_block_location(block_name, reload=reload)
 						if content is not None:
-							self.btn_export_output.config(state=tk.NORMAL)
+							self.enable_buttons()
 						else:
+							self.disable_buttons()
 							content = f"No block has been found with name '{block_name}'"
-							self.btn_export_output.config(state=tk.DISABLED)
 					else:
+						self.disable_buttons()
 						content = "Please enter a block name to search for."
 						logger.warning(content)
 						self.status_icon.change_icon_status("#FFFF00", content)
-						self.btn_export_output.config(state=tk.DISABLED)
 				elif tab.name == "project tags":
-					content = self.file.show_tagTables()
-					logger.debug(f"Inserting tags into table if there has been a dataframe retrieved: {isinstance(content, pd.DataFrame)}")
+					content = self.file.show_tagTables(reload=reload)
+					logger.debug(f"Inserting tags into table if there has been a dataframe retrieved: '{isinstance(content, pd.DataFrame)}'")
 					if isinstance(content, pd.DataFrame):
 						# create the table, allowing it to expand to fill all available space
-						self.btn_export_output.config(state=tk.NORMAL)
+						self.enable_buttons()
 						self.pt = Table(self.table_frame, dataframe=content, showtoolbar=True, showstatusbar=True)
 						self.pt.grid(row=0, column=0, sticky="nsew")
 						self.pt.show()
 						self.pt.redraw() # redraw the table to ensure the table isnt empty
 					else:
-						raise Exception(f"Failed to show content in {tab.name} due to retrieved content not being a dataframe: {type(content)}")
-				logger.debug(f"Content {type(content)} for tab '{tab.name}' has been set successfully")
+						raise Exception(f"Failed to show content in '{tab.name}' due to retrieved content not being a dataframe: '{type(content)}'")
+				logger.debug(f"Content '{type(content)}' for tab '{tab.name}' has been set successfully")
 				self.status_icon.change_icon_status("#00FF00", f'{tab.name} has been set successfully')
 			except Exception as e:
-				message = f"Failed to show content in {tab.name}:"
+				message = f"Failed to show content in '{tab.name}':"
 				logger.error(message, exc_info=True)
 				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 		if tab.name == "project tags" and self.myproject is not None:
@@ -231,8 +230,8 @@ class FileUI:
 		extensions = ["*.csv", "*.xlsx", "*.json"]
 
 		if self.myproject is None:
-			self.btn_export_output.config(state=tk.DISABLED)
-			message = f"Please open a project to view the {tab.name}."
+			self.disable_buttons()
+			message = f"Please open a project to view the '{tab.name}'."
 			messagebox.showwarning("WARNING", message)
 			self.status_icon.change_icon_status("#FFFF00", message)
 		else:
@@ -251,3 +250,21 @@ class FileUI:
 				messagebox.showwarning("WARNING", f'{message} {str(e)}')
 				logger.error(message, exc_info=True)
 				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+
+
+	def disable_buttons(self):
+		try:
+			self.btn_export_output.config(state=tk.DISABLED)
+			self.btn_refresh.config(state=tk.DISABLED)
+			self.btn_find_block.config(state=tk.DISABLED)
+		except Exception as e:
+			pass
+
+
+	def enable_buttons(self):
+		try:
+			self.btn_export_output.config(state=tk.NORMAL)
+			self.btn_refresh.config(state=tk.NORMAL)
+			self.btn_find_block.config(state=tk.NORMAL)
+		except Exception as e:
+			pass

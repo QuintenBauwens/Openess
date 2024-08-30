@@ -7,8 +7,8 @@ from pandastable import Table, TableModel
 
 from utils.tabUI import Tab
 from utils.tableDesignUI import DesignTable
-from utils.dialogsUI import LibrarySettingsDialog
-from utils.logger_config import get_logger
+from utils.dialogsUI import ExportDataDialog, LibrarySettingsDialog
+from utils.loggerConfig import get_logger
 
 logger = get_logger(__name__)
 
@@ -34,7 +34,7 @@ class LibraryUI:
 		self.master = project.master
 		self.myproject = project.myproject
 		self.myinterface = project.myinterface
-		self.status_icon = project.statusIcon
+		self.status_icon = project.status_icon
 
 		self.frame = None
 		self.table_frame = None
@@ -92,6 +92,9 @@ class LibraryUI:
 
 		self.btn_table_settings = ttk.Button(self.section1, text="Settings", command=lambda: self._settings_window(tab), state=tk.NORMAL)
 		self.btn_table_settings.grid(row=1, column=0, sticky="nw", padx=10, pady=5)
+
+		self.btn_refresh = ttk.Button(self.section1, text="Refresh", command=lambda: self._start_thread(tab, reload=True), state=tk.NORMAL)
+		self.btn_refresh.grid(row=2, column=0, sticky="nw", padx=10, pady=5)
 		
 		self.section2 = ttk.Frame(self.frame)
 		self.section2.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
@@ -102,8 +105,7 @@ class LibraryUI:
 		self.output_tab.grid(row=0, padx=5, pady=5, sticky="nsew")
 
 		if self.myproject is None:
-			self.btn_export_output.config(state=tk.DISABLED)
-			self.btn_table_settings.config(state=tk.DISABLED)
+			self.disable_buttons()
 
 		if tab.name == "content" and self.myproject is not None:
 			self.create_content_tab(tab)
@@ -114,7 +116,7 @@ class LibraryUI:
 			self.tabs[tab.name] = tab
 		
 		self._load_content(tab)
-		self._set_content(tab)
+		self._show_content(tab)
 		logger.info(f"Menu-tab '{tab.name}' loaded successfully")
 		return self.frame
 
@@ -151,11 +153,11 @@ class LibraryUI:
 				logger.debug(f"Changing the current table settings of tab '{tab.name}': {self.library.get_settings()} to {self.selected_settings}")
 				self.library.set_settings(self.selected_settings)
 
-			logger.debug(f"Retrieving data for tab '{tab.name}' with its table settings: {self.library.get_settings()}, reload: {reload}")
+			logger.debug(f"Retrieving data for tab '{tab.name}' with its table settings: {self.library.get_settings()}, reload: '{reload}'")
 			if tab.name == "content":
 				self.library_df = self.library.get_library_content(reload=reload)
 			elif tab.name == "validate project blocks":
-				self.used_lib_blocks_df, self.used_lib_blocks_info = self.library.validate_used_blocks(reload=reload)
+				self.used_lib_blocks_df= self.library.validate_used_blocks(reload=reload)
 		except Exception as e:
 			self.message_error = str(e)
 			logger.error('Error loading data:', exc_info=True)
@@ -163,26 +165,26 @@ class LibraryUI:
 		logger.info(f"Data for menu-tab '{tab.name}' retrieved successfully")
 
 
-	def _set_content(self, tab):
-		logger.debug(f"Setting data of tab '{tab.name}'")
+	# def _set_content(self, tab):
+	# 	logger.debug(f"Setting data of tab '{tab.name}'")
 
-		if self.selected_settings is not None:
-			logger.info(f"Applying new settings to table of menu-tab '{tab.name}', please wait...")
-			if tab.name == "content":
-				self._update_table(tab, (self.library_df, None))
-			if tab.name == "validate project blocks":
-				self._update_table(tab, (self.used_lib_blocks_df, self.used_lib_blocks_info))
-			self.selected_settings = None
-		else:
-			self._show_content(tab)
-		self.master.update_idletasks()
+	# 	if self.selected_settings is not None:
+	# 		logger.info(f"Applying new settings to table of menu-tab '{tab.name}', please wait...")
+	# 		if tab.name == "content":
+	# 			self._update_table(tab, (self.library_df, None))
+	# 		if tab.name == "validate project blocks":
+	# 			self._update_table(tab, (self.used_lib_blocks_df, self.used_lib_blocks_info))
+	# 		self.selected_settings = None
+	# 	else:
+	# 		self._show_content(tab)
+	# 	self.master.update_idletasks()
 
 
 	def _show_content(self, tab):
-		logger.info(f"Inserting data in table on tab '{tab.name}'")
+		logger.info(f"Retrieving table with data of '{tab.name}'")
 		
 		if self.myproject is None:
-			self.btn_export_output.config(state=tk.DISABLED)
+			self.disable_buttons()
 			message = f"Please open a project to view the content in '{tab.name}'."
 			self.status_icon.change_icon_status("#FFFF00", message)
 			logger.warning(message)
@@ -196,27 +198,25 @@ class LibraryUI:
 
 				if tab.name == "content":
 					if isinstance(self.library_df, pd.DataFrame):
-						self.btn_export_output.config(state=tk.NORMAL)
-						self.btn_table_settings.config(state=tk.NORMAL)
+						self.enable_buttons()
 						self.set_table(tab, self.library_df)
 
 				elif tab.name == "validate project blocks":
 					if isinstance(self.used_lib_blocks_df, pd.DataFrame):
-						self.btn_export_output.config(state=tk.NORMAL)
-						self.btn_table_settings.config(state=tk.NORMAL)
-						self.set_table(tab, self.used_lib_blocks_df, self.used_lib_blocks_info)
+						self.enable_buttons()
+						self.set_table(tab, self.used_lib_blocks_df)
 
-				message = f"Data has been inserted in the table succesfully on tab '{tab.name}' "
+				message = f"Retrieved table on tab '{tab.name}' succesfully"
 				self.status_icon.change_icon_status("#00FF00", message)
 				logger.info(message)
 			except Exception as e:
-				message = f"Failed to instert data in the table on tab '{tab.name}':"
+				message = f"Failed to instert data in the table of tab '{tab.name}':"
 				logger.error(message, exc_info=True)
 				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
-	def set_table(self, tab, content, content_info=None):
-		logger.debug(f"Setting table data on tab '{tab.name}'")
+	def set_table(self, tab, content):
+		logger.debug(f"Inserting data in table of tab '{tab.name}'")
 		
 		try:
 			if tab.name == "content":
@@ -234,13 +234,9 @@ class LibraryUI:
 					)
 				self.design_table.add_color_condition(('Warning', 'NaN', 'lightred'), apply_on='col')
 				self.pt = self.design_table.apply_color_conditions()
-
-				info = f'Found a total of {content_info["total"]} used blocks in the project, of which {content_info["instanceDB"]} are instanceDB:\n\n' \
-					f'\tofficial blocks: {content_info["connected"]}\n' \
-					f'\tnon-official blocks: {content_info["disconnected"]}\n\n' \
-					f'*official blocks are blocks that are connected to the library.'
+				info = self.get_dataframe_info(tab)
 		except Exception as e:
-			message = f'Failed to set table with the data:'
+			message = f"Failed to insert data in table on '{tab.name}':"
 			logger.error(message, exc_info=True)
 			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
@@ -249,28 +245,24 @@ class LibraryUI:
 		self.pt.redraw() # renew the table
 
 		messagebox.showinfo("Library Connection", info)
-		logger.debug(f"Table data on tab '{tab.name}' has been set successfully: {info}")
+		logger.debug(f"Data has been inserted succesfully in table of '{tab.name}': {info}")
 		return
 
 
-	def _update_table(self, tab, content: tuple):
-		logger.debug(f"Updating table on tab '{tab.name}', with settings {self.selected_settings}")
+	def _update_table(self, tab, df):
+		logger.debug(f"Updating table of tab '{tab.name}', with settings {self.selected_settings}")
 
-		content_df, content_info = content
 		try:
-			if isinstance(content_df, pd.DataFrame):
-				self.pt.clearTable()
-				self.pt.updateModel(TableModel(content_df))
+			if isinstance(df, pd.DataFrame):
+				# self.pt.clearTable()
+				self.pt.updateModel(TableModel(df))
 
 				if tab.name == "content":
-					self.pt = self.design_table.redesign_table(self.pt)
-					info = f'Library contains a total of {len(content)} blocks.'
+					info = f'Library contains a total of {len(df)} blocks.'
 
 				elif tab.name == "validate project blocks": 
 					self.pt = self.design_table.redesign_table(self.pt)
-					info = f'Checked the connection between the library and a total of {content_info["total"]} library blocks.\n\n' \
-							f'Connected blocks: {content_info["connected"]}\n' \
-							f'Disconnected blocks: {content_info["disconnected"]}'
+					info = self.get_dataframe_info(tab)
 				
 				message = f'Table of tab {tab.name} updated successfully'
 				self.status_icon.change_icon_status("#00FF00", message)
@@ -283,19 +275,20 @@ class LibraryUI:
 			message = f'Failed to update library connection: '
 			logger.error(message, exc_info=True)
 			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
-		logger.debug(f"Succesfully applied new settings {self.selected_settings} to table on tab {tab.name}")
-		logger.info(f"Table of menu-tab '{tab.name}' updated successfully")
 
 
 	def _settings_window(self, tab):
-		logger.debug(f"Opening settings window for table on tab '{tab.name}' to let the user change the table settings")
+		logger.debug(f"Opening settings window to let the user change the table settings")
 		window_info = 'Settings for table view, be aware it can reduce the workload.'
 		settings = [key for key in self.library.settings.keys()]
-		default_values = [self.library.settings[key] for key in settings]
 
+		if tab.name == "content":
+			settings = [key for key in self.library.settings.keys() if key != 'warning_column']
+		default_values = [self.library.settings[key] for key in settings]
+		
 		try:
 			popup = LibrarySettingsDialog(self.master, "Changes table settings", options=settings, default_values=default_values, window_info=window_info)
-			self.selected_settings = popup.get_selection()
+			self.selected_settings = popup.get_selectionInput()
 		except Exception as e:
 			message = f'Failed to process settings window:'
 			logger.error(message, exc_info=True)
@@ -303,48 +296,115 @@ class LibraryUI:
 
 		if self.selected_settings:
 			logger.debug(f"Settings retrieved successfully after closing settings window: {self.selected_settings}")
-			reload = True if self.selected_settings != default_values else False
-			self._start_settings_thread(tab, reload=reload)
+			self._start_thread(tab)
 
 
-	def _start_settings_thread(self, tab, reload):
-		logger.debug('Starting settings thread...')
+	def _start_thread(self, tab, reload=False):
+		logger.thread(f"Starting thread for '{tab.name}'...")
 
 		if self.loading_thread and self.loading_thread.is_alive():
-			logger.debug('Settings thread is already running...')
+			logger.thread(f"Thread for '{tab.name}' is already running...")
 			return
 
 		try:
 			self.tab = tab
-			tab.loading_screen.show_loading(f"Applying table settings, please wait")
+			tab.loading_screen.show_loading(f"Updating table on tab '{tab.name}', please wait")
 
 			self.loading_thread = threading.Thread(target=self._load_content, args=(tab, reload))
 			self.loading_thread.start()
 
-			logger.debug('Checking status of the settings thread...')
-			self.master.after(100, self._check_settings_thread(tab))
+			logger.thread('Checking thread status...')
+			self.master.after(100, self._check_thread(tab))
 		except Exception as e:
-			message = f'Something went wrong while starting the settings thread:'
-			logger.error(message, exc_info=True)
+			message = f"Error with starting the thread for '{tab.name}'"
+			logger.critical(message, exc_info=True)
 			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
-	def _check_settings_thread(self, tab):
-		logger.debug("Thread is alive, checking status...")
+	def _check_thread(self, tab):
+		logger.thread(f"Thread of '{tab.name}' is alive, checking status...")
 		if self.loading_thread and self.loading_thread.is_alive():
-			self.master.after(100, lambda: self._check_settings_thread(tab))
+			self.master.after(100, lambda: self._check_thread(tab))
 		else:
-			self.on_settings_thread_finished(tab)
+			self.on_thread_finished(tab)
 
 
-	def on_settings_thread_finished(self, tab):
+	def on_thread_finished(self, tab):
 		try:
-			logger.debug('Settings thread finished, applying new settings...')
-			self._set_content(self.tab)
+			message = f"Thread of '{tab.name}' finished"
+			logger.thread(message)
+			if tab.name == "content":
+				self._update_table(tab, self.library_df)
+			elif tab.name == "validate project blocks":
+				self._update_table(tab, self.used_lib_blocks_df)
 		except Exception as e:
-			message = f'Error on settings thread finished:'
-			logger.error(message, exc_info=True)
+			message = f"Error on thread of 'settings table' finished:"
+			logger.critical(message, exc_info=True)
 			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 		finally:
+			self.selected_settings = None
 			tab.loading_screen.hide_loading()
 			self.master.update_idletasks()
+
+
+	def get_dataframe_info(self, tab):
+		if tab.name == "validate project blocks":
+			used_lib_blocks_df = self.used_lib_blocks_df
+			total_blocks = len(used_lib_blocks_df)
+			connected_blocks = used_lib_blocks_df['ConnectedToLibrary'].value_counts().get(True, 0)
+			outdated_blocks = used_lib_blocks_df['ConnectedToLibrary'].value_counts().get('Outdated', 0)
+			disconnected_blocks = used_lib_blocks_df['ConnectedToLibrary'].value_counts().get(False, 0)
+			instanceDB = used_lib_blocks_df['Type'].value_counts().get('InstanceDB', 0)
+
+			info = f'Connection between the library and a total of {total_blocks} project blocks.\n\n' \
+							f'\tConnected blocks: {connected_blocks}\n' \
+							f'\tOudated blocks: {outdated_blocks}\n' \
+							f'\tDisconnected blocks: {disconnected_blocks}\n\n' \
+							f'*official blocks are blocks that are connected to the library.'
+			return info
+
+
+	def export_content(self, tab):
+		'''method that is linked to the button in the node list tab, to export the function output of Nodes logic to a file'''
+		logger.debug(f"Exporting content from tab '{tab.name}'...")
+		
+		extensions = ["*.csv", "*.xlsx", "*.json"]
+
+		if self.myproject is None:
+			self.disable_buttons()
+			message = f"Please open a project to view the '{tab.name}'."
+			messagebox.showwarning("WARNING", message)
+			self.status_icon.change_icon_status("#FFFF00", message)
+		else:
+			dialog = ExportDataDialog(self.master, "Choose export option", extensions, label_name="file name")
+			extension = dialog.get_selectionInput()
+			file_name = dialog.get_entryInput()
+
+			try:
+				selected_tab = tab.name
+				message = self.library.export_data(file_name, extension, selected_tab, self)
+				messagebox.showinfo("Export successful", message)
+				logger.info(f"Export successful: {message}")
+				self.status_icon.change_icon_status("#00FF00", message)
+			except Exception as e:
+				message = f"Export failed:"
+				messagebox.showwarning("WARNING", f'{message} {str(e)}')
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+
+
+	def disable_buttons(self):
+		try:
+			self.btn_export_output.config(state=tk.DISABLED)
+			self.btn_table_settings.config(state=tk.DISABLED)
+			self.btn_refresh.config(state=tk.DISABLED)
+		except Exception as e:
+			pass
+
+	def enable_buttons(self):
+		try:
+			self.btn_export_output.config(state=tk.NORMAL)
+			self.btn_table_settings.config(state=tk.NORMAL)
+			self.btn_refresh.config(state=tk.NORMAL)
+		except Exception as e:
+			pass

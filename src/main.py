@@ -1,18 +1,34 @@
 import tkinter as tk
-from utils.logger_config import get_logger
+from utils.appSettings import appSettings
+from utils.loggerConfig import get_logger
+from utils.loggerConfig import update_logger_config
 from gui.main import mainApp  # Adjusted import statement
 
 logger = get_logger(__name__)
 
+def main(root):
+	try:
+		settings = appSettings(root)
+		update_logger_config(settings.get('logger', {}))
+	except Exception as e:
+		logger.info(f"Lanching application with settings: {settings}")
+		logger.warning(e, exc_info=True)
+	finally:
+		return settings
+
 if __name__ == "__main__":
-	logger.info("Starting the application")
-
 	root = tk.Tk()
-	screen_width = root.winfo_screenwidth()  # Get the width of the scree
-	gui = mainApp(root)
-	root.geometry(f'-{screen_width}+100')  # TODO : Position window on the second screen
-	root.mainloop()
+	root.withdraw()
+	screen_width = root.winfo_screenwidth()  # get the width of the screen
 
+	settings = main(root)
+	logger.info(f"Lanching application with settings: {str(settings)}")
+	gui = mainApp(root, settings)
+	# gui = mainApp(root)
+
+	root.geometry(f'-{screen_width}+100')  # position root on the second screen.
+	root.deiconify()
+	root.mainloop()
 
 	# C:\Temp\P712713A01\P712713A01.ap15_1
 	

@@ -22,15 +22,13 @@ import threading
 import tkinter as tk
 import subprocess
 import os
-import traceback
 import webbrowser
 
-from  tkinter import BooleanVar, ttk, messagebox, font as tkfont
+from tkinter import BooleanVar, ttk, messagebox, font as tkfont
 from gui.apps.nodesUI import NodesUI
 from utils import InitTia as Init
 from utils.tabUI import Tab
-from utils.statusCircleUI import StatusCircle
-from utils.logger_config import get_logger
+from utils.loggerConfig import get_logger
 from core.project import Project
 
 logger = get_logger(__name__)
@@ -45,11 +43,12 @@ class mainApp:
 			return s
 		return s[0].upper() + s[1:]
 
-	def __init__(self, master):
+	def __init__(self, master, settings=None):
 		logger.info(f"Initializing '{__name__}' instance")
 		self.myproject = None
 		self.myinterface = None
 		self.master = master
+		self.app_settings = settings
 		self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
 		self.base_title = "TIA openess demo"
 		master.title(self.base_title)
@@ -81,12 +80,16 @@ class mainApp:
 		self.current_tab = None
 		self.module_frames = {}
 		self.modules = {}
-		self.module_exceptions = ['__pycache__', '__init__.py', 'project.py', 'main.py', 'nodesUI.py']
+
+		if settings is not None:
+			self.module_exceptions = settings.get("modules", []).get("exclude_modules", [])
+			self.module_exceptions.append("project")
+		self.module_exceptions = ["libraryUI", "project"]
 		self.import_UI_modules()
 
 		master.config(menu=self.menubar)
 
-		self.style = self.setup_styles()
+		# self.style = self.setup_styles()
 		self.show_description()
 		logger.debug(f"Initialized '{__name__}' instance successfully")
 
@@ -95,7 +98,7 @@ class mainApp:
 
 		# sticky to allign the elements of the same column
 		# for the labels you want to change the text later on, you need to store them in a variable, and use the grid method on the next line
-		logger.debug("Creating master app frame and its UI")
+		logger.debug("Creating master app frame and its UI...")
 		self.status_icon = self.projectInstance.set_statusIcon(self.header_frame)
 		self.status_icon.change_icon_status("#FFFF00", "no project opened, some features may not be available.")
 		self.status_icon.canvas.grid(row=0, column=7, sticky="e", pady=10, padx=10)
@@ -140,12 +143,15 @@ class mainApp:
 		apps = []
 		current_dir = os.path.dirname(__file__)
 		apps_dir = os.path.join(current_dir, 'apps')
-		modules = os.listdir(apps_dir)
-		logger.debug(f"Contents of 'apps' directory: {modules}")
+		modules = [file for file in os.listdir(apps_dir) if file.endswith('.py') and not file.startswith('__')]
+		modules = [file.split('.')[0] for file in modules]
 
+		logger.info(f"Excluded modules: {self.module_exceptions}")
+		logger.info(f"Contents of 'apps' directory: {modules}, excluded modules: {self.module_exceptions}")
+	
 		for file in modules:
-			if file.endswith('.py') and file not in self.module_exceptions:
-				logger.debug(f"Processing file: {file}")
+			if file not in self.module_exceptions:
+				logger.debug(f"Processing file: '{file}'")
 
 				# handle UI modules
 				module_name = file.split('.')[0] 
@@ -192,11 +198,11 @@ class mainApp:
 							command=lambda tab=tab_instance: self.switch_tab(tab)
 						)
 				except Exception as e:
-					message = f"ERROR: Error processing {module_name} module."
+					message = f"ERROR: Error processing '{module_name}' module."
 					self.status_icon.change_icon_status("#FF0000", f"{message} {str(e)}")
 					logger.error(message, exc_info=True)
 		if apps:
-			message = f"Modules imported successfully: {', '.join(apps)}"
+			message = f"Modules imported successfully: '{', '.join(apps)}'"
 			self.status_icon.change_icon_status("#00FF00", message)
 			logger.info(message)
 		else:
@@ -213,13 +219,24 @@ class mainApp:
 		core_dir = os.path.join(parent_dir, 'core')
 		modules = os.listdir(core_dir)
 		logger.debug(f"Contents of 'core' directory: {modules}")
+		logger.warning(f"Excluded modules: {self.module_exceptions}")
 
 		try:
-			self.projectInstance.set_module_map({file_name: importlib.import_module(f"core.{file_name.split('.')[0]}") for file_name in modules if file_name.endswith('.py') and file_name not in self.module_exceptions})
+			module_map = {
+				file_name: importlib.import_module(f"core.{file_name.split('.')[0]}")
+				for file_name in modules
+				if file_name.endswith('.py') and file_name not in self.module_exceptions
+			}
+			self.projectInstance.set_module_map(module_map)
 		except Exception as e:
-			message = f"ERROR: Failed import/initialize the core-modules:"
-			logger.error(message, exc_info=True)
-			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+			if isinstance(e, ImportError):
+				message = f"ERROR: Failed to import the core-module, check the modules for syntax errors."
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+			else:
+				message = f"ERROR: Failed import/initialize the core-modules:"
+				logger.error(message, exc_info=True)
+				self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
 	def switch_tab(self, tab):
@@ -253,9 +270,9 @@ class mainApp:
 		'''
 		method to create a thread for the tab content
 		'''
-		logger.debug(f"Starting thread for project loading...")
+		logger.thread(f"Starting thread for project loading...")
 		if self.loading_thread and self.loading_thread.is_alive():
-			logger.debug(f'Thread for Tab {self.name} is already running', exc_info=True)
+			logger.thread(f"Thread for 'opening project' is already running", exc_info=True)
 			return
 		
 		try:
@@ -266,16 +283,16 @@ class mainApp:
 			self.loading_thread = threading.Thread(target=self.open_project, daemon=True)
 			self.loading_thread.start()
 
-			logger.debug("Checking thread status...")
+			logger.thread("Checking thread status...")
 			self.master.after(250, self._check_thread)
 		except Exception as e:
-			message = f'Error with starting the thread for opening the project'
+			message = f"Error with starting the thread for 'opening the project'"
 			logger.critical(message, exc_info=True)
 			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
 
 
 	def _check_thread(self):
-		logger.debug("Thread is alive, checking status...")
+		logger.thread("Thread of 'opening project' is alive, checking status...")
 		if self.loading_thread and self.loading_thread.is_alive():
 			self.master.after(250, self._check_thread)
 		else:
@@ -283,7 +300,9 @@ class mainApp:
 
 
 	def on_thread_finished(self):
-		logger.debug('Opening project thread finished')
+		message = "Thread of 'opening project' finished, returning to description..."
+		logger.thread(message)
+
 		self.loading_screen.hide_loading()
 		self.description_frame.pack(expand=True, fill="both") # show the description frame
 		self.master.update_idletasks()
@@ -297,14 +316,14 @@ class mainApp:
 			importlib.reload(Init)
 			project_path = self.project_path_entry.get()
 			self.myproject, self.myinterface = Init.open_project(self.checkbox_interface.get(), project_path)
-			logger.info(f"Project opened succesfully: {project_path}")
+			logger.info(f"Project opened succesfully: '{project_path}'")
 
-			self.loading_screen.set_loading_text("Opened project successfully,\n importing core modules and updating the UI-modules")
+			self.loading_screen.set_loading_text("Opened project successfully,\nimporting core modules and updating the UI-modules...")
 			self.projectInstance.update_project(self.myproject, self.myinterface)
 			self.import_core_modules()
 			
 			# update the project in all modules, try cath needed for the canvas
-			logger.debug(f"Updating 'myproject' to {self.myproject.Name} in all modules: {self.modules.keys()}")
+			logger.debug(f"Updating 'myproject' to '{self.myproject.Name}' in all modules: {self.modules.keys()}")
 			for module_name, module_instance in self.modules.items():
 				try:
 					if hasattr(module_instance, 'update_project'):
@@ -312,13 +331,13 @@ class mainApp:
 					else:
 						raise AttributeError(f"Module '{module_name}' does not have an 'update_project' method. Please add the method to the module.")
 				except tk.TclError as e:
-						message = f"Warning: Updating canvas {module_name}:"
+						message = f"Warning: Updating canvas '{module_name}':"
 						self.update_action_label(f"{message} {str(e)}")
 						logger.warning(message, exc_info=True)
 						self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
 						continue
 				except Exception as e:
-					message = f"Error: Error occurred while updating {module_name}:"
+					message = f"Error: Error occurred while updating '{module_name}':"
 					logger.error(message, exc_info=True)
 					self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
 
@@ -340,14 +359,14 @@ class mainApp:
 
 		try:
 			if self.myproject and self.myinterface:
-				logger.info("Closing project")
+				logger.info("Closing project...")
 				Init.close_project(self.myproject, self.myinterface)
 				self.myproject, self.myinterface = None, None
 				logger.info("Project closed successfully")
 				self.update_project_label("No project opened")
 
 				# update the project in all modules, try cath needed for the canvas
-				logger.debug(f"Updating parameters 'myproject, myinterface' to {self.myproject, self.myinterface} in all modules: {self.modules}")
+				logger.debug(f"Updating parameters 'myproject, myinterface' to '{self.myproject, self.myinterface}' in all modules: {self.modules.keys()}")
 				self.projectInstance.update_project(self.myproject, self.myinterface)
 
 				for module_name, module_instance in self.modules.items():
@@ -355,22 +374,22 @@ class mainApp:
 						if isinstance(module_instance, NodesUI):
 							module_instance.clear_widgets()
 						if hasattr(module_instance, 'update_project'):
-							module_instance.update_project(None, None)
+							module_instance.update_project()
 						else:
 							main_class = getattr(importlib.import_module(f"src.gui.apps.{module_name}"), module_name.capitalize())
 							self.modules[module_name] = main_class(None, None)
 					except tk.TclError as e:
-						message = f"Warning: Updating canvas {module_name}:"
+						message = f"Warning: Updating canvas '{module_name}':"
 						self.update_action_label(f"{message} {str(e)}")
 						logger.warning(message, exc_info=True)
 						self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
 						continue
 					except Exception as e:
-						message = f"Error: Error occurred while updating {module_name}:"
+						message = f"Error: Error occurred while updating '{module_name}':"
 						self.update_action_label(f"{message} {str(e)}")
 						logger.error(message, exc_info=True)
 						self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
-				logger.debug(f"All modules updated succesfully: {self.modules}")
+				logger.debug(f"All modules updated succesfully: {self.modules.keys()}")
 
 				self.status_icon.change_icon_status("#00FF00")
 			else:
@@ -486,20 +505,20 @@ class mainApp:
 		self.description_frame.grid_rowconfigure(1, weight=1)
 		self.description_frame.grid_rowconfigure(2, weight=0)
 
-		section_author = ttk.LabelFrame(self.description_frame, text="Author information", style="Custom.TLabelframe")
+		section_author = ttk.LabelFrame(self.description_frame, text="Author information")
 		section_author.grid(row=0, column=0, rowspan=3, sticky="nsew", padx=(5,2), pady=(5,2))
-		author_info_label = ttk.Label(section_author, text=author_info, wraplength=250, justify="left", style="Custom.TLabel")
+		author_info_label = ttk.Label(section_author, text=author_info, wraplength=250, justify="left")
 		author_info_label.pack(anchor="nw", padx=5, pady=2)
 
 		section_links = ttk.LabelFrame(self.description_frame, text="Links", style="Custom.TLabelframe")
 		section_links.grid(row=2, column=0, sticky="sew", padx=(5,2), pady=(5,2))
-		links_text = tk.Text(section_links, wrap="word", height=4, width=50, bg="#f5f5f5", relief="sunken", font=("Helvetica", 10))
+		links_text = tk.Text(section_links, wrap="word", height=4, width=50, bg='#f5f5f5', relief="sunken", font=("Helvetica", 10))
 		links_text.pack(anchor="sw", padx=5, pady=2, expand=True, fill="both")
 		self.link_config(links_text, links)
 		
-		section_app = ttk.LabelFrame(self.description_frame, text="App information", style="Custom.TLabelframe")
+		section_app = ttk.LabelFrame(self.description_frame, text="App information")
 		section_app.grid(row=0, column=1, sticky="nsew", columnspan=2, padx=(5,2), pady=(5,2))
-		app_info_label = ttk.Label(section_app, text=app_info, wraplength=700, justify="left", style="Custom.TLabel")
+		app_info_label = ttk.Label(section_app, text=app_info, wraplength=700, justify="left")
 		app_info_label.pack(anchor="nw", padx=5, pady=2, fill="both", expand=True)
 
 		# Add a custom separator
@@ -540,17 +559,17 @@ class mainApp:
 			text_widget.tag_bind(link, "<Leave>", self.on_leave)
 
 
-	def setup_styles(self):
-		style = ttk.Style()
+	# def setup_styles(self):
+	# 	style = ttk.Style()
     
-		# Create a custom font
-		custom_font = tkfont.Font(family="Helvetica", size=12, weight="bold")
+	# 	# Create a custom font
+	# 	custom_font = tkfont.Font(family="Helvetica", size=12, weight="bold")
 		
-		# Configure styles
-		style.configure("Custom.TLabelframe", font=custom_font)
-		style.configure("Custom.TLabelframe.Label", font=custom_font)
-		style.configure("Custom.TLabel", font=("Helvetica", 11), background="#f0f0f0", padding=(5, 5))
-		return style
+	# 	# Configure styles
+	# 	style.configure("Custom.TLabelframe", font=custom_font)
+	# 	style.configure("Custom.TLabelframe.Label", font=custom_font)
+	# 	style.configure("Custom.TLabel", font=("Helvetica", 11), background="#f0f0f0", padding=(5, 5))
+	# 	return style
 
 	def open_link(self, url):
 		webbrowser.open_new(url)
