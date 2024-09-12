@@ -40,6 +40,7 @@ def update_logger_config(settings):
 		'(highest) CRITICAL': logging.CRITICAL
 	}
 	log_level_setting = log_level_mapping.get(logger_level, logging.INFO)
+	LOG_LEVEL = log_level_setting
 
 	# update the log level for all loggers
 	for name in logging.root.manager.loggerDict:
@@ -54,16 +55,13 @@ def update_logger_config(settings):
 		raise ValueError("Log file name must end with '.log' extension, defaulting to 'AppLog.log'")
 	if file_name_setting != FILE_NAME:
 		FILE_NAME = file_name_setting
+		
 		# Reconfigure handlers for all loggers
 		for name in logging.root.manager.loggerDict:
-			print(name)
 			logger = logging.getLogger(name)
 			if logger.hasHandlers():
-				print('has handlers')
 				for handler in logger.handlers:
-					print(handler)
 					if isinstance(handler, logging.FileHandler):
-						print('closing handler')
 						handler.close()
 						logger.removeHandler(handler)
 				file_handler = logging.FileHandler(FILE_NAME, mode='a')
@@ -74,7 +72,8 @@ def update_logger_config(settings):
 def get_logger(name: str) -> logging.Logger:
 	logger = logging.getLogger(name)
 	# logger.setLevel(THREAD_LEVEL_NUM) # set the logger level to the custom level so that it can log the custom level
-	logger.setLevel(getattr(logging, LOG_LEVEL)) 
+	# logger.setLevel(getattr(logging, LOG_LEVEL)) 
+	logger.setLevel(LOG_LEVEL)
 
 	if not logger.hasHandlers():
 		# makes sure that the logger is not already configured
@@ -86,4 +85,6 @@ def get_logger(name: str) -> logging.Logger:
 		console_handler = logging.StreamHandler()
 		console_handler.setFormatter(CustomFormatter(LOG_FORMAT, datefmt=DATE_FORMAT))
 		logger.addHandler(console_handler)
+	
+	logger.propagate = False # avoid duplicate log messages
 	return logger

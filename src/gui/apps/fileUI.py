@@ -3,6 +3,7 @@ Author: Quinten Bauwens
 Last updated: 09/07/2024
 """
 
+import threading
 import tkinter as tk
 import pandas as pd
 from tkinter import ttk, scrolledtext, messagebox
@@ -21,7 +22,7 @@ class TabSummary(Tab):
 		super().__init__("summary", project, main_class_instance) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
-		self.tab_content = self.main_class_instance.create_tab(self)
+		super().create_tab_content()
 
 class TabProjectTree(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
@@ -30,7 +31,7 @@ class TabProjectTree(Tab):
 		super().__init__("project tree", project, main_class_instance) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
-		self.tab_content = self.main_class_instance.create_tab(self)
+		super().create_tab_content()
 
 class TabFindBlock(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
@@ -39,7 +40,7 @@ class TabFindBlock(Tab):
 		super().__init__("find programblock", project, main_class_instance) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
-		self.tab_content = self.main_class_instance.create_tab(self)
+		super().create_tab_content()
 
 class TabTags(Tab):
 	'''class to create the menu sub-items for the file head-item in the main menu'''
@@ -48,7 +49,7 @@ class TabTags(Tab):
 		super().__init__("project tags", project, main_class_instance) #mainclass is instance of FileUI
 
 	def create_tab_content(self):
-		self.tab_content = self.main_class_instance.create_tab(self)
+		super().create_tab_content()
 
 
 # TODO : DOCSTRINGS
@@ -67,6 +68,7 @@ class FileUI:
 
 		self.output_tab = None
 		self.btn_export_output = None
+		self.loading_thread = None
 		self.tab_summary = None
 
 		self.initialize_file()
@@ -90,7 +92,10 @@ class FileUI:
 			self.initialize_file()
 
 			for tab_name, tab_instance in self.tabs.items():
-				self.show_content(tab_instance)
+				if myproject is not None:
+					self.show_content(tab_instance)
+				else:
+					self.create_tab(tab_instance)
 			
 			self.status_icon.change_icon_status("#00FF00", f'Updated project and interface to {myproject} and {myinterface}')
 
@@ -123,7 +128,7 @@ class FileUI:
 
 		self.btn_export_output = ttk.Button(self.section2, text="Export", command=lambda: self.export_content(tab), state=tk.NORMAL)
 		self.btn_export_output.grid(row=0, column=0, sticky="nw", padx=10, pady=5)
-		self.btn_refresh = ttk.Button(self.section2, text="Refresh", command=lambda: self.show_content(tab, reload=True))
+		self.btn_refresh = ttk.Button(self.section2, text="Refresh", command=lambda: self._start_thread(tab, reload=True))
 		self.btn_refresh.grid(row=1, column=0, sticky="nw", padx=10, pady=5)
 		
 		if self.myproject is None:
@@ -154,7 +159,7 @@ class FileUI:
 		self.entry_block_name = ttk.Entry(section3)
 		self.entry_block_name.grid(row=0, column=1, pady=5, padx=5)
 
-		self.btn_find_block = ttk.Button(section3, text="Find", command=lambda: self.show_content(tab))
+		self.btn_find_block = ttk.Button(section3, text="Find", command=lambda: self._start_thread(tab))
 		self.btn_find_block.grid(row=0, column=2, pady=5, padx=5)
 
 		section3.columnconfigure(1, weight=1)
@@ -170,6 +175,56 @@ class FileUI:
 		# configure the grid for section1 to allow the table to expand
 		self.table_frame = ttk.Frame(self.section1)
 		self.table_frame.grid(row=0, column=0, sticky="nsew")
+
+
+	def _start_thread(self, tab, reload=False):
+		logger.thread(f"Starting thread for '{tab.name}'...")
+
+		if self.loading_thread and self.loading_thread.is_alive():
+			logger.thread(f"Thread for '{tab.name}' is already running...")
+			return
+
+		try:
+			self.tab = tab
+			if tab.name == "project tags":
+				tab.loading_screen.show_loading(f"Updating table on tab '{tab.name}', please wait")
+			elif tab.name == "find programblock":
+				tab.loading_screen.show_loading(f"Searching for block '{self.entry_block_name.get()}', please wait")
+			else:
+				tab.loading_screen.show_loading(f"Updating content for tab '{tab.name}', please wait")
+
+			self.loading_thread = threading.Thread(target=self.show_content, args=(tab, reload))
+			self.loading_thread.start()
+
+			logger.thread('Checking thread status...')
+			self.master.after(100, self._check_thread(tab))
+		except Exception as e:
+			message = f"Error with starting the thread for '{tab.name}'"
+			logger.critical(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+
+
+	def _check_thread(self, tab):
+		logger.thread(f"Thread of '{tab.name}' is alive, checking status...")
+		if self.loading_thread and self.loading_thread.is_alive():
+			self.master.after(100, lambda: self._check_thread(tab))
+		else:
+			self.on_thread_finished(tab)
+
+
+	def on_thread_finished(self, tab):
+		try:
+			message = f"Thread of '{tab.name}' finished"
+			logger.thread(message)
+		except Exception as e:
+			message = f"Error on thread of {tab.name}:"
+			logger.critical(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')
+		finally:
+			self.selected_settings = None
+			tab.loading_screen.hide_loading()
+			self.master.update_idletasks()
+
 
 	def show_content(self, tab, reload=False):
 		logger.debug(f"Setting content of tab '{tab.name}'...")
@@ -195,7 +250,6 @@ class FileUI:
 							self.disable_buttons()
 							content = f"No block has been found with name '{block_name}'"
 					else:
-						self.disable_buttons()
 						content = "Please enter a block name to search for."
 						logger.warning(content)
 						self.status_icon.change_icon_status("#FFFF00", content)
@@ -255,8 +309,6 @@ class FileUI:
 	def disable_buttons(self):
 		try:
 			self.btn_export_output.config(state=tk.DISABLED)
-			self.btn_refresh.config(state=tk.DISABLED)
-			self.btn_find_block.config(state=tk.DISABLED)
 		except Exception as e:
 			pass
 

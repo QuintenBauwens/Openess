@@ -22,9 +22,10 @@ import threading
 import tkinter as tk
 import subprocess
 import os
+from tkinter import filedialog
 import webbrowser
 
-from tkinter import BooleanVar, ttk, messagebox, font as tkfont
+from tkinter import BooleanVar, ttk, messagebox
 from gui.apps.nodesUI import NodesUI
 from utils import InitTia as Init
 from utils.tabUI import Tab
@@ -84,7 +85,8 @@ class mainApp:
 		if settings is not None:
 			self.module_exceptions = settings.get("modules", []).get("exclude_modules", [])
 			self.module_exceptions.append("project")
-		self.module_exceptions = ["libraryUI", "project"]
+		else:
+			self.module_exceptions = ["libraryUI", "project"]
 		self.import_UI_modules()
 
 		master.config(menu=self.menubar)
@@ -103,22 +105,18 @@ class mainApp:
 		self.status_icon.change_icon_status("#FFFF00", "no project opened, some features may not be available.")
 		self.status_icon.canvas.grid(row=0, column=7, sticky="e", pady=10, padx=10)
 
-		self.project_path_label = ttk.Label(self.header_frame, text="project path:").grid(row=0, column=0, sticky="w" ,padx=5, pady=(5, 0))
-		self.project_path_entry = ttk.Entry(self.header_frame, width=40)
-		self.project_path_entry.grid(row=0, column=1, sticky="w" ,padx=5, pady=(5, 0))
-
+		self.current_project_label = ttk.Label(self.header_frame, text="current project :")
+		self.current_project_label.grid(row=0, column=0, sticky="w", padx=5)
+		self.current_name_label = ttk.Label(self.header_frame, text="no project opened")
+		self.current_name_label.grid(row=0, column=1, sticky="w" ,padx=5)
 		self.action_label = ttk.Label(self.header_frame, text="", foreground="#FF0000")
 		self.action_label.grid(row=0, column=5, sticky="ew", padx=5, pady=(5, 0))
 
 		ttk.Button(self.header_frame, text="open project", command=self._start_thread).grid(row=0, column=2, sticky="w", padx=5, pady=(5, 0))
+		ttk.Button(self.header_frame, text="close Project", command=self.close_project).grid(row=1, column=2, sticky="w", padx=5)
+
 		self.checkbox_interface = BooleanVar(value=False)
 		ttk.Checkbutton(self.header_frame, text="open with interface", variable=self.checkbox_interface).grid(row=0, column=3, sticky="w", padx=5, pady=(5, 0))
-		
-		# row 1
-		self.current_project_label = ttk.Label(self.header_frame, text="current project:").grid(row=1, column=0, sticky="w", padx=5)
-		self.current_name_label = ttk.Label(self.header_frame, text="no project opened")
-		self.current_name_label.grid(row=1, column=1, sticky="w" ,padx=5)
-		ttk.Button(self.header_frame, text="close Project", command=self.close_project).grid(row=1, column=2, sticky="w", padx=5)
 
 		seperator = ttk.Separator(self.header_frame, orient="horizontal")
 		seperator.grid(row=2, column=0, columnspan=11 ,sticky="ew", pady=(10))
@@ -213,7 +211,7 @@ class mainApp:
 
 	
 	def import_core_modules(self):
-		logger.debug("Importing core-modules...")
+		logger.info("Importing core-modules...")
 		current_dir = os.path.dirname(__file__)
 		parent_dir = os.path.dirname(current_dir)
 		core_dir = os.path.join(parent_dir, 'core')
@@ -225,9 +223,10 @@ class mainApp:
 			module_map = {
 				file_name: importlib.import_module(f"core.{file_name.split('.')[0]}")
 				for file_name in modules
-				if file_name.endswith('.py') and file_name not in self.module_exceptions
+				if file_name.endswith('.py') and file_name.split('.')[0] not in self.module_exceptions
 			}
 			self.projectInstance.set_module_map(module_map)
+			logger.info(f"Core-modules imported successfully: {list(module_map.keys())}")
 		except Exception as e:
 			if isinstance(e, ImportError):
 				message = f"ERROR: Failed to import the core-module, check the modules for syntax errors."
@@ -313,8 +312,9 @@ class mainApp:
 
 		try:
 			logger.info("Opening project, please wait...")
-			importlib.reload(Init)
-			project_path = self.project_path_entry.get()
+			project_path = str(filedialog.askopenfilename())
+			project_path = project_path.replace("/", "\\")
+
 			self.myproject, self.myinterface = Init.open_project(self.checkbox_interface.get(), project_path)
 			logger.info(f"Project opened succesfully: '{project_path}'")
 
@@ -342,7 +342,6 @@ class mainApp:
 					self.status_icon.change_icon_status("#FFFF00", f"{message} {str(e)}")
 
 			logger.debug(f"All modules updated succesfully: {self.modules.keys()}")
-			self.project_path_entry.delete(0, tk.END)
 			project_name = project_path.split("\\")[-1]
 			self.status_icon.change_icon_status("#00FF00", f"Project '{project_name}' opened successfully")
 			self.update_project_label(project_name)
@@ -371,8 +370,8 @@ class mainApp:
 
 				for module_name, module_instance in self.modules.items():
 					try:
-						if isinstance(module_instance, NodesUI):
-							module_instance.clear_widgets()
+						# if isinstance(module_instance, NodesUI):
+						# 	module_instance.clear_widgets()
 						if hasattr(module_instance, 'update_project'):
 							module_instance.update_project()
 						else:
@@ -432,11 +431,6 @@ class mainApp:
 	def on_closing(self):
 		if messagebox.askokcancel("Quit", "Do you want to quit?"):
 			try:
-				# close NodesUI instance
-				for module_name, module_instance in self.modules.items():
-					if isinstance(module_instance, NodesUI):
-						module_instance.on_closing()
-				
 				# close the Tkinter window
 				self.master.destroy()
 
@@ -557,19 +551,6 @@ class mainApp:
 
 			text_widget.tag_bind(link, "<Enter>", self.on_enter)
 			text_widget.tag_bind(link, "<Leave>", self.on_leave)
-
-
-	# def setup_styles(self):
-	# 	style = ttk.Style()
-    
-	# 	# Create a custom font
-	# 	custom_font = tkfont.Font(family="Helvetica", size=12, weight="bold")
-		
-	# 	# Configure styles
-	# 	style.configure("Custom.TLabelframe", font=custom_font)
-	# 	style.configure("Custom.TLabelframe.Label", font=custom_font)
-	# 	style.configure("Custom.TLabel", font=("Helvetica", 11), background="#f0f0f0", padding=(5, 5))
-	# 	return style
 
 	def open_link(self, url):
 		webbrowser.open_new(url)

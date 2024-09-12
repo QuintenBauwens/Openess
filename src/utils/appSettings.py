@@ -4,21 +4,20 @@ import tkinter as tk
 
 from utils.statusCircleUI import StatusCircle
 from tkinter import ttk, scrolledtext
-from gui.main import mainApp
 from utils.dialogsUI import AppSettingsDialog
 from utils.loggerConfig import FILE_NAME, LOG_LEVEL
 
 main_settings = {}
 STYLES = {
 	"Light": {
-		"TButton": {"background": "#f5f5f5", "foreground": "black"},
-		"TFrame": {"background": "#f5f5f5"},
-		"TLabel": {"background": "#f5f5f5", "foreground": "black"},
-		"TLabelframe": {"background": "#f5f5f5"},
-		"TLabelframe.Label": {"background": "#f5f5f5", "foreground": "black"},
-		"ScrolledText": {"bg": "#f5f5f5", "fg": "black", "insertbackground": "black"},
-		"Text": {"background": "#f5f5f5", "foreground": "black", "insertbackground": "black"},
-		".": {"background": "#f5f5f5", "foreground": "black"}
+		"TButton": {"background": "#f0f0f0", "foreground": "black"},
+		"TFrame": {"background": "#f0f0f0"},
+		"TLabel": {"background": "#f0f0f0", "foreground": "black"},
+		"TLabelframe": {"background": "#f0f0f0"},
+		"TLabelframe.Label": {"background": "#f0f0f0", "foreground": "black"},
+		"ScrolledText": {"bg": "#f0f0f0", "fg": "black", "insertbackground": "black"},
+		"Text": {"background": "#f0f0f0", "foreground": "black", "insertbackground": "black"},
+		".": {"background": "#f0f0f0", "foreground": "black"}
 	},
 	"Dark": {
 		"TButton": {"background": "black", "foreground": "black"},
@@ -33,6 +32,11 @@ STYLES = {
 }
 
 def exlude_modules():
+	"""
+	Generates a list of modules to be excluded from import.
+	Returns:
+		list: A list of tuples containing module names, checkbox labels, and a boolean value indicating if the module should be excluded.
+	"""
 	current_dir = os.path.dirname(__file__)
 	parent_dir = os.path.dirname(current_dir)
 	apps_dir = os.path.join(parent_dir, 'gui', 'apps')
@@ -42,6 +46,31 @@ def exlude_modules():
 	main_settings["modules"] = [("exclude_modules", "Select modules to be excluded from import", modules)]
 	
 def logger_settings():
+	"""
+	Returns the logger settings for the application.
+
+	Returns:
+		dict: A dictionary containing the logger settings.
+			The dictionary has the following structure:
+			{
+				"logger_level": (str, str, bool),
+				"logger_file": (str, str, str)
+			}
+			- "logger_level": A tuple containing the log level options for the logger.
+				The tuple has the following structure:
+				(level, control_type, is_selected)
+				- level (str): The log level option.
+				- control_type (str): The type of control used to select the log level option.
+				- is_selected (bool): Indicates whether the log level option is selected.
+			- "logger_file": A tuple containing the log file settings.
+				The tuple has the following structure:
+				(label, control_type, default_value)
+				- label (str): The label for the log file setting.
+				- control_type (str): The type of control used to set the log file name.
+				- default_value (str): The default value for the log file name.
+	"""
+	# code implementation here
+	pass
 	log_levels = ["(lowest) THREAD", "DEBUG", "INFO", "WARNING", "ERROR", "(highest) CRITICAL"]
 	level_desc = "Set the log-level of the logger, when selected the levels above will be included."
 	log_level_options = [(level, "Radiobutton", (True if level == LOG_LEVEL else False)) for level in log_levels]
@@ -51,6 +80,12 @@ def logger_settings():
 	]
 	
 def style_settings():
+	"""
+	Returns the style settings for the UI-presentation mode.
+
+	Returns:
+		dict: A dictionary containing the style settings.
+	"""
 	mode_desc = "Select the UI-presentation mode, lightmode is default."
 	mode_options = [(mode, "Radiobutton", (True if mode == "Light" else False)) for mode in STYLES.keys()]
 	main_settings["styles"] = [
@@ -58,6 +93,14 @@ def style_settings():
 	]
 
 def apply_settings(root, settings):
+	"""
+	Apply the specified settings to the GUI-root widget and its children.
+	Args:
+		root (tkinter.Tk): The root widget.
+		settings (dict): The settings to apply.
+	Returns:
+		None
+	"""
 	mode = settings.get('styles', {}).get('adaption', 'Light')[0]
 	
 	def apply_styles(widget, style_name, initial=True):
@@ -71,7 +114,7 @@ def apply_settings(root, settings):
 				hwnd = ctypes.windll.user32.GetParent(root.winfo_id())
 				ctypes.windll.dwmapi.DwmSetWindowAttribute(hwnd, 20, ctypes.byref(ctypes.c_int(1)), ctypes.sizeof(ctypes.c_int(1)))
 				ctypes.windll.dwmapi.DwmSetWindowAttribute(hwnd, 19, ctypes.byref(ctypes.c_int(0)), ctypes.sizeof(ctypes.c_int(0)))
-			StatusCircle.BG_COLOR = "black" if style_name == "Dark" else "#f5f5f5"
+			StatusCircle.BG_COLOR = "black" if style_name == "Dark" else "#f0f0f0"
 
 		style = ttk.Style()
 		styles = STYLES.get(style_name, STYLES["Light"])
@@ -97,6 +140,13 @@ def apply_settings(root, settings):
 
 
 def appSettings(root):
+	"""
+	Opens the AppSettingsDialog to allow the user to modify the application settings.
+	Parameters:
+	- root: The root Tkinter window.
+	Returns:
+	- settings: A dictionary containing the modified settings values.
+	"""
 	exlude_modules()
 	logger_settings()
 	style_settings()

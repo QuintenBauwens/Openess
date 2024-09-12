@@ -81,14 +81,14 @@ class Nodes:
 		Returns:
 			dict: A dictionary containing all the nodes in the project.
 		"""
-		if hasattr(self, 'nodeList') and not reload:
+		if self.nodeList and not reload:
 			logger.debug(f"Returning cached node list: {type(self.nodeList)}, total entries: '{len(self.nodeList)}'...")
 			return self.nodeList
 
 		PLC_List = self.hardware.get_plc_devices(reload=reload)
 		interface_devices = self.hardware.get_interface_devices(self.projectItems, reload=reload)
 		logger.debug(
-			f"Gathering nodes from PLC's {PLC_List} and making dict: "
+			f"Gathering nodes from PLC's {[item.Name for item in PLC_List]} and making dict: "
 			f"amount of interface devices: '{len(interface_devices)}, '"
 			f"reload: '{reload}'"
 		)
@@ -138,12 +138,12 @@ class Nodes:
 		self.nodeList = items
 		logger.debug(
 			f"Returning nodelist {type(self.nodeList)} : "
-			f"total nodes: '{len(self.nodeList)}'"
+			f"total nodes: '{len(self.nodeList.items())}'"
 		)
 		return items
 
 
-	def show_node_table(self, items={}, reload=False):
+	def getNodeTable(self, items={}, reload=False):
 		"""
 		Returns a table with all the nodes for visualization in a GUI application.
 
@@ -195,7 +195,7 @@ class Nodes:
 		Returns:
 			nx.Graph: The generated graph object representing the network connections.
 		"""
-		if hasattr(self, 'G') and not reload:
+		if hasattr(self, "G") and not reload:
 			logger.debug(f"Returning cached graph data: {type(self.G)}, with '{len(self.G.nodes)}' nodes and '{len(self.G.edges)}' edges...")
 			return self.G
 
@@ -248,28 +248,30 @@ class Nodes:
 		return G
 
 	# FIXME: scalance and module needs to be fixed they both get called JW sometimes
-	def getDeviceType(self, device_name):
+	def getDeviceType(self, attribute):
 		"""
 		Returns the device type and color based on the given device name.
 
 		Parameters:
-		- device_name (str): The name of the device.
+		- attribute (str): The attribute of the device.
 
 		Returns:
 		- device_type (str): The type of the device.
 		- color (str): The color associated with the device type.
 		"""
 
-		types = {
-			'PLC': {'identifiers': ['JC'], 'color': 'red'},
-			'module': {'identifiers': ['JW'], 'color': 'blue'},
-			'scalance': {'identifiers': ['JX'], 'color': 'green'},
-			'drive': {'identifiers': ['UE'], 'color': 'yellow'}
-		}
+		types = [
+			('PLC', ['S71500'], 'red'),
+			('module', ['ET200SP', 'ET200ECO'], 'blue'), # give higher priority than drive, module type can contain SIEMENS and ET200SP
+			('scalance', ['SCALANCE'], 'green'),
+			('drive', ['SIEMENS', 'DFS', 'SEW'], 'yellow'),
+			('PNcoupler', ['PNPNCOUPLER'], 'orange'),
+			('other', [''], 'gray')
+		]
 
-		for deviceType, identifier in types.items():
-			if any(identifier in device_name for identifier in identifier['identifiers']):
-				return deviceType, identifier['color']
+		for deviceType, identifiers, color in types:
+			if any(identifier in attribute.upper() for identifier in identifiers):
+				return deviceType, color
 		return 'other', 'gray'
 
 
@@ -283,7 +285,7 @@ class Nodes:
 				- The plotly figure object or None if an error occurred.
 				- The graph object or None if an error occurred.
 			"""
-			if hasattr(self, 'interactive_graph') and not reload:
+			if hasattr(self, "interactive_graph") and not reload:
 				logger.debug(f"Returning cached interactive graph: {type(self.interactive_graph)}...")
 				return self.interactive_graph, self.G
 
@@ -326,7 +328,7 @@ class Nodes:
 			# Generate node traces
 			node_traces = {}
 			for node, attrs in G.nodes(data=True):
-				device_type, color = self.getDeviceType(node)
+				device_type, color = self.getDeviceType(attrs.get('deviceType', ''))
 				if device_type not in node_traces:
 					node_traces[device_type] = {
 						'x': [], 'y': [], 'text': [], 'hovertext': [], 'color': color
@@ -398,7 +400,7 @@ class Nodes:
 				- networkx.Graph: The graph object used for rendering.
 		"""
 		
-		if hasattr(self, 'rendered_graph') and not reload:
+		if hasattr(self, "rendered_graph") and not reload:
 			logger.debug(f"Returning cached rendered graph: {type(self.rendered_graph)}...")
 			return self.rendered_graph, self.G
 		
@@ -435,7 +437,7 @@ class Nodes:
 				color = rd.choice(colors)
 				logger.debug(f"Zone not yet in {zone_colors}, assigning color '{color}' to zone '{location}'")
 				while color in zone_colors.values():
-					logger.debug(f"Color '{color}' already assigned to zone '{zone_colors[location]}', generating new color")
+					logger.debug(f"Color '{color}' already assigned to zone '{next((key for key, value in zone_colors.items() if value == color))}', generating new color")
 					color = rd.choice(colors)
 				zone_colors[location] = color
 				logger.debug(f"Assigned color {color} to zone '{location}' and added to the zones: {zone_colors}")
@@ -487,9 +489,12 @@ class Nodes:
 			return f"PLC '{plcName}' not found in the project"
 
 		logger.debug(
-			f"Searching under plc '{plcName}' for device '{deviceName}' in a total of '{len(items)}' project items, "
+			f"Searching under plc '{plcName}' for device '{deviceName}' in a total of '{len(items.values())}' project items, "
 			f"reload: '{reload}'"
 		)
+
+		search_result = f"Device '{deviceName}' not found in plc '{plcName}'"
+		device_df = pd.DataFrame()
 
 		try:
 			plc_i_need = items[plcName]
@@ -498,12 +503,21 @@ class Nodes:
 
 			for device_dict in device_list:
 				if deviceName in device_dict.keys():
-					device_i_search = list(device_dict[deviceName][0]['nodes'])
-					search_result = f"Device '{deviceName}' in plc '{plcName}' has been found with the following nodes: '{device_i_search}'"
+					device_i_search = device_dict[deviceName][0]['nodes']
+					search_result = f"Device '{deviceName}' in plc '{plcName}' has been found with the following nodes:\n"
+					for node_name, node_address in device_i_search.items():
+						df_update = pd.DataFrame([{
+							'plc_name': plcName,
+							'device_name': deviceName,
+							'node_name': node_name,
+							'node_address': node_address
+							}])
+						device_df = pd.concat([device_df, df_update], ignore_index=True)
+						search_result += f"\tNode '{node_name}' with address '{node_address}'\n"	
 
-			search_result = f"Device '{deviceName}' not found in plc '{plcName}'"
-			logger.debug(f"Returning search result {type(search_result)} of the node search")
-			return search_result
+			logger.debug(f"Returning search result {type(search_result)}, {search_result} of the node search")
+			self.device_df = device_df
+			return device_df, search_result
 		except Exception as e:
 			raise Exception(f"An error occurred while searching for the device nodes: {str(e)}")
 
@@ -523,20 +537,30 @@ class Nodes:
 		logger.debug(
 			f"Checking in nodelist that contains '{len(items)}' items if address '{address}' is already in use, "
 			f"reload: '{reload}'")
+		
+		search_result = f"Address '{address}' is not in use"
+		address_df = pd.DataFrame()
 
 		for plc_name, plc_info in items.items(): # key-value pair in plc dictionary, returns list
 			for device in plc_info['devices']: # device is dictionary, plc_info['devices'] is list
 				for device_name, device_info in device.items():
 					nodes = device_info[0]['nodes']  # gives the dictionary with the nodes key
 					if address in nodes.values():  # checking if a value of a node is equal to the input address
+						df_update = pd.DataFrame([{
+							'plc_name': plc_name,
+							'device_name': device_name,
+							'node_name': [name for name, ip in nodes.items() if ip == address],
+							'node_address': [add for add in nodes.values()]
+							}])
+						address_df = pd.concat([address_df, df_update], ignore_index=True)
 						node_name = [name for name, ip in nodes.items() if ip == address]  # Vind de node_name
 						search_result = f"Address '{address}' is already in use by '{device_name}' on port '{node_name}' connected to plc '{plc_name}'"
-		search_result = f"Address '{address}' is not in use"
+		
 		logger.debug(f"Returning search result {type(search_result)} of the address search")
-		return search_result
+		return address_df, search_result
 
 
-	def export_data(self, filename, extension, tab):
+	def export_data(self, filename, extension, tab, nodesUI):
 			"""
 			Exports data from certain functions.
 
@@ -553,7 +577,7 @@ class Nodes:
 			"""
 			logger.debug(f"Exporting '{tab}' to '{extension}' format")
 			extension = extension[1:]
-			cwd = os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}'
+			cwd = os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}\\{__name__.split(".")[-1]}'
 			directory = os.makedirs(cwd + f"\\{tab}", exist_ok=True) 
 			timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H%M%S")
 			
@@ -562,8 +586,7 @@ class Nodes:
 				filename = timestamp
 			
 			if tab == "node list":
-				_, content = self.getNodeList()
-				df = content
+				df = self.getNodeTable()
 			elif tab == "connections":
 				G = self.graph_data()
 				
@@ -574,6 +597,14 @@ class Nodes:
 				edges_df = pd.DataFrame(edges_list, columns=['Source', 'Target', 'Attributes'])
 
 				df = pd.concat([nodes_df.assign(Type='Node'), edges_df.assign(Type='Edge')], ignore_index=True)
+			elif tab == "find device":
+				plc_name = nodesUI.entry_plc_name.get()
+				device_name = nodesUI.entry_device_name.get()
+				df, _ = self.find_device_nodes(plc_name, device_name)
+			elif tab == "address exists":
+				address = nodesUI.entry_address.get()
+				logger.critical(f"Address: {address}")
+				df, _ = self.address_exists(address)
 
 			export_path = os.path.join(cwd, tab, filename + extension)
 			if extension == ".csv":
@@ -583,7 +614,7 @@ class Nodes:
 			elif extension == ".json":
 				df.to_json(export_path, orient='records')
 			elif extension == ".png":
-				_, graph, _ = self.display_graph_rendered()
+				graph, _ = self.display_graph_rendered()
 				
 				if graph:  
 					graph.set_size_inches(18, 12)  

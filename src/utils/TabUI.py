@@ -29,15 +29,21 @@ class Tab:
 		self.status_icon = project.status_icon
 		self.tab_content = None
 		self.thread = None
+		self.force_stop = False
 		logger.debug(f"Initialized '{name}' successfully")
+
 
 	def execute(self, myproject, myinterface):
 		logger.debug(f"Executing Tab '{self.name}'")
 		self.myproject = myproject
 		self.myinterface = myinterface
-		self._start_thread()
+		if self.name != "connections":
+			self._start_thread()
+		else:
+			self.create_tab_content()
 		logger.debug(f"Tab '{self.name}' executed")
-	
+
+
 	def _start_thread(self):
 		'''
 		method to create a thread for the tab content
@@ -72,7 +78,7 @@ class Tab:
 		message = f"Thread of '{self.name}' finished, displaying content..."
 		logger.thread(message)
 		try:
-			if self.tab_content:
+			if self.tab_content or self.force_stop:
 				self.tab_content.pack(fill="both", expand=True)
 				self.loading_screen.hide_loading()
 		except Exception as e:
@@ -82,4 +88,10 @@ class Tab:
 
 
 	def create_tab_content(self):
-		pass
+		try:
+			self.tab_content = self.main_class_instance.create_tab(self)
+		except Exception as e:
+			message = f"Error with creating tab content for {self.name}"
+			self.loading_screen.hide_loading()
+			logger.critical(message, exc_info=True)
+			self.status_icon.change_icon_status("#FF0000", f'{message} {str(e)}')

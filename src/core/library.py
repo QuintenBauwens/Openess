@@ -8,6 +8,9 @@ import os
 import pandas as pd
 import traceback
 import datetime
+import xmltodict
+import pprint
+import xml.etree.ElementTree as ET
 import Siemens.Engineering as tia # Copy the Siemens.Engineering.dll to the folder of the script (current working dir.)!!
 
 from utils.loggerConfig import get_logger
@@ -49,7 +52,7 @@ class Library:
 		self.library_df = None
 		self.library_df = None
 		self.library_info = None
-		self.instance_count = {}
+		self.system_lib_version = None
 
 		self.used_lib_blocks_df = None
 
@@ -72,18 +75,25 @@ class Library:
 			'system_types': True
 		}
 
+		self.pp = pprint.PrettyPrinter(indent=2)
+
 		logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully with settings: {self.settings}")
 	
 
 	def get_core_classes(self):
 		self.software = self.project.software
 		self.hardware = self.project.hardware
+		self.blocks = self.project.blockdata
+		self.file = self.project.file
 
 	def get_core_functions(self):
 		logger.debug(f"Accessing 'get_software_container' from the software object '{self.project.software}'...")
 		self.software_container = self.software.get_software_container()
 		logger.debug(f"Accessing 'get_plc_devices' from the hardware object '{self.project.hardware}'...")
 		self.plc_list = self.hardware.get_plc_devices()
+		if hasattr(self.project.blockdata, 'plc_list'):
+			logger.debug(f"Accessing 'get_nwk_para' from the blocks object '{self.project.blockdata}'...")
+			self.system_lib_version = self.blocks.get_nwk_para('LSystemVarS7-1500', 'LVccLibVersion')
 
 	def get_map_structure(self, item, group_path=None, initial_call=True):
 		"""
@@ -193,6 +203,8 @@ class Library:
 				type_comment = ''.join(s.Text for s in library_type.Comment.Items)
 				type_name = library_type.Name
 				type_versions = library_type.Versions
+				version_count = type_versions.Count
+				instance_count = 0
 
 				logger.debug(
 					f"entry '{type_name}': "
@@ -201,7 +213,6 @@ class Library:
 				)
 				
 				for version in type_versions:
-					instance_count = 0
 					version_comment = ''.join(s.Text for s in version.Comment.Items)
 					for plc in self.plc_list:
 						instance_count += version.FindInstances(self.software_container[plc.Name]).Count
@@ -210,7 +221,7 @@ class Library:
 					version_modifiedDate = datetime.datetime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second).strftime('%d-%m-%Y %H:%M:%S')
 					version_author = version.Author
 					version_xDependents = version.Dependents.Count
-					library_state = version.State
+					library_state = str(version.State)
 
 					df_update = pd.DataFrame({
 						'Project':[project_name],
@@ -221,7 +232,8 @@ class Library:
 						'Author':[version_author],
 						'LibraryState':[library_state],
 						'Dependents':[version_xDependents],
-						'instanceCount':[instance_count],
+						'InstanceCount':[instance_count],
+						'VersionCount':[version_count],
 						'TypeComment':[type_comment],
 						'VersionComment':[version_comment],
 						'ReferenceObject':[version]
@@ -232,7 +244,7 @@ class Library:
 						df_update['Path'] = '/'.join(reversed(reversed_structure))
 					library_content = pd.concat([library_content, df_update], ignore_index=True)
 					path = '/'.join(reversed(reversed_structure))
-					logger.debug(path) #
+					logger.debug(path)
 					
 					df_update = pd.DataFrame({
 						'Name' : [type_name],
@@ -304,7 +316,7 @@ class Library:
 					type_number = project_type.GetAttribute('Number')
 				except:
 					type_number = None
-					logger.warning(f"No type_number found for type '{type_name}' under '{folder}'")
+					logger.debug(f"No type_number found for type '{type_name}' under '{folder}'")
 				
 				df_update = pd.DataFrame({
 						'Project':[project_name], 
@@ -399,7 +411,7 @@ class Library:
 					instanceOfNumber = block.GetAttribute('InstanceOfNumber')
 				except:
 					instanceOfNumber = 'NaN'
-					logger.warning(f"No instanceOfNumber found for block '{block.Name} - {block.GetType()}' under '{folder}'")
+					logger.debug(f"No instanceOfNumber found for block '{block.Name} - {block.GetType()}' under '{folder}'")
 				
 				if blockType in accepted_types:
 					df_update = pd.DataFrame({
@@ -525,8 +537,13 @@ class Library:
 					if search_instance.empty:
 						message = f"Block '{block_name}' wich is instanceOf '{block_instanceOfName}' not found in project blocks"
 						row_block_data['ConnectedToLibrary'] = False
-						row_block_data['warning'] = message
 						data_collection.append(row_block_data)
+						
+						df_warning_update = pd.DataFrame({
+							'Name' : [block_name],
+							'Warning': [message]
+						})
+						self.df_warning = pd.concat([self.df_warning, df_warning_update], ignore_index=True)
 						logger.warning(message) 
 						continue
 					
@@ -549,17 +566,28 @@ class Library:
 					library_type_version = connect_to_library.LibraryTypeVersion.VersionNumber
 					library_conformanceStatus = block_object.GetAttribute('LibraryConformanceStatus')
 
-					row_block_data['ConnectedToLibrary'] = connection
-
 					library_search_filter = (
-						(library_content_df['Name'] == library_type_name) & 
+						(library_content_df['Name'] == library_type_name)
+					)
+					library_search_filter2 = (
 						(library_content_df['Version'] == library_type_version)
 					)
 
-					library_search_type = library_content_df.loc[library_search_filter]
-					library_modifiedDate = library_search_type['ModifiedDate'].values[0]
+					library_search_type1 = library_content_df.loc[library_search_filter]
+					library_search_type2 = library_search_type1.loc[library_search_filter2]
+					library_search_versions = library_search_type2['Version'].values if not library_search_type2.empty else None
 
-					if library_search_type.empty:
+					row_block_data['ConnectedToLibrary'] = connection
+					row_block_data['Version'] = library_type_version
+					if not library_search_type1.empty or library_search_versions is not None:
+						row_block_data['VersionInLibrary'] =  (library_type_version if library_type_version in library_search_versions else library_search_versions[0])
+					else:
+						version_tuples = library_search_type1['Version'].apply(lambda v: tuple(map(int, v.split('.')))) if not library_search_type1.empty else None
+						max_version = max(version_tuples) if version_tuples is not None else None
+						row_block_data['VersionInLibrary'] = max_version if max_version is not None else 'NaN'
+					row_block_data['NameInLibrary'] = library_type_name
+
+					if library_search_type1.empty:
 						message = (
 							f"Block '{block_name}' connected to library block '{library_type_name}', "
 							f"version: '{library_type_version}' but not found in library content dataframe"
@@ -571,21 +599,21 @@ class Library:
 						})
 						self.df_warning = pd.concat([self.df_warning, df_warning_update], ignore_index=True)
 						logger.warning(message)
-						continue					
-
-					row_block_data['NameInLibrary'] = library_type_name
-					row_block_data['VersionInLibrary'] = library_type_version
-					row_block_data['ModifiedDateInLibrary'] = library_search_type['ModifiedDate'].values[0]
-					row_block_data['LibraryState'] = library_search_type['LibraryState'].values[0]
-					row_block_data['LibraryConformanceStatus'] = library_conformanceStatus
-
-					if block_modifiedDate != library_modifiedDate:
-						message = (f"Block '{block_name}' outdated '{block_modifiedDate}': " 
+						continue
+					
+					if (library_search_type2.empty):
+						object_name = block_name if block_type != 'InstanceDB' else block_instanceOfName
+						var_string = f"'{object_name}' has outdated version '{library_type_version}', {block_modifiedDate}" if library_search_type2.empty else f"'{object_name}' outdated '{block_modifiedDate}'"
+						message = (f"Block {var_string}: " 
 									f"library block '{library_type_name}', "
-									f"version '{library_type_version}', " 
-									f"updated on '{library_search_type['ModifiedDate'].values[0]}'"
+									f"library version '{library_search_versions}', " 
+									f"updated on '{library_search_type2['ModifiedDate'].values[0]}'"
 						)
 						row_block_data['ConnectedToLibrary'] = 'Outdated'
+						row_block_data['ModifiedDateInLibrary'] = library_search_type1['ModifiedDate'].values[0]
+						row_block_data['LibraryState'] = library_search_type1['LibraryState'].values[0]
+						row_block_data['LibraryConformanceStatus'] = library_conformanceStatus
+
 						# warning column stored separately to enable/disable 
 						df_warning_update = pd.DataFrame({
 							'Name' : [block_name],
@@ -593,6 +621,10 @@ class Library:
 						})
 						self.df_warning = pd.concat([self.df_warning, df_warning_update], ignore_index=True)
 						logger.warning(message)
+					else:
+						row_block_data['ModifiedDateInLibrary'] = library_search_type2['ModifiedDate'].values[0]
+						row_block_data['LibraryState'] = library_search_type2['LibraryState'].values[0]
+						row_block_data['LibraryConformanceStatus'] = library_conformanceStatus
 				else:
 					row_block_data['ConnectedToLibrary'] = connection
 				data_collection.append(row_block_data)
@@ -652,10 +684,33 @@ class Library:
 			'used_lib_blocks': self.used_lib_blocks_df
 		}
 		
-		for name, df in dataframes.values():
+		for name, df in dataframes.items():
 			update_path_column(df, add=self.folder_path)
 			if name == 'used_lib_blocks':
 				update_warning_column(df, add=self.include_warning_column)
+
+
+	def get_systemVar_par(self, blockname='LSystemVarS7-1500'):
+		doc = self.xml_to_dict(blockname)
+
+
+	def xml_to_dict(self, blockname):
+		for plc in self.plc_list:
+			block = self.software.find_block(self.software_container[plc.Name], blockname) # this block contains system version of library
+		block_type = block.GetType().Name
+		block_number = str(block.Number)
+
+		path = os.path.join(os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}\\{self.file.__name__.split(".")[-1]}\\find programblock\\{block_type}{block_number}.xml')
+		if not os.path.exists(path):
+			self.file.export_block(block, path)
+		
+		tree = ET.parse(path)
+		xml_date = tree.getroot()
+		xmlstr = ET.tostring(xml_date, encoding='utf-8', method='xml')
+		doc = dict(xmltodict.parse(xmlstr))
+		return doc
+
+
 
 
 	def set_libraryType_folder(self, libraryType_folder):
@@ -759,3 +814,4 @@ class Library:
 			raise ValueError("Extension not supported. Please use .csv, .xlsx or .json")
 		logger.debug(f"'{tab}' exported to '{export_path}'")
 		return f"'{tab}' exported to '{export_path}'"
+

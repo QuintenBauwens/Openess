@@ -171,3 +171,31 @@ class LibrarySettingsDialog(DialogTemplate):
 	def	apply(self):
 		self.selectionInput = {option: var.get() for option, var in zip(self.options, self.var)}
 		super().apply()
+
+
+class InfoDialog(DialogTemplate):
+	def __init__(self, parent, title, options=None, label_name="", window_info=None):
+		self.legenda = options
+		super().__init__(parent, __name__, title, options, label_name, window_info)
+
+	def body(self, master):
+		if self.window_info is not None:
+			self.label_info = tk.Label(master, text=self.window_info).pack(anchor=tk.W)
+		
+		for label, color in self.legenda:
+			frame = tk.Frame(master)
+			frame.pack(anchor=tk.W)
+
+			color_square = tk.Canvas(frame, width=20, height=20)
+			color_square.pack(side=tk.LEFT)
+			color_square.create_rectangle(0, 0, 20, 20, fill=color)
+			tk.Label(frame, text=label).pack(side=tk.LEFT)
+
+
+		return master
+
+	def set_legenda(self, legenda):
+		'''
+		lengenda: list of tuples with (label, color)
+		'''
+		self.legenda = legenda

@@ -155,7 +155,7 @@ class Software:
 			logger.debug(
 				f"Returning dict {type(blocks)} of all the software blocks in the project: "
 				f"amount of blocks: '{len(blocks.values())}', "
-				f"object type: '{blocks[0].GetType()}'"
+				f"object type: '{blocks[0].GetType() if type(blocks) == list else next(iter(blocks.keys())).GetType()}'"
 			)
 			self.software_blocks_dict = blocks
 		return blocks
@@ -280,10 +280,14 @@ class Software:
 		
 		if initial_call:
 			self.tags = tags
+
+		table_object = next(iter(tags.keys()))
+		tag_object = next(iter(tags[table_object])) if tags[table_object] else None
+
 		logger.debug(
 			f"Returning list {type(tags)} of all the tags in the project: "
 			f"amount of tag-tables: '{len(tags)}', "
-			f"object type tag-table: '{next(iter(tags.keys())).GetType()}', "
-			f"object type tags: '{next(iter(tags.items())).GetType()}'"
+			f"object type tag-table: '{table_object.GetType()}', "
+			f"object type tags: '{tag_object.GetType()}'"
 		)
 		return tags

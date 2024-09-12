@@ -49,10 +49,12 @@ class File():
 		self.software = self.project.software
 		self.hardware = self.project.hardware
 		self.library = self.project.library
+		self.blockdata = self.project.blockdata
 
 	def get_core_functions(self):
 		logger.debug(f"Accessing 'get_software_container' from the software object '{self.project.software}'...")
 		self.software_container = self.software.get_software_container()
+
 
 	def file_summary(self, reload=False):
 		"""
@@ -204,7 +206,7 @@ class File():
 		def process_group(group_items, group_name, indent=1):
 			nonlocal tree_text, space
 			tree_text += f"{space * indent}{group_name}\n"
-			tree_df_data.append({"Name": group_name, "GroupLevel": indent})
+			tree_df_data.append({"GroupName": group_name, "GroupLevel": indent})
 			for item in group_items:
 				if isinstance(item, dict):
 					# This is a subgroup
@@ -213,7 +215,7 @@ class File():
 				else:
 					# This is a block
 					tree_text += f"{space * (indent + 1)}{item.Name}\n"
-					tree_df_data.append({"Name": item.Name, "Indent": indent + 1})
+					tree_df_data.append({"Name": item.Name, "GroupLevel": indent,"Indent": indent + 1})
 
 		for group, items in blocks.items():
 			process_group(items, group.Name)
@@ -243,8 +245,7 @@ class File():
 		tags = self.software.get_project_tags(reload=reload)
 		logger.debug(
 			f"Inserting the retrieved tags into a dataframe: "
-			f"amount of tags: '{len(tags)}' "
-			f"object type: '{next(iter(tags.values())).GetType()}'"
+			f"amount of tags: '{len(tags)}'"
 		)
 		
 		df_tags = pd.DataFrame()
@@ -285,7 +286,8 @@ class File():
 		extension = extension[1:]
 		cwd = os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}\\{__name__.split(".")[-1]}'
 		# make the whole path if it doesnt exist, or just continue if it does
-		directory = os.makedirs(cwd + f"\\{tab}", exist_ok=True)
+		if tab != "find programblock":
+			directory = os.makedirs(cwd + f"\\{tab}", exist_ok=True)
 		timestamp = datetime.datetime.now().strftime("%Y-%m-%d-%H%M%S")
 
 		if not filename:
@@ -305,7 +307,7 @@ class File():
 		elif tab == "find programblock":
 			block_name = fileUI.entry_block_name.get()
 			try:
-				content = self.export_block_data(block_name, tab, cwd)
+				content = self.blockdata.export_block(block_name)
 				return content
 			except Exception as e:
 				raise ValueError(f"An error occurred exporting '{block_name}': {str(e)}")
@@ -321,38 +323,3 @@ class File():
 				raise ValueError("Extension not supported. Please use .csv, .xlsx or .json")
 		logger.debug(f"'{tab}' exported to '{export_path}'")
 		return f"'{tab}' exported to '{export_path}'"
-
-
-	def export_block_data(self, block_name, tab, cwd):
-		from System.IO import FileInfo
-		
-		for plc in self.software.PLC_list:
-			block = self.software.find_block(self.software_container[plc.Name].BlockGroup, block_name)
-		block_instance = str(block).split('.')[-1] # fb, fc, db, etc.
-		block_number = str(block.Number)
-
-		export_path = os.path.join(cwd + f"\\{tab}\\{block_instance}{block_number}.xlm")
-
-		logger.debug(f"Exporting all data of block '{block_name}' under: '{export_path}'")
-		
-		if block is None:
-			raise ValueError(f"'{block_name}' couldnt be found in the project")
-		try:
-			block.Export(FileInfo(export_path), tia.ExportOptions.WithDefaults)
-			message = f"'{block_name}' exported successfully to '{export_path}'"
-		except:
-			# trt fixing error by compiling block
-			result = block.GetService[tia.Compiler.ICompilable]().Compile()
-			message = ""
-			try:
-				for message in (result.Messages):
-					message += message.Description
-			except Exception as e:
-				raise Exception(f'Failed to compile block, try exporting with different filename or remove the previous saved file: {str(e)}')
-
-			try:
-				block.Export(FileInfo(export_path), tia.ExportOptions.WithDefaults)
-			except:
-				raise ValueError(f"Error exporting block: {message}")
-		logger.debug(f"'{block_name}' exported to '{export_path}'")
-		return message

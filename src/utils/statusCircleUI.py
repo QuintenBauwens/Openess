@@ -30,14 +30,14 @@ class StatusCircle:
 		on_leave: Event handler for mouse leave event.
 	"""
 	
-	BG_COLOR = "white"
+	BG_COLOR = "#f0f0f0"
 
 	def __init__(self, master):
 		logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
 		self.master = master
 		self.canvas = tk.Canvas(master, width=25, height=25)
 		self.canvas.grid(row=0, column=0, pady=10)  # Adjust row and column as needed
-		self.canvas.configure(bg=StatusCircle.BG_COLOR, highlightthickness=0)
+		self.canvas.configure(bg=StatusCircle.BG_COLOR)
 		self.status_color = None
 		self.circle = self.canvas.create_oval(7, 7, 22, 22, fill=self.status_color)
 		self.tooltip_text = None

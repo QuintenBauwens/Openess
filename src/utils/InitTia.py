@@ -7,12 +7,22 @@ Last updated: 09/07/2024
 from utils.loggerConfig import get_logger
 __package__ = "utils"
 import clr
-clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll")
-import Siemens.Engineering as tia 
 
 logger = get_logger(__name__)
 
 def open_project(interface=False, project_path=None):
+    """
+    Opens a TIA project using the Openness library.
+    Args:
+        interface (bool, optional): Specifies whether to open the TIA project with a user interface. Defaults to False.
+        project_path (str, optional): The path to the TIA project file. Defaults to None.
+    Returns:
+        tuple: A tuple containing the opened TIA project and the TIA portal instance.
+    Raises:
+        None
+    Example:
+        myproject, mytia = open_project(interface=True, project_path="C:/path/to/project.tia")
+    """
     # Refference to the Openness library
     if interface:
         logger.debug(f"Opening TIA project with interface: '{project_path}'")
@@ -27,6 +37,8 @@ def open_project(interface=False, project_path=None):
     dll_path2 = "\\".join(listPathItems)
 
     clr.AddReference(dll_path2)
+
+    import Siemens.Engineering as tia 
 
     # Starting tia with User Interface (handy for development) or not
     if interface:
@@ -43,6 +55,20 @@ def open_project(interface=False, project_path=None):
     return myproject, mytia
 
 def close_project(myproject, mytia):
+    """
+    Closes the TIA project and disposes the TIA instance.
+
+    Args:
+        myproject: The TIA project to be closed.
+        mytia: The TIA instance to be disposed.
+
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+    logger.debug(f"Closed TIA project successfully")
     logger.debug(f"Closing TIA project: '{myproject.Name}'")
     myproject.Close()
     mytia.Dispose()
