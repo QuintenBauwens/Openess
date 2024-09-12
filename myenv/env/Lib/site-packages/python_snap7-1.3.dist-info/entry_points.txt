@@ -1,3 +1,0 @@
-[console_scripts]
-snap7-server = snap7.server.__main__:main
-
