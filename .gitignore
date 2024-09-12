@@ -3,9 +3,19 @@
 # if you want to ignore a file that is already tracked by git, you need to remove it from the cache -> git rm -r --cached .vs
 # secondly git commit -m "Stop tracking .vscode and .vs directories"
 
+# ignore environment directories
 .venv/
+myenv/
+
+# ignore IDE directories
 .vscode/
 .vs/
+
+# ignore python cache
 __pycache__/
-myenv/
+
+# ignore build directories
+build/
+dist/
+
 hook-apps
