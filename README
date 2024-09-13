@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TIA Openness Demo
 
 The TIA Openness Demo application, developed by Quinten Bauwens in collaboration with Volvo Cars Gent, provides an interface to interact with TIA Portal projects using the Openness API without needing the TIA Portal itself. The application is organized into various tabs, each offering different functionalities, dynamically imported from the apps folder. Users can open TIA Portal projects, navigate through different tabs to explore features like viewing and exporting project nodes, managing connections, and controlling libraries. The application aims to simplify and enhance the user experience with TIA Portal projects.
@@ -72,3 +73,6 @@ For more detailed information, refer to the documentation (currently in progress
 ## Contact Information
 
 For any inquiries or feedback, please contact Quinten Bauwens at [quinten.bauwens@icloud.com].
+=======
+# Test
+>>>>>>> 65c3c098b0845c072add415927f9fd24b10162e2
