@@ -47,7 +47,7 @@ class BlockData():
 		path = os.path.join(cwd + f"\\{block_type}{block_number}.xlm")
 
 		if os.path.exists(path):
-			logger.info(f"Block '{block_type}{block_number}.xml' already exists, removing and re-exporting...")
+			logger.info(f"Block '{path}' already exists, removing and re-exporting...")
 			try:
 				os.remove(path)
 				logger.info(f"Block '{block_type}{block_number}.xml' removed successfully")
@@ -56,7 +56,7 @@ class BlockData():
 
 		try: # try to export the block
 			block.Export(FileInfo(path), tia.ExportOptions.WithDefaults) 
-			logger.debug(f"Block '{block_type}{block_number}' exported successfully")
+			logger.debug(f"Block '{block_type}{block_number}' exported successfully: '{path}'")
 		except: # one of the raison is that the block needs to be compiled
 			logger.error(f'Error in exporting blockdata {type}{block.Number}')
 			logger.warning('Try to compile Block...')

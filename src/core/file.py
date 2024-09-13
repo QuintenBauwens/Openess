@@ -6,7 +6,6 @@ Last updated: 05/08/2024
 import os
 import clr
 clr.AddReference("C:\\Program Files\\Siemens\\Automation\\Portal V15_1\\PublicAPI\\V15.1\\Siemens.Engineering.dll")
-import Siemens.Engineering as tia
 import pandas as pd
 import datetime
 
@@ -240,19 +239,29 @@ class File():
 			f"Retrieving all the tags in the project: "
 			f"reload: '{reload}'"			
 		)
+
+		def calculate_total_tags(tags):
+			total_tags = 0
+			for table in tags.keys():
+				total_tags += len(tags[table])
+			return total_tags
 		
 		IO_type_dict = {'I':'Input', 'Q': 'Output', 'M':'Other'}
 		tags = self.software.get_project_tags(reload=reload)
+		total_tables = len(tags)
+		total_tags = calculate_total_tags(tags)
+		processed_tags = 0
+
 		logger.debug(
 			f"Inserting the retrieved tags into a dataframe: "
 			f"amount of tags: '{len(tags)}'"
 		)
 		
 		df_tags = pd.DataFrame()
-		for table in tags.keys():
+		for table_index, table in enumerate(tags.keys()):
 			logger.debug(f"'{table.Name}' has '{len(tags[table])}' tags")
 			plc_name = table.Parent.Parent.GetAttribute("Name")
-			for tag in tags[table]:
+			for i, tag in enumerate(tags[table]):
 				comment = ''.join(s.Text for s in tag.Comment.Items)
 
 				add_data_df = pd.DataFrame({
@@ -267,6 +276,12 @@ class File():
 				})
 				
 				df_tags = pd.concat([df_tags, add_data_df], ignore_index=True)
+
+				processed_tags += 1
+				table_progress = (table_index + 1) / total_tables
+				tag_progress = processed_tags / total_tags
+				progress_value = ((table_progress * 50) + (tag_progress * 50))
+				self.update_progress_bar(progress_value)
 		self.df_tags = df_tags
 		logger.debug(
 			f"Returning DataFrame {type(df_tags)} of all the tags in the project: "
@@ -323,3 +338,18 @@ class File():
 				raise ValueError("Extension not supported. Please use .csv, .xlsx or .json")
 		logger.debug(f"'{tab}' exported to '{export_path}'")
 		return f"'{tab}' exported to '{export_path}'"
+
+
+	def update_progress_bar(self, value):
+		"""
+		Updates the progress bar with the given value.
+
+		Parameters:
+		- value (int): The value to update the progress bar with.
+		- total (int): The total value of the progress bar.
+
+		Returns:
+		- None
+		"""
+		# Update progress bar
+		self.project.loading_screen.update_progress(value)

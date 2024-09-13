@@ -1,10 +1,7 @@
 import inspect
-import core
-import utils
 from utils.loadingScreenUI import LoadScreen
 from utils.loggerConfig import get_logger
 from utils.statusCircleUI import StatusCircle
-import utils.statusCircleUI
 
 logger = get_logger(__name__)
 

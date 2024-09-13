@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from utils.appSettings import appSettings
 from utils.loggerConfig import get_logger
@@ -24,6 +25,13 @@ if __name__ == "__main__":
 	gui = mainApp(root, settings)
 	# gui = mainApp(root)
 
+	cwd = os.getcwd()
+	print(f"Current working directory: {cwd}")
+	# icon_path = os.path.join(cwd, "resources", "img", "tia.ico")
+	print(os.listdir(cwd))
+	icon_path = "resources\\img\\tia.ico"
+	if os.path.exists(icon_path):
+		root.wm_iconbitmap(icon_path)
 	# root.geometry(f'-{screen_width}+100')  # position root on the second screen.
 	root.deiconify()
 	root.mainloop()

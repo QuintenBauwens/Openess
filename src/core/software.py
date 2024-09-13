@@ -262,6 +262,8 @@ class Software:
 
 		def retrieve_tags_from_table(group):
 			for table in group.TagTables:
+				current_table = group.TagTables.IndexOf(table) + 1
+				self.update_progress_bar(current_table, total_table)
 				if table not in tags:
 					tags[table] = set(table.Tags)
 				else:
@@ -273,6 +275,7 @@ class Software:
 			# get tags from all groups
 			for plc in self.PLC_list:
 				group = self.software_container[plc.Name].TagTableGroup
+				total_table = group.TagTables.Count 
 				retrieve_tags_from_table(group)
 		else: 
 			# get tags from a specific group
@@ -291,3 +294,21 @@ class Software:
 			f"object type tags: '{tag_object.GetType()}'"
 		)
 		return tags
+
+
+	def update_progress_bar(self, value, total):
+		"""
+		Updates the progress bar with the given value.
+
+		Parameters:
+		- value (int): The value to update the progress bar with.
+		- total (int): The total value of the progress bar.
+
+		Returns:
+		- None
+		"""
+		# Calculate progress value
+		progress_value = ((value + 1) / total) * 100
+		
+		# Update progress bar
+		self.project.loading_screen.update_progress(progress_value)

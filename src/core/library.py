@@ -689,39 +689,6 @@ class Library:
 			if name == 'used_lib_blocks':
 				update_warning_column(df, add=self.include_warning_column)
 
-
-	def get_systemVar_par(self, blockname='LSystemVarS7-1500'):
-		doc = self.xml_to_dict(blockname)
-
-
-	def xml_to_dict(self, blockname):
-		for plc in self.plc_list:
-			block = self.software.find_block(self.software_container[plc.Name], blockname) # this block contains system version of library
-		block_type = block.GetType().Name
-		block_number = str(block.Number)
-
-		path = os.path.join(os.getcwd() + f'\\docs\\TIA demo exports\\{self.myproject.Name}\\{self.file.__name__.split(".")[-1]}\\find programblock\\{block_type}{block_number}.xml')
-		if not os.path.exists(path):
-			self.file.export_block(block, path)
-		
-		tree = ET.parse(path)
-		xml_date = tree.getroot()
-		xmlstr = ET.tostring(xml_date, encoding='utf-8', method='xml')
-		doc = dict(xmltodict.parse(xmlstr))
-		return doc
-
-
-
-
-	def set_libraryType_folder(self, libraryType_folder):
-		"""
-		Sets the software library groups.
-
-		Args:
-			software_library_groups (list): List of software library groups.
-		"""
-		self.libraryType_folder = libraryType_folder
-
 	
 	def set_settings(self, settings):
 		"""
@@ -744,16 +711,6 @@ class Library:
 		}
 
 		self.update_dataframe()
-
-
-	def get_libraryType_folder(self):
-		"""
-		Gets the software library groups.
-
-		Returns:
-			list: List of software library groups.
-		"""
-		return self.libraryType_folder
 
 	
 	def get_settings(self):		

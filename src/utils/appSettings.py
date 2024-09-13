@@ -15,6 +15,7 @@ STYLES = {
 		"TLabel": {"background": "#f0f0f0", "foreground": "black"},
 		"TLabelframe": {"background": "#f0f0f0"},
 		"TLabelframe.Label": {"background": "#f0f0f0", "foreground": "black"},
+		"App.TLabelframe.Label": {"background": "#f0f0f0", "foreground": "black", "font": ("Helvetica", 10, "bold")},
 		"ScrolledText": {"bg": "#f0f0f0", "fg": "black", "insertbackground": "black"},
 		"Text": {"background": "#f0f0f0", "foreground": "black", "insertbackground": "black"},
 		".": {"background": "#f0f0f0", "foreground": "black"}
@@ -25,6 +26,7 @@ STYLES = {
 		"TLabel": {"background": "black", "foreground": "white"},
 		"TLabelframe": {"background": "black"},
 		"TLabelframe.Label": {"background": "black", "foreground": "white"},
+		"App.TLabelframe.Label": {"background": "black", "foreground": "white", "font": ("Helvetica", 10, "bold")},
 		"ScrolledText": {"bg": "black", "fg": "white", "insertbackground": "white"},
 		"Text": {"background": "black", "foreground": "white", "insertbackground": "white"},
 		".": {"background": "black", "foreground": "white"}
@@ -127,7 +129,10 @@ def apply_settings(root, settings):
 			elif isinstance(w, scrolledtext.ScrolledText):
 				w.configure(**styles.get("ScrolledText", {}))
 			elif isinstance(w, ttk.Widget):
-				style.configure(f'{w.winfo_class()}.TWidget', **styles.get(".", {}))
+				if w.winfo_name() == ["section_author", "section_links", "section_app"]:
+					style.configure(f'{w.winfo_class()}.App.TLabelframe.Label', **styles.get("App.TLabelframe.Label", {}))
+				else:
+					style.configure(f'{w.winfo_class()}.TWidget', **styles.get(".", {}))
 			elif isinstance(w, tk.Widget):
 				w.configure(**styles.get(".", {}))
 		

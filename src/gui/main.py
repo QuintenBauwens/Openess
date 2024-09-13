@@ -23,14 +23,14 @@ import tkinter as tk
 import subprocess
 import os
 from tkinter import filedialog
-import webbrowser
 
 from tkinter import BooleanVar, ttk, messagebox
-from gui.apps.nodesUI import NodesUI
 from utils import InitTia as Init
 from utils.tabUI import Tab
 from utils.loggerConfig import get_logger
+from utils.about import About
 from core.project import Project
+import config
 
 logger = get_logger(__name__)
 
@@ -51,22 +51,33 @@ class mainApp:
 		self.master = master
 		self.app_settings = settings
 		self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
-		self.base_title = "TIA openess demo"
+		self.base_title = config.APP_NAME
 		master.title(self.base_title)
 		master.geometry("1000x500")
-		master.iconbitmap("resources\\img\\tia.ico")
+
+		try:
+			master.iconbitmap(config.APP_ICON)
+		except tk.TclError:
+			logger.warning(f"Failed to set icon: {config.APP_ICON}")
+
+		self.current_tab = None
+		self.module_frames = {}
+		self.modules = {}
 		
 		# permanent frame for the project section (header)
 		self.header_frame = ttk.Frame(master)
 		self.header_frame.pack(side="top", fill="x")
 
-		# permanent frame for the description section
-		self.description_frame = ttk.Frame(master)
-		self.description_frame.pack(expand=True, fill="both")
-
 		# frame for the tab content
 		self.tab_content_frame = ttk.Frame(master)
-		self.tab_content_frame.pack(side="bottom", expand=True, fill="both")
+		self.tab_content_frame.pack(side="top", expand=True, fill="both")
+
+		# frame for the about section
+		self.about_frame = ttk.Frame(self.tab_content_frame)
+
+		# permanent frame for the footer
+		self.footer_frame = ttk.Frame(master)
+		self.footer_frame.pack(side='bottom', fill="x", anchor="s")
 
 		logger.debug(f"Initializing 'Project' instance for shared module resources in later modules/classes")
 		self.projectInstance = Project(self.master, self.tab_content_frame, self.myproject, self.myinterface)
@@ -78,10 +89,6 @@ class mainApp:
 
 		self.menubar = tk.Menu(master)
 
-		self.current_tab = None
-		self.module_frames = {}
-		self.modules = {}
-
 		if settings is not None:
 			self.module_exceptions = settings.get("modules", []).get("exclude_modules", [])
 			self.module_exceptions.append("project")
@@ -92,7 +99,7 @@ class mainApp:
 		master.config(menu=self.menubar)
 
 		# self.style = self.setup_styles()
-		self.show_description()
+		self.home_screen()
 		logger.debug(f"Initialized '{__name__}' instance successfully")
 
 	def create_project_section(self):
@@ -114,12 +121,17 @@ class mainApp:
 
 		ttk.Button(self.header_frame, text="open project", command=self._start_thread).grid(row=0, column=2, sticky="w", padx=5, pady=(5, 0))
 		ttk.Button(self.header_frame, text="close Project", command=self.close_project).grid(row=1, column=2, sticky="w", padx=5)
+		ttk.Button(self.header_frame, text="about", command=self.home_screen).grid(row=1, column=1, sticky="e", padx=5)
 
 		self.checkbox_interface = BooleanVar(value=False)
 		ttk.Checkbutton(self.header_frame, text="open with interface", variable=self.checkbox_interface).grid(row=0, column=3, sticky="w", padx=5, pady=(5, 0))
 
 		seperator = ttk.Separator(self.header_frame, orient="horizontal")
 		seperator.grid(row=2, column=0, columnspan=11 ,sticky="ew", pady=(10))
+
+		self.about = About(self.master, self.about_frame)
+		self.module_frames["about"] = self.about_frame
+		self.about.show_footer(self.footer_frame)
 
 		self.header_frame.grid_columnconfigure(4, weight=1) # make the column of the status icon expandable
 		self.header_frame.grid_columnconfigure(6, weight=1) # make the column of the action label expandable
@@ -245,14 +257,17 @@ class mainApp:
 		'''
 		logger.debug("Switching from tab '%s' to tab '%s'", self.current_tab, tab.name)
 		# hide the previous tab content
-		for frame in self.module_frames.values():
-			for widget in frame.winfo_children():
-				widget.destroy()
-			frame.pack_forget()
-
-		for frame in self.description_frame.winfo_children():
-			frame.destroy()
-		self.description_frame.pack_forget()
+		for frame_name, frame in self.module_frames.items():
+			try:
+				if frame.winfo_exists():
+					logger.debug(f"Hiding frame '{frame_name}' with children: {frame.winfo_children()}")
+					for widget in frame.winfo_children():
+						widget.destroy()
+					frame.pack_forget()
+				else:
+					logger.warning(f"Frame '{frame_name}' does not exist.")
+			except Exception as e:
+				logger.error(f"Error while hiding frame '{frame_name}': {e}", exc_info=True)
 		
 		# Show the frame for the current module
 		module_name = tab.__class__.__module__.split('.')[-1]
@@ -275,7 +290,7 @@ class mainApp:
 			return
 		
 		try:
-			self.description_frame.pack_forget() # hide the description frame
+			self.footer_frame.pack_forget() # hide the description frame
 			
 			self.loading_screen.show_loading(f"Opening project, please wait")
 			self.status_icon.change_icon_status("#00FF00", "Opening project, please wait...")
@@ -303,7 +318,7 @@ class mainApp:
 		logger.thread(message)
 
 		self.loading_screen.hide_loading()
-		self.description_frame.pack(expand=True, fill="both") # show the description frame
+		self.footer_frame.pack(expand=True, fill="both") # show the description frame
 		self.master.update_idletasks()
 
 
@@ -461,102 +476,63 @@ class mainApp:
 		
 		self.master.title(f"{self.base_title} - {screen_name}")		
 
-# TODO: seperate into own class + about button on gui
+
 # Stratscreen for the app: 
-	def show_description(self):
+	def home_screen(self):
 		'''show the description of the app in the description frame'''
-
-		links = {
-			"LinkedIn": "https://www.linkedin.com/in/quinten-bauwens-3766b0225/",
-			"Company": "Volvo Cars Gent",
-			"Email": ""
-		}
-
-		author_info = (
-			"Author: Quinten Bauwens\n"
-			"Email: quinten.bauwens@icloud.com\n"
-			"Company: Volvo Cars Gent\n"
-			"Last updated: 09/07/2024\n"
-			)
-		
-		app_info = (
-			"Welcome to the TIA openness demo app.\n"
-			"This app is designed to demonstrate the use of the TIA openness API to interact with Siemens TIA Portal projects. " 
-			"The app is divided into different sections, each section is a tab that provides different functionalities, "
-			"thereby all the tabs are being dynamically imported as long as they are located in the apps folder. " 
-			"To get started, open a TIA Portal project by clicking the 'open project' button and selecting the project file. " 
-			"If you want to open the project with the TIA Portal interface, check the 'open with interface' checkbox before opening the project. " 
-			"Once the project is opened, you can navigate between the tabs to explore the different functionalities. "
-			"The app provides a variety of features such as viewing and exporting the project nodes, connections, " 
-			"and the project tags, and more. Enjoy exploring the app!"
-			)
-		
-		max_width = 275
-
-		self.description_frame.grid_columnconfigure(0, weight=1, minsize=max_width)
-		self.description_frame.grid_columnconfigure(1, weight=0)
-		self.description_frame.grid_rowconfigure(0, weight=0)
-		self.description_frame.grid_rowconfigure(1, weight=1)
-		self.description_frame.grid_rowconfigure(2, weight=0)
-
-		section_author = ttk.LabelFrame(self.description_frame, text="Author information")
-		section_author.grid(row=0, column=0, rowspan=3, sticky="nsew", padx=(5,2), pady=(5,2))
-		author_info_label = ttk.Label(section_author, text=author_info, wraplength=250, justify="left")
-		author_info_label.pack(anchor="nw", padx=5, pady=2)
-
-		section_links = ttk.LabelFrame(self.description_frame, text="Links", style="Custom.TLabelframe")
-		section_links.grid(row=2, column=0, sticky="sew", padx=(5,2), pady=(5,2))
-		links_text = tk.Text(section_links, wrap="word", height=4, width=50, bg='#f5f5f5', relief="sunken", font=("Helvetica", 10))
-		links_text.pack(anchor="sw", padx=5, pady=2, expand=True, fill="both")
-		self.link_config(links_text, links)
-		
-		section_app = ttk.LabelFrame(self.description_frame, text="App information")
-		section_app.grid(row=0, column=1, sticky="nsew", columnspan=2, padx=(5,2), pady=(5,2))
-		app_info_label = ttk.Label(section_app, text=app_info, wraplength=700, justify="left")
-		app_info_label.pack(anchor="nw", padx=5, pady=2, fill="both", expand=True)
-
-		# Add a custom separator
-		separator = ttk.Separator(self.description_frame, orient="horizontal")
-		separator.grid(row=1, column=1, columnspan=2, sticky="ew", padx=(5,2), pady=(10,10))
-
-		# Add a custom button
-		custom_button = ttk.Button(self.description_frame, text="More Info", command=self.show_more_info)
-		custom_button.grid(row=2, column=1, sticky="se", padx=(5,2), pady=(5,2))
-		# TODO: to be implemented
-		custom_button.config(state=tk.DISABLED)
+		if self.current_tab is not None:
+			# hide the previous tab content
+			for frame_name, frame in self.module_frames.items():
+				if frame_name != "about":
+					try:
+						if frame.winfo_exists():
+							logger.debug(f"Hiding frame '{frame_name}' with children: {frame.winfo_children()}")
+							for widget in frame.winfo_children():
+								widget.destroy()
+							frame.pack_forget()
+						else:
+							logger.warning(f"Frame '{frame_name}' does not exist.")
+					except Exception as e:
+						logger.error(f"Error while hiding frame '{frame_name}': {e}", exc_info=True)
+		logger.info("Showing home screen...")
+		self.about.show_about()
+		logger.debug(f"Packing about frame at top with children: {self.about.frame.winfo_children()}")
+		self.about.frame.pack(side="top", fill="both", expand=True)
+		self.update_frame_title("Home")
 
 
-	def show_more_info(self):
-	# Create a new window or dialog with additional information
-		info_window = tk.Toplevel(self.master)
-		info_window.title("Additional Information")
-		info_label = ttk.Label(info_window, text="This is additional information about the application.", 
-							wraplength=300, style="Custom.TLabel")
-		info_label.pack(padx=20, pady=20)
+
+	# def show_more_info(self):
+	# # Create a new window or dialog with additional information
+	# 	info_window = tk.Toplevel(self.master)
+	# 	info_window.title("Additional Information")
+	# 	info_label = ttk.Label(info_window, text="This is additional information about the application.", 
+	# 						wraplength=300, style="Custom.TLabel")
+	# 	info_label.pack(padx=20, pady=20)
 
 	
-	def link_config(self, text_widget, links_dict):
-		'''make the links in the links_text clickable'''
+	# def link_config(self, text_widget, links_dict):
+	# 	'''make the links in the links_text clickable'''
 
-		for link, url in links_dict.items():
-			text_widget.insert(tk.END, f'{link}\n')
-		text_widget.config(state="disabled")
+	# 	for link, url in links_dict.items():
+	# 		text_widget.insert(tk.END, f'{link}\n')
+	# 	text_widget.config(state="disabled")
 
-		for link, url in links_dict.items():
-			start = text_widget.search(link, "1.0", tk.END)
-			end = f"{start}+{len(link)}c"
-			text_widget.tag_add(link, start, end)
-			text_widget.tag_config(link, foreground="blue", underline=True)
-			text_widget.tag_bind(link, "<Button-1>", lambda e, url=url: self.open_link(url))
+	# 	for link, url in links_dict.items():
+	# 		start = text_widget.search(link, "1.0", tk.END)
+	# 		end = f"{start}+{len(link)}c"
+	# 		text_widget.tag_add(link, start, end)
+	# 		text_widget.tag_config(link, foreground="blue", underline=True)
+	# 		text_widget.tag_bind(link, "<Button-1>", lambda e, url=url: self.open_link(url))
 
-			text_widget.tag_bind(link, "<Enter>", self.on_enter)
-			text_widget.tag_bind(link, "<Leave>", self.on_leave)
+	# 		text_widget.tag_bind(link, "<Enter>", self.on_enter)
+	# 		text_widget.tag_bind(link, "<Leave>", self.on_leave)
 
-	def open_link(self, url):
-		webbrowser.open_new(url)
+	# def open_link(self, url):
+	# 	webbrowser.open_new(url)
 
-	def on_enter(self, event):
-		event.widget.config(cursor="hand2")
+	# def on_enter(self, event):
+	# 	event.widget.config(cursor="hand2")
 
-	def on_leave(self, event):
-		event.widget.config(cursor="")
+	# def on_leave(self, event):
+	# 	event.widget.config(cursor="")

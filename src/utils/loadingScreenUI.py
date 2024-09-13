@@ -1,5 +1,6 @@
 import time
 import tkinter as tk
+import tkinter.ttk as tkk
 import threading
 
 from utils.loggerConfig import get_logger
@@ -11,12 +12,13 @@ class LoadScreen():
         logger.debug(f"Initializing '{__name__.split('.')[-1]}' instance")
         self.master = master
         self.content_frame = content_frame
+        self.progress = False
         self.loadLabel = None
         self.loading_frame = None
         self.loading_dots = 0
         logger.debug(f"Initialized '{__name__.split('.')[-1]}' instance successfully")
     
-    def show_loading(self, text: str):
+    def show_loading(self, text: str, progress: bool = False):
         """
         Displays a loading screen with the given message for a specified delay.
         Parameters:
@@ -32,8 +34,28 @@ class LoadScreen():
         self.loadLabel = tk.Label(self.content_frame, text=self.text, bg="white",font=("tkDefaultFont", 14))
         self.loadLabel.place(relx=0.5, rely=0.5, anchor="center")
 
+        if progress:
+            self.progress = tkk.Progressbar(self.content_frame, orient="horizontal", length=300, mode="determinate")
+            self.progress.place(relx=0.5, rely=0.6, anchor="center")
+
         logger.debug("Loading screen displayed, starting loading effect...")
         threading.Thread(target=self.loading_effect, daemon=True).start()
+
+
+    def update_progress(self, value: int):
+        """
+        Updates the progress bar with the given value.
+
+        Parameters:
+        value (int): The value to update the progress bar with.
+
+        Returns:
+        None
+        """
+        logger.debug(f"Updating progress bar with value '{value}'")
+        if self.progress:
+            self.progress["value"] = value
+            self.master.update_idletasks()
 
     
     def set_loading_text(self, text: str):
@@ -58,6 +80,9 @@ class LoadScreen():
         if self.loadLabel:
             self.loadLabel.destroy()
             self.loadLabel = None
+        if self.progress:
+            self.progress.destroy()
+            self.progress = None
 
         logger.debug("Loading screen hidden, updating master frame...")
         self.master.update_idletasks()

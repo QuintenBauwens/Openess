@@ -19,9 +19,12 @@ import os
 import pkgutil
 
 # method to dynamically reference all the modules in the 'apps' package
-def find_package_modules(package_name):
-   package_path = os.path.join('src', package_name.replace(".", os.sep))
-   return [f'{package_name}.{name}' for _, name, _ in pkgutil.iter_modules([package_path])]
+def find_package_modules(*package_names):
+   modules = []
+   for package_name in package_names:
+      package_path = os.path.join('src', package_name.replace(".", os.sep))
+      modules.extend([f'{package_name}.{name}' for _, name, _ in pkgutil.iter_modules([package_path])])
+   return modules
 
 block_cipher = None
 
@@ -29,22 +32,15 @@ a = Analysis(['src\\main.py'], # type: ignore
             pathex=['C:\\Users\\QBAUWENS\\Documents\\Openess', 'C:\\Users\\QBAUWENS\\Documents\\Openess\\src'],
             binaries=[],
             datas=[
+               # places the left path at the right path in the bundled application
                   ('src/gui', 'gui'),
                   ('src/gui/apps', 'gui/apps'),
                   ('src/utils', 'utils'),
                   ('src/core', 'core'),
-                  ('resources', 'resources')
+                  ('resources', 'resources'),
+                  ('resources/img', 'resources/img'),
                ],
-            hiddenimports= find_package_modules('gui.apps') + [
-                  'gui',
-                  'gui.main',
-                  'core',
-                  'core.file',
-                  'core.nodes',
-                  'utils',
-                  'utils.tabUI',
-                  'utils.tooltipUI'
-               ],
+            hiddenimports= find_package_modules('core', 'gui', 'gui.apps' ,'utils'),
             hookspath=[],
             hooksconfig={},
             runtime_hooks=[],
@@ -73,7 +69,7 @@ exe = EXE(pyz, # type: ignore
          upx=True,
          upx_exclude=[],
          runtime_tmpdir=None,
-         console=True,
+         console=False,
          disable_windowed_traceback=False,
          target_arch=None,
          codesign_identity=None,

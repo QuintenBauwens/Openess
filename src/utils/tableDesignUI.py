@@ -1,5 +1,4 @@
 import operator
-from typing import Any
 from utils.loggerConfig import get_logger
 
 logger = get_logger(__name__)

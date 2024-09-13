@@ -9,9 +9,9 @@ import pandas as pd
 from tkinter import ttk, scrolledtext, messagebox
 from pandastable import Table
 
-from utils.loggerConfig import get_logger
 from utils.tabUI import Tab
 from utils.dialogsUI import ExportDataDialog
+from utils.loggerConfig import get_logger
 
 logger = get_logger(__name__)
 
@@ -187,7 +187,7 @@ class FileUI:
 		try:
 			self.tab = tab
 			if tab.name == "project tags":
-				tab.loading_screen.show_loading(f"Updating table on tab '{tab.name}', please wait")
+				tab.loading_screen.show_loading(f"Updating table on tab '{tab.name}', please wait", progress=True)
 			elif tab.name == "find programblock":
 				tab.loading_screen.show_loading(f"Searching for block '{self.entry_block_name.get()}', please wait")
 			else:

@@ -68,7 +68,7 @@ class LibraryUI:
 			
 			for tab_name, tab_instance in self.tabs.items():
 				if myproject is not None:
-					self.show_content(tab_instance)
+					self._show_content(tab_instance)
 				else:
 					self.create_tab(tab_instance) # create empty tabs if project closes
 			self.status_icon.change_icon_status("#00FF00", f'Updated project and interface to {myproject} and {myinterface}')

@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import simpledialog
 from tkinter import ttk
 from utils.loggerConfig import get_logger
+import config
 
 logger = get_logger(__name__)
 
@@ -14,7 +15,7 @@ class DialogTemplate(simpledialog.Dialog):
 		self.window_info = window_info
 		self.selectionInput = None
 		self.entryInput = None
-		parent.iconbitmap("resources\\img\\tia.ico")
+		parent.iconbitmap(config.APP_ICON)
 		super().__init__(parent, title)
 		logger.debug(f"Initialized '{__name__.split('.')[-1]}' succesfully")
 

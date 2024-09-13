@@ -9,7 +9,6 @@ Last updated: 08/07/2024
 """
 
 import threading
-from utils.loadingScreenUI import LoadScreen
 from utils.loggerConfig import get_logger
 
 logger = get_logger(__name__)
