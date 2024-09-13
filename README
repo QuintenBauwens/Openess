@@ -1,10 +1,10 @@
-# TIA Openess demo
+# TIA Openness Demo
 
-The TIA Openess Demo application, developed by Quinten Bauwens in collaboration with Volvo Cars Gent, provides an interface to interact with TIA Portal projects using the Openess API without needing the TIA Portal itself. The application is organized into various tabs, each offering different functionalities, dynamically imported from the apps folder. Users can open TIA Portal projects, navigate through different tabs to explore features like viewing and exporting project nodes, managing connections, and controlling libraries. The application aims to simplify and enhance the user experience with TIA Portal projects. For more detailed information, refer to the documentation (currently in progress). Enjoy exploring the app!
+The TIA Openness Demo application, developed by Quinten Bauwens in collaboration with Volvo Cars Gent, provides an interface to interact with TIA Portal projects using the Openness API without needing the TIA Portal itself. The application is organized into various tabs, each offering different functionalities, dynamically imported from the apps folder. Users can open TIA Portal projects, navigate through different tabs to explore features like viewing and exporting project nodes, managing connections, and controlling libraries. The application aims to simplify and enhance the user experience with TIA Portal projects.
 
+For more detailed information, refer to the documentation (currently in progress). Enjoy exploring the app!
 
 ## Table of Contents
-
 - [Installation](#installation)
 - [Features](#features)
 - [Contributing](#contributing)
@@ -16,14 +16,29 @@ The TIA Openess Demo application, developed by Quinten Bauwens in collaboration 
 - `.exe` file in `dist/` ~ oneFile application (slower)
 - Installer (coming soon)
 
+### Prerequisites
+
+- Python 3.11.9
+- TIA-Openness
+- TIA-Openness Explorer (recommended)
+
+### Steps
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/QuintenBauwens/Openess.git
+   ```
+
 ## Features
 
 1. **Dynamic Module Importing**
+
 2. **App Settings**
    - **Exclude Module**: Select modules that are not wanted.
    - **Dynamic Style Application**: Apply styles to various Tkinter widgets based on predefined style configurations.
    - **Log-Level**: Change the desired log-level (THREAD, DEBUG, etc.).
    - **Log-File**: Assign log-filename (.log).
+
 3. **Modules**:
    - **FileUI**:
       - **Find Program Blocks**: Locate and manage program blocks within the project.
@@ -38,21 +53,16 @@ The TIA Openess Demo application, developed by Quinten Bauwens in collaboration 
       - **Check Address**: Check if an address is used in the project by any node.
       - **Connections**: Visualize node structure-map, rendered and interactive.
       - **Node List**: Get an overview of all the nodes/interface devices in the project.
+
 4. **Logging**
+
 5. **Status Visualization**
+
 6. **Exporting**
 
-### Prerequisites
+## Contributing
 
-- Python 3.11.9
-- TIA-Openess
-- TIA-Openess Explorer (recommended)
-
-### Steps
-
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/QuintenBauwens/Openess.git
+[Add contribution guidelines here]
 
 ## Authors and Acknowledgments
 
