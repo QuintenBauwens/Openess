@@ -15,7 +15,10 @@ class DialogTemplate(simpledialog.Dialog):
 		self.window_info = window_info
 		self.selectionInput = None
 		self.entryInput = None
-		parent.iconbitmap(config.APP_ICON)
+		# try:
+		# 	parent.iconbitmap(config.APP_ICON)
+		# except Exception as e:
+		# 	logger.warning(f"Could not set icon for popup '{self.dialogName}': {e}")
 		super().__init__(parent, title)
 		logger.debug(f"Initialized '{__name__.split('.')[-1]}' succesfully")
 

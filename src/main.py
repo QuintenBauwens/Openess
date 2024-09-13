@@ -4,6 +4,7 @@ from utils.appSettings import appSettings
 from utils.loggerConfig import get_logger
 from utils.loggerConfig import update_logger_config
 from gui.main import mainApp
+import config
 
 logger = get_logger(__name__)
 
@@ -25,13 +26,9 @@ if __name__ == "__main__":
 	gui = mainApp(root, settings)
 	# gui = mainApp(root)
 
-	cwd = os.getcwd()
-	print(f"Current working directory: {cwd}")
-	# icon_path = os.path.join(cwd, "resources", "img", "tia.ico")
-	print(os.listdir(cwd))
-	icon_path = "resources\\img\\tia.ico"
+	icon_path = config.APP_ICON
 	if os.path.exists(icon_path):
-		root.wm_iconbitmap(icon_path)
+		root.iconbitmap(icon_path)
 	# root.geometry(f'-{screen_width}+100')  # position root on the second screen.
 	root.deiconify()
 	root.mainloop()

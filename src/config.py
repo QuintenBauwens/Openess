@@ -1,17 +1,20 @@
+import os
 APP_VERSION = '0.1.0'
 APP_VERSION_DATE = '12/09/2024'
 APP_NAME = 'TIA Openness Demo'
-APP_ICON = 'resources\\img\\tia.ico'
-APP_COMPANY = 'Volvo Cars Gent'
+APP_ICON = "resources\\img\\tia.ico"
 APP_REPO = 'https://github.com/QuintenBauwens/Openess.git'
 APP_COPYRIGHT = '© 2024 Quinten Bauwens'
 
-
+APP_INFO = {
+    'version' : APP_VERSION,
+    'release' : APP_VERSION_DATE,
+}
 APP_AUTHOR = {
     'name' : 'Quinten Bauwens',
     'tel' : '+32 484 08 09 81',
+    'company' : 'Volvo Cars Gent',
     'department' : 'Volvo Cars Gent | GB',
-    'degree' : ['Bachelor Energy Technology', 'Bachelor IT & Networking']
 }
 APP_AUTHOR_LINKS = {
     'email' : 'mailto:quinten.bauwens@icloud.com',

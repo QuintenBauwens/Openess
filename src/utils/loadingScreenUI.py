@@ -28,10 +28,10 @@ class LoadScreen():
 
         self.text = text
 
-        self.loading_frame = tk.Frame(self.content_frame, bg="white")
+        self.loading_frame = tk.Frame(self.content_frame)
         self.loading_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-        self.loadLabel = tk.Label(self.content_frame, text=self.text, bg="white",font=("tkDefaultFont", 14))
+        self.loadLabel = tk.Label(self.content_frame, text=self.text,font=("tkDefaultFont", 14))
         self.loadLabel.place(relx=0.5, rely=0.5, anchor="center")
 
         if progress:

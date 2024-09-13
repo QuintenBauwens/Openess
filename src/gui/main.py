@@ -55,10 +55,10 @@ class mainApp:
 		master.title(self.base_title)
 		master.geometry("1000x500")
 
-		try:
-			master.iconbitmap(config.APP_ICON)
-		except tk.TclError:
-			logger.warning(f"Failed to set icon: {config.APP_ICON}")
+		# try:
+		# 	master.iconbitmap(config.APP_ICON)
+		# except tk.TclError:
+		# 	logger.warning(f"Failed to set icon: {config.APP_ICON}")
 
 		self.current_tab = None
 		self.module_frames = {}
@@ -76,7 +76,8 @@ class mainApp:
 		self.about_frame = ttk.Frame(self.tab_content_frame)
 
 		# permanent frame for the footer
-		self.footer_frame = ttk.Frame(master)
+		
+		self.footer_frame = tk.Frame(master, height=1)
 		self.footer_frame.pack(side='bottom', fill="x", anchor="s")
 
 		logger.debug(f"Initializing 'Project' instance for shared module resources in later modules/classes")
